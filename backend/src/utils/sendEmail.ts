@@ -35,8 +35,6 @@ var smtp = nodemailer.createTransport({
   },
 });
 
-// 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
-
 export const sendMailUsingSendGrid = async ({
   template: templateName,
   templateVars,
