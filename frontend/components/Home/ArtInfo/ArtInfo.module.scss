@@ -1,0 +1,152 @@
+.info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 1400px) {
+    gap: 16px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 992px) {
+    gap: 16px;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 500px) {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .divider {
+    height: 56px;
+    width: 2px;
+    background: linear-gradient(
+      rgba(238, 238, 238, 0.5),
+      #c8c8c8,
+      rgba(238, 238, 238, 0.5)
+    );
+    margin: 0 0;
+
+    @media screen and (max-width: 1400px) {
+      height: 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+      height: 36px;
+      width: 1px;
+    }
+  }
+
+  .artistProfile {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: 2px solid #d1d1d1;
+
+    @media screen and (max-width: 1400px) {
+      height: 48px;
+      width: 48px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      width: 36px;
+      height: 36px;
+    }
+
+    @media screen and (max-width: 480px) {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .artPrice {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+      stroke: #85858c;
+      fill: #85858c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: 1400px) {
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        width: 24px;
+        height: 24px;
+        padding: 3px;
+      }
+
+      @media screen and (max-width: 480px) {
+        width: 18px;
+        height: 18px;
+        padding: 2px;
+      }
+    }
+
+    .price {
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 28px;
+      letter-spacing: 0.17em;
+      margin: 0 0;
+      color: #6435c7;
+
+      @media screen and (max-width: 1400px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 1200px) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: 480px) {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      gap: 4px;
+    }
+  }
+
+  .factsheet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+
+    @media screen and (max-width: 1400px) {
+      .download {
+        height: 14px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .download {
+        height: 10px;
+      }
+    }
+  }
+}

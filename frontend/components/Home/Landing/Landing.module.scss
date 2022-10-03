@@ -1,0 +1,259 @@
+.landing {
+  padding: 20vh 0 80px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  overflow-x: hidden;
+  gap: 48px;
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 15vh 0 60px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 15vh 0 40px;
+    gap: 12px;
+  }
+
+  .landingCarousel {
+    @media screen and (max-width: 992px) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: auto;
+    }
+  }
+
+  .landingDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+    width: 100%;
+
+    @media screen and (max-width: 992px) {
+      align-items: center;
+      width: 100%;
+    }
+
+    .landingTabs {
+      width: 100%;
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+
+      .tabList {
+        padding-top: 28px;
+
+        @media screen and (max-width: 992px) {
+          padding-top: 0px;
+        }
+
+        .tabValue {
+          padding: 12px 36px;
+          font-family: "Plus Jakarta Sans";
+          font-style: normal;
+          font-weight: 800;
+          font-size: 20px;
+          line-height: 24px;
+          color: #85858c;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          @media screen and (max-width: 1400px) {
+            padding: 10px 28px;
+            font-size: 18px;
+          }
+
+          @media screen and (max-width: 1200px) {
+            padding: 8px 20px;
+            font-size: 17px;
+          }
+
+          @media screen and (max-width: 768px) {
+            padding: 6px 20px;
+            font-size: 16px;
+          }
+
+          @media screen and (max-width: 480px) {
+            padding: 4px 12px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .tabPanel {
+        padding: 28px 0 0;
+        width: 100%;
+
+        .tabContent {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 32px;
+          height: auto;
+          width: 100%;
+
+          @media screen and (max-width: 992px) {
+            align-items: center;
+            gap: 28px;
+          }
+
+          @media screen and (max-width: 768px) {
+            gap: 24px;
+          }
+
+          .contentHeader {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            @media screen and (max-width: 480px) {
+              gap: 16px;
+
+              img {
+                height: 36px;
+              }
+            }
+
+            .likes {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+
+              @media screen and (max-width: 480px) {
+                gap: 12px;
+              }
+
+              .headIcon {
+                border: 2px solid #f8f8f8;
+                border-radius: 50%;
+
+                svg {
+                  height: 48px;
+                  width: 48px;
+                  padding: 10px;
+                  stroke: #e0e0e0;
+                  stroke-width: 4px;
+                  overflow: visible;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  @media screen and (max-width: 1200px) {
+                    height: 36px;
+                    width: 36px;
+                    padding: 7px;
+                  }
+
+                  @media screen and (max-width: 480px) {
+                    height: 20px;
+                    width: 20px;
+                    padding: 3px;
+                  }
+                }
+              }
+
+              .headIconActive {
+                border: 2px solid rgba(242, 20, 20, 0.2);
+                background-color: rgba(242, 20, 20, 0.2);
+                border-radius: 50%;
+
+                svg {
+                  height: 60px;
+                  width: 60px;
+                  padding: 14px;
+                  stroke: rgba(242, 20, 20, 1);
+                  fill: rgba(242, 20, 20, 1);
+                  stroke-width: 4px;
+                  overflow: visible;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  @media screen and (max-width: 1366px) {
+                    height: 48px;
+                    width: 48px;
+                    padding: 10px;
+                  }
+
+                  @media screen and (max-width: 480px) {
+                    height: 20px;
+                    width: 20px;
+                    padding: 3px;
+                  }
+                }
+              }
+            }
+          }
+
+          .contentInfo {
+            @media screen and (max-width: 992px) {
+              text-align: center;
+            }
+          }
+
+          .contentCards {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+
+          .contentBtns {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+
+            @media screen and (max-width: 1400px) {
+              gap: 24px;
+            }
+
+            @media screen and (max-width: 768px) {
+              gap: 18px;
+            }
+          }
+
+          .contentData {
+            width: 100%;
+
+            .accordion {
+              width: 100%;
+
+              .accordionItem {
+                background-color: white;
+
+                .accordionControl {
+                  justify-content: flex-end;
+                  background-color: white;
+                }
+
+                .accordionPanel {
+                  font-family: "Plus Jakarta Sans";
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 14px;
+                  line-height: 160%;
+                  color: #85858c;
+
+                  @media screen and (max-width: 480px) {
+                    font-size: 12px;
+                  }
+
+                  ul {
+                    padding: 0 16px;
+                    margin: 0 0;
+                    list-style: decimal;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

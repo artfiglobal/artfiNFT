@@ -1,0 +1,23 @@
+.carousel {
+  width: 560px;
+
+  @media screen and (max-width: 1400px) {
+    width: 440px;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 560px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 280px;
+  }
+
+  img {
+    border-radius: 12px;
+
+    @media screen and (max-width: 1400px) {
+      border-radius: 10px;
+    }
+  }
+}

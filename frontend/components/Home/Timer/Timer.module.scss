@@ -1,0 +1,39 @@
+.countdown {
+  background: #4527b320;
+  backdrop-filter: blur(12px);
+  color: #4527b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  margin: 4px;
+  border-radius: 24px;
+  gap: 2px;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 16px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 10px;
+    line-height: 18px;
+    padding: 4px 12px;
+    border-radius: 12px;
+
+    img {
+      width: 18px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+.card {
+  width: 48%;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 56px;
+
+  @media screen and (max-width: 480px) {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .cardImage {
+    width: 64px;
+
+    @media screen and (max-width: 1366px) {
+      width: 52px;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+      width: 32px;
+    }
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @media screen and (max-width: 480px) {
+      gap: 2px;
+    }
+
+    .cardTitle {
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.17em;
+      margin: 0 0;
+      color: #85858c;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 1366px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
+      @media screen and (max-width: 480px) {
+        font-size: 12px;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+}
