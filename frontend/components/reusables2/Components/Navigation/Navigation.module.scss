@@ -1,0 +1,275 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 10vh;
+  left: 0px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(20px);
+  z-index: 998;
+
+  .navContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    max-width: 1380px;
+    margin: 0 auto;
+
+    @media (max-width: 1400px) {
+      max-width: 1200px;
+    }
+
+    @media (max-width: 1200px) {
+      max-width: 992px;
+    }
+
+    @media (max-width: 922px) {
+      max-width: 768px;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 576px;
+    }
+
+    @media (max-width: 576px) {
+      max-width: 480px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 100%;
+      padding: 0 16px;
+    }
+
+    .navColapse {
+      display: none;
+      @media screen and (max-width: 992px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+    }
+
+    .navigation {
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.5s ease-out;
+
+      @media screen and (max-width: 1400px) {
+        width: 85%;
+      }
+
+      @media screen and (max-width: 992px) {
+        position: absolute;
+        flex-direction: column;
+        top: 10vh;
+        height: 100vh;
+        clip-path: circle(100px at 90% -20%);
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(20px);
+        left: 0;
+        transition: all 0.2s ease-out;
+      }
+
+      .navLinks {
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 40px;
+
+        @media screen and (max-width: 1400px) {
+          gap: 32px;
+        }
+
+        .navItem {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          &:nth-child(3) {
+            cursor: default;
+
+            .text:hover {
+              color: black;
+            }
+          }
+
+          .text {
+            display: flex;
+            align-items: flex-end;
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            line-height: 150%;
+            margin-right: 8px;
+
+            @media screen and (max-width: 1400px) {
+              font-size: 14px;
+            }
+          }
+
+          .text:hover {
+            color: #4527b3;
+          }
+
+          .navItemBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: linear-gradient(86.43deg, #7c5ebb 32.2%, #6231c8 95.8%);
+
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 120%;
+            color: #ffffff;
+
+            @media screen and (max-width: 1400px) {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .open {
+      position: absolute;
+      flex-direction: column;
+      top: 10vh;
+      height: 90vh;
+      clip-path: circle(2000px at 90% -10%);
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(20px);
+      left: 0;
+      transition: all 0.2s ease-out;
+
+      .navLinks {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 768px;
+        margin: 20px auto 40px;
+
+        @media screen and (max-width: 768px) {
+          width: 576px;
+        }
+
+        @media screen and (max-width: 576px) {
+          width: 480px;
+        }
+
+        @media screen and (max-width: 480px) {
+          width: 100%;
+          margin: 12px 0 24px;
+          padding: 0 16px;
+        }
+
+        .navItem {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-end;
+          cursor: pointer;
+
+          &:nth-child(3) {
+            cursor: default;
+
+            .text:hover {
+              color: black;
+            }
+          }
+
+          .text {
+            display: flex;
+            align-items: flex-end;
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            line-height: 150%;
+            margin-right: 8px;
+
+            @media screen and (max-width: 1400px) {
+              font-size: 14px;
+            }
+          }
+
+          .text:hover {
+            color: #4527b3;
+          }
+
+          .navItemBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: linear-gradient(86.43deg, #7c5ebb 32.2%, #6231c8 95.8%);
+
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 120%;
+            color: #ffffff;
+
+            @media screen and (max-width: 1400px) {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      .navBtn {
+        width: 768px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        @media screen and (max-width: 768px) {
+          width: 576px;
+        }
+
+        @media screen and (max-width: 576px) {
+          width: 480px;
+        }
+
+        @media screen and (max-width: 480px) {
+          width: 100%;
+          margin: 0;
+          padding: 0 16px;
+        }
+      }
+    }
+  }
+}

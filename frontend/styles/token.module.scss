@@ -1,0 +1,557 @@
+.container {
+  background-color: white;
+  overflow-x: hidden;
+
+  .tokenLanding {
+    height: 60vh;
+    position: relative;
+    padding: 10vh 120px;
+    margin-top: 60px;
+    // background-color: #6242a7;
+    text-align: center;
+
+    @media screen and (max-width: 922px) {
+      padding: 10vh 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+      height: auto;
+      padding: 30px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .landingPill {
+      position: absolute;
+      bottom: 10vh;
+      left: 40vw;
+      z-index: 0;
+
+      @media screen and (max-width: 480px) {
+        height: 120px;
+        left: 60vw;
+      }
+    }
+
+    // .landingTitle {
+    //   position: relative;
+    //   font-family: "Plus Jakarta Sans";
+    //   font-style: normal;
+    //   font-weight: 800;
+    //   // font-size: 90px;
+    //   line-height: 98.5%;
+    //   margin: 0.25em 0;
+    //   color: white;
+
+    //   @media screen and (max-width: 922px) {
+    //     font-size: 72px;
+    //   }
+
+    //   @media screen and (max-width: 480px) {
+    //     font-size: 56px;
+    //     padding-top: 30%;
+    //   }
+
+    //   .landingSphere {
+    //     position: absolute;
+    //     height: 16px;
+    //     top: 4px;
+    //     right: 25%;
+
+    //     @media screen and (max-width: 922px) {
+    //       height: 12px;
+    //     }
+
+    //     @media screen and (max-width: 480px) {
+    //       height: 10px;
+    //       top: 52%;
+    //     }
+    //   }
+    // }
+
+    p {
+      z-index: 1;
+      font-weight: 500;
+      line-height: 150%;
+      width: 55%;
+      text-align: center;
+      margin: 40px auto;
+      @media screen and (max-width: 800px) {
+        width: 80%;
+      }
+    }
+  }
+
+  .tokenAbout {
+    background-color: black;
+    position: relative;
+    padding: 100px 120px;
+
+    @media screen and (max-width: 922px) {
+      padding: 64px 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 48px 24px;
+    }
+
+    .tokenAboutBG {
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 600px;
+      opacity: 0.6;
+
+      @media screen and (max-width: 1600px) {
+        height: 500px;
+      }
+
+      @media screen and (max-width: 480px) {
+        height: 400px;
+        top: 30%;
+      }
+    }
+
+    h1 {
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      width: 30%;
+
+      @media screen and (max-width: 1600px) {
+        width: 40%;
+      }
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .aboutContainer {
+      display: flex;
+
+      @media screen and (max-width: 480px) {
+        flex-direction: column;
+      }
+
+      .aboutImg {
+        height: 520px;
+        width: 390px;
+        border-radius: 4px;
+        filter: drop-shadow(0px 5.20183px 45.9495px rgba(65, 65, 65, 0.09));
+        margin-right: 64px;
+
+        @media screen and (max-width: 1600px) {
+          height: 400px;
+          width: 300px;
+        }
+
+        @media screen and (max-width: 922px) {
+          height: 360px;
+          width: 270px;
+          margin-right: 32px;
+        }
+
+        @media screen and (max-width: 480px) {
+          width: 100%;
+          max-width: 280px;
+          height: auto;
+          margin: 0 auto;
+          margin-bottom: 24px;
+        }
+      }
+
+      .aboutText {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        h6 {
+          font-weight: 300;
+          font-size: 28px;
+          line-height: 170%;
+          margin: 0 0;
+
+          @media screen and (max-width: 922px) {
+            font-size: 20px;
+          }
+
+          @media screen and (max-width: 480px) {
+            font-size: 16px;
+          }
+        }
+
+        .aboutBold {
+          font-weight: 700;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          font-family: "Plus Jakarta Sans";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 27px;
+          line-height: 130%;
+          color: #af95e7;
+
+          @media screen and (max-width: 922px) {
+            font-size: 22px;
+          }
+
+          @media screen and (max-width: 480px) {
+            font-size: 18px;
+            margin-top: 32px;
+          }
+
+          img {
+            margin-left: 12px;
+            height: 28px;
+            width: 28px;
+
+            @media screen and (max-width: 922px) {
+              margin-left: 8px;
+              height: 22px;
+              width: 22px;
+            }
+
+            @media screen and (max-width: 480px) {
+              height: 18px;
+              width: 18px;
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tokenDistribution {
+    padding: 120px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    position: relative;
+
+    @media screen and (max-width: 922px) {
+      padding: 48px;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 24px;
+    }
+
+    .distributionTitle {
+      text-align: center;
+      border-bottom: 2px solid #e5e5e5;
+      margin-bottom: 60px;
+
+      h6 {
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: 28px;
+      }
+    }
+  }
+
+  .tokenRevenue {
+    background-color: #f5f5f5;
+    padding: 0 120px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    @media screen and (max-width: 922px) {
+      padding: 0 48px;
+      padding-right: 0;
+    }
+    @media screen and (max-width: 480px) {
+      padding: 0 24px;
+    }
+
+    .revenueText {
+      width: 50%;
+
+      @media screen and (max-width: 922px) {
+        width: 75%;
+        padding: 40px 0;
+      }
+      @media screen and (max-width: 480px) {
+        width: 100%;
+        padding: 40px 0;
+        z-index: 5;
+      }
+
+      h1 {
+        font-weight: 800;
+        font-size: 72px;
+        margin-bottom: 28px;
+
+        @media screen and (max-width: 922px) {
+          font-size: 48px;
+        }
+        @media screen and (max-width: 480px) {
+          font-size: 36px;
+        }
+      }
+
+      h6 {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 150%;
+
+        @media screen and (max-width: 922px) {
+          font-size: 20px;
+        }
+        @media screen and (max-width: 480px) {
+          font-size: 16px;
+        }
+      }
+
+      .aboutBold {
+        font-weight: 700;
+      }
+    }
+
+    img {
+      @media screen and (max-width: 1600px) {
+        max-height: 600px;
+      }
+      @media screen and (max-width: 922px) {
+        height: 520px;
+        width: 300px;
+      }
+      @media screen and (max-width: 480px) {
+        position: absolute;
+        z-index: 1;
+        opacity: 0.2;
+        right: 0;
+      }
+    }
+  }
+
+  .tokenBurn {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+    .burnBG {
+      max-height: 760px;
+      margin-right: 120px;
+
+      @media screen and (max-width: 992px) {
+        position: absolute;
+        z-index: 3;
+        max-height: 1100px;
+      }
+
+      @media screen and (max-width: 480px) {
+        max-height: 900px;
+      }
+    }
+
+    .burnContent {
+      @media screen and (max-width: 1600px) {
+        padding-top: 48px;
+      }
+
+      @media screen and (max-width: 992px) {
+        padding: 48px;
+      }
+
+      @media screen and (max-width: 480px) {
+        padding: 48px 24px;
+      }
+
+      .burnTitle {
+        display: flex;
+        align-items: center;
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 800;
+        font-size: 72px;
+        line-height: 120%;
+        color: #ffffff;
+        margin-bottom: 60px;
+
+        @media screen and (max-width: 922px) {
+          font-size: 48px;
+        }
+        @media screen and (max-width: 480px) {
+          font-size: 36px;
+          margin-bottom: 48px;
+        }
+
+        img {
+          margin-left: 24px;
+
+          @media screen and (max-width: 992px) {
+            height: 48px;
+            margin-left: 16px;
+          }
+
+          @media screen and (max-width: 480px) {
+            height: 36px;
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .burnText {
+        padding-right: 180px;
+
+        @media screen and (max-width: 480px) {
+          padding-right: 48px;
+        }
+
+        .burnContainer {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 56px;
+
+          @media screen and (max-width: 480px) {
+            margin-bottom: 32px;
+          }
+
+          img {
+            margin-top: 8px;
+            margin-right: 16px;
+
+            @media screen and (max-width: 480px) {
+              margin-top: 6px;
+              margin-right: 12px;
+              width: 44px;
+            }
+          }
+
+          p {
+            margin: 0 0;
+            font-size: 22px;
+            line-height: 150%;
+            font-weight: 300;
+
+            @media screen and (max-width: 480px) {
+              font-size: 16px;
+            }
+          }
+
+          .aboutBold {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+  .img{
+    @media screen and (max-width: 900px) {
+      width: 300px;
+  }
+  @media screen and (max-width: 320px) {
+    width: 200px;
+}
+}
+
+  .tokenStaking {
+    background-color: white;
+    padding-top: 64px;
+    max-height: 722px;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @media screen and (max-width: 922px) {
+      padding-top: 0px;
+      flex-direction: column-reverse;
+      max-height: 1600px;
+      align-items: flex-start;
+    }
+
+    .stakingBG {
+      filter: drop-shadow(5.69167px -7.82604px 46.2448px rgba(0, 0, 0, 0.2));
+
+      @media screen and (max-width: 922px) {
+        position: initial;
+        z-index: 1;
+        width: 60%;
+        bottom: 0;
+        left: 0;
+      }
+
+      @media screen and (max-width: 480px) {
+        position: initial;
+        width: 80%;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+      }
+    }
+
+    .stakingContent {
+      padding: 0 120px;
+      z-index: 5;
+
+      @media screen and (max-width: 922px) {
+        padding: 48px;
+      }
+
+      @media screen and (max-width: 480px) {
+        padding: 48px 24px;
+      }
+
+      h1 {
+        font-size: 72px;
+        margin-bottom: 60px;
+
+        @media screen and (max-width: 922px) {
+          font-size: 48px;
+          margin-bottom: 40px;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 36px;
+        }
+      }
+
+      .stakingContainer {
+        display: flex;
+        align-items: flex-start;
+        margin: 32px;
+
+        @media screen and (max-width: 480px) {
+          margin: 24px 0;
+        }
+
+        img {
+          margin-right: 24px;
+
+          @media screen and (max-width: 480px) {
+            height: 36px;
+            margin-right: 12px;
+          }
+        }
+
+        p {
+          margin: 0 0;
+          font-weight: 400;
+          font-size: 22px;
+          line-height: 150%;
+
+          @media screen and (max-width: 480px) {
+            font-size: 16px;
+          }
+        }
+
+        .aboutBold {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

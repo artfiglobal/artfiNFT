@@ -1,0 +1,100 @@
+.distributionTile {
+  display: flex;
+  flex-direction: column;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  width: 50%;
+  margin-bottom: 60px;
+
+  @media screen and (max-width: 922px) {
+    // align-items: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    // text-align: center;
+    width: 40%;
+    margin-bottom: 36px;
+  }
+
+  .tileImage {
+    height: 52px;
+    width: 52px;
+    margin-bottom: 8px;
+
+    @media screen and (max-width: 922px) {
+      height: 44px;
+      width: 44px;
+    }
+
+    @media screen and (max-width: 480px) {
+      height: 28px;
+      width: 28px;
+    }
+  }
+
+  .tileTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #000000;
+    margin: 0 0;
+
+    @media screen and (max-width: 480px) {
+      font-size: 16px;
+    }
+  }
+
+  .tileDetail {
+    .tilePercentage {
+      font-weight: 800;
+      font-size: 42px;
+      line-height: 130%;
+      margin: 0 0;
+
+      @media screen and (max-width: 922px) {
+        font-size: 32px;
+      }
+
+      @media screen and (max-width: 480px) {
+        font-size: 20px;
+      }
+    }
+
+    .tileValue {
+      margin-left: 8px;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 160%;
+      color: #000000;
+
+      @media screen and (max-width: 480px) {
+        font-size: 12px;
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+.fundraising {
+  color: #4527b3;
+}
+
+.marketmaking {
+  color: #ff87d6;
+}
+
+.team {
+  color: #a945fd;
+}
+
+.advisors {
+  color: #800080;
+}
+
+.rewards {
+  color: #260038;
+}
+
+.treasury {
+  color: #ffa7a7;
+}

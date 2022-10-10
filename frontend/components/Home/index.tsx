@@ -1,8 +1,25 @@
+import Market from "./Market";
 import Landing from "./Landing";
-import ArtInfo from "./ArtInfo";
-import DetailCard from "./DetailCard";
-import LandingCarousel from "./LandingCarousel";
-import OrderForm from "./OrderForm";
-import Timer from "./Timer";
+import Roadmap from "./Roadmap";
+import Benefits from "./Benefits";
+import Discover from "./Discover";
+import Offering from "./Offering";
+import Whitelist from "./Whitelist";
+import Foundation from "./Foundation";
+import Objectives from "./Objectives";
+import HowItWorks from "./HowItWorks";
+import Distribution from "./Distribution";
 
-export { Landing, ArtInfo, DetailCard, LandingCarousel, OrderForm, Timer };
+export {
+  Market,
+  Landing,
+  Roadmap,
+  Benefits,
+  Discover,
+  Offering,
+  Foundation,
+  HowItWorks,
+  Objectives,
+  Whitelist,
+  Distribution,
+};

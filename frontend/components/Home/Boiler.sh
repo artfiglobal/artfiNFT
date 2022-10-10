@@ -1,7 +1,7 @@
 for FILE in $(ls -1)
 do
   echo """
-import style from \"./${FILE}.module.scss\" 
+import styles from \"./${FILE}.module.scss\" 
 
 type ${FILE}Props = { }
 

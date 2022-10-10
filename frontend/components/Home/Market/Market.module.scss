@@ -1,0 +1,106 @@
+.market {
+  padding: 100px 70px;
+  min-height: 100vh;
+
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+
+  .market_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+
+    .market_text {
+      width: 30%;
+      p {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 36px;
+        /* or 150% */
+        color: #575757;
+
+        @media screen and (max-width: 768px) {
+          font-size: 18px;
+          line-height: 24px;
+          text-align: left;
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .market_accordian {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        margin: 20px 0px;
+        gap: 10px;
+      }
+
+      .container {
+        padding: 0 24px;
+
+        @media screen and (max-width: 992px) {
+          min-height: 90px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .chart {
+    width: 100%;
+    margin: 100px 0;
+
+    @media screen and (max-width: 992px) {
+      margin: 70px 0;
+    }
+  }
+  .container_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0px;
+
+    .container {
+      width: 33%;
+      min-height: 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 8px 0px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        min-height: 100px;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+      margin: 10px 0px;
+      .container {
+        width: 100%;
+        min-height: 100px;
+      }
+    }
+  }
+}

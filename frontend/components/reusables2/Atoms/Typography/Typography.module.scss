@@ -1,0 +1,71 @@
+.heading {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  margin: 0 0;
+  line-height: 130%;
+  @media screen and (max-width: 1400px) {
+    font-size: 34px;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.subheading {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0.17em;
+  margin: 0 0;
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 11px;
+  }
+}
+
+.body {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 180%;
+  margin: 0 0;
+  @media screen and (max-width: 1400px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 10px;
+  }
+}
+
+.white {
+  color: #ffffff;
+}
+
+.purple {
+  color: #4527b3;
+}
+
+.black {
+  color: #000000;
+}
+
+.grey {
+  color: #85858c;
+}

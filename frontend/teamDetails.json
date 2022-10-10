@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Asif Kamal",
+    "title": "Founder",
+    "designation": "Founder",
+    "src": "/images/Asif-Kamal.jpg",
+    "content": "Asif kamal is an art connoisseur, collector. He founded Alturaash Art, an international art house based in Dubai and Delhi. Asif is a notable name in the fine art industry.",
+    "top": true,
+    "linkedIn": "https://www.linkedin.com/in/linkasifkamal/",
+    "twitter": "https://twitter.com/iamasifkamal"
+  },
+  {
+    "name": "Adam Szymanski",
+    "title": "VP - Strategy",
+    "designation": "VP - Strategy",
+    "src": "/images/adam.jpg",
+    "content": "Adam Szymanski is a researcher of art cinema and new media. Throughout his career, he has been affiliated with the University of Chicago, the University of Freiburg and McGill University.",
+    "top": true,
+    "linkedIn": "https://www.linkedin.com/in/adam-szymanski-207b2b144/",
+    "twitter": "https://twitter.com/adszymanski"
+  },
+  {
+    "name": "Aly Raza Beig",
+    "title": "CTO",
+    "designation": "CTO",
+    "src": "/images/raza.jpg",
+    "content": "Aly Raza Beig is the CTO of Artfi & the founder of BoredPuma, the leading creative agency in the Middle East - focused on Web3. He specializes in Crypto, NFTs, Blockchain Development & Community-brand development. ",
+    "top": true,
+    "linkedIn": "https://www.linkedin.com/in/alyrazabeig/",
+    "twitter": "https://twitter.com/alyrazabeig"
+  },
+  {
+    "name": "Shiekha Hend Alqasimi",
+    "title": " Art Patron, Advisor ",
+    "src": "/images/hend.jpg",
+    "content": "A multi-faceted Emirati, Sheikha Hend Faisal Al Qassimi is a committed philanthropist in addition to being an accomplished architect, artist, author, and entrepreneur. Sheikha Hend serves as CEO of Paris London New York Events & Publishing (PLNY), a multi-industry conglomerate that includes Velvet Magazine, House of Hend fashion house, and The Flower Cafe.",
+    "patron": true,
+    "twitter": "https://twitter.com/LadyVelvet_HFQ",
+    "instagram": "https://www.instagram.com/hendfq/",
+    "designation": "Art Patron"
+  },
+  {
+    "name": "Raza Beig",
+    "title": "Art Collector, Investor",
+    "src": "/images/raza_beig.png",
+    "content": "Raza is an avid art collector and an connoisseur. He believes that art brings generations together. Raza's entry into the world of digital assets builds on his background in art, fashion and creativity. On the professional front, Raza is a fashion enthusiast. He is the CEO of the Splash fashion brand and Director of the Landmark Group retail conglomerate.",
+    "patron": true,
+    "twitter": "https://twitter.com/razabeigsplash",
+    "instagram": "https://instagram.com/razabeig?igshid=YmMyMTA2M2Y=",
+    "designation": "Art Collector, Investor"
+  },
+  {
+    "name": "Ajeet Khurana",
+    "title": "Ex CEO - Zebpay",
+    "designation": "Ex CEO - Zebpay",
+    "src": "/images/ajeet.jpg",
+    "content": "",
+    "advisor": true,
+    "twitter": "https://twitter.com/AjeetK",
+    "linkedIn": "https://www.linkedin.com/in/ajeetkhurana"
+  },
+  {
+    "name": "Punit Agarwal",
+    "title": "CEO - Cryptorelief , Founder - KoinX",
+    "designation": "CEO - Cryptorelief , Founder - KoinX",
+    "src": "/images/punit.jpg",
+    "content": "",
+    "advisor": true,
+    "twitter": "https://twitter.com/a__puni",
+    "linkedIn": "https://www.linkedin.com/in/iampunit"
+  },
+  {
+    "name": "Zoya Singh",
+    "title": "Co-Founder, Alturaash Art",
+    "designation": "Co-Founder, Alturaash Art",
+    "src": "/images/zoya.jpg",
+    "content": "",
+    "advisor": true,
+    "twitter": "https://twitter.com/iamzoyasingh"
+  }
+]

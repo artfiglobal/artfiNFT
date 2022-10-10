@@ -1,0 +1,136 @@
+.overlay {
+  margin: 0px 25px;
+  border-radius: 24px;
+  perspective: 150rem;
+  position: relative;
+  width: 325px;
+  min-height: 350px;
+  cursor: pointer;
+  .cardSide {
+    transition: all 0.5s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .back {
+    background: #7d64da;
+    border-radius: 24px;
+    width: 325px;
+    min-height: 350px;
+    .backDetails {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 350px;
+      padding: 20px 24px;
+      p {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 130%;
+        /* or 23px */
+
+        color: #000000;
+      }
+      .social {
+        font-size: 32px;
+        color: white;
+        margin-left: 12px;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .cardSide.back {
+    transform: rotateY(-180deg);
+  }
+  &:hover .cardSide.front {
+    transform: rotateY(180deg);
+  }
+
+  &:hover .cardSide.back {
+    transform: rotateY(0deg);
+  }
+  .lg {
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 300px;
+    min-height: 350px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.8) 100%,
+      #000000 100%
+    );
+    background-blend-mode: multiply;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 24px;
+
+    .image {
+      position: absolute;
+      transform: translate(-24px, 24px);
+      object-fit: cover;
+    }
+  }
+
+  .sm {
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    background: #00092b;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.8) 100%,
+      #000000 100%
+    );
+    background-blend-mode: multiply;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 24px;
+
+    .image {
+      width: 246px;
+      height: 280px;
+      position: absolute;
+      margin: auto;
+      object-fit: cover;
+      transform: translate(140px, -4px);
+      border-radius: 30px;
+    }
+  }
+}
+
+.name {
+  width: 200px;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+
+  color: #ffffff;
+  z-index: 10;
+}
+
+.position {
+  font-family: "Plus Jakarta Sans";
+  width: 160px;
+  margin-top: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}

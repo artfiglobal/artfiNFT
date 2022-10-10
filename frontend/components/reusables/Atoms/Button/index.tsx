@@ -2,37 +2,29 @@ import React, { ReactText } from "react";
 import style from "./Button.module.scss";
 
 const variantsMapping = {
-  primaryNav: style.primaryNav,
-  primary: style.primary,
-  secondary: style.secondary,
+  sm: style.sm,
+  md: style.md,
+  lg: style.lg,
+  xl: style.xl,
 };
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "primaryNav" | "primary" | "secondary";
-  children: any;
-  // onClick?: () => void;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
+  variant: "sm" | "md" | "lg" | "xl";
+  children: ReactText;
+  onClick?: () => void;
   extraClass?: string;
-  onClick?: ((event: any) => void) | undefined;
 }
 
 export const Button = ({
   variant,
   children,
   extraClass,
-  onClick = () => {},
   ...props
 }: ButtonProps): JSX.Element => {
-  const handleOnClick = () => {
-    onClick(Event);
-  };
   return (
-    <button
-      className={`${variantsMapping[variant]} ${extraClass}`}
-      {...props}
-      onClick={handleOnClick}
-    >
+    <div className={`${variantsMapping[variant]} ${extraClass}`} {...props}>
       {children}
-    </button>
+    </div>
   );
 };
 

@@ -91,11 +91,12 @@ export const CustomHead = ({ title }: HeadProps): JSX.Element => {
         property="og:image"
         content="https://artfi.world/images/artfi.png"
       />
-      <meta
+       <meta
         property="og:description"
         content="Discover, collect & invest in the world's greatest artworks powered by blockchain and NFTs. Democratizing art ownership, powered by 
         @Polygonstudios"
       />
+   
     </Head>
   );
 };
