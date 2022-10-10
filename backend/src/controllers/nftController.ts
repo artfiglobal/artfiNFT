@@ -11,19 +11,23 @@ export const getNFTCount = asyncHandler(async (_req, res) => {
   res.status(200).json(data)
 })
 
-export const postNFT = asyncHandler(async  (req, res) => {
+export const postNFT = asyncHandler(async (req, res) => {
 
   if (!req.body) {
     res.status(400);
     throw new Error("Incomplete Data");
   }
+  const collection = 'NFT';
+  var baseUrl = process.env.CROSSMINT_INTEGRATIONURL;
+  const mintApiPath = `/${collection}/nfts`;
+  const mintUrl = `${baseUrl}${mintApiPath}`;
+
   const reqHeader = {
     "x-client-secret": process.env.PROJECT_ID,
-    "x-project-id":process.env.CLIENT_SECRET,
-    "Content-Type":'application/json'
+    "x-project-id": process.env.CLIENT_SECRET,
+    "Content-Type": 'application/json'
   };
-  const collectionName = 'NFT';
-  const recipient = "poly:0x12618f45ff6e841470bf71f428aae41ee5bc3c39"//for test 
+  const recipient = `email:${req.body.email}:poly`;
   const reqBody = JSON.stringify({
     "mainnet": false,
     "metadata": {
@@ -33,25 +37,23 @@ export const postNFT = asyncHandler(async  (req, res) => {
     },
     "recipient": recipient
   });
-  const crossmintURL = `https://www.crossmint.io/api/2022-06-09/collections/${collectionName}/nfts` ;
-  try{
-  const result = await axios.post(crossmintURL,{
-    headers: reqHeader,
-    body: reqBody
-  })
-  if(result){
-      // console.log(result)
+  try {
+    const result = await axios.post(mintUrl, {
+      headers: reqHeader,
+      body: reqBody
+    })
+    if (result) {
       // const post = new NFT({
-      //   // Name: result.name,
-      //   // Image: result.image,
-      //   // Description: result.desciption
+      //   Name: result.name,
+      //   Image: result.image,
+      //   Description: result.desciption
       // })
-      // post.save();
+      // post.save();  
       res.send(result)
     }
-  }catch(error:any){
-      console.log(error);
-      res.send(error.message);
-    }
+  } catch (error: any) {
+    console.log(error);
+    res.send(error.message);
+  }
 })
 
