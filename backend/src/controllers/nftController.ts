@@ -23,7 +23,7 @@ export const postNFT = asyncHandler(async  (req, res) => {
     "Content-Type":'application/json'
   };
   const collectionName = 'NFT';
-  const recipient = "poly:0x12618f45ff6e841470bf71f428aae41ee5bc3c39"
+  const recipient = "poly:0x12618f45ff6e841470bf71f428aae41ee5bc3c39"//for test 
   const reqBody = JSON.stringify({
     "mainnet": false,
     "metadata": {
@@ -40,14 +40,14 @@ export const postNFT = asyncHandler(async  (req, res) => {
     body: reqBody
   })
   if(result){
-      console.log(result)
-      const post = new NFT({
-        // Name: result.name,
-        // Image: result.image,
-        // Description: result.desciption
-      })
-      post.save();
-      // res.send(result)
+      // console.log(result)
+      // const post = new NFT({
+      //   // Name: result.name,
+      //   // Image: result.image,
+      //   // Description: result.desciption
+      // })
+      // post.save();
+      res.send(result)
     }
   }catch(error:any){
       console.log(error);
