@@ -21,8 +21,9 @@ import * as basicAuth from "express-basic-auth";
 import connectDB from "./config/db";
 
 const port = process.env.PORT || 8000;
+const databaseURL = process.env.MONGO_URI;
 
-connectDB().then((res) => {
+connectDB(databaseURL).then((res) => {
   console.log(res);
 });
 
