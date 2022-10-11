@@ -21,7 +21,7 @@ import { Card } from "@mantine/core";
 
 const leftNavMapping = [
   {
-    link: "#",
+    link: "/",
     title: "Company",
   },
   {
@@ -41,7 +41,7 @@ const leftNavMapping = [
     title:"Careers"
   },
   {
-    link: "#",
+    link: "/",
     title: "Institutional Buyer",
   },
   {
@@ -62,19 +62,19 @@ const leftNavMapping = [
 
 const rightNavMapping = [
   {
-    link: "#",
+    link: "/",
     title: "Legal",
   },
   {
-    link: "#",
+    link: "/",
     title: "Terms",
   },
   {
-    link: "#",
+    link: "/",
     title: "Privacy Policy",
   },
   {
-    link: "#",
+    link: "/",
     title: <>Bill of Rights</>,
   },
  
@@ -166,7 +166,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
 <div style={{display:"flex",justifyContent:"center",alignItems:"center", borderTop: "3px solid #E6E6E6"}}> 
      
                   <Card > <img src="/Publiced/Powered by.svg" alt="alturaash" width="100%"/></Card>
-                  <Card style={{display:"flex"}}> <img src="/Publiced/image 4.svg" alt="alturaash" width="30%"/><img src="/Publiced/ALTURAASH.svg" alt="alturaash" width="78%"/></Card>
+                  <Card style={{display:"flex"}}> <img src="/Publiced/image 4.svg" alt="alturaash" width="30%"/><img src="/Publiced/ALTURAASH.svg" alt="alturaash" width="100%"/></Card>
                   <Card > <img src="/Publiced/Group 89.svg" alt="alturaash" width="100%"/></Card>
 
       </div>
@@ -191,18 +191,16 @@ export const Footer = ({}: FooterProps): JSX.Element => {
           <div className={styles.socialContainer}>
             {socialMapping.map((data, index) => {
               return (
-                <div key={index.toString()}>
                 <a
                   target="_blank"
                   rel="noreferrer"
                   href={data.link}
                   key={index}
                 >
-                  <div className={styles.social}>
+                  <div key={index} className={styles.social}>
                     {data.icon}
                   </div>
                 </a>
-                </div>
               );
             })}
           </div>
@@ -251,22 +249,19 @@ export const Footer = ({}: FooterProps): JSX.Element => {
         <div className={styles.navigation}>
           <div className={styles.Nav}>
             {leftNavMapping.map((data, index) => {
-              return (<div key={index.toString()}>
-               {/* <Link href={data.link} key={index} passHref>
-                a */}
-                  {data.link === "https://977vnkbygg7.typeform.com/to/SevVnwe8"?<a href={data.link} target="_blank"> {data.title} </a>:<a href={data.link} > {data.title} </a>} 
-                {/* </Link> */}
+              return (<div key={index}>
+               <Link href={data.link} key={index} passHref>
+                  {data.link === "https://977vnkbygg7.typeform.com/to/SevVnwe8"?<a  target="_blank"> {data.title} </a>:data.title} 
+                </Link>
                 </div> );
             })}
           </div>
           <div className={styles.Nav}>
             {rightNavMapping.map((data, index) => {
               return (
-                <div key={index.toString()}>
-                {/* <Link href={data.link}  key={index} passHref> */}
-                   {data.title === "Whitepaper" || data.title === "Careers We re Hiring"?<a  href={data.link} target="_blank"> {data.title} </a>:<a  href={data.link} > {data.title} </a>}
-                {/* </Link> */}
-                </div>
+                <Link href={data.link}  key={index} passHref>
+                {data.title === "Whitepaper" || data.title === "Careers We re Hiring"?<a  target="_blank"> {data.title} </a>:data.title}
+                </Link>
               );
             })}
           </div>

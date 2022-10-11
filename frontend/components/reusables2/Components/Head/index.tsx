@@ -62,7 +62,7 @@ export const CustomHead = ({ title }: HeadProps): JSX.Element => {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="manifest" href="/manifest.json" />
+      {/* <link rel="manifest" href="/manifest.json" /> */}
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />

@@ -3,19 +3,19 @@ import { FaPause, FaPlay, FaTimes } from "react-icons/fa";
 import styles from "./Whitelist.module.scss";
 
 const Whitelist = ({ setIsOpen, isOpen, referralCode }) => {
-  // const ref = useRef();
+  const videoRef = useRef();
 
   const [playing, setIsPlaying] = useState(false);
-  const playVideo = (e) => {
+  const playVideo = () => {
     setIsPlaying(!playing);
 
-    playing ? e.target.pause() : e.target.play();
+    playing ? videoRef.current.pause() : videoRef.current.play();
   };
   return (
     <div className={styles.whitelist}>
       <video
-        onClick={(e) => playVideo(e)}
-        // ref={ref}
+        onClick={() => playVideo()}
+        ref={videoRef}
         // controls={true}
         preload={"auto"}
         type={"video/mp4"}
