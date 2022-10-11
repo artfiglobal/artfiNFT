@@ -79,11 +79,11 @@ return(
      <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
-            images.map((data)=>{
-                return(<>
+            images.map((data,index)=>{
+                return(<div key={index.toString()}>
                  
-                  <Card ><a href={data.link}><img src={data.src}  width="100%"/></a></Card>
-                </>)
+                  <Card ><a href={data.link} key={index}><img src={data.src}  width="100%"/></a></Card>
+                </div>)
             })
         }
        
@@ -93,11 +93,11 @@ return(
       <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
-            images2.map((data)=>{
-                return(<>
+            images2.map((data,index)=>{
+                return(<div key={index.toString()}>
                  
-                  <Card > <a href={data.link}><img src={data.src}  width="100%"/></a></Card>
-                </>)
+                  <Card > <a href={data.link} key={index}><img src={data.src}  width="100%"/></a></Card>
+                </div>)
             })
         }
        
@@ -107,11 +107,10 @@ return(
       <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
-            images3.map((data)=>{
-                return(<>
-                 
-                  <Card ><a href={data.link} ><img src={data.src}  width="100%"/></a></Card>
-                </>)
+            images3.map((data,index)=>{
+                return(<div key={index.toString()}>
+                  <Card key={index.toString()}><a href={data.link} key={index}><img src={data.src}  width="100%"/></a></Card>
+                </div>)
             })
         }
        
