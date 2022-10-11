@@ -1,0 +1,30 @@
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+  background-color: white;
+
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 1200px) {
+    max-width: 992px;
+  }
+
+  @media (max-width: 922px) {
+    max-width: 768px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 576px;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 480px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+}

@@ -1,20 +1,49 @@
+import type { NextPage } from "next";
 import { useState } from "react";
-import { Landing } from "../components/Home";
-import { Container } from "../components/reusables/Atoms";
+import {
+  Benefits,
+  Discover,
+  Foundation,
+  HowItWorks,
+  Landing,
+  Market,
+  Objectives,
+  Offering,
+  Roadmap,
+  Whitelist,
+} from "../components/Home";
+import toast, { Toaster } from "react-hot-toast";
+
 import { Footer, Head, Navigation } from "../components/reusables/Components";
+import Modal from "../components/reusables/Components/Modal";
 import styles from "../styles/Home.module.scss";
+import { Featured } from "../components/Home/Featured/Index";
 
-export default function Home() {
-  const [likes, setLikes] = useState(0);
-
+const Home: NextPage = () => {
+  //isopen state
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className={styles.home}>
+    <div className={styles.container}>
       <Head title="Artfi" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      {isOpen && (
+        <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
+      )}
       <Navigation />
+
       <main className={styles.main}>
-        <Landing likes={likes} />
+        <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+        <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+        <Featured />
       </main>
+      <Toaster />
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;

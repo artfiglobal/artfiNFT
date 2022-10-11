@@ -1,0 +1,139 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+
+  .text {
+    padding: 20vh 120px 80px;
+    width: 100%;
+    align-items: left;
+    background-color: white;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    h1 {
+      padding-bottom: 8px;
+      border-bottom: 8px solid #4527b3;
+    }
+
+    p {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 1400px) {
+      padding: 20vh 120px 80px;
+    }
+
+    @media screen and (max-width: 992px) {
+      padding: 15vh 48px 60px;
+
+      p {
+        width: 90%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 15vh 24px 48px;
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    width: 100%;
+    padding: 40px 120px;
+
+    div {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 1400px) {
+      padding: 40px 120px;
+      gap: 36px;
+    }
+
+    @media screen and (max-width: 992px) {
+      padding: 40px 48px;
+      gap: 24px;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 40px 24px;
+      gap: 20px;
+    }
+  }
+
+  .royalties {
+    height: 800px;
+    background: linear-gradient(
+      180deg,
+      rgba(69, 39, 179, 0) 0%,
+      #4527b3 34.84%
+    );
+    margin-top: 60px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+      height: 640px;
+    }
+
+    @media screen and (max-width: 480px) {
+      margin-top: 20px;
+      height: 560px;
+    }
+
+    .swiperContainer {
+      margin: 64px 0;
+      .swiper {
+        width: 100%;
+        border-radius: 22px;
+        overflow: visible;
+
+        .slide {
+          background: #634aba;
+          border-radius: 22px;
+          height: auto;
+          width: 480px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 32px;
+          color: white;
+
+          @media screen and (max-width: 1400px) {
+            width: 400px;
+          }
+
+          @media screen and (max-width: 768px) {
+            width: 320px;
+          }
+
+          @media screen and (max-width: 480px) {
+            width: 240px;
+            padding: 16px;
+
+            p {
+              margin: 0 0;
+              margin-top: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

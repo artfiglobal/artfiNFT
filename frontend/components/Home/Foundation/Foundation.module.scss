@@ -1,0 +1,46 @@
+.foundation {
+  width: 100vw;
+  background: url("../../../public/images/foundation.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 80px 70px;
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    padding: 80px 25px;
+  }
+
+  .foundation_text {
+    width: 50%;
+
+    @media screen and (max-width: 992px) {
+      width: 100%;
+    }
+
+    .foundation_desc {
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 32px;
+      /* or 178% */
+      color: white;
+      margin-bottom: 24px;
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
+    }
+  }
+  .buttonsContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    div {
+      background: white;
+      color: black;
+    }
+  }
+}

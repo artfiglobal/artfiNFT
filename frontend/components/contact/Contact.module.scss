@@ -1,0 +1,9 @@
+.small {
+  display: flex;
+ 
+
+  @media screen and (max-width: 992px) {
+    display: block;
+    
+  }
+}

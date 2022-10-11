@@ -1,0 +1,26 @@
+.container
+{
+    margin:80px 30px;text-align:center;
+    @media screen and (max-width: 768px) {
+        margin:50px 20px;
+      }
+      @media screen and (max-width: 458px) {
+        margin:0 20px;
+      }
+}
+.styleText{
+    font-family: Plus Jakarta Sans;
+font-size: 56px;
+font-weight: 700;
+line-height: 71px;
+letter-spacing: 0em;
+text-align: center;
+padding: 10px 0;
+@media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 458px) {
+    font-size: 20px;
+  }
+
+}
