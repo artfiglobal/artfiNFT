@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Input, Select, ActionIcon, Divider, Checkbox } from "@mantine/core";
 import { Typography, Button } from "../../reusables2/Atoms";
 import { BiMinus, BiPlus } from "react-icons/bi";
@@ -19,7 +19,7 @@ export const OrderForm = ({
   initialPrice: number;
   unitValueTotal: number;
 }) => {
-  // const amountRef = useRef<HTMLInputElement>(null);
+  const amountRef = useRef<HTMLInputElement>(null);
   const { web3Data } = useContext(Web3Context);
   unitValueTotal = 10000 - formData.amount;
   initialPrice = 1500;
@@ -100,7 +100,7 @@ export const OrderForm = ({
         <Input.Wrapper id="unit" label="unit" className={style.inputWrapper}>
           <div className={style.unitContent}>
             <Select
-              // ref={amountRef}
+              ref={amountRef}
               style={{ flexGrow: 1 }}
               size="md"
               id="input-demo"

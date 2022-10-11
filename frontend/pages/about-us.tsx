@@ -71,14 +71,14 @@ const projects = () => {
             The Polygon blockchain is an environmental leader and has committed
             to going carbon-negative. You can read Polygon&apos;s Green
             Manifesto{" "}
-            {/* <Link
+            <Link
               href="https://blog.polygon.technology/our-green-manifesto/"
               passHref
-            > */}
-              <a href="https://blog.polygon.technology/our-green-manifesto/" target="_blank" rel="noopener noreferrer">
+            >
+              <a target="_blank" rel="noopener noreferrer">
                 here
               </a>
-            {/* </Link>{" "} */}
+            </Link>{" "}
             .
           </li>
           <li>

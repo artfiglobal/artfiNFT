@@ -15,7 +15,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
 
   return (
     <nav className={styles.container}>
-      <a href="/" >
+      <Link href="/" passHref>
         <img
           style={{ cursor: "pointer" }}
           src="/images/reusables/Artfi.png"
@@ -23,57 +23,57 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           className={styles.logo}
           height={36}
         />
-      </a>
+      </Link>
 
       <div className={open ? styles.navigation : styles.open}>
         <div className={styles.navItem}>
-          <a href="/about-us" >
+          <Link href="/about-us" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               About us
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="/project" >
+          <Link href="/project" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Project
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="/how-it-works" >
+          <Link href="/how-it-works" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               How it works
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="http://artfi.foundation/" >
+          <Link href="http://artfi.foundation/" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Museum
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="/token" >
+          <Link href="/token" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Artfi Token
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="/team" >
+          <Link href="/team" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Team
             </Typography>
-          </a>
+          </Link>
         </div>
         <div className={styles.navItem}>
-          <a href="/contact" >
+          <Link href="/contact" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Contact Us
             </Typography>
-          </a>
+          </Link>
         </div>
         {/* <div className={styles.navItem}>
           <Typography variant="body" color="black" className={styles.text}>
