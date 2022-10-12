@@ -65,7 +65,7 @@ const images3 = [
         link:"https://gulfnews.com/amp/photos/business/photos-accolades-for-15-winners-at-gulf-news-web3-awards-2022-1.1656324319311"
     },
     {
-        src:"/Publiced/Money Control.svg",
+        src:"/Publiced/money.png",
         // width:"100px"
         link:"https://www.moneycontrol.com/news/business/cryptocurrency/nft-fractionalism-will-make-fine-art-popular-among-millennials-say-experts-9198551.html"
     }
@@ -76,13 +76,13 @@ export const Featured = ({}: FeaturedProps): JSX.Element => {
 return(
     <div className={styles.container}>
       <div className={styles.styleText}>Featured In</div>
-     <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
+     <div className={styles.innerContainer} > 
      {/* <div style={{width:"100%"}}> */}
         {
             images.map((data, index)=>{
                 return(
                  
-                  <Card key={index}><a href={data.link}><img src={data.src}  width="100%"/></a></Card>
+                  <a href={data.link} target="_blank" className={styles.card}><img src={data.src}   className={styles.img}/></a>
                 )
             })
         }
@@ -90,12 +90,12 @@ return(
 
       {/* </div> */}
       </div>
-      <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
+      <div className={styles.innerContainer} > 
      {/* <div style={{width:"100%"}}> */}
         {
             images2.map((data,index)=>{
                 return(
-                  <Card key={index}> <a href={data.link}><img src={data.src}  width="100%"/></a></Card>
+                  <a href={data.link} target="_blank" className={styles.card1}><img src={data.src}   className={styles.img}/></a>
                 )
             })
         }
@@ -103,13 +103,13 @@ return(
 
       {/* </div> */}
       </div>
-      <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
+      <div className={styles.innerContainer}> 
      {/* <div style={{width:"100%"}}> */}
         {
             images3.map((data,index)=>{
                 return(
                  
-                  <Card key={index}><a href={data.link} ><img src={data.src}  width="100%"/></a></Card>
+                  <a href={data.link} target="_blank" className={styles.card2}><img src={data.src}  className={styles.img}/></a>
                 )
             })
         }

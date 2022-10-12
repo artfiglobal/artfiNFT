@@ -23,8 +23,10 @@ const Home: NextPage = () => {
   //isopen state
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
+ 
+
     <div className={styles.container}>
-      <Head title="Artfi" />
+        <Head title="Artfi" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -34,9 +36,9 @@ const Home: NextPage = () => {
         <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
       )}
       <Navigation />
-
+      
       <main className={styles.main}>
-        <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+        <div><Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} /></div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
         <Featured />
       </main>

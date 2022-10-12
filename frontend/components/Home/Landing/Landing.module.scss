@@ -1,7 +1,9 @@
 .landing {
   // padding: 0px 0px 0px 120px;
-  // height: 100vh;
-  padding: 100px;
+  height: 720px;
+  margin-top: 80px;
+  // margin-top:80px;
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -24,16 +26,20 @@
     padding: 50px;
     align-items: center;
     text-align: center;
+    margin-top: 50px;
     // background: no-repeat center url("../../../public/images/landing_resp.png");
     background-size: cover;
     width: 100%;
+    height: 100%;
     // height: 80vh;
   }
   @media screen and (max-width: 480px) {
     // height: 80vh;s
     justify-content: flex-start;
-    padding: 180px 24px 0px 24px;
+    // padding: 180px 24px 0px 24px;
+
     // height: 100vh;
+    margin-top:0;
     background: linear-gradient(
       180deg,
       white 28.75%,
@@ -41,26 +47,42 @@
     ),
     url("/Publiced/background.jpg");
     // background-repeat: repeat;
-    background-size: contain;
+    background-size: cover;
     // background-position: center;
     // background-repeat: no-repeat;
     text-align: center;
   }
   .heading_wrapper {
     width: 100%;
+    margin-top:100px;
     h1 {
       font-size: 64px;
-      font-weight: 700;
+      margin: 0;
+      font-weight: 800;
+      line-height:83.2px;
+      letter-spacing: 2px;
+      text-align: center;
       @media screen and (max-width: 1440px) {
+        margin-top: 50px;
         font-size: 40px !important;
+      line-height:40.2px;
+
       }
       @media screen and (max-width: 480px) {
-        font-size: 23px !important;
+        font-size: 25px !important;
+        line-height:32.2px;
         text-align: center;
       }
     }
     p {
-      font-size: 24px;
+      font-size: 20px;
+      color:#585858;
+      line-height: 28px;
+      letter-spacing: 2px;
+      font-weight:600;
+      margin-top: 40px;
+      margin-bottom: 0!important;
+      font-family:Plus Jakarta Sans;
       @media screen and (max-width: 1440px) {
         font-size: 20px !important;
       }
@@ -90,8 +112,8 @@
       text-align: left;
     }
     .button_holder {
-      margin-top: 50px;
-      margin-bottom: 50px;
+      // margin-top: 50px;
+      margin-bottom: 249px;
       display: flex;
       // font-weight: 700;
       flex-direction: column;
@@ -109,12 +131,14 @@
       gap: 20px;
 
       .waitlistBtn {
+        margin-top: 60px;
         display: inline-flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding: 24px 48px;
-        // height: 68px;
+        // padding: 24px 48px;
+        width: 223px;
+        height: 70.53px;
         cursor: pointer;
         background: linear-gradient(0deg, #4527b3, #4527b3),
           linear-gradient(180deg, #3c3c3c 0%, #1f1f1f 49.48%, #3c3c3c 100%);
