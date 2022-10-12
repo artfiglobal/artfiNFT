@@ -166,7 +166,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
 <div style={{display:"flex",justifyContent:"center",alignItems:"center", borderTop: "3px solid #E6E6E6"}}> 
      
                   <Card > <img src="/Publiced/Powered by.svg" alt="alturaash" width="100%"/></Card>
-                  <Card style={{display:"flex"}}> <img src="/Publiced/image 4.svg" alt="alturaash" width="30%"/><img src="/Publiced/ALTURAASH.svg" alt="alturaash" width="100%"/></Card>
+                  <Card style={{display:"flex"}}> <img src="/Publiced/image 4.svg" alt="alturaash" width="30%"/><img src="/Publiced/ALTURAASH.svg" alt="alturaash" width="75%"/></Card>
                   <Card > <img src="/Publiced/Group 89.svg" alt="alturaash" width="100%"/></Card>
 
       </div>
