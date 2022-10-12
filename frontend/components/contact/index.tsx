@@ -6,8 +6,8 @@ export const ContactPart = () => {
   return (
     <>
 
-      <div style={{ paddingTop: "80px", margin: "0 80px" }}><h1 style={{ fontSize: "40px" }}>Contact Us</h1></div>
-      <div className={styles.small} style={{ margin: "80px" }}>
+      <div style={{ paddingTop: "80px", margin: "0 10%" }}><h1 style={{ fontSize: "40px" }}>Contact Us</h1></div>
+      <div className={styles.small} style={{ margin: "2px 10%" }}>
 
         <div >
           <div style={{ width: "300px" }}>

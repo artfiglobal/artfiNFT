@@ -76,7 +76,7 @@ export const Featured = ({}: FeaturedProps): JSX.Element => {
 return(
     <div className={styles.container}>
       <div className={styles.styleText}>Featured In</div>
-     <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
+     <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
             images.map((data, index)=>{
@@ -90,7 +90,7 @@ return(
 
       {/* </div> */}
       </div>
-      <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
+      <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
             images2.map((data,index)=>{
@@ -103,7 +103,7 @@ return(
 
       {/* </div> */}
       </div>
-      <div style={{display:"flex",justifyContent:"center",margin:"20px auto"}}> 
+      <div style={{display:"flex",justifyContent:"center",margin:"2% auto"}}> 
      {/* <div style={{width:"100%"}}> */}
         {
             images3.map((data,index)=>{
