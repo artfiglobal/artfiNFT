@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon src/main.ts",
     "build": "tsc",
+    "type":"module",
     "start": "node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
