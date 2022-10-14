@@ -10,13 +10,20 @@ type LandingProps = {
 
 const Landing = ({ setIsOpen, isOpen }: LandingProps) => {
   return (
+    <div>
     <div className={styles.landing}>
-      <div className={styles.heading_wrapper} style={{textAlign:"center"}}>
-        <Typography color="black" variant="heading">
+      <div className={styles.heading_wrapper} style={{textAlign:"center"}} >
+        <Typography color="black" variant="heading" className={styles.webHeading}>
           <span className={styles.heading_highlight}>Discover</span>,{" "}
-          <span className={styles.heading_highlight}>Collect</span>, &{" "}
-          <span className={styles.heading_highlight}>Invest .</span> <br /> in 
-          Bluechip Fine Arts
+          <span className={styles.heading_highlight}>Collect</span> &{" "}
+          <span className={styles.heading_highlight}>Invest</span> <br /> in 
+          Bluechip Fine Art
+        </Typography>
+        <Typography color="black" variant="heading" className={styles.mblHeading}>
+        <span className={styles.heading_highlight}>Discover</span>,{" "}
+          <span className={styles.heading_highlight}>Collect</span> &{" "}
+          <span className={styles.heading_highlight}>Invest</span> <br /> in 
+          Bluechip Fine Art
         </Typography>
 
         <Typography color="black" variant="body" >
@@ -31,6 +38,7 @@ const Landing = ({ setIsOpen, isOpen }: LandingProps) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ListSubheader from '@mui/material/ListSubheader';
 import styles from "../components/Home/Landing/Landing.module.scss";
-
+import stylesFaq from "../styles/faq.module.scss"
 import { Typography } from '../components/reusables/Atoms';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -237,39 +237,35 @@ const Faq = () => {
            ques2[index].open = !ques2[index].open
           setOpen(!open);
         };
-    
-
-
-    
-
   return (
     <>
     <Navigation/>
-    <div style={{padding:"10%"}}>
-    <Typography color="black" variant="heading" >
-          <span className={styles.heading_highlight} style={{color:"#6231C8"}}>Frequently </span>
+    <div className={stylesFaq.marginBlock}>
+    <div className={stylesFaq.textStyle} >
+          <span style={{color:"#6231C8"}}>Frequently </span>
           Asked <br/> Questions
-    </Typography>
-    <br/>
+    </div>
+    <br/><br/>
     <List
-        sx={{ width: '100%', bgcolor: 'background.paper',padding:"30px 0", margin:"0 auto" }}
+        sx={{ width: '100%', bgcolor: 'background.paper',padding:"0",marginTop:"0" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
     >
        {ques.map((question,index:any)=>{
         return(<>
             
-        <ListItemButton onClick={()=>handleClick(index)}>
-        <ListItemText primary={<><span style={{fontFamily:"Plus Jakarta Sans",fontSize:"22px",fontWeight:"600"}}>{question.question}</span></>} />
-        {question.open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={question.open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding >
+      <div style={{display:"flex",margin:"34.5px 0"}}>
+        <ListItemText primary={<><span className={stylesFaq.question}>{question.question}</span></>} />
+        {question.open ? <ExpandLess onClick={()=>handleClick(index)} /> : <ExpandMore onClick={()=>handleClick(index)} />}
+      </div>
+ 
+      <Collapse in={question.open} sx={{padding:"0"}}timeout="auto" unmountOnExit>
+        <List component="div" sx={{marginBottom:"38px",marginTop:"-29px"}} disablePadding >
 
-            <ListItemText sx={{ pl: 2 ,pb:1, color:"#585858"}}>
-                     <span style={{fontSize:"18px"}}>{question.answer}
+            <ListItemText sx={{ color:"#585858"}}>
+                     <span className={stylesFaq.answer}>{question.answer}
 
-                    <br/><br/>
+  
                     {index == 7?" If you are an art collector or artist in possession of an artwork that you would like to sell through the Artfi consignment process, please contact management at consignment@artfi.world. ":""}
 
                     {index == 4?"Regardless of the secondary market price of an Artfi NFT, it will always be redeemable for the  proceeds from the future sale of the physical artwork to which the Artfi NFT corresponds.":""}
@@ -288,30 +284,41 @@ const Faq = () => {
     })}
       
 </List>
-<Typography color="black" variant="heading" >
-          <span className={styles.heading_highlight} >Artfi Whitelisting and Minting  </span>
-</Typography>
+<div className={stylesFaq.heading2} >
+          <span >Artfi Whitelisting and Minting  </span>
+</div>
 <List
-        sx={{ width: '100%', bgcolor: 'background.paper', margin:"0 auto" }}
+        sx={{ width: '100%', bgcolor: 'background.paper',padding:"0",margin:"0" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
     >
        {ques2.map((question,index:any)=>{
         return(<>
             
-        <ListItemButton onClick={()=>handleClick2(index)}>
-        <ListItemText primary={<><span style={{fontFamily:"Plus Jakarta Sans",fontSize:"22px",fontWeight:"600"}}>{question.question}</span></>} />
-        {question.open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={question.open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-            <ListItemText sx={{ pl: 2 , color:"#585858", pb:1}}>
-               <span style={{fontSize:"18px"}}>{question.answer}
-            <br/><br/>
-            {index == 3?"Arcana, ACME, Crossmint.":""}</span>
-           </ListItemText>    
-        
+      <div style={{display:"flex",margin:"34.5px 0"}}>
+        <ListItemText primary={<><span className={stylesFaq.question}>{question.question}</span></>} />
+        {question.open ? <ExpandLess onClick={()=>handleClick2(index)} /> : <ExpandMore onClick={()=>handleClick2(index)} />}
+      </div>
+ 
+      <Collapse in={question.open} sx={{padding:"0"}}timeout="auto" unmountOnExit>
+        <List component="div" sx={{marginBottom:"38px",marginTop:"-29px"}} disablePadding >
+
+            <ListItemText sx={{ color:"#585858"}}>
+                     <span className={stylesFaq.answer}>{question.answer}
+
+  
+                    {index == 7?" If you are an art collector or artist in possession of an artwork that you would like to sell through the Artfi consignment process, please contact management at consignment@artfi.world. ":""}
+
+                    {index == 4?"Regardless of the secondary market price of an Artfi NFT, it will always be redeemable for the  proceeds from the future sale of the physical artwork to which the Artfi NFT corresponds.":""}
+
+                    {index == 2?"For example, if a painting that was fractionalized into 10,000 NFTs is sold by Artfi for $5 million (after commission), and you hold two of the NFTs which correspond to this painting, you will have the option to redeem your NFTs for $1,000 worth of stablecoin or ARTFI token.":""}
+                    {index == 6?<a style={{color:"blue"}} href="https://www.artfi.world/how-it-works"><u>https://www.artfi.world/how-it-works</u></a>:""}
+
+                    </span>
+
+            </ListItemText>
         </List>
+       
         </Collapse>
         <Divider/>
             </>)

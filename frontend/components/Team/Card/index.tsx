@@ -27,7 +27,7 @@ const Card = ({
     <div>
       <div className={styles.flipCard}>
         <div className={styles.flipCard_inner}>
-          <div className={styles.flipCard_front}>
+         <div className={name?styles.flipCard_front:styles.flipCard_front_after }  >
             <img src={src} alt="" />
             <div className={styles.cardFrontContent}>
               <p>{name}</p>
@@ -35,8 +35,9 @@ const Card = ({
             </div>
           </div>
           <div className={styles.flipCard_back}>
-            <p>{title}</p>
-            <span>{content}</span>
+            <div className={styles.name}>{name}</div>
+            <div className={styles.cardtitle}>{title}</div>
+            <label>{content}</label>
             <div className={styles.social}>
               {twitter && (
                 <a href={twitter}>

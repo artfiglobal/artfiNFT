@@ -93,47 +93,48 @@ export const Footer = ({}: FooterProps): JSX.Element => {
   const socialMapping = [
     {
       link: "https://discord.gg/artfi",
-      icon: <div className={styles.tooltip}><FaDiscord /><span className=
-      {styles.tooltiptext}>Artfi</span></div> ,
+      icon: <div className={styles.tooltip}><img src="Icons/icon-Discord.svg" /><span className=
+      {styles.tooltiptext}>Discord</span></div> ,
     },
     {
       link: "https://www.facebook.com/artfiglobal",
-      icon: <div className={styles.tooltip}><FaFacebookF /><span className=
+      icon: <div className={styles.tooltip}><img src="Icons/facebook-svgrepo-com 1.svg"/><span className=
       {styles.tooltiptext}>Facebook</span></div>,
     },
     {
       link: "https://www.linkedin.com/company/artfiglobal/",
-      icon: <div className={styles.tooltip}><FaLinkedinIn /><span className=
-      {styles.tooltiptext}>Artifiglobal</span></div>,
+      icon: <div className={styles.tooltip}><img src="Icons/icon-linkedin.svg" /><span className=
+      {styles.tooltiptext}>Linkedin</span></div>,
     },
     {
       link: "https://www.instagram.com/artfiglobal/",
-      icon: <div className={styles.tooltip}><FaInstagram /><span className=
+      icon: <div className={styles.tooltip}><img src="Icons/icon-Discord-1.svg" /><span className=
       {styles.tooltiptext}>Instagram</span></div>,
     },
     {
       link: "https://twitter.com/artfiglobal",
-      icon: <div className={styles.tooltip}><FaTwitter /><span className=
+      icon: <div className={styles.tooltip}><img src="Icons/icon-twitter.svg" /><span className=
       {styles.tooltiptext}>Twitter</span></div>,
     },
     {
-      link: "https://t.me/artfi_announcement",
-      icon: <div className={styles.tooltip}><FaTelegramPlane /><span className=
-      {styles.tooltiptext}>Teligram</span></div>,
+      link: "https://artfi.medium.com/",
+      icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
+      {styles.tooltiptext}>Announcement</span></div>,
     },
+    {
+      link: "https://t.me/artfi_announcement",
+      icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
+      {styles.tooltiptext}>Chat</span></div>,
+    },
+   
     // {
     //   link: "https://t.me/ArtFiGlobal_Chat",
-    //   icon: <div className={styles.tooltip}><FaTelegramPlane /><span className=
+    //   icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-2.svg" /><span className=
     //   {styles.tooltiptext}>ArtfiGlobal</span></div>,
-    // },
-    // {
-    //   link: "https://artfi.medium.com/",
-    //   icon: <div className={styles.tooltip}><FaMedium /><span className=
-    //   {styles.tooltiptext}>Artfi</span></div>,
     // },
     {
       link: "https://artfi.medium.com/",
-      icon: <span className={styles.tooltip}><FaYoutube /><span className=
+      icon: <span className={styles.tooltip}><img src="Icons/youtube.svg" /><span className=
       {styles.tooltiptext}>Youtube</span></span>,
     },
   ];
@@ -163,11 +164,11 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       </div> */}
      
 
-<div style={{display:"flex",justifyContent:"center",alignItems:"center", borderTop: "3px solid #E6E6E6"}}> 
+<div className={styles.outerFooter}> 
      
-                  <Card > <img src="/Publiced/Powered by.svg" alt="alturaash" width="100%"/></Card>
-                  <Card style={{display:"flex"}}> <img src="/Publiced/image 4.svg" alt="alturaash" width="30%"/><img src="/Publiced/ALTURAASH.svg" alt="alturaash" width="75%"/></Card>
-                  <Card > <img src="/Publiced/Group 89.svg" alt="alturaash" width="100%"/></Card>
+                   <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
+                   <img src="/Publiced/As.svg" alt="alturaash" className={styles.alturaash} />
+                   <img src="/Publiced/Pol.svg" alt="alturaash" className={styles.polygon}/>
 
       </div>
       
@@ -183,11 +184,11 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             className={styles.logo}
           />
           <Typography variant="body" color="white" className={styles.text}>
-            Discover, Collect & Invest in
+               Bringing the world's most prestigious asset class on chain.
           </Typography>
-          <Typography variant="body" color="white" className={styles.text}>
+          {/* <Typography variant="body" color="white" className={styles.text}>
             Fine Arts.
-          </Typography>
+          </Typography> */}
           <div className={styles.socialContainer}>
             {socialMapping.map((data, index) => {
               return (
@@ -196,20 +197,21 @@ export const Footer = ({}: FooterProps): JSX.Element => {
                   rel="noreferrer"
                   href={data.link}
                   key={index}
+                  style={{marginRight:"16px"}}
                 >
-                  <div key={index} className={styles.social}>
+                  {/* <div key={index} className={styles.social}> */}
                     {data.icon}
-                  </div>
+                  {/* </div> */}
                 </a>
               );
             })}
           </div>
           <Typography variant="body" color="white" className={styles.cc}>
-            Copyright @ 2022 Artfi
+          Copyright @ 2022  ArtFi. All rights Reserved.
           </Typography>
-          <Typography variant="body" color="white" className={styles.cc}>
+          {/* <Typography variant="body" color="white" className={styles.cc}>
             All rights Reserved.
-          </Typography>
+          </Typography> */}
         </div>
 
         <div className={styles.contact}>
@@ -217,7 +219,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             <FaAt color="#FFF" />
             <a href="mailto:hello@artfi.world">hello@artfi.world</a>
           </div>
-          <p className={styles.text}>Want to join the NFT Waitlist?</p>
+          <p className={styles.text}>Sign up for waitlist</p>
 
           <form action="" className={styles.patreon}>
             <div className={styles.left}>

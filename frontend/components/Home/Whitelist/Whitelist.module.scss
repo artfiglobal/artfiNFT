@@ -1,9 +1,10 @@
 .whitelist {
   // height: 720px;
-  width: 100vw;
+  
   position: relative;
   background-color: #fff;
-
+  text-align: center;
+  display: flex;
   @media screen and (max-width: 768px) {
     // height: auto;
     // height: 500px;
@@ -17,11 +18,14 @@
     top: 0;
     left: 0;
     width: 100%;
+    width: calc(100% - 140px);
     // height: 100%;
     // object-fit: fill;
-    padding: 0 80px;
-    border-radius: 10%;
-    margin-top: -50px;
+    // padding: 0 80px;
+    border-radius: 40px;
+    margin-top: -63.9px;
+    margin-left: auto;
+    margin-right: auto;
     
     @media screen and (max-width: 1100px) {
       width: 100%;

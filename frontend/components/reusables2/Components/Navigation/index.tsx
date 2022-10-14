@@ -8,9 +8,9 @@ import styles from "./Navigation.module.scss";
 
 // import { ethers } from "ethers";
 
-import { web3Modal } from "../../../../lib/Web3Modal";
-import { web3Context } from "../../../../context";
-import APIContext from "../../../../context/APIContext";
+// import { web3Modal } from "../../../../context/Web3Modal";
+// import { web3Context } from "../../../../context";
+// import APIContext from "../../../../context/APIContext";
 import Web3Context from "../../../../context/Web3Context";
 
 type NavigationProps = {};

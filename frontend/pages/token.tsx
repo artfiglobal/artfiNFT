@@ -14,10 +14,10 @@ const token = () => {
           <div className={styles.landingTitle}>
               <img className={styles.img} src="/Publiced/Group 18774.svg"/>
           </div>
-          <Typography variant="body" color={"grey"}>
+          <div className={styles.hed}>
             The Artfi token (ARTFI) is a revenue sharing utility token. It is
             an ERC-20 token native to the Polygon blockchain.
-          </Typography>
+          </div>
         </section>
         <section className={styles.tokenAbout}>
           <img
@@ -25,9 +25,9 @@ const token = () => {
             alt="bg"
             className={styles.tokenAboutBG}
           />
-          <Typography variant="heading" color={"white"}>
+          <div className={styles.h1}>
             About the token
-          </Typography>
+          </div>
           <div className={styles.aboutContainer}>
             <img
               src="/images/tokenAbout.png"
@@ -57,15 +57,16 @@ const token = () => {
         </section>
         <section className={styles.tokenDistribution} id="distribution">
           <div className={styles.distributionTitle}>
-            <Typography variant="heading" color={"black"}>
+            <div className={styles.tokenheading}>
               Token Distribution
-            </Typography>
-            <Typography variant="subheading" color={"grey"}>
+            </div>
+            <div className={styles.subheading}>
               There is a 1 billion fixed supply of Artfi tokens
               <br />
               which are allocated as follows:
-            </Typography>
+            </div>
           </div>
+          <br/><br/>
           <Distribution />
         </section>
         <section className={styles.tokenRevenue}>

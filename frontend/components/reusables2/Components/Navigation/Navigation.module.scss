@@ -1,3 +1,7 @@
+.Navigation_container__31dc2
+{
+  top:0;
+}
 .container {
   display: flex;
   align-items: center;
@@ -5,18 +9,19 @@
   width: 100%;
   height: 10vh;
   left: 0px;
+
   background: rgba(255, 255, 255, 0.6);
   box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(20px);
   z-index: 998;
-
+  top: 0 !important;
   .navContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-
+    top:0;
     max-width: 1380px;
     margin: 0 auto;
 
