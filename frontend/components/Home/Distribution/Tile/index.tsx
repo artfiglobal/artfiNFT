@@ -20,13 +20,14 @@ type TileProps = {
   title: string;
   percentage: number;
   className?: string;
+  styling?:object;
   extraClass?: string;
   onClick?: () => void;
 };
 
-const Tile = ({ src, title, percentage, extraClass }: TileProps) => {
+const Tile = ({ src, title, percentage, extraClass,styling }: TileProps) => {
   return (
-    <div className={styles.distributionTile}>
+    <div className={styles.distributionTile} style={styling}>
       <img
         src={`/images/Distribution/${src}.png`}
         alt="fundraising"

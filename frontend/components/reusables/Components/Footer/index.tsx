@@ -94,7 +94,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
     {
       link: "https://discord.gg/artfi",
       icon: <div className={styles.tooltip}><img src="Icons/icon-Discord.svg" /><span className=
-      {styles.tooltiptext}>Artfi</span></div> ,
+      {styles.tooltiptext}>Discord</span></div> ,
     },
     {
       link: "https://www.facebook.com/artfiglobal",
@@ -118,7 +118,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
     },
     {
       link: "https://artfi.medium.com/",
-      icon: <div className={styles.tooltip}><img src="Icons/Announcement.svg" /><span className=
+      icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
       {styles.tooltiptext}>Announcement</span></div>,
     },
     {
@@ -184,7 +184,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             className={styles.logo}
           />
           <Typography variant="body" color="white" className={styles.text}>
-               Bringing the world’s largest asset class via blockchain.
+               Bringing the world's most prestigious asset class on chain.
           </Typography>
           {/* <Typography variant="body" color="white" className={styles.text}>
             Fine Arts.

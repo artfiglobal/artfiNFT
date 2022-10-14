@@ -21,7 +21,8 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           src="/images/reusables/Artfi.png"
           alt="Artfi"
           className={styles.logo}
-          height={36}
+          height={30}
+          width={75}
         />
       </Link>
 

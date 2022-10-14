@@ -1,12 +1,67 @@
+.hed
+{
+  font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 150%;
+/* or 27px */
+width: 610px;
+text-align: center;
+margin: 56px auto 0 auto;
+
+color: #585858;
+@media screen and (max-width: 700px) {
+  width: 300px;
+  font-size: 17px;
+}
+
+}
+.tokenheading
+{
+  font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 65px;
+line-height: 130%;
+margin-bottom: 17px;
+/* or 84px */
+
+text-align: center;
+@media screen and (max-width: 700px) {
+  // width: 300px;
+  font-size: 40px;
+}
+
+color: #000000;
+}
+.subheading
+{
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 150%;
+  margin-bottom: 28px;
+  
+  text-align: center;
+  
+  color: #575757;
+  @media screen and (max-width: 700px) {
+    // width: 300px;
+    font-size: 17px;
+  }
+}
 .container {
   background-color: white;
   overflow-x: hidden;
 
   .tokenLanding {
-    height: 60vh;
+    height: 559px;
     position: relative;
-    padding: 10vh 120px;
-    margin-top: 60px;
+    padding: 10vh  120px;
+    margin-bottom: 8px;
+    // margin-top: 60px;
     // background-color: #6242a7;
     text-align: center;
 
@@ -21,18 +76,20 @@
       align-items: flex-start;
     }
 
-    .landingPill {
-      position: absolute;
-      bottom: 10vh;
-      left: 40vw;
-      z-index: 0;
+    // .landingPill {
+    //   position: absolute;
+    //   bottom: 10vh;
+    //   left: 40vw;
+    //   z-index: 0;
 
-      @media screen and (max-width: 480px) {
-        height: 120px;
-        left: 60vw;
-      }
+    //   @media screen and (max-width: 480px) {
+    //     height: 120px;
+    //     left: 60vw;
+    //   }
+    // }
+    .landingTitle {
+      margin-top: 50px;
     }
-
     // .landingTitle {
     //   position: relative;
     //   font-family: "Plus Jakarta Sans";
@@ -85,7 +142,7 @@
   .tokenAbout {
     background-color: black;
     position: relative;
-    padding: 100px 120px;
+    padding: 100px 202px 100px 120px;
 
     @media screen and (max-width: 922px) {
       padding: 64px 48px;
@@ -102,6 +159,7 @@
       height: 600px;
       opacity: 0.6;
 
+
       @media screen and (max-width: 1600px) {
         height: 500px;
       }
@@ -112,10 +170,27 @@
       }
     }
 
-    h1 {
+    .h1 {
       text-transform: uppercase;
-      margin-bottom: 32px;
-      width: 30%;
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 50px;
+      line-height: 120%;
+      width: 300px!important;
+      margin-bottom: 37px;
+      @media screen and (max-width: 700px) {
+        // width: 300px;
+        font-size: 40px;
+      }
+      
+      /* or 60px */
+
+
+      color: #FFFFFF;
+
+      
+      
 
       @media screen and (max-width: 1600px) {
         width: 40%;
@@ -135,15 +210,16 @@
       }
 
       .aboutImg {
-        height: 520px;
-        width: 390px;
+        height: 423px;
+        width: 318px;
         border-radius: 4px;
         filter: drop-shadow(0px 5.20183px 45.9495px rgba(65, 65, 65, 0.09));
-        margin-right: 64px;
+        
+        margin-right: 29px;
 
         @media screen and (max-width: 1600px) {
-          height: 400px;
-          width: 300px;
+          height: 423px;
+          width: 318px;
         }
 
         @media screen and (max-width: 922px) {
@@ -171,6 +247,7 @@
           font-size: 28px;
           line-height: 170%;
           margin: 0 0;
+          
 
           @media screen and (max-width: 922px) {
             font-size: 20px;
@@ -227,13 +304,14 @@
   }
 
   .tokenDistribution {
-    padding: 120px;
+    padding: 114px 112.43px;
     background-color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
     z-index: 2;
     position: relative;
+    // margin-top: 60px;
 
     @media screen and (max-width: 922px) {
       padding: 48px;
@@ -449,6 +527,7 @@
     }
   }
   .img{
+    margin-top: 60px;
     @media screen and (max-width: 900px) {
       width: 300px;
   }

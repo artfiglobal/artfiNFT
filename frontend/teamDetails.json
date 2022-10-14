@@ -3,7 +3,7 @@
     "name": "Asif Kamal",
     "title": "Founder",
     "designation": "Founder",
-    "src": "/images/Asif-Kamal.jpg",
+    "src": "/team/aashif.svg",
     "content": "Asif kamal is an art connoisseur, collector. He founded Alturaash Art, an international art house based in Dubai and Delhi. Asif is a notable name in the fine art industry.",
     "top": true,
     "linkedIn": "https://www.linkedin.com/in/linkasifkamal/",
@@ -13,7 +13,7 @@
     "name": "Adam Szymanski",
     "title": "VP - Strategy",
     "designation": "VP - Strategy",
-    "src": "/images/adam.jpg",
+    "src": "/team/Adam_2.svg",
     "content": "Adam Szymanski is a researcher of art cinema and new media. Throughout his career, he has been affiliated with the University of Chicago, the University of Freiburg and McGill University.",
     "top": true,
     "linkedIn": "https://www.linkedin.com/in/adam-szymanski-207b2b144/",
@@ -23,16 +23,46 @@
     "name": "Aly Raza Beig",
     "title": "CTO",
     "designation": "CTO",
-    "src": "/images/raza.jpg",
+    "src": "/team/Aly.svg",
     "content": "Aly Raza Beig is the CTO of Artfi & the founder of BoredPuma, the leading creative agency in the Middle East - focused on Web3. He specializes in Crypto, NFTs, Blockchain Development & Community-brand development. ",
     "top": true,
     "linkedIn": "https://www.linkedin.com/in/alyrazabeig/",
     "twitter": "https://twitter.com/alyrazabeig"
   },
   {
+    "name": "Abe Sinjiro",
+    "title": "Blockchain Developer",
+    "designation": "Blockchain Developer",
+    "src": "/team/abe.svg",
+    "content": "",
+    "top": true,
+    "linkedIn": "https://www.linkedin.com/in/alyrazabeig/",
+    "twitter": "https://twitter.com/alyrazabeig"
+  },
+  {
+    "name": "Saud Ali",
+    "title": "Product Designer",
+    "designation": "Product Designer",
+    "src": "/team/saudAli.svg",
+    "content": "Saud is a Product Designer with expertise in designing products like Apps, Websites for Startups & Companies.",
+    "top": true,
+    "linkedIn": " https://www.linkedin.com/in/saudali0786/",
+    "twitter": ""
+  },
+  {
+    "name": "",
+    "title": "",
+    "designation": "",
+    "src": "/team/bgwhite.png",
+    "content": "",
+    "top": true,
+    "linkedIn": "",
+    "twitter": ""
+  },
+  {
     "name": "Shiekha Hend Alqasimi",
     "title": " Art Patron, Advisor ",
-    "src": "/images/hend.jpg",
+    "src": "/team/hend.svg",
     "content": "A multi-faceted Emirati, Sheikha Hend Faisal Al Qassimi is a committed philanthropist in addition to being an accomplished architect, artist, author, and entrepreneur. Sheikha Hend serves as CEO of Paris London New York Events & Publishing (PLNY), a multi-industry conglomerate that includes Velvet Magazine, House of Hend fashion house, and The Flower Cafe.",
     "patron": true,
     "twitter": "https://twitter.com/LadyVelvet_HFQ",
@@ -42,7 +72,7 @@
   {
     "name": "Raza Beig",
     "title": "Art Collector, Investor",
-    "src": "/images/raza_beig.png",
+    "src": "/team/Raza 2_2.svg",
     "content": "Raza is an avid art collector and an connoisseur. He believes that art brings generations together. Raza's entry into the world of digital assets builds on his background in art, fashion and creativity. On the professional front, Raza is a fashion enthusiast. He is the CEO of the Splash fashion brand and Director of the Landmark Group retail conglomerate.",
     "patron": true,
     "twitter": "https://twitter.com/razabeigsplash",
@@ -60,22 +90,23 @@
     "linkedIn": "https://www.linkedin.com/in/ajeetkhurana"
   },
   {
+    "name": "Zoya Singh",
+    "title": "Co-Founder, Alturaash Art",
+    "designation": "Co-Founder, Alturaash Art",
+    "src": "/team/Rectangle 12.svg",
+    "content": "",
+    "advisor": true,
+    "twitter": "https://twitter.com/iamzoyasingh"
+  },
+  {
     "name": "Punit Agarwal",
     "title": "CEO - Cryptorelief , Founder - KoinX",
     "designation": "CEO - Cryptorelief , Founder - KoinX",
-    "src": "/images/punit.jpg",
+    "src": "/team/pun.svg",
     "content": "",
     "advisor": true,
     "twitter": "https://twitter.com/a__puni",
     "linkedIn": "https://www.linkedin.com/in/iampunit"
-  },
-  {
-    "name": "Zoya Singh",
-    "title": "Co-Founder, Alturaash Art",
-    "designation": "Co-Founder, Alturaash Art",
-    "src": "/images/zoya.jpg",
-    "content": "",
-    "advisor": true,
-    "twitter": "https://twitter.com/iamzoyasingh"
   }
+  
 ]
