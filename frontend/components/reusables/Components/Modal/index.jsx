@@ -52,8 +52,8 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
                 }}
               />
               <label className={styles.checkBox_label} htmlFor="read">
-                Yes, please send me the latest news about Artfi NFT. I
-                understand I can unsubscribe at any time. Privacy Policy
+                Yes, please send me the latest news about Artfi NFTs. I
+                understand I can unsubscribe at any time.
               </label>
             </div>
             <Button

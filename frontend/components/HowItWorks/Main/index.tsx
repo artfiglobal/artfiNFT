@@ -50,7 +50,7 @@ const Main = () => {
         <WideCard
           ltr={false}
           title="Trade or Hold"
-          description="The NFTs are liquid and can be traded on the secondary at any time. NFT holders will receive a portion of royalties on all trades and will have the option to stake their NFTs for additional rewards."
+          description="The NFTs are liquid and can be traded on the secondary market at any time. NFT holders will receive a portion of royalties on all trades and will have the option to stake their NFTs for additional rewards."
           background="/images/HowItWorks/Hold_or_Trade.png"
         />
         <WideCard

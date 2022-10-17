@@ -27,7 +27,7 @@ const Landing = ({ setIsOpen, isOpen }: LandingProps) => {
         </Typography>
 
         <Typography color="black" variant="body" >
-            <label className={styles.secondHedding}> A new era of investing in fine arts enabled by <br/>  NFTs and blockchain </label>
+            <label className={styles.secondHedding}> A new era of investing in fine art enabled by <br/>  NFTs and blockchain </label>
         </Typography>
         <div className={styles.button_holder}>
           <button
