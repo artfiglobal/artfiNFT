@@ -255,8 +255,8 @@ const Faq = () => {
         return(<>
             
       <div style={{display:"flex",margin:"34.5px 0"}}>
-        <ListItemText primary={<><span className={stylesFaq.question}>{question.question}</span></>} />
-        {question.open ? <ExpandLess onClick={()=>handleClick(index)} /> : <ExpandMore onClick={()=>handleClick(index)} />}
+        <ListItemText onClick={()=>handleClick(index)} primary={<><span className={stylesFaq.question}>{question.question}</span></>} />
+        {question.open ? <ExpandLess  /> : <ExpandMore onClick={()=>handleClick(index)} />}
       </div>
  
       <Collapse in={question.open} sx={{padding:"0"}}timeout="auto" unmountOnExit>
