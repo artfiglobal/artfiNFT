@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // align-items: center;
+  // justify-content: space-between;
   width: 100%;
 
   @media screen and (max-width: 922px) {
@@ -12,9 +12,12 @@
   .tileContainer {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    padding-left: 25px;
+    width: 65%;
 
     @media screen and (max-width: 922px) {
+    padding-left: 0;
+
       width: 100%;
     }
 
@@ -26,39 +29,37 @@
   }
 
   .chartContainer {
-    display: flex;
+    // display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 50%;
+    flex-direction: column;
+    // justify-content: flex-end;
+    width: 30%;
+   margin-top: -13px;
+   text-align: center;
     position: relative;
 
     @media screen and (max-width: 922px) {
+    width: 100%;
+    margin-bottom: 100px;
+
       svg {
         height: 400px !important;
       }
     }
 
     @media screen and (max-width: 480px) {
-      width: 80%;
+      width: 100%;
+      margin-bottom: 80px;
       svg {
         height: 320px !important;
       }
     }
 
     img {
-      position: absolute;
-      right: 50%;
-      transform: translateX(50%);
-      max-width: 247px;
-      min-width: 100px;
+      // position: absolute;
+      // right: 50%;
 
-      @media screen and (max-width: 922px) {
-        max-width: 180px;
-      }
-
-      @media screen and (max-width: 480px) {
-        max-width: 140px;
-      }
+    
     }
   }
 }

@@ -1,6 +1,7 @@
 import Tile from "./Tile";
 import { PieChart } from "react-minimal-pie-chart";
 import styles from "./Distribution.module.scss";
+import Image from "next/image";
 
 const chartData = [
   { title: "Team", value: 10, color: "#a945fd" },
@@ -22,26 +23,39 @@ const chartData = [
 export const Distribution = () => {
   return (
     <div className={styles.container}>
+
+      <div className={styles.chartContainer} style={{  borderRight: "0.87px solid #e5e5e5"}}>
+        <div >  
+                    <img
+            // loader={myLoader}
+            src="/Logo/Black-Token-Logo 1.svg"
+            alt="billon logo"
+            // layout="fill"
+          />
+        <br/>
+              <img
+            // loader={myLoader}
+            src="/Logo/billion.svg"
+            alt="billon logo"
+            style={{marginTop:"54px"}}
+            width={180}
+            // layout="fill"
+          />
+        {/* <img src="/images/tokenDistribution.png" alt="token" /> */}
+        </div>
+
+      </div>
       <div className={styles.tileContainer}>
-        <Tile src="fundraising" title="Fundraising" styling={{  borderRight: "0.87px solid #e5e5e5"}} percentage={20} />
+        <Tile src="fundraising" title="Fundraising"  percentage={20} />
         <Tile
           src="marketmaking"
           title="Market Making and Liquidity"
           percentage={3}
         />
-        <Tile src="team" title="Team" styling={{  borderRight: "0.87px solid #e5e5e5"}} percentage={15} />
+        <Tile src="team" title="Team" percentage={15} />
         <Tile src="advisors" title="Advisors"  percentage={5} />
-        <Tile src="rewards" title="Staking Rewards" styling={{  borderRight: "0.87px solid #e5e5e5"}} percentage={15} />
+        <Tile src="rewards" title="Staking Rewards"  percentage={15} />
         <Tile src="treasury" title="Treasury" percentage={12} />
-      </div>
-      <div className={styles.chartContainer}>
-        <img src="/images/tokenDistribution.png" alt="token" />
-        <PieChart
-          data={chartData}
-          lineWidth={25}
-          style={{ height: "560px" }}
-          animate
-        />
       </div>
     </div>
   );

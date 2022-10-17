@@ -18,6 +18,7 @@ import Link from "next/link";
 import { addToWaitlist } from "../../../../utils/waitlistFunctions";
 import { useState } from "react";
 import { Card } from "@mantine/core";
+import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 
 const leftNavMapping = [
   {
@@ -90,6 +91,7 @@ type FooterProps = {};
 
 export const Footer = ({}: FooterProps): JSX.Element => {
   const [email, setEmail] = useState<string>("");
+  const [sendEmail, setSendEmail] = useState<boolean>(false)
   const socialMapping = [
     {
       link: "https://discord.gg/artfi",
@@ -164,7 +166,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       </div> */}
      
 
-<div className={styles.outerFooter}> 
+      <div className={styles.outerFooter} style={{background:"white"}}> 
      
                    <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
                    <img src="/Publiced/As.svg" alt="alturaash" className={styles.alturaash} />
@@ -192,6 +194,8 @@ export const Footer = ({}: FooterProps): JSX.Element => {
           <div className={styles.socialContainer}>
             {socialMapping.map((data, index) => {
               return (
+                <>
+               
                 <a
                   target="_blank"
                   rel="noreferrer"
@@ -203,11 +207,12 @@ export const Footer = ({}: FooterProps): JSX.Element => {
                     {data.icon}
                   {/* </div> */}
                 </a>
+                </>
               );
             })}
           </div>
           <Typography variant="body" color="white" className={styles.cc}>
-          Copyright @ 2022  ArtFi. All rights Reserved.
+          Copyright @ 2022  Artfi. All rights Reserved.
           </Typography>
           {/* <Typography variant="body" color="white" className={styles.cc}>
             All rights Reserved.
@@ -219,7 +224,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             <FaAt color="#FFF" />
             <a href="mailto:hello@artfi.world">hello@artfi.world</a>
           </div>
-          <p className={styles.text}>Sign up for waitlist</p>
+          <p className={styles.text}>Join our Newsletter</p>
 
           <form action="" className={styles.patreon}>
             <div className={styles.left}>
@@ -237,6 +242,8 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                setSendEmail(true)
+
                 addToWaitlist(email, true, "").then((res) => {
                   console.log(res);
                   setEmail("");
@@ -261,12 +268,35 @@ export const Footer = ({}: FooterProps): JSX.Element => {
           <div className={styles.Nav}>
             {rightNavMapping.map((data, index) => {
               return (
+                <>
                 <Link href={data.link}  key={index} passHref>
-                {data.title === "Whitepaper" || data.title === "Careers We re Hiring"?<a  target="_blank"> {data.title} </a>:data.title}
+                  {data.title === "Whitepaper" || data.title === "Careers We re Hiring"?<a  target="_blank"> {data.title} </a>:data.title}
                 </Link>
+                </>
               );
             })}
           </div>
+
+          <Dialog
+        open={sendEmail}
+        onClose={()=>setSendEmail(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        className={styles.models}
+      >
+       
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <img src="/Icons/right.svg"/>
+            <h1>
+                Thank you for joining our Newsletter!
+            </h1>
+            <button onClick={()=>setSendEmail(false)}>
+                 Okay
+            </button>
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
         </div>
       </div>
     </footer>
