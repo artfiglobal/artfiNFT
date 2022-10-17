@@ -89,7 +89,7 @@ export const CustomHead = ({ title }: HeadProps): JSX.Element => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
         property="og:image"
-        content="https://artfi.world/images/artfi.png"
+        content="/Background/Thumbnail.png"
       />
        <meta
         property="og:description"
