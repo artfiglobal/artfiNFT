@@ -169,7 +169,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       <div className={styles.outerFooter} style={{background:"white"}}> 
      
                    <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
-                   <img src="/Publiced/As.svg" alt="alturaash" className={styles.alturaash} />
+                   <img src="/Publiced/AS.svg" alt="alturaash" className={styles.alturaash} />
                    <img src="/Publiced/Pol.svg" alt="alturaash" className={styles.polygon}/>
 
       </div>
@@ -212,7 +212,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
             })}
           </div>
           <Typography variant="body" color="white" className={styles.cc}>
-          Copyright @ 2022  Artfi. All rights Reserved.
+               Copyright @ 2022  Artfi. All rights Reserved.
           </Typography>
           {/* <Typography variant="body" color="white" className={styles.cc}>
             All rights Reserved.

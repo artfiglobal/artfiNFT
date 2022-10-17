@@ -13,7 +13,7 @@ export const ContactPart = () => {
                 <div style={{width:"50%"}}>
                   <div style={{width:"100%"}}>
                     <div style={{ display: "flex" }}>
-                       <img src="/Publiced/FRAME.svg" />
+                       <img src="/Publiced/Frame.svg" />
                         <h2 style={{ marginLeft: "20px" }} className={styles.innerheading}>Address</h2>
                     </div>
                     <p className={styles.subheading}>Representattive Office:</p>
@@ -34,7 +34,7 @@ export const ContactPart = () => {
                   </div>
                 </div>
                 <div >
-                  <div style={{ display: "flex" }}><img src="/Publiced/primary.svg" />
+                  <div style={{ display: "flex" }}><img src="/Publiced/Primary.svg" />
                     <h2 style={{ marginLeft: "20px" }} className={styles.innerheading1}>Email Us at</h2><br />
                   </div>
                      <p className={styles.email}><u>hello@artfi.world</u></p>
