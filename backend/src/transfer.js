@@ -1,9 +1,13 @@
 const Web3 = require("web3");
+const dotenv = require('dotenv');
+dotenv.config();
 //import Web3 from 'web3';
+const {contractAddress, PRIVATE_KEY} = process.env;
+// const contractAddress = process.env.CONTRACT_ADDRESS
 
 async function main() {
   const web3 = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
-  const myAddress = "0xFC38390A8621c76c4e5e7b5451a844995086dAfa"; //TODO: replace this address with your own public address
+  const myAddress = '0xFC38390A8621c76c4e5e7b5451a844995086dAfa'; 
 
   const nonce = await web3.eth.getTransactionCount(myAddress, "latest"); // nonce starts counting from 0
 
@@ -310,17 +314,14 @@ async function main() {
     },
     { stateMutability: "payable", type: "receive" },
   ];
-
-  const contractAddress = "0xFb470DFbd969Ed0858a61EC5d7Fb8CB96ea12692";
-
+  console.log(PRIVATE_KEY,contractAddress);
   const contractInstance = new web3.eth.Contract(abi, contractAddress);
-
   const data = await await contractInstance.methods
     .mintNFT("0xFC38390A8621c76c4e5e7b5451a844995086dAfa", "aa")
     .encodeABI();
 
   const transaction = {
-    to: "0xFb470DFbd969Ed0858a61EC5d7Fb8CB96ea12692", // faucet address to return eth
+    to: contractAddress, // faucet address to return eth
     value: 0,
     gas: 3000000,
     nonce: nonce,
@@ -330,7 +331,7 @@ async function main() {
 
   const signedTx = await web3.eth.accounts.signTransaction(
     transaction,
-    "4ace70b48bba7d1e2a29974c68fb7f1a11d4fa1979e234fe4eca54ff30df85c5"
+    PRIVATE_KEY
   );
 
   web3.eth.sendSignedTransaction(
