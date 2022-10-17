@@ -23,7 +23,7 @@ import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 const leftNavMapping = [
   {
     link: "/",
-    title: "Company",
+    title: (<label style={{opacity:"0.8"}}>Company</label>),
   },
   {
     link: "/about-us",
@@ -39,11 +39,16 @@ const leftNavMapping = [
   },
   {
     link: "https://977vnkbygg7.typeform.com/to/SevVnwe8",
-    title:"Careers"
-  },
-  {
-    link: "/",
-    title: "Institutional Buyer",
+    title: (
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          Careers{" "}
+          <Button variant="md" extraClass={styles.hire}>
+            {/* {" "} */}
+            We&apos;re Hiring
+          </Button>
+        </div>
+      )
+      
   },
   {
     link: "https://artfi.medium.com/",
@@ -53,18 +58,18 @@ const leftNavMapping = [
   {
     link: "/faq",
     title: "FAQ",
-  }
-  ,
+  }, 
   {
-    link: "/contact",
-    title: "Contact Us",
-  }
+    link: "https://docsend.com/view/3edyk84bwi7dvx8g",
+    title: "Whitepaper",
+  },
+
 ];
 
 const rightNavMapping = [
   {
     link: "/",
-    title: "Legal",
+    title: (<label style={{opacity:"0.8"}}>Legal</label>),
   },
   {
     link: "/",
@@ -78,11 +83,7 @@ const rightNavMapping = [
     link: "/",
     title: <>Bill of Rights</>,
   },
- 
-  {
-    link: "https://docsend.com/view/3edyk84bwi7dvx8g",
-    title: "Whitepaper",
-  },
+
 ];
 
 
@@ -119,12 +120,12 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       {styles.tooltiptext}>Twitter</span></div>,
     },
     {
-      link: "https://artfi.medium.com/",
+      link: "https://t.me/artfi_announcement",
       icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
       {styles.tooltiptext}>Announcement</span></div>,
     },
     {
-      link: "https://t.me/artfi_announcement",
+      link: "https://web.telegram.org/z/#-1733659747",
       icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
       {styles.tooltiptext}>Chat</span></div>,
     },
@@ -135,7 +136,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
     //   {styles.tooltiptext}>ArtfiGlobal</span></div>,
     // },
     {
-      link: "https://artfi.medium.com/",
+      link: "https://www.youtube.com/channel/UCCXRL0Rj7aL63RGytknY48Q",
       icon: <span className={styles.tooltip}><img src="Icons/youtube.svg" /><span className=
       {styles.tooltiptext}>Youtube</span></span>,
     },
@@ -168,9 +169,9 @@ export const Footer = ({}: FooterProps): JSX.Element => {
 
       <div className={styles.outerFooter} style={{background:"white"}}> 
      
-                   <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
-                   <img src="/Publiced/AS.svg" alt="alturaash" className={styles.alturaash} />
-                   <img src="/Publiced/Pol.svg" alt="alturaash" className={styles.polygon}/>
+                  <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
+                   <a href="https://alturaashart.com/" target="_blank"><img src="/Publiced/AS.svg" alt="alturaash" className={styles.alturaash} /></a>
+                   <a href="https://polygon.technology/" target="_blank"><img src="/Publiced/Pol.svg" alt="alturaash" className={styles.polygon}/></a>
 
       </div>
       

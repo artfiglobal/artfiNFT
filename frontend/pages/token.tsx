@@ -70,7 +70,7 @@ const token = () => {
               </div>
               <div className={styles.burnContainer}>
                 <Typography variant="body" color={"black"}>
-                  The burning of tokens is the best way for Arti to distribute
+                  The burning of tokens is the best way for Artfi to distribute
                   its revenues amongst token holders and encourage early entry
                   into the token because by decreasing the total supply,{" "}
                   <span className={styles.aboutBold}>
