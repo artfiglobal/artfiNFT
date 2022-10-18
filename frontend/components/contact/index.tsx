@@ -18,7 +18,7 @@ export const ContactPart = () => {
                     </div>
                     <p className={styles.subheading}>Representative Office:</p>
                     <p className={styles.p} >
-                      Suite 805, API Trio Tower, Shikesh
+                      Suite 805, API Trio Tower, Sheikh
                       Zayed Road, Dubai, United Arab
                       Emirates
                     </p>
