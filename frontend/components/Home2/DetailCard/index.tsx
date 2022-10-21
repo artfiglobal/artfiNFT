@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { Typography } from "../../reusables2/Atoms";
 import style from "./DetailCard.module.scss";
 
@@ -15,9 +16,11 @@ export const DetailCard = ({
 }: DetailCardProps): JSX.Element => {
   return (
     <div className={style.card}>
-      <img
-        src={`/images/detailCard/${url}.png`}
+      <Image
+        src={`/Icons/${url}.svg`}
         alt=""
+        width="60px"
+        height="60px"
         className={style.cardImage}
       />
       <div className={style.cardContent}>
@@ -28,9 +31,9 @@ export const DetailCard = ({
         >
           {title}
         </Typography>
-        <Typography variant="body" color={"black"}>
+        <p>
           {content}
-        </Typography>
+        </p>
       </div>
     </div>
   );

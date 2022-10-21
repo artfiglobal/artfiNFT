@@ -1,7 +1,9 @@
 import { Card } from "@mantine/core";
 import Image from "next/image";
 import styles from "./fetures.module.scss";
-type FeaturedProps = {};
+type FeaturedProps = {
+    isWhite:boolean
+};
 
 const images = [
     {
@@ -71,11 +73,11 @@ const images3 = [
     }
 ]
 
-export const Featured = ({}: FeaturedProps): JSX.Element => {
+export const Featured = ({isWhite}: FeaturedProps): JSX.Element => {
 
 return(
     <div className={styles.container}>
-      <div className={styles.styleText}>Featured In</div>
+     {isWhite? <div className={styles.styleText2}>Featured In</div>: <div className={styles.styleText}>Featured In</div>}
      <div className={styles.innerContainer} > 
      {/* <div style={{width:"100%"}}> */}
         {

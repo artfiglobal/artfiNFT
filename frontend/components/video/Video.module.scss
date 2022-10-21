@@ -1,12 +1,12 @@
 .playagain{
     margin-top:132px;margin-bottom:4px;cursor:pointer;
-    @media screen and (max-width: 1100px) {
-        margin-top: 40px; margin-bottom: 2px;
-        width: 10%;
-      }
-      @media screen and (max-width: 580px) {
-        margin-top: 20px; margin-bottom: 2px;
-      }
+    // @media screen and (max-width: 1100px) {
+    //     margin-top: 40px; margin-bottom: 2px;
+    //     width: 10%;
+    //   }
+    //   @media screen and (max-width: 580px) {
+    //     margin-top: 20px; margin-bottom: 2px;
+    //   }
 }
 .new
 {
@@ -102,6 +102,9 @@
     margin-top: 80px;
     height: 739px;
     overflow: hidden;
+    @media screen and (max-width: 1334px) {
+      height: 100%;
+    }
     @media screen and (max-width: 819px) {
         // padding: 30px 10px;
         flex-direction: column;
@@ -114,6 +117,10 @@
         top: 0;
         left: 0;
         width: 100%;
+        @media screen and (max-width: 819px) {
+            width: auto;
+            height: 500px;
+        }
         // width: calc(100% - 140px);
         // height: 100%;
         // object-fit: fill;
@@ -125,170 +132,11 @@
 
 }
 
-.homeContent {
-    position: absolute;
-    top: 80px;
-    text-align: center;
-    width: 100%;
-    @media screen and (max-width: 819px) {
-        // padding: 30px 10px;
-        // flex-direction: column;
-        height: 0;
-    }
 
-    h1 {
-        font-family: 'Playfair Display';
-        padding: 0;
-        margin: 0;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 96px;
-        line-height: 130%;
-        /* identical to box height, or 125px */
-        width: 100%;
-        text-align: center;
-        color: #FFFFFF;
-        @media screen and (max-width: 1100px) {
-            font-size: 40px;
-          }
-          @media screen and (max-width: 580px) {
-            font-size: 20px;
-          }
-    }
-
-    p {
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 130%;
-        /* identical to box height, or 26px */
-
-        letter-spacing: 0.12em;
-
-        color: rgba(255, 255, 255, 0.7);
-        color: #FFFFFF;
-        @media screen and (max-width: 1100px) {
-            font-size: 10px;
-          }
-          @media screen and (max-width: 580px) {
-            font-size: 10px;
-          }
-
-        label {
-            font-family: 'Plus Jakarta Sans';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 130%;
-            margin-left: 14px;
-            /* identical to box height, or 26px */
-            @media screen and (max-width: 1100px) {
-                font-size: 10px;
-                margin-left: 10px;
-              }
-              @media screen and (max-width: 580px) {
-                font-size: 10px;
-              }
-
-            color: #FFFFFF;
-        }
-
-        img {
-            margin-left: 10px;
-        }
-
-        @media screen and (max-width: 1100px) {
-            font-size: 18px;
-            // padding: 10px 30px;
-          }
-
-    }
-
-    button {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 22px 40px;
-        gap: 10px;
-        margin: 0 auto;
-        // position: absolute;
-        width: 223px;
-        height: 70px;
-        @media screen and (max-width: 1100px) {
-            font-size: 13px;
-            padding: 10px 30px;
-            width: 150px;
-        height: 40px;
-          }
-          @media screen and (max-width: 580px) {
-            font-size: 12px; margin-bottom: 3px;
-            // width:100px
-          }
-        
-
-        background: radial-gradient(117.68% 1087.09% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)
-            /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
-        ;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(12px);
-        /* Note: backdrop-filter has minimal browser support */
-
-        border-radius: 16.5953px;
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20.7442px;
-        line-height: 26px;
-
-        color: #FFFFFF;
-    }
-
-    .timer {
-
-        /* identical to box height, or 23px */
-        width: 189px;
-        height: 40px;
-        left: 0px;
-        top: 0px;
-
-        background: #FFFFFF;
-        box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(12px);
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 126%;
-        color: black;
-        margin-top: 24px;
-        /* Note: backdrop-filter has minimal browser support */
-
-        border-radius: 20px;
-        @media screen and (max-width: 1100px) {
-            font-size: 13px;
-            width: 139px;
-            height: 20px;
-            margin-top: 14px;
-        }
-          @media screen and (max-width: 580px) {
-            font-size: 12px;
-            margin-top: 10px;
-
-          }
-    }
-}
-
-.homeContent2 {
-    position: absolute;
-    top: 80px;
-    text-align: center;
-    width: 100%;
-}
 
 .redefining {
     margin:110px 120px;
+    background: url("/Background/nbg.svg");
     @media screen and (max-width: 1100px) {
         margin: 10% 15%;
     }
@@ -332,7 +180,7 @@
             // padding: 10px 30px;
             width: 100%;
             margin-top: 26px;
-            height: 100px;
+            height: 100%;
           }
         /* or 36px */
         color: #585858;

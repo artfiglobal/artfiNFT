@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { Typography } from "../../reusables2/Atoms";
-import { BiCoin } from "react-icons/bi";
+import { BiCoin, BiDollar } from "react-icons/bi";
 import Link from "next/link";
 
 import style from "./ArtInfo.module.scss";
+import { Avatar } from "@mui/material";
+import Image from "next/image";
 
 type ArtInfoProps = {
   artist: string;
@@ -18,34 +20,34 @@ export const ArtInfo = ({
 }: ArtInfoProps): JSX.Element => {
   return (
     <div className={style.info}>
-      <img
+      <Avatar
         src="/images/artist.png"
         alt="Artist profile"
         className={style.artistProfile}
       />
-      <Typography variant="subheading" color={"grey"}>
+      <h6>
         {artist}
-      </Typography>
+      </h6>
       <div className={style.divider}></div>
       <div className={style.artPrice}>
-        <BiCoin />
-        <Typography variant="subheading" color={"grey"}>
+        {/* <BiCoin /> */}
+        
+        <Image src="/Icons/doller.svg" alt="dol" width="24px" height="24px" />
+        <h6>
           Price
-        </Typography>
-        <Typography
-          variant="subheading"
-          color={"purple"}
+        </h6>
+        <h6
           className={style.price}
         >
           {price}USD
-        </Typography>
+        </h6>
       </div>
       <div className={style.divider}></div>
       <a href="/factsheet.pdf" className={style.factsheet}>
-        <Typography variant="subheading" color={"grey"}>
+        <h6>
           {sheetName}
-        </Typography>
-        <img src="/download.png/" alt="download" className={style.download} />
+        </h6>
+        <Image src="/Icons/dw.svg" alt="download" width="24px" height="24px"  />
       </a>
     </div>
   );

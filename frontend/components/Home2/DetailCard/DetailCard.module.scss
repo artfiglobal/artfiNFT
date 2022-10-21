@@ -1,7 +1,7 @@
 .card {
   width: 48%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
   margin-bottom: 56px;
 
@@ -11,18 +11,19 @@
   }
 
   .cardImage {
-    width: 64px;
+    width: 50px;
+    height: 50px;
 
     @media screen and (max-width: 1366px) {
-      width: 52px;
+      // width: 52px;
     }
 
     @media screen and (max-width: 768px) {
-      width: 48px;
+      // width: 48px;
     }
 
     @media screen and (max-width: 480px) {
-      width: 32px;
+      // width: 32px;
     }
   }
 
@@ -36,26 +37,43 @@
     }
 
     .cardTitle {
-      font-family: "Plus Jakarta Sans";
+      font-family: 'Plus Jakarta Sans';
       font-style: normal;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 24px;
-      letter-spacing: 0.17em;
-      margin: 0 0;
-      color: #85858c;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      /* identical to box height */
+      padding: 0;
+      margin: 0;
+     
+      letter-spacing: 0.16em;
+      color: #85858C;
       text-transform: uppercase;
 
       @media screen and (max-width: 1366px) {
-        font-size: 18px;
+      //   font-size: 18px;
       }
+
       @media screen and (max-width: 768px) {
-        font-size: 16px;
+        // font-size: 16px;
       }
+
       @media screen and (max-width: 480px) {
-        font-size: 12px;
-        letter-spacing: 0.1em;
+        // font-size: 12px;
+        // letter-spacing: 0.1em;
       }
+    }
+    p{
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      padding: 0;
+      margin: 0;
+      
+      color: #000000;
+      
     }
   }
 }

@@ -12,7 +12,7 @@ export const Timer = ({ seconds }: TimerProps): JSX.Element => {
   return (
     <div className={style.countdown}>
       {/* <img src="/Clock.png/" alt="clock" /> */}
-      Whitelist ends in :<Countdown date={Date.now() + milli} />
+         <Countdown date={Date.now() + milli} />
     </div>
   );
 };

@@ -40,7 +40,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div><Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} /></div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
-        <Featured />
+        <Featured isWhite={false} />
       </main>
       <Toaster />
       <Footer />

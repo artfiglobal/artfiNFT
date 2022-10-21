@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Landing } from "../components/Home2";
 import { Container } from "../components/reusables2/Atoms";
-import {  Navigation } from "../components/reusables2/Components";
-import { Footer,Head } from "../components/reusables/Components";
+import { Footer } from "../components/reusables/Components/Footer2";
+import { Navigation ,Head } from "../components/reusables/Components";
 import styles from "../styles/Home.module.scss";
 
 export default function WhitelistLanding() {

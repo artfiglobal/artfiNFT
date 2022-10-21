@@ -27,14 +27,25 @@
     gap: 6px;
   }
 
+  h6 {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+    /* identical to box height */
+
+    letter-spacing: 0.15em;
+
+    color: #85858C;
+  }
+
   .divider {
     height: 56px;
     width: 2px;
-    background: linear-gradient(
-      rgba(238, 238, 238, 0.5),
-      #c8c8c8,
-      rgba(238, 238, 238, 0.5)
-    );
+    background: #DBDBDB;
     margin: 0 0;
 
     @media screen and (max-width: 1400px) {
@@ -48,8 +59,8 @@
   }
 
   .artistProfile {
-    height: 48px;
-    width: 48px;
+    height: 51px;
+    width: 51px;
     border-radius: 50%;
     border: 2px solid #d1d1d1;
 
@@ -73,6 +84,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
+
 
     svg {
       width: 40px;
@@ -104,21 +116,26 @@
     }
 
     .price {
-      font-family: "Plus Jakarta Sans";
+      font-family: 'Plus Jakarta Sans';
       font-style: normal;
       font-weight: 700;
-      font-size: 22px;
-      line-height: 28px;
-      letter-spacing: 0.17em;
+      font-size: 14px!important;
+      line-height: 18px;
+      /* identical to box height */
+
+      letter-spacing: 0.15em;
+
+      color: #6435C7;
       margin: 0 0;
-      color: #6435c7;
 
       @media screen and (max-width: 1400px) {
         font-size: 18px;
       }
+
       @media screen and (max-width: 1200px) {
         font-size: 14px;
       }
+
       @media screen and (max-width: 480px) {
         font-size: 11px;
         letter-spacing: 0.1em;
@@ -134,7 +151,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2px;
+    gap: 12px;
     cursor: pointer;
 
     @media screen and (max-width: 1400px) {

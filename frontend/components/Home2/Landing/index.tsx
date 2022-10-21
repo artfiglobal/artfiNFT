@@ -25,6 +25,7 @@ import { web3Context } from "../../../context";
 import { Web3DataInterface } from "../../../context/types";
 import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
+import Image from "next/image";
 
 export const Landing = ({ likes }: LandingProps): JSX.Element => {
   likes = 10;
@@ -116,24 +117,12 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
         <div className={style.landingCarousel}>
           <LandingCarousel />
         </div>
+        
         <div className={style.landingDetails}>
-          <Tabs defaultValue="details" className={style.landingTabs}>
-            <Tabs.List className={style.tabList}>
-              <Tabs.Tab value="details" className={style.tabValue}>
-                Details
-              </Tabs.Tab>
-              <Tabs.Tab value="status" className={style.tabValue}>
-                {isWhiteListed ? "Ownership Status" : "Get Whitelisted"}
-              </Tabs.Tab>
-              <Timer seconds={40000} />
-            </Tabs.List>
-
-            <Tabs.Panel value="details" className={style.tabPanel}>
-              <div className={style.tabContent}>
-                <div className={style.contentHeader}>
-                  <Typography variant="heading" color={"black"}>
-                    The Cheers after Sermon
-                  </Typography>
+        <div className={style.contentHeader}>
+                  <h1>
+                       Floral Artwork
+                  </h1>
                   <div className={style.likes}>
                     <div
                       className={`${
@@ -141,54 +130,79 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                       }`}
                       onClick={() => setActiveIcon(!activeIcon)}
                     >
-                      <FiHeart />
+                      {/* <FiHeart /> */}
                     </div>
-                    <Typography variant="subheading" color={"grey"}>
+                    {/* <Typography variant="subheading" color={"grey"}>
                       {likes}
-                    </Typography>
+                    </Typography> */}
+                    <div className={style.shareandlike}>
+                        <Image src="/Icons/hearts.svg" alt="like" width="44px" height="44px" />
+                        <Image src="/Icons/share.svg" alt="like" width="44px" height="44px"/>
+
+                    </div>
                   </div>
                 </div>
+          <Tabs defaultValue="details" className={style.landingTabs}>
+            <Tabs.List className={style.tabList}>
+              <Tabs.Tab value="details" className={style.tabValue}>
+                Details
+              </Tabs.Tab>
+              <Tabs.Tab value="status" onClick={()=>console.log("hello")} className={style.tabValue}>
+                {isWhiteListed ? "Ownership Status" : "Get Whitelisted"}
+              </Tabs.Tab>
+              {/* <Timer seconds={40000} /> */}
+              <button className={style.timer}>
+                  <img src="Publiced/time.svg" />
+                  <label>12h:43m:10s</label>
+            </button>
+              
+            </Tabs.List>
+
+            <Tabs.Panel value="details" className={style.tabPanel}>
+              <div className={style.tabContent}>
+              
                 <ArtInfo
                   artist="vs gaitonde"
                   price={1500}
                   sheetName="factsheet"
                 />
                 <div className={style.contentInfo}>
-                  <Typography variant="body" color={"black"}>
+                  <h6>Description</h6>
+                  <p>
                     Love is in the Air is a quintessential Banksy painting:
                     instantly recognizable, the image has become synonymous with
                     the artist&apos;s indelible graphic style, wry humor and
                     galvanizing political commentary.
-                  </Typography>
+                  </p>
                 </div>
                 <div className={style.contentCards}>
                   <DetailCard
-                    url="size"
+                    url="osw"
                     title="Original Size"
                     content="78 x 78 inch"
                   />
                   <DetailCard
-                    url="sign"
+                    url="siw"
                     title="signature"
                     content="Signed on the ownership."
                   />
-                  <DetailCard url="year" title="year" content="2021" />
+                  <DetailCard url="yew" title="year" content="2021" />
                   <DetailCard
-                    url="medium"
+                    url="mew"
                     title="medium"
                     content="Acrylic on canvas."
                   />
                   <DetailCard
-                    url="authenticity"
+                    url="low"
                     title="authenticity"
                     content="Love is in the Air is accompanied by a..."
                   />
                   <DetailCard
-                    url="prove"
+                    url="frw"
                     title="PROVENENCE"
                     content="From the collection of Shahrukh Khan."
                   />
-                  <DetailCard url="medium" title="Remaining " content="9999" />
+                  {/* <DetailCard url="rew" title="Remaining " content="9999" /> */}
                 </div>
               </div>
             </Tabs.Panel>
@@ -248,7 +262,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                       unitValueTotal={10000}
                       initialPrice={1}
                     ></OrderForm>
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" variant="primary" style={{padding:"15px 30px"}}>
                       Whitelist
                     </Button>
                   </form>
