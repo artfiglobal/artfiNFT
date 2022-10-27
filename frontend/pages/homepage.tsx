@@ -1,14 +1,16 @@
 import React from 'react'
-import { Navigation,Footer,Head } from '../components/reusables/Components'
+import { Featured } from '../components/Home/Featured/Index'
+import { Navigation,Head } from '../components/reusables/Components'
+import {Footer} from '../components/reusables/Components/Footer2'
 import Video from "../components/video/Video"
 const homepage = () => {
   return (
     <div>
         <Head title='home'/>
         <Navigation />
-         <Video/>
-
-      
+        <Video/>
+        <Featured isWhite={true}/>
+        <Footer/>
     </div>
   )
 }

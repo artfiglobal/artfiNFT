@@ -23,6 +23,6 @@
     "***/**/*.tsx",
     "****/***/**/*.ts",
     "****/***/**/*.tsx"
-  ],
+, "components/video/Video.jsx"  ],
   "exclude": ["node_modules"]
 }
