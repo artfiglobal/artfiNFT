@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Aguafina Script|Akronim|Aldrich|Alegreya|Alex Brush|Allerta Stencil|Allura|Almendra SC|Amethysta|Annie Use Your Telescope|Arbutus|Arizonia|Asset|Astloch|Bad Script|Barrio|Bellefair|Berkshire Swash|Bilbo|BioRhyme Expanded|Bonbon|Butcherman|Butterfly Kids|Caveat|Charmonman|Cinzel Decorative|Codystar|Crafty Girls|Dawning of a New Day|Faster One|Frijole|Geostar|Give You Glory|Hi Melody|Italianno|Jacques Francois Shadow|KhandMajor Mono Display|Meddon|Miltonian|Monofett|Monoton|Mystery Quest|Nosifer|Orbitron|Petit Formal Script|Sacramento|Shadows Into Light Two|Snowburst One|Dancing Script|Vibur|Raleway");
+
+.herosection {
+    background: linear-gradient(180deg, #FFFFFF 75.68%, #EFEFEF 83.91%);
+
+    h1 {
+        font-family: 'Arizonia';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 96px;
+        line-height: 120%;
+        padding: 0;
+        margin: 0;
+        /* or 115px */
+
+        text-align: center;
+        color: #CBCBCB;
+
+    }
+
+    h2 {
+        font-family: 'Christmas Elegant-Personal use';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 100px;
+        padding: 0;
+        margin: 0;
+        line-height: 120%;
+        /* identical to box height, or 120px */
+        src: local('Christmas Elegant-Personal use Regular'), url('../../public/font/ChristmasElegantPersonalUse-gxrPp.woff') format('woff');
+
+
+        text-align: center;
+        letter-spacing: 0.09em;
+
+        color: #000000;
+    }
+
+    h4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        margin-top: 6px;
+        
+
+        label {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 130%;
+            // color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.12em;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 130%;
+            /* identical to box height, or 26px */
+
+            letter-spacing: 0.12em;
+
+            color: rgba(0, 0, 0, 0.5);
+
+            @media screen and (max-width: 600px) {
+                // height: 500px;
+                font-size: 15px;
+            }
+
+        }
+
+        p {
+            display: flex;
+            align-items: center;
+            color: black;
+            margin-left: 10px;
+            font-family: 'Plus Jakarta Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 130%;
+           
+
+
+            // font-size: 15px;
+            @media screen and (max-width: 600px) {
+                // height: 500px;
+                font-size: 15px;
+            }
+        }
+    }
+.imgBlock
+{
+    text-align: center;
+    margin:  auto;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    img{
+        margin: 0 auto;
+        // position: relative!important;
+    }
+}
+}

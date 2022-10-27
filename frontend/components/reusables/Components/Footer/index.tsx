@@ -23,7 +23,7 @@ import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 const leftNavMapping = [
   {
     link: "/",
-    title: (<label style={{opacity:"0.8"}}>Company</label>),
+    title: (<><label style={{opacity:"0.8"}}>Company</label></>),
   },
   {
     link: "/about-us",
