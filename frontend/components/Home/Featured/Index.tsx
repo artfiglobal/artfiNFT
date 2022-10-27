@@ -185,7 +185,7 @@ return(
             images5.map((data,index)=>{
                 return(
                  
-                  <a href={data.link} target="_blank" className={styles.card4}><img src={data.src}  className={styles.img} style={{marginLeft:"25px"}}/></a>
+                  <a href={data.link} target="_blank" className={styles.card4}><img src={data.src}  className={styles.img} style={{marginLeft:"21px"}}/></a>
                 )
             })
         }
@@ -229,11 +229,11 @@ return(
             </div>
             <div className={styles.mobile} style={{ marginBottom: "50px"}}>
                     <div style={{gap:"50px",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.zerohedge.com/news/2022-10-20/investing-art-hedge-against-recession" target="_blank"><img width="80%" src="/Logo/zh.svg"/></a></div>
-                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.newsbtc.com/news/company/fractionalized-fine-art-ownership-is-taking-over-but-where-are-the-physical-artworks/" target="_blank"><img width="80%" src="/Logo/nb.svg"/></a></div>         
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.zerohedge.com/news/2022-10-20/investing-art-hedge-against-recession" target="_blank"><img width="90%" src="/Logo/zh.svg"/></a></div>
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.newsbtc.com/news/company/fractionalized-fine-art-ownership-is-taking-over-but-where-are-the-physical-artworks/" target="_blank"><img width="90%" src="/Logo/nb.svg"/></a></div>         
                     </div>
                     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"50px"}}>
-                            <div style={{width:"300px",height:"fit-content"}}><a href="https://bitcoinist.com/how-do-nfts-fit-with-fine-arts-traditional-gatekeepers/" target="_blank"><img width="80%" src="/Logo/bc.svg"/></a></div>
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://bitcoinist.com/how-do-nfts-fit-with-fine-arts-traditional-gatekeepers/" target="_blank"><img width="90%" src="/Logo/bc.svg"/></a></div>
                             {/* <div style={{width:"300px",height:"fit-content"}}><a href="https://gulfnews.com/amp/photos/business/photos-accolades-for-15-winners-at-gulf-news-web3-awards-2022-1.1656324319311" target="_blank"><img width="80%" src="/Logo/b.svg"/></a></div>          */}
                     </div>
                    
@@ -246,11 +246,11 @@ return(
             </div>
             <div className={styles.mobile} style={{ marginBottom: "50px"}}>
                     <div style={{gap:"30px",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"40px"}}>
-                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.analyticsinsight.net/6-nft-use-cases-in-2023/" target="_blank"><img width="80%" src="/Logo/ai.svg"/></a></div>
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.analyticsinsight.net/6-nft-use-cases-in-2023/" target="_blank"><img width="90%" src="/Logo/ai.svg"/></a></div>
                             {/* <div style={{width:"300px",height:"fit-content"}}><a href="https://gulfnews.com/amp/photos/business/photos-accolades-for-15-winners-at-gulf-news-web3-awards-2022-1.1656324319311" target="_blank"><img width="80%" src="/Logo/b.svg"/></a></div>          */}
                     </div>
                     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"row",marginTop:"40px"}}>
-                        <div style={{width:"150px",height:"fit-content" }}><a href="https://www.financemagnates.com/thought-leadership/the-future-lies-in-the-tokenization-of-real-world-assets-artfi-ceo-asif-kamal/" target="_blank"><img  src="/Logo/fm.svg"/></a></div>
+                        <div style={{width:"110px",height:"fit-content" }}><a href="https://www.financemagnates.com/thought-leadership/the-future-lies-in-the-tokenization-of-real-world-assets-artfi-ceo-asif-kamal/" target="_blank"><img  src="/Logo/fm.svg"/></a></div>
                         <div style={{width:"150px",height:"fit-content" }}><a href="https://techbullion.com/how-nfts-are-revolutionizing-the-blue-chip-fine-art-industry-for-art-lovers-interview-with-asif-kamal-founder-of-artfi/" target="_blank"><img src="/Logo/tb.svg" width="90%"/></a></div>
                     </div>
                    
