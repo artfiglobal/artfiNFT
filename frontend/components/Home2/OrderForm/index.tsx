@@ -34,7 +34,7 @@ export const OrderForm = ({
     <div className={style.orderForm}>
       <Input.Wrapper
         id="wallet-add"
-        label="WALLET"
+        label="METAMASK WALLET"
         className={style.inputWrapper}
       >
         <Input
@@ -62,13 +62,13 @@ export const OrderForm = ({
           className={style.inputBox}
         />
       </Input.Wrapper>
-      <div className={style.priceWrapper}>
+      {/* <div className={style.priceWrapper}>
         <Input.Wrapper
           id="Price"
           label="PRICE (PER ARTFI NFT)"
           className={style.inputWrapper}
         >
-          {/* <Input
+          <Input
             className={style.inputBox}
             label=""
             required
@@ -79,7 +79,7 @@ export const OrderForm = ({
             }}
             placeholder="Choose your chain"
             value={"MATIC"}
-          /> */}
+          />
           <div className={style.chainBox}>
             <img src="/dollar.png/" alt="dollar" />
             USD
@@ -95,7 +95,7 @@ export const OrderForm = ({
           />
         </Input.Wrapper>
         <div className={style.priceValue}>= ${initialPrice}</div>
-      </div>
+      </div> */}
       <div className={style.unitWrapper}>
         <Input.Wrapper id="unit" label="unit" className={style.inputWrapper}>
           <div className={style.unitContent}>
@@ -190,6 +190,8 @@ export const OrderForm = ({
           </div>
         </Input.Wrapper>
       </div>
+      <label className={style.label}>PRICE (PER ARTFI NFT)</label>
+
       <div className={style.totalWrapper}>
         <Typography
           variant="subheading"

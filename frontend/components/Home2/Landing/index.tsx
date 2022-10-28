@@ -26,6 +26,7 @@ import { Web3DataInterface } from "../../../context/types";
 import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
+import { Avatar } from "@mui/material";
 
 export const Landing = ({ likes }: LandingProps): JSX.Element => {
   likes = 10;
@@ -119,10 +120,23 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
         </div>
         
         <div className={style.landingDetails}>
+       
+       <div style={{display:"flex",alignItems:"center",width:"80%"}}>
+          <button className={style.timer1}>
+                  <img src="Publiced/time.svg" width="16px" height="16px" />
+                  <label>12h:43m:10s</label>
+          </button>
+          <div className={style.shareandlike1}>
+                        <Image src="/Icons/hearts.svg" alt="like" width="44px" height="44px" />
+                        <Image src="/Icons/share.svg" alt="like" width="44px" height="44px"/>
+
+                    </div>
+        </div> 
         <div className={style.contentHeader}>
-                  <h1>
+                  <h2>
                        Floral Artwork
-                  </h1>
+                  </h2>
+                
                   <div className={style.likes}>
                     <div
                       className={`${
@@ -132,6 +146,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                     >
                       {/* <FiHeart /> */}
                     </div>
+                 
                     {/* <Typography variant="subheading" color={"grey"}>
                       {likes}
                     </Typography> */}
@@ -142,6 +157,17 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                     </div>
                   </div>
                 </div>
+                <div className={style.prf}>
+                    <Avatar
+                    src="/images/artist.png"
+                    alt="Artist profile"
+                    
+                    className={style.artistProfile}
+                  />
+                  <h6>
+                  vs gaitonde
+                  </h6>
+                    </div>
           <Tabs defaultValue="details" className={style.landingTabs}>
             <Tabs.List className={style.tabList}>
               <Tabs.Tab value="details" className={style.tabValue}>
@@ -215,7 +241,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                     className={style.tabContent}
                   >
                     <div className={style.contentHeader}>
-                      <img src="/images/like.png" alt="" />
+                      {/* <img src="/images/like.png" alt="" /> */}
                       <Typography variant="heading" color={"black"}>
                         Order Summary{" "}
                       </Typography>
