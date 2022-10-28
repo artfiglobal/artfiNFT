@@ -36,6 +36,15 @@
     @media screen and (max-width: 992px) {
       align-items: center;
       width: 100%;
+      margin-top: 300px;
+    }
+    @media screen and (max-width: 571px) {
+
+      margin-top: 200px;
+    }
+    @media screen and (max-width: 474px) {
+
+      margin-top: 40px;
     }
 
     .landingTabs {
@@ -43,16 +52,21 @@
       font-family: "Plus Jakarta Sans";
       font-style: normal;
       margin-top: 30px;
-      
+      @media screen and (max-width: 992px) {
+        width: 80%;
+      }
 
       .tabList {
         // padding-top: 28px;
         gap:20px;
         margin-bottom: 31px;
         border-bottom: none;
+        align-items: baseline;
 
         @media screen and (max-width: 992px) {
           // padding-top: 0px;
+          gap: 10px;
+
         }
 
         .tabValue {
@@ -77,8 +91,8 @@
            
           }
 
-          @media screen and (max-width: 768px) {
-           
+          @media screen and (max-width: 992px) {
+           padding: 0 12px;
           }
 
           @media screen and (max-width: 480px) {
@@ -100,7 +114,7 @@
           width: 100%;
 
           @media screen and (max-width: 992px) {
-            align-items: center;
+            // align-items: center;
             gap: 28px;
           }
 
@@ -115,6 +129,10 @@
             justify-content: space-between;
             flex-wrap: wrap;
             width: 100%;
+            @media screen and (max-width: 992px) {
+              // align-items: center;
+              flex-direction: column;
+            }
           }
 
           .contentBtns {
@@ -144,12 +162,15 @@
                   justify-content: flex-end;
                   background-color: white;
                 }
+                .mantine-Accordion-label{
+                  font-size: 12px;
+                }
 
                 .accordionPanel {
                   font-family: "Plus Jakarta Sans";
                   font-style: normal;
                   font-weight: 500;
-                  font-size: 14px;
+                  font-size: 12px;
                   line-height: 160%;
                   color: #85858c;
 
@@ -171,16 +192,46 @@
     }
   }
 }
+.artistProfile
+{
+  width: 30px;
+  height: 30px;
+}
 .contentHeader {
   display: flex;
   align-items: center;
   gap: 24px;
- 
+
+  @media screen and (max-width: 998px) {
+    width: 80%;
+    margin-top: 23px;
+
+  }
   @media screen and (max-width: 480px) {
     gap: 16px;
 
     img {
       height: 36px;
+    }
+  }
+  h2{
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 130%;
+    width: 500px;
+    /* identical to box height, or 52px */
+    padding: 0;
+    margin: 0;
+    
+    
+    color: #000000;
+    @media screen and (max-width: 992px) {
+      font-size: 32px;
+    }
+    @media screen and (max-width: 480px) {
+      font-size: 32px;
     }
   }
   h1{
@@ -196,7 +247,12 @@
     
     
     color: #000000;
-    
+    @media screen and (max-width: 992px) {
+      font-size: 20px;
+    }
+    @media screen and (max-width: 480px) {
+      font-size: 20px;
+    }
   }
 
   .likes {
@@ -238,6 +294,18 @@
 {
   display: flex;
   gap: 20px;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.shareandlike1
+{
+  display: flex;
+  gap: 20px;
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: flex;
+  }
 }
 .contentInfo {
   h6{
@@ -265,7 +333,7 @@ line-height: 30px;
 color: #000000;
  }
   @media screen and (max-width: 992px) {
-    text-align: center;
+    // text-align: center;
   }
 }
 
@@ -297,4 +365,66 @@ color: #000000;
 
 
   color: #000000;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+.timer1 {
+  // width: 189px;
+  // height: 40px;
+  // margin-top: 24px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  gap: 11.66px;
+  background: #FFFFFF;
+  // box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.15);
+  // backdrop-filter: blur(12px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  // border-radius: 20px;
+  border: none;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 126%;
+  // padding-left: 55px;
+  /* identical to box height, or 23px */
+display: none;
+  color: #000000;
+  @media screen and (max-width: 992px) {
+    display: flex;
+    // margin-bottom: 20px;
+  }
+}
+
+.prf{
+  display: flex;
+  align-items: center;
+gap:7.5px;
+width: 80%;
+  h6{
+    
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+letter-spacing: 0.15em;
+
+color: #85858C;
+text-transform: uppercase;
+  }
+  display:none;
+  @media screen and (max-width: 992px) {
+    display: flex;
+  }
 }

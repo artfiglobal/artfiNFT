@@ -19,6 +19,7 @@ export const ArtInfo = ({
   sheetName,
 }: ArtInfoProps): JSX.Element => {
   return (
+    <>
     <div className={style.info}>
       <Avatar
         src="/images/artist.png"
@@ -50,6 +51,29 @@ export const ArtInfo = ({
         <Image src="/Icons/dw.svg" alt="download" width="24px" height="24px"  />
       </a>
     </div>
+    <div className={style.infoMbl}>
+      <div className={style.artPrice}>
+        {/* <BiCoin /> */}
+        
+        <Image src="/Icons/doller.svg" alt="dol" width="24px" height="24px" />
+        <h6>
+          Price
+        </h6>
+        <h6
+          className={style.price}
+        >
+          {price}USD
+        </h6>
+      </div>
+      <div className={style.divider}></div>
+      <a href="/factsheet.pdf" className={style.factsheet}>
+        <h6>
+          {sheetName}
+        </h6>
+        <Image src="/Icons/dw.svg" alt="download" width="24px" height="24px"  />
+      </a>
+    </div>
+    </>
   );
 };
 
