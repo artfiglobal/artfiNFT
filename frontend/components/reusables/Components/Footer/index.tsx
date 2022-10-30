@@ -125,7 +125,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       {styles.tooltiptext}>Announcement</span></div>,
     },
     {
-      link: "https://web.telegram.org/z/#-1733659747",
+      link: "https://t.me/Artfiglobalchat",
       icon: <div className={styles.tooltip}><img src="Icons/icon-twitter-1.svg" /><span className=
       {styles.tooltiptext}>Chat</span></div>,
     },
