@@ -27,8 +27,9 @@ export const ArtInfo = ({
         className={style.artistProfile}
       />
       <h6>
-        {artist}
+        {artist} 
       </h6>
+      <img src="/Publiced/Vector.svg"/>
       <div className={style.divider}></div>
       <div className={style.artPrice}>
         {/* <BiCoin /> */}
