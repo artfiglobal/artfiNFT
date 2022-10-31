@@ -59,7 +59,7 @@ const Video = () => {
       </div>
 
       <div className={styles.whitelist}>
-        <video ref={videoRef} muted loop style={{ width: "100%" }} autoPlay>
+        <video ref={videoRef2} muted loop style={{ width: "100%" }} autoPlay>
           <source src="/Publiced/video.mp4" type="video/mp4" />
         </video>
         <div style={{ position: "relative" }}>
