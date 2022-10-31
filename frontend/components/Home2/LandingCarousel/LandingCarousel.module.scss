@@ -1,25 +1,55 @@
 .carousel {
-  width: 600px;
+  width: 500px;
   height: 400px;
 
   @media screen and (max-width: 1400px) {
-    width: 440px;
+    // width: 440px;
   }
 
   @media screen and (max-width: 992px) {
-    width: 560px;
+    // width: 50px;
   }
 
   @media screen and (max-width: 480px) {
-    width: 280px;
+    width: 382px;
+    height: 273px!important;
+    margin-top: 20px;
   }
 
   img {
-    border-radius: 12px;
+    border-radius: 20px;
 
-    @media screen and (max-width: 1400px) {
-      border-radius: 10px;
+    @media screen and (max-width: 980px) {
+      border-radius: 15px;
     }
+  }
+}
+
+.get
+{
+ 
+  h3{
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+
+color: #000000;
+  }
+  h4{
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+letter-spacing: 0.17em;
+
+color: #85858C;
+
+  }
+  @media screen and (max-width: 992px) {
+    display: none;
   }
 }
 

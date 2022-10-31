@@ -3,13 +3,17 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  //  padding: 16px;
   gap: 48px;
+  height: 130vh;
 
   @media screen and (max-width: 992px) {
     flex-direction: column;
     align-items: center;
     padding: 15vh 0 60px;
+    height: 100%;
+
   }
 
   @media screen and (max-width: 480px) {
@@ -38,13 +42,15 @@
       width: 100%;
       margin-top: 300px;
     }
+
     @media screen and (max-width: 571px) {
 
       margin-top: 200px;
     }
+
     @media screen and (max-width: 474px) {
 
-      margin-top: 40px;
+      margin-top: 220px;
     }
 
     .landingTabs {
@@ -52,13 +58,14 @@
       font-family: "Plus Jakarta Sans";
       font-style: normal;
       margin-top: 30px;
+
       @media screen and (max-width: 992px) {
-        width: 80%;
+        width: 90%;
       }
 
       .tabList {
         // padding-top: 28px;
-        gap:20px;
+        gap: 20px;
         margin-bottom: 31px;
         border-bottom: none;
         align-items: baseline;
@@ -70,7 +77,7 @@
         }
 
         .tabValue {
-          background: #F5F1FE;
+          background: white;
           border-radius: 30px;
           font-family: 'Plus Jakarta Sans';
           font-style: normal;
@@ -83,21 +90,15 @@
           color: #585858;
           border: 1px solid #D9D9D9;
 
-          @media screen and (max-width: 1400px) {
-           
-          }
+          @media screen and (max-width: 1400px) {}
 
-          @media screen and (max-width: 1200px) {
-           
-          }
+          @media screen and (max-width: 1200px) {}
 
           @media screen and (max-width: 992px) {
-           padding: 0 12px;
+            padding: 0 12px;
           }
 
-          @media screen and (max-width: 480px) {
-           
-          }
+          @media screen and (max-width: 480px) {}
         }
       }
 
@@ -112,6 +113,20 @@
           gap: 32px;
           height: auto;
           width: 100%;
+          label {
+            font-family: 'Plus Jakarta Sans';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 32px;
+            width: 100%;
+            /* or 180% */
+            color: #85858C;
+            @media screen and (max-width: 998px) {
+              text-align: center;
+
+            }
+          }
 
           @media screen and (max-width: 992px) {
             // align-items: center;
@@ -122,13 +137,14 @@
             gap: 24px;
           }
 
-        
+
           .contentCards {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
             flex-wrap: wrap;
             width: 100%;
+
             @media screen and (max-width: 992px) {
               // align-items: center;
               flex-direction: column;
@@ -140,11 +156,37 @@
             align-items: center;
             gap: 32px;
 
+            
+
+            button {
+              width: fit-content;
+              height: 20px;
+
+              font-family: 'Plus Jakarta Sans';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 16px;
+              line-height: 20px;
+              border-radius: 10px;
+
+              color: #FFFFFF;
+              @media screen and (max-width: 1204px) {
+                height: 60px;
+                width: fit-content;
+              }
+
+              @media screen and (max-width: 980px) {
+                height: 60px;
+                width: 320px;
+              }
+            }
+
             @media screen and (max-width: 1400px) {
               gap: 24px;
             }
 
             @media screen and (max-width: 768px) {
+              flex-direction: column;
               gap: 18px;
             }
           }
@@ -162,7 +204,8 @@
                   justify-content: flex-end;
                   background-color: white;
                 }
-                .mantine-Accordion-label{
+
+                .mantine-Accordion-label {
                   font-size: 12px;
                 }
 
@@ -192,21 +235,26 @@
     }
   }
 }
-.artistProfile
-{
+
+.artistProfile {
   width: 30px;
   height: 30px;
 }
+
 .contentHeader {
   display: flex;
   align-items: center;
-  gap: 24px;
+  // justify-content: flex-end;
+  width: 100%;
+
+  // gap: 24px;
 
   @media screen and (max-width: 998px) {
-    width: 80%;
+    width: 90%;
     margin-top: 23px;
 
   }
+
   @media screen and (max-width: 480px) {
     gap: 16px;
 
@@ -214,27 +262,31 @@
       height: 36px;
     }
   }
-  h2{
+
+  h2 {
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
     line-height: 130%;
-    width: 500px;
+    width: 100%;
     /* identical to box height, or 52px */
     padding: 0;
     margin: 0;
-    
-    
+
+
     color: #000000;
+
     @media screen and (max-width: 992px) {
       font-size: 32px;
     }
+
     @media screen and (max-width: 480px) {
       font-size: 32px;
     }
   }
-  h1{
+
+  h1 {
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
@@ -244,19 +296,21 @@
     /* identical to box height, or 52px */
     padding: 0;
     margin: 0;
-    
-    
+
+
     color: #000000;
+
     @media screen and (max-width: 992px) {
       font-size: 20px;
     }
+
     @media screen and (max-width: 480px) {
       font-size: 20px;
     }
   }
 
   .likes {
-    
+
 
     .headIconActive {
       border: 2px solid rgba(242, 20, 20, 0.2);
@@ -290,25 +344,28 @@
     }
   }
 }
-.shareandlike
-{
+
+.shareandlike {
   display: flex;
   gap: 20px;
+
   @media screen and (max-width: 992px) {
     display: none;
   }
 }
-.shareandlike1
-{
+
+.shareandlike1 {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   display: none;
+
   @media screen and (max-width: 992px) {
     display: flex;
   }
 }
+
 .contentInfo {
-  h6{
+  h6 {
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 500;
@@ -317,21 +374,22 @@
     padding: 0;
     margin: 0;
     /* identical to box height */
-    
+
     letter-spacing: 0.16em;
-    
-    color: #85858C; 
+
+    color: #85858C;
   }
- p{ font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 30px;
-/* or 188% */
 
+  p {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    /* or 188% */
+    color: #000000;
+  }
 
-color: #000000;
- }
   @media screen and (max-width: 992px) {
     // text-align: center;
   }
@@ -348,7 +406,7 @@ color: #000000;
   justify-content: center;
   align-items: center;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 40px;
   gap: 11.66px;
   background: #FFFFFF;
   // box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.15);
@@ -362,9 +420,8 @@ color: #000000;
   font-size: 18px;
   line-height: 126%;
   /* identical to box height, or 23px */
-
-
   color: #000000;
+
   @media screen and (max-width: 992px) {
     display: none;
   }
@@ -394,37 +451,96 @@ color: #000000;
   font-weight: 600;
   font-size: 14px;
   line-height: 126%;
+  padding-left: 0px;
   // padding-left: 55px;
   /* identical to box height, or 23px */
-display: none;
+  display: none;
   color: #000000;
+
   @media screen and (max-width: 992px) {
     display: flex;
     // margin-bottom: 20px;
   }
+
 }
 
-.prf{
+.prf {
   display: flex;
   align-items: center;
-gap:7.5px;
-width: 80%;
-  h6{
-    
-font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 18px;
-/* identical to box height */
+  gap: 7.5px;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-letter-spacing: 0.15em;
+  @media screen and (max-width: 998px) {
+    width: 90%;
 
-color: #85858C;
-text-transform: uppercase;
+
   }
+
+  h6 {
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+    /* identical to box height */
+
+    letter-spacing: 0.15em;
+
+    color: #85858C;
+    text-transform: uppercase;
+  }
+
   display:none;
+
   @media screen and (max-width: 992px) {
     display: flex;
+  }
+}
+
+.get {
+  display: none;
+  width: 100%;
+
+  h4 {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0;
+    margin: 0;
+
+    color: #85858C;
+  }
+
+  div {
+    display: flex;
+    width: 100%;
+
+    // justify-content: center;
+
+    align-items: center;
+    padding: 0 0 40px 0;
+
+    label {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0.17em;
+      color: black;
+      width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 992px) {
+    display: block;
   }
 }

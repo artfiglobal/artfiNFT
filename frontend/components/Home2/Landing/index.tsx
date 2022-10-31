@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useContext, useEffect } from "react";
 import { Container, Typography, Button } from "../../reusables2/Atoms";
+import ButtonView from "@mui/material/Button"
 import {
   ArtInfo,
   DetailCard,
@@ -26,7 +27,7 @@ import { Web3DataInterface } from "../../../context/types";
 import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
-import { Avatar } from "@mui/material";
+import { Avatar, ButtonBase, Divider } from "@mui/material";
 
 export const Landing = ({ likes }: LandingProps): JSX.Element => {
   likes = 10;
@@ -44,6 +45,8 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
     chain: "Matic",
     termsSignature: Date.now().toString(),
   });
+
+  const [tabActiveButton, setTabActiveButton] = useState(true)
 
   const { web3Data, setWeb3Data, connectWallet, walletAddress } =
     useContext(Web3Context);
@@ -121,14 +124,14 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
         
         <div className={style.landingDetails}>
        
-       <div style={{display:"flex",alignItems:"center",width:"80%"}}>
+       <div style={{display:"flex",alignItems:"center",width:"90%"}}>
           <button className={style.timer1}>
                   <img src="Publiced/time.svg" width="16px" height="16px" />
                   <label>12h:43m:10s</label>
           </button>
           <div className={style.shareandlike1}>
-                        <Image src="/Icons/hearts.svg" alt="like" width="44px" height="44px" />
-                        <Image src="/Icons/share.svg" alt="like" width="44px" height="44px"/>
+                        <Image src="/Icons/hearts.svg" alt="like" width="68px" height="68px" />
+                        <Image src="/Icons/share.svg" alt="like" width="68px" height="68px"/>
 
                     </div>
         </div> 
@@ -159,25 +162,26 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                 </div>
                 <div className={style.prf}>
                     <Avatar
-                    src="/images/artist.png"
-                    alt="Artist profile"
-                    
-                    className={style.artistProfile}
+                      src="/images/artist.png"
+                      alt="Artist profile"
+                      
+                      className={style.artistProfile}
                   />
-                  <h6>
-                  vs gaitonde
+                  <h6 style={{display:"flex",gap:"5px"}}>
+                    vs gaitonde 
+                    <img src="/Publiced/Vector.svg" style={{width:"16px",height:"16px"}}/>
                   </h6>
                     </div>
           <Tabs defaultValue="details" className={style.landingTabs}>
             <Tabs.List className={style.tabList}>
-              <Tabs.Tab value="details" className={style.tabValue}>
+              <Tabs.Tab value="details" className={style.tabValue}  style={tabActiveButton?{background:"#F5F1FE"}:{background:"white"}} onClick={()=>setTabActiveButton(true)}>
                 Details
               </Tabs.Tab>
-              <Tabs.Tab value="status" onClick={()=>console.log("hello")} className={style.tabValue}>
+              <Tabs.Tab value="status" style={!tabActiveButton?{background:"#F5F1FE"}:{background:"white"}} onClick={()=>setTabActiveButton(false)} className={style.tabValue}>
                 {isWhiteListed ? "Ownership Status" : "Get Whitelisted"}
               </Tabs.Tab>
               {/* <Timer seconds={40000} /> */}
-              <button className={style.timer}>
+              <button className={style.timer}  >
                   <img src="Publiced/time.svg" />
                   <label>12h:43m:10s</label>
             </button>
@@ -323,17 +327,49 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                     >
                       Connect your wallet to whitelist
                     </Button>
+                    <Button
+                      variant="primary"
+                      style={{
+                        background:"white",
+                        color:"black",
+                        border:"1px solid #1E1E1E",
+                        boxShadow:"0"
+                      }}
+                      onClick={async () => {
+                        await connectWallet();
+                        setWallet(true);
+
+                        // connectWallet().then(() => {
+                        //   getData();
+                        //   setWallet(true);
+                        //   console.log("hello");
+                        // });
+                      }}
+                    >
+                      Create a new wallet
+                    </Button>
                     {/* <Typography variant="subheading" color={"grey"}>
                       OR
                     </Typography> */}
                     {/* <Button variant="secondary">Create a new account</Button> */}
                   </div>
+                  <label>or</label>
+                  <Image src="/Icons/arcana.svg" width="223px" height="68px"/>
                 </div>
               )}
             </Tabs.Panel>
           </Tabs>
         </div>
       </div>
+      <div className={style.get}>
+          <h4>WHAT YOU’LL GET</h4>
+          <div><label>Artfi NFT</label><ButtonView variant="outlined" color="primary" style={{color:"#4527B3", border:"1px solid #4527B3"}}>
+            View
+          </ButtonView></div>
+          
+          
+      </div>
+   
     </Container>
   );
 };

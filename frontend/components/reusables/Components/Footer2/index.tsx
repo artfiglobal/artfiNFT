@@ -145,6 +145,7 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
   ];
   return (
     <>
+    <br/>
       <footer className={styles.container}>
         <div className={styles.main}>
           <div className={styles.artfi}>
@@ -186,6 +187,35 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
                 Copyright @ 2022  Artfi. All rights Reserved.
               </Typography>
               <div className={styles.contact}>
+              <p className={styles.textMobile}>Join our Newsletter</p>
+
+                <form action="" className={styles.patreonMobile}>
+                  <div className={styles.left}>
+                    <input
+                      type="email"
+                      placeholder="Enter your email here"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                      required
+                    />
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSendEmail(true)
+
+                      addToWaitlist(email, true, "").then((res) => {
+                        console.log(res);
+                        setEmail("");
+                      });
+                    }}
+                  >
+                    <Image src="/Icons/ar.svg" alt="arow" width="24px" height="24px" />
+                    
+                  </button>
+                </form>
                 <div className={styles.mail}>
                   <FaAt color="#FFF" />
                   <a href="mailto:hello@artfi.world">hello@artfi.world</a>
@@ -247,9 +277,15 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
                 );
               })}
             </div>
+            
 
           </div>
+          <div className={styles.textCCMobile}>
+              Copyright @ 2022  Artfi. All rights Reserved.
+          </div>
+          
         </div>
+        
       </footer>
 
       <Dialog
