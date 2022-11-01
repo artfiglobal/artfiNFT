@@ -1,17 +1,28 @@
-import mongoose from 'mongoose'
+var mysql = require('mysql');
 
-const connectDB = async (databaseURL) => {
-  try {
-    const DB_OPTIONS = {
-      dbName:'ArtiFi'
+// export const AppDataSource = new DataSource({
+//     type: 'mysql',
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'ArtFi',
+//     synchronize: true
+// })
+const connection = mysql.createConnection({
+    type: 'mysql',
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'ArtFi',
+    synchronize: true
+});
+
+ 
+connection.connect(function (err:any) {
+    if(err){
+        console.log("error occurred while connecting");
     }
-      const conn = await mongoose.connect(databaseURL , DB_OPTIONS)
-      console.log(`MongoDB Connected: ${conn.connection.host}`)
-  } catch (error) {
-    console.log(error)
-    process.exit(1)
-  }
-}
-
-export default connectDB
-
+    else{
+        console.log("connection created with Mysql successfully");
+    }
+ });
