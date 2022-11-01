@@ -7,17 +7,11 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 
 export const providerOptions = {
-  coinbasewallet: {
-    package: CoinbaseWalletSDK,
-    options: {
-      appName: "Web 3 Modal Demo",
-      infuraId: process.env.NEXT_PUBLIC_INFURA_KEY,
-    },
-  },
+  
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId: process.env.NEXT_PUBLIC_INFURA_KEY,
+      infuraId:"https://matic-mainnet.chainstacklabs.com",
     },
   },
 };
@@ -72,7 +66,7 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
       setWeb3Data(newWeb3Data);
       return newWeb3Data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

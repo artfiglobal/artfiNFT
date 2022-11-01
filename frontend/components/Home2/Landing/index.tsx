@@ -102,7 +102,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
 
   return (
     <Container>
-      <div className={style.landing}>
+      <div className={style.landing} >
         <Modal
           centered
           overlayColor="rgba(155, 155, 155, 0.5)"

@@ -12,9 +12,9 @@ const Card = () => {
         <Image src="/Panting/Panting1.svg" alt="ellipose" width="380px" height="512px"/>  
       </div>
       <div className={styles.flipCardBack}>
-        <h1>John Doe</h1> 
+        {/* <h1>John Doe</h1> 
         <p>Architect & Engineer</p> 
-        <p>We love that guy</p>
+        <p>We love that guy</p> */}
       </div>
     </div>
   </div>
