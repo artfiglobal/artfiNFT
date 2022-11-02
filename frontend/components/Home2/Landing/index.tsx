@@ -85,8 +85,8 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
-      console.log("hii")
-      const res = await axios.post("http://localhost:8002/api/whitelist/", formData);
+      console.log(process.env,"hii")
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/whitelist/`, formData);
       setOpened(true);
       setIsWhiteListed(true);
     } catch (error) {
