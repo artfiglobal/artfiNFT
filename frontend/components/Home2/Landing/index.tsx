@@ -28,6 +28,7 @@ import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { Avatar, ButtonBase, Divider } from "@mui/material";
+import Link from "next/link";
 
 export const Landing = ({ likes }: LandingProps): JSX.Element => {
   likes = 10;
@@ -168,7 +169,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                       className={style.artistProfile}
                   />
                   <h6 style={{display:"flex",gap:"5px"}}>
-                    vs gaitonde 
+                    <Link href="/artist-details" style={{cursor:"pointer"}}>vs gaitonde </Link>
                     <img src="/Publiced/Vector.svg" style={{width:"16px",height:"16px"}}/>
                   </h6>
                     </div>
@@ -375,3 +376,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
 };
 
 export default Landing;
+
+
+
+

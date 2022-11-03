@@ -26,9 +26,11 @@ export const ArtInfo = ({
         alt="Artist profile"
         className={style.artistProfile}
       />
-      <h6>
+       <Link href="/artist-details" >
+      <h6 style={{cursor:"pointer"}}>
         {artist} 
       </h6>
+      </Link>
       <img src="/Publiced/Vector.svg"/>
       <div className={style.divider}></div>
       <div className={style.artPrice}>

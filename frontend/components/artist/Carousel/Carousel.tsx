@@ -10,6 +10,7 @@ const image = [
 const CarouselComponent = () => {
   return (
     <div>
+        <h1 className={styles.carouselTitle}>Highlights</h1>
         <div className={styles.carousel}>
           <div style={{width:"20%"}}>
             <Image src="/Icons/leftArrow.svg" width="60px" height="60px"/>

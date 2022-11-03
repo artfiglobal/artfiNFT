@@ -1,0 +1,52 @@
+.bio
+{
+    margin: 97px 120px;
+    @media screen and (max-width: 1100px)
+{
+//   font-size: 38px;
+  margin: 97px 80px;
+//   margin: 0;
+}
+    h1{
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 64px;
+line-height: 120%;
+/* identical to box height, or 77px */
+
+
+color: #000000;
+@media screen and (max-width: 1100px)
+{
+  font-size: 38px;
+//   margin-left: 80px;
+//   margin: 0;
+}
+    }
+
+    p{
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 160%;
+height: 190px;
+overflow: hidden;
+/* or 32px */
+
+
+color: #000000;
+
+    }
+
+    label{
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 160%;
+/* identical to box height, or 32px */
+color: #4527B3;
+    }
+}
