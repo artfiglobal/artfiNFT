@@ -3,6 +3,7 @@ import { height } from '@mui/system'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useRef, useState } from 'react'
+import { Whitelist } from '../Home'
 import { Footer } from '../reusables/Components/Footer2/'
 import styles from "./Video.module.scss"
 import styles2 from "./VideoDesign.module.scss"
@@ -105,3 +106,4 @@ export default Video
     </div>
 
 </div> */}
+

@@ -2,6 +2,8 @@
 
 .herosection {
     background: linear-gradient(180deg, #FFFFFF 75.68%, #EFEFEF 83.91%);
+    padding: 10px;
+   
 
     h1 {
         font-family: 'Arizonia';
@@ -45,7 +47,7 @@
         margin: 0;
         padding: 0;
         margin-top: 6px;
-        
+
 
         label {
             font-weight: 700;
@@ -79,7 +81,7 @@
             font-weight: 700;
             font-size: 20px;
             line-height: 130%;
-           
+
 
 
             // font-size: 15px;
@@ -89,16 +91,119 @@
             }
         }
     }
-.imgBlock
-{
-    text-align: center;
-    margin:  auto;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    img{
-        margin: 0 auto;
-        // position: relative!important;
+
+    .imgBlock {
+        text-align: center;
+        margin: auto;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        background: url(../../public/Background/Artfibg.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        img {
+            margin: 0 auto;
+            // position: relative!important;
+        }
     }
 }
+
+.description {
+
+    // text-align: center ;
+    padding:  100px 0;
+    p {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 50px;
+        /* or 156% */
+
+        text-align: center;
+        margin: 0 auto;
+        width: 60%;
+        color: #000000;
+    }
+
+    margin:100px 0;
+
+}
+
+.watchSection {
+    margin: 120px;
+
+    .watchInnerSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        div {
+            width: 50%;
+            // text-align: center;
+
+            h1 {
+                font-family: 'Plus Jakarta Sans';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 64px;
+                line-height: 130%;
+                width: 80%;
+                /* or 83px */
+                color: #000000;
+                margin-bottom: 0;
+
+            }
+
+        }
+    }
+
+}
+
+.social {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+
+    p {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 120%;
+        /* identical to box height, or 24px */
+
+
+        color: #585858
+    }
+
+    img {
+        margin-top: 24px;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+.play{
+    width: 223px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:11px;
+height: 70px;
+background: #4527B3;
+backdrop-filter: blur(12px);
+/* Note: backdrop-filter has minimal browser support */
+border: 0;
+border-radius: 16.5953px;
+margin: 0 auto;
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20.7442px;
+line-height: 26px;
+color:white;
+margin-bottom: 137px;
+margin-top: 40px;
 }

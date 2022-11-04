@@ -19,9 +19,6 @@ export const APIContextProvider: React.FC<InterfaceAPIContextProvider> = ({
   const API = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URI,
   });
-  useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_API_URI);
-  });
   return (
     <APIContext.Provider value={{ API, walletAddress, setWalletAddress }}>
       {children}

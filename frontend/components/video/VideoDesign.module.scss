@@ -64,7 +64,8 @@
         }
         @media screen and (max-width: 857px) {
             // height: 500px;
-           font-size: 50px;
+           font-size: 36px;
+           margin-top: 20px;
         }
     }
 
@@ -77,6 +78,10 @@
         margin: 0;
         padding: 0;
         margin-top: 6px;
+        @media screen and (max-width: 600px) {
+            // height: 500px;
+          margin-top: 12px;
+        }
 
         label {
             font-weight: 700;
@@ -86,7 +91,7 @@
             letter-spacing: 0.12em;
             @media screen and (max-width: 600px) {
                 // height: 500px;
-               font-size: 15px;
+               font-size: 14px;
             }
 
         }
@@ -106,6 +111,7 @@
             @media screen and (max-width: 600px) {
                 // height: 500px;
                font-size: 15px;
+               margin-top: 1px;
             }
 
         }
@@ -135,6 +141,16 @@
             height: 50px;
            font-size: 17px;
            margin-top: 15px;
+           width: 223px;
+            height: 60px;
+            left: 84px;
+            top: 467px;
+
+            background: #4527B3;
+            backdrop-filter: blur(12px);
+            /* Note: backdrop-filter has minimal browser support */
+
+            border-radius: 15px;
         }
         @media screen and (max-width: 857px) {
             // height: 500px;
@@ -185,6 +201,8 @@ gap: 46px;
  flex-direction: column;
  height: 100%;
  gap: 0;
+ padding-top:40px ;
+ padding-bottom: 40px;
 
  
 }

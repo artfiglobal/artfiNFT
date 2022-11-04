@@ -1,0 +1,86 @@
+.profileSection {
+    display: flex;
+    gap: 60px;
+    margin: 100px 120px;
+
+    h6 {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 120%;
+        /* identical to box height, or 24px */
+
+        letter-spacing: 0.3em;
+        margin: 0;
+        margin-bottom: 16px;
+
+        color: #7C5EBB;
+        display: flex;
+        align-items: center;
+    }
+
+    h4 {
+
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 120%;
+        margin: 0;
+        /* identical to box height, or 58px */
+        margin-bottom: 30px;
+        color: #000000;
+
+    }
+
+    p {
+        font-family: 'Plus Jakarta Sans';
+        // font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 160%;
+        /* or 32px */
+        
+        
+        color: #000000;
+    }
+}
+
+.profileInfo {
+    display: flex;
+    gap: 70px;
+    margin-top: 40px;
+    width: 50%;
+    h5 {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        margin: 0;
+        text-transform: capitalize;
+        /* or 22px */
+
+
+        color: #585858;
+
+    }
+
+    .profileInfo_p {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 160%;
+        text-transform: capitalize;
+
+        /* identical to box height, or 29px */
+        
+        
+        
+
+    }
+
+}
