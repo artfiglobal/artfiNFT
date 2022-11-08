@@ -1,7 +1,10 @@
 import axios from 'axios'
 import asyncHandler from 'express-async-handler'
-
+import { ethers } from 'ethers';
 import NFT from "../models/nftModel"
+import * as utils from "../utils";
+import abi from '../abi/abi.json';
+import { AbiItem } from 'web3-utils';
 
 // @desc    GET NFT 
 // @route   GET /api/nft
@@ -57,3 +60,44 @@ export const postNFT = asyncHandler(async (req, res) => {
   }
 })
 
+export const mintNFT = asyncHandler(async (req, res) => {
+  if (!req.body) {
+    res.status(400);
+    throw new Error("Incomplete Data");
+  }
+  const web3 = utils.getWeb3();
+  const pubkey = web3.eth.accounts.privateKeyToAccount(process.env.PRIVATE_KEY as string);
+  const provider = utils.getProvider();
+  const nonce = await provider.getTransactionCount(pubkey.address, 'latest');
+  const gasPrice = await provider.getGasPrice();
+
+  const contractABI = new ethers.utils.Interface(abi);
+  const transaction = {
+    to: req.body.minter,
+    nonce: nonce,
+    gas: 30000,
+    gasPrice: ethers.utils.hexlify(gasPrice),
+    value: ethers.utils.hexlify(0),
+    data: contractABI.encodeFunctionData("mintNFT", [
+      req.body.minter.toString(),
+      req.body.metaURI.toString()
+    ]),
+    chainId: +(process.env.CHAIN_ID as string)
+  };
+
+  const signedTx = await web3.eth.accounts.signTransaction(transaction, process.env.PRIVATE_KEY as string);
+
+  try {
+    web3.eth.sendSignedTransaction(signedTx.rawTransaction as string, function(error, hash) {
+      if (!error) {
+        res.send(hash);
+      } else {
+        res.send(error);
+      }
+    });
+
+  } catch (error: any) {
+    console.log(error);
+    res.send(error.message);
+  }
+})
