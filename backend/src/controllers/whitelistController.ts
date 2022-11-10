@@ -37,7 +37,7 @@ export const addToWhiteList = asyncHandler(async (req, res) => {
 
     await sendMail({
       to: req.body.email,
-      from: process.env.SENDER_EMAIL,
+      from: process.env.WHITELIST_SENDER,
       subject: "Thank you for joining the Whitelist for Artfi NFT offerings!",
       template: "template",
       templateVars: {
@@ -73,7 +73,7 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
 
     const res2 = await sendMail({
       to: req.body.email,
-      from: process.env.SENDER_EMAIL,
+      from: process.env.WHITELIST_SENDER,
       subject: "Thank you for joining the Whitelist for Artfi NFT offerings!",
       template: "template",
       templateVars: {
