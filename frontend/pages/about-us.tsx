@@ -260,7 +260,7 @@ const projects = () => {
         </ul>
       </section> */}
 
-      <Footer />
+      <Footer display=""/>
     </div>
   );
 };

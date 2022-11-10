@@ -88,9 +88,11 @@ const rightNavMapping = [
 
 
 
-type FooterProps = {};
+type FooterProps = {
+  display:string
+};
 
-export const Footer = ({}: FooterProps): JSX.Element => {
+export const Footer = ({display}: FooterProps): JSX.Element => {
   const [email, setEmail] = useState<string>("");
   const [sendEmail, setSendEmail] = useState<boolean>(false)
   const socialMapping = [
@@ -167,7 +169,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
       </div> */}
      
 
-      <div className={styles.outerFooter} style={{background:"white"}}> 
+      <div className={styles.outerFooter} style={{background:"white",display:display}}> 
      
                   <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
                    <a href="https://alturaashart.com/" target="_blank"><img src="/Publiced/AS.svg" alt="alturaash" className={styles.alturaash} /></a>

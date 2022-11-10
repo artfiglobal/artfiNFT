@@ -23,6 +23,6 @@
     "***/**/*.tsx",
     "****/***/**/*.ts",
     "****/***/**/*.tsx"
-, "components/video/Video.jsx"  ],
+, "components/video/Video.jsx", "components/artist/Carousel/Carousel.jsx"  ],
   "exclude": ["node_modules"]
 }

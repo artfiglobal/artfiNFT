@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         <Featured isWhite={false} />
       </main>
       <Toaster />
-      <Footer />
+      <Footer display="none"/>
     </div>
   );
 };

@@ -1,258 +1,469 @@
+// .landing {
+//   // padding: 0px 0px 0px 120px;
+//   height: 720px;
+//   margin-top: 80px;
+//   // margin-top:80px;
+//   position: relative;
+//   display: flex;
+//   width: 100%;
+//   flex-direction: column;
+//   justify-content: center;
+//   background: linear-gradient(
+//       180deg,
+//       #ffffff 51.75%,
+//       rgba(255, 255, 255, 0) 94.06%
+//     ),
+//     url("/Publiced/background.jpg");
+//   // background-position: right;
+//   background-position: center;
+
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   // background-size: 100% 50%;
+
+//   @media screen and (max-width: 992px) {
+//     padding: 100px 70px 0px 70px;
+//     padding: 50px;
+//     align-items: center;
+//     text-align: center;
+//     margin-top: 50px;
+//     // background: no-repeat center url("../../../public/images/landing_resp.png");
+//     background-size: cover;
+//     width: 100%;
+//     height: 100%;
+
+//     // height: 80vh;
+//   }
+//   @media screen and (max-width: 480px) {
+//     // height: 80vh;s
+//     justify-content: flex-start;
+//     // padding: 180px 24px 0px 24px;
+//     height: 100%;
+//     // height: 100vh;
+//     margin-top:0;
+//     background: linear-gradient(
+//       180deg,
+//       white 50.75%,
+//       rgba(255, 255, 255, 0) 94.06%
+//     ),
+//     url("/Publiced/background.jpg");
+//     // background-repeat: repeat;
+//     background-size: cover;
+//     // background-position: center;
+//     // background-repeat: no-repeat;
+//     text-align: center;
+//   }
+//   .heading_wrapper {
+//     width: 100%;
+//     margin-top:110px;
+//     h1 {
+//       font-size: 64px;
+//       margin: 0;
+//       font-weight: 800;
+//       line-height:83.2px;
+//       letter-spacing: 2px;
+//       text-align: center;
+//       @media screen and (max-width: 980px) {
+//         margin-top: 50px;
+//         font-size: 50px;
+//       line-height:55px;
+
+//       }
+//       @media screen and (max-width: 700px) {
+//         margin-top: 50px;
+//         font-size: 32px;
+//       line-height:42px;
+
+//       }
+//       @media screen and (max-width: 485px) {
+//         font-weight: 700;
+//         font-size: 30px;
+//         line-height: 130%;
+//         // line-height: 130%;
+//         margin-left: auto;
+//         margin-right: auto;
+//         width: 100%;
+//         // width: 322px;
+
+//         /* or 42px */
+
+//         text-align: center;
+//       }
+//       @media screen and (max-width: 376px) {
+//         font-weight: 700;
+//         font-size: 25px;
+//         line-height: 130%;
+//         width: 100%;
+//         margin-left: auto;
+//         margin-right: auto;
+//         /* or 42px */
+
+//         text-align: center;
+//       }
+//     }
+//     p {
+//       font-size: 20px;
+//       color:#585858;
+//       line-height: 28px;
+//       letter-spacing: 2px;
+//       font-weight:600;
+//       margin-top: 40px;
+//       margin-bottom: 0!important;
+//       font-family:Plus Jakarta Sans;
+//       @media screen and (max-width: 940px) {
+//         font-size: 20px !important;
+//       }
+//       @media screen and (max-width: 480px) {
+//         font-size: 16px;
+//         text-align: center;
+//       }
+//     }
+//     .heading_highlight {
+//       color: #6434c8;
+//     }
+//     .secondHedding{
+//       color:"#585858";width:"300px";
+//        @media screen and (max-width: 940px) {
+//         font-size: 15px !important;
+//       }
+//       @media screen and (max-width: 480px) {
+//         font-size: 10px;
+//         text-align: center;
+//       }
+//     }
+
+//     @media screen and (max-width: 992px) {
+//       width: 100%;
+//     }
+//     @media screen and (max-width: 480px) {
+//       text-align: left;
+//     }
+//     .button_holder {
+//       // margin-top: 50px;
+//       margin-bottom: 249px;
+//       display: flex;
+//       // font-weight: 700;
+//       flex-direction: column;
+//       width: 100%;
+//       align-items: center;
+//       justify-content: center;
+//       @media screen and (max-width: 992px) {
+//         width: 100%;
+//       }
+//       @media screen and (max-width: 480px) {
+//         width: 100%;
+//         margin-top: 10px;
+//         margin-bottom: 100px;
+//       }
+//       gap: 20px;
+
+//       .waitlistBtn {
+//         margin-top: 60px;
+//         display: inline-flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         align-items: center;
+//         // padding: 24px 48px;
+//         width: 223px;
+//         height: 70.53px;
+//         cursor: pointer;
+//         background: linear-gradient(0deg, #4527b3, #4527b3),
+//           linear-gradient(180deg, #3c3c3c 0%, #1f1f1f 49.48%, #3c3c3c 100%);
+//         border-radius: 16px;
+//         border: none;
+
+//         font-family: "Plus Jakarta Sans";
+//         font-style: normal;
+//         font-weight: 700;
+//         font-size: 20.74px;
+//         line-height: 26.14px;
+//         transition: all 0.2s ease-out;
+//         color: #ffffff;
+//         &:hover {
+//           transform: scale(1.02);
+//           box-shadow: 0px 4px 16px rgba(64, 0, 116, 0.25);
+//         }
+//         @media screen and (max-width: 940px) {
+//           font-size: 20.74px;
+//           padding: 18px 36px;
+//         }
+//         // @media screen and (max-width: 1100px) {
+//         //   font-size: 18px;
+//         //   padding: 15px 30px;
+//         // }
+//         @media screen and (max-width: 768px) {
+//           font-size: 16px;
+//           padding: 15px 20px;
+//           line-height: 100%;
+//           border-radius: 8px;
+//         }
+//       }
+
+//       .drop_btn {
+//         outline: none;
+//         border: none;
+//         display: inline-flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         align-items: center;
+//         padding: 4px 8px;
+//         width: fit-content;
+//         height: 20px;
+//         cursor: pointer;
+//         background: linear-gradient(86.43deg, #7c5ebb 32.2%, #6231c8 95.8%);
+//         border-radius: 16px;
+//         font-family: "Plus Jakarta Sans";
+//         font-style: normal;
+//         font-weight: 700;
+//         font-size: 12px;
+//         color: #ffffff;
+//       }
+//     }
+//   }
+//   .polygon_wrapper {
+//     width: fit-content;
+//     margin: 24px 0px;
+//     .polygon_title {
+//       font-family: "Plus Jakarta Sans";
+//       font-style: normal;
+//       font-weight: 800;
+//       font-size: 20px;
+//       margin: 8px 20px;
+//     }
+//     .polygon_logo {
+//       margin: 8px;
+//       padding: 0px 20px;
+//     }
+//     @media screen and (max-width: 768px) {
+//       display: none;
+//     }
+//   }
+// }
+// .webHeading
+// {
+//   font-family:Plus Jakarta Sans;
+//   @media screen and (max-width: 701px) {
+//     display: none;
+//   }
+// }
+// .mblHeading
+// {
+//   display: none;
+//   @media screen and (max-width: 701px) {
+//     font-family:Plus Jakarta Sans;
+//     font-size: 32px;
+//     display: block;
+//   }
+// }
 
 .landing {
-  // padding: 0px 0px 0px 120px;
-  height: 720px;
   margin-top: 80px;
-  // margin-top:80px;
-  position: relative;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(
-      180deg,
-      #ffffff 51.75%,
-      rgba(255, 255, 255, 0) 94.06%
-    ),
-    url("/Publiced/background.jpg");
-  // background-position: right;
-  background-position: center;
 
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-size: 100% 50%;
+  .video {
+    @media screen and (max-width: 700px) {
+      // height: 700px;
+      display: none;
 
-  @media screen and (max-width: 992px) {
-    padding: 100px 70px 0px 70px;
-    padding: 50px;
-    align-items: center;
-    text-align: center;
-    margin-top: 50px;
-    // background: no-repeat center url("../../../public/images/landing_resp.png");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-
-    // height: 80vh;
-  }
-  @media screen and (max-width: 480px) {
-    // height: 80vh;s
-    justify-content: flex-start;
-    // padding: 180px 24px 0px 24px;
-    height: 100%;
-    // height: 100vh;
-    margin-top:0;
-    background: linear-gradient(
-      180deg,
-      white 50.75%,
-      rgba(255, 255, 255, 0) 94.06%
-    ),
-    url("/Publiced/background.jpg");
-    // background-repeat: repeat;
-    background-size: cover;
-    // background-position: center;
-    // background-repeat: no-repeat;
-    text-align: center;
-  }
-  .heading_wrapper {
-    width: 100%;
-    margin-top:110px;
-    h1 {
-      font-size: 64px;
-      margin: 0;
-      font-weight: 800;
-      line-height:83.2px;
-      letter-spacing: 2px;
-      text-align: center;
-      @media screen and (max-width: 980px) {
-        margin-top: 50px;
-        font-size: 50px;
-      line-height:55px;
-
-      }
-      @media screen and (max-width: 700px) {
-        margin-top: 50px;
-        font-size: 32px;
-      line-height:42px;
-
-      }
-      @media screen and (max-width: 485px) {
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 130%;
-        // line-height: 130%;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        // width: 322px;
-        
-        /* or 42px */
-
-        text-align: center;
-      }
-      @media screen and (max-width: 376px) {
-        font-weight: 700;
-        font-size: 25px;
-        line-height: 130%;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        /* or 42px */
-
-        text-align: center;
-      }
     }
-    p {
+  }
+
+  .videombl {
+    display: none;
+
+    @media screen and (max-width: 700px) {
+      // height: 700px;
+      // width: 100%;
+      width: 100%;
+      // height: 00px;
+
+      display: block;
+
+    }
+  }
+
+  .container {
+    background: rgba(0, 0, 0, 0.5);
+    // filter: blur(100px);
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: inherit;
+    text-align: center;
+    height: 130%;
+
+    @media screen and (max-width: 1200px) {
+      height: 100%;
+
+    }
+
+    @media screen and (max-width: 1000px) {
+      height: 100%;
+
+    }
+
+    @media screen and (max-width: 700px) {
+      height: 200%;
+
+    }
+
+    @media screen and (max-width: 600px) {
+      height: 180%;
+
+    }
+
+    @media screen and (max-width: 550px) {
+      height: 150%;
+
+    }
+
+    @media screen and (max-width: 450px) {
+      height: 130%;
+
+    }
+
+    @media screen and (max-width: 380px) {
+      height: 120%;
+
+    }
+
+    z-index: 1;
+
+    .container_h6 {
+      margin-top: 204px;
+
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 600;
       font-size: 20px;
-      color:#585858;
-      line-height: 28px;
-      letter-spacing: 2px;
-      font-weight:600;
-      margin-top: 40px;
-      margin-bottom: 0!important;
-      font-family:Plus Jakarta Sans;
-      @media screen and (max-width: 940px) {
-        font-size: 20px !important;
+      line-height: 25px;
+      text-align: center;
+      letter-spacing: 0.6em;
+
+      color: white;
+      margin-bottom: 59px;
+
+      @media screen and (max-width: 1200px) {
+        margin-top: 160px;
+
       }
-      @media screen and (max-width: 480px) {
-        font-size: 16px;
+
+      @media screen and (max-width: 1000px) {
+        margin-top: 90px;
+      }
+
+      @media screen and (max-width: 800px) {
+        // height: 700px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        /* identical to box height */
+
         text-align: center;
+        letter-spacing: 0.6em;
+        margin-top: 50px;
+
+        color: #FFFFFF;
+        margin-bottom: 30px;
       }
-    }
-    .heading_highlight {
-      color: #6434c8;
-    }
-    .secondHedding{
-      color:"#585858";width:"300px";
-       @media screen and (max-width: 940px) {
-        font-size: 15px !important;
-      }
-      @media screen and (max-width: 480px) {
-        font-size: 10px;
-        text-align: center;
+
+      @media screen and (max-width: 700px) {
+        // height: 700px;
+        // width: 100%;
+        margin-top: 120px;
+
       }
     }
 
-    @media screen and (max-width: 992px) {
-      width: 100%;
+    .container_img {
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
     }
-    @media screen and (max-width: 480px) {
-      text-align: left;
+
+    .container_img_mbl {
+      display: none;
+
+      @media screen and (max-width: 800px) {
+        display: block;
+        margin: 0 auto;
+
+      }
     }
-    .button_holder {
-      // margin-top: 50px;
-      margin-bottom: 249px;
+
+    .btn_container {
       display: flex;
-      // font-weight: 700;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
       justify-content: center;
-      @media screen and (max-width: 992px) {
-        width: 100%;
-      }
-      @media screen and (max-width: 480px) {
-        width: 100%;
-        margin-top: 10px;
-        margin-bottom: 100px;
-      }
+      align-items: center;
+      margin-top: 59px;
       gap: 20px;
 
-      .waitlistBtn {
-        margin-top: 60px;
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        // padding: 24px 48px;
+      @media screen and (max-width: 800px) {
+        // flex-direction: column;
+        margin-top: 30px;
+      }
+
+      @media screen and (max-width: 700px) {
+        flex-direction: column;
+        margin-top: 30px;
+      }
+
+
+      .waitlist_btn {
         width: 223px;
-        height: 70.53px;
-        cursor: pointer;
-        background: linear-gradient(0deg, #4527b3, #4527b3),
-          linear-gradient(180deg, #3c3c3c 0%, #1f1f1f 49.48%, #3c3c3c 100%);
-        border-radius: 16px;
-        border: none;
+        height: 70px;
 
-        font-family: "Plus Jakarta Sans";
+
+        background: #FFFFFF;
+        backdrop-filter: blur(12px);
+        /* Note: backdrop-filter has minimal browser support */
+        border: 0px;
+
+        border-radius: 16.5953px;
+
+        font-family: 'Plus Jakarta Sans';
         font-style: normal;
         font-weight: 700;
-        font-size: 20.74px;
-        line-height: 26.14px;
-        transition: all 0.2s ease-out;
-        color: #ffffff;
-        &:hover {
-          transform: scale(1.02);
-          box-shadow: 0px 4px 16px rgba(64, 0, 116, 0.25);
+        font-size: 18px;
+        line-height: 23px;
+
+        /* identical to box height */
+        @media screen and (max-width: 800px) {
+          height: 60px;
         }
-        @media screen and (max-width: 940px) {
-          font-size: 20.74px;
-          padding: 18px 36px;
-        }
-        // @media screen and (max-width: 1100px) {
-        //   font-size: 18px;
-        //   padding: 15px 30px;
-        // }
-        @media screen and (max-width: 768px) {
-          font-size: 16px;
-          padding: 15px 20px;
-          line-height: 100%;
-          border-radius: 8px;
-        }
+
+
+        color: #4527B3;
+
       }
 
-      .drop_btn {
-        outline: none;
-        border: none;
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 4px 8px;
-        width: fit-content;
-        height: 20px;
-        cursor: pointer;
-        background: linear-gradient(86.43deg, #7c5ebb 32.2%, #6231c8 95.8%);
-        border-radius: 16px;
-        font-family: "Plus Jakarta Sans";
+      .play_btn {
+        width: 223px;
+        height: 70px;
+
+        border: 1px solid #FFFFFF;
+        backdrop-filter: blur(12px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 16.5953px;
+        // filter: blur(100px);
+        font-family: 'Plus Jakarta Sans';
         font-style: normal;
         font-weight: 700;
-        font-size: 12px;
-        color: #ffffff;
+        font-size: 20.7442px;
+        line-height: 26px;
+
+        color: #FFFFFF;
+
+        @media screen and (max-width: 800px) {
+          height: 60px;
+          font-size: 18px;
+        }
+      }
+      .play_btn:hover {
+        backdrop-filter: blur(80px);
+        
       }
     }
-  }
-  .polygon_wrapper {
-    width: fit-content;
-    margin: 24px 0px;
-    .polygon_title {
-      font-family: "Plus Jakarta Sans";
-      font-style: normal;
-      font-weight: 800;
-      font-size: 20px;
-      margin: 8px 20px;
-    }
-    .polygon_logo {
-      margin: 8px;
-      padding: 0px 20px;
-    }
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
-}
-.webHeading
-{
-  font-family:Plus Jakarta Sans;
-  @media screen and (max-width: 701px) {
-    display: none;
-  }
-}
-.mblHeading
-{
-  display: none;
-  @media screen and (max-width: 701px) {
-    font-family:Plus Jakarta Sans;
-    font-size: 32px;
-    display: block;
   }
 }

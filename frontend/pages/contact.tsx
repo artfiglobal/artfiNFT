@@ -11,7 +11,7 @@ const Contact = () => {
       
       {/* <Benefits /> */}
       <ContactPart/>
-      <Footer />
+      <Footer display=""/>
     </div>
   );
 };
