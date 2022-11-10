@@ -101,3 +101,26 @@ export const mintNFT = asyncHandler(async (req, res) => {
     res.send(error.message);
   }
 })
+
+export const crossmintWebHook = asyncHandler(async (req, res) => {
+  if (!req.body) {
+    res.status(400);
+    throw new Error("Incomplete Data");
+  }
+
+  // Get parameters when send the custom parameters when pay on frontend
+  const { whPassThroughArgs } = req.body;
+  
+  if (whPassThroughArgs) {
+    const whArgsDeserialized = JSON.parse(whPassThroughArgs);
+    console.log(whArgsDeserialized);
+  }
+
+  let crossmintResponse = req.body;
+  let status = crossmintResponse.status;
+  if(status == "success") {
+    res.send();
+  } else {
+    res.send("There is error")
+  }
+});
