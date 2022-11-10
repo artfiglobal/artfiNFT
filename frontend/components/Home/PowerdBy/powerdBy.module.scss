@@ -1,0 +1,61 @@
+.innerfooter
+{
+    position:relative;
+    height:100px;
+    margin-top:-10px;
+    @media screen and (max-width: 857px) {
+        height: 300px;
+       
+        
+       }
+}
+.footer
+{
+    background: #FFFFFF;
+border-top: 1px solid #E6E6E6;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+height: 117px;
+gap: 46px;
+position: absolute;
+margin-bottom: 100px;
+
+width: 100%;
+z-index: 2;
+@media screen and (max-width: 857px) {
+ flex-direction: column;
+ height: 100%;
+ gap: 10px;
+ padding-top:40px ;
+ padding-bottom: 40px;
+
+ 
+}
+
+}
+.powerd{
+    @media screen and (max-width: 857px) {
+        width: 300px;
+        padding: 10px 40px;
+
+        
+       }
+}
+.as{
+    @media screen and (max-width: 857px) {
+        width: 300px;
+        padding: 10px auto;
+
+        
+       }
+}
+.polygon
+{
+    @media screen and (max-width: 857px) {
+        width: 300px;
+        padding: 10px 20px;
+        
+       }
+}

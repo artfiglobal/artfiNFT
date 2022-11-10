@@ -119,6 +119,21 @@ const images5 = [
     }
 ]
 
+const images6 = [
+    {
+        src:"/Publiced/hackernoor.svg",
+        link:"https://hackernoon.com/a-look-at-artfi-the-fine-art-investing-platform"
+    },
+    {
+        src:"/Publiced/tc.svg",
+        link:"https://cointelegraph.com/news/fractional-nfts-and-what-they-mean-for-investing-in-real-world-assets"
+    },
+    {
+        src:"/Publiced/gr.svg",
+        link:"https://www.nftgators.com/sheikha-hend-al-qassemi-jumps-on-the-nft-train-with-web3-art-startup-artfi/"
+    }
+]
+
 export const Featured = ({isWhite}: FeaturedProps): JSX.Element => {
 
 return(
@@ -193,7 +208,20 @@ return(
 
       {/* </div> */}
       </div>
+      <div className={styles.innerContainer}> 
+     {/* <div style={{width:"100%"}}> */}
+        {
+            images6.map((data,index)=>{
+                return(
+                 
+                  <a href={data.link} target="_blank" className={styles.card4}><img src={data.src}  className={styles.img} style={{marginLeft:"21px"}}/></a>
+                )
+            })
+        }
+       
 
+      {/* </div> */}
+      </div>
 
     <div className={styles.mobile} >
                     <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"row",marginTop:"40px"}}>
@@ -255,6 +283,15 @@ return(
                     </div>
                    
             </div>
+            <div className={styles.mobile} style={{ marginBottom: "50px"}}>
+                    <div style={{gap:"30px",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"40px"}}>
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://hackernoon.com/a-look-at-artfi-the-fine-art-investing-platform" target="_blank"><img width="90%" src="/Publiced/hackernoor.svg"/></a></div>
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://cointelegraph.com/news/fractional-nfts-and-what-they-mean-for-investing-in-real-world-assets" target="_blank"><img width="80%" src="/Publiced/tc.svg"/></a></div>         
+                            <div style={{width:"300px",height:"fit-content"}}><a href="https://www.nftgators.com/sheikha-hend-al-qassemi-jumps-on-the-nft-train-with-web3-art-startup-artfi/" target="_blank"><img width="80%" src="/Publiced/gr.svg"/></a></div>         
+                   
+                    </div>
+            </div>
+
 
 
     </div>

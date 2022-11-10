@@ -10,7 +10,7 @@ const Works = () => {
       <Head title="Artfi | How it Works" />
       <Navigation />
       <Main />
-      <Footer />
+      <Footer display=""/>
     </div>
   );
 };

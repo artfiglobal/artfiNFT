@@ -53,7 +53,7 @@ const WaitList: NextPage = () => {
         <Objectives />
       </main>
 
-      <Footer />
+      <Footer display=""/>
     </div>
   );
 };

@@ -128,7 +128,7 @@ const token = () => {
           </div>
         </section>
       </div>
-      <Footer/>
+      <Footer display=""/>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Project = () => {
       <Market />
       {/* <Benefits /> */}
       <Foundation />
-      <Footer />
+      <Footer display=""/>
     </div>
   );
 };
