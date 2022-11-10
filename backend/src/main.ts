@@ -6,26 +6,18 @@ import fs from "fs";
 import path from "path";
 import http from "http";
 import https from "https";
-import whitelistRoutes from "./routes/whitelistRoutes";
 import nftRoutes from "./routes/nftRoutes";
-import * as basicAuth from "express-basic-auth";
-
-// const privateKey = fs.readFileSync('/etc/letsencrypt/live/artfi.world/privkey.pem');
-// const certificate = fs.readFileSync('/etc/letsencrypt/live/artfi.world/fullchain.pem');
-// // const chain  = fs.readFileSync('/etc/letsencrypt/live/artfi.world/fullchain.pem');
-
-// const credentials = { key: privateKey, cert: certificate };
-
-// import { errorHandler } from './middleware/errorMiddleware'
+import waitlistRoutes from './routes/waitlistRoute';
+import whitelistRoutes from "./routes/whitelistRoutes";
 
 import connectDB from "./config/db";
 
 const port = process.env.PORT || 8000;
 const databaseURL = process.env.MONGO_URI;
 
-connectDB(databaseURL).then((res) => {
-  console.log(res);
-});
+// connectDB(databaseURL).then((res) => {
+//   console.log(res);
+// });
 
 const app = express();
 app.use(express.static(__dirname + "/static", { dotfiles: "allow" }));
@@ -34,15 +26,9 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
-  "/api/whitelist",
-  // basicAuth.default({
-  //   users: { admin: "aRt3717fi" },
-  //   challenge: true,
-  // }),
-  whitelistRoutes
-);
-app.use("/api/nft", nftRoutes);
+app.use("/nft", nftRoutes);
+app.use("/waitlist", waitlistRoutes);
+app.use("/whitelist", whitelistRoutes);
 
 app.get("/", (_req, res) => res.send("OK"));
 
@@ -70,4 +56,3 @@ httpServer.listen(8080);
 //   console.log("SSL PORT on 8443")
 // });
 
-console.log(1234);

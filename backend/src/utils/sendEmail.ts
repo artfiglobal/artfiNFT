@@ -24,7 +24,6 @@ if (!fs.existsSync(temp_dir)) fs.mkdirSync(temp_dir);
 //     pass: settings?.smtp?.password,
 //   },
 // });
-console.log({ port: process.env.SMTP_PORT });
 var smtp = nodemailer.createTransport({
   port: "587", //25, 587 for unencrypted/TLS connections, 465 for SSL connections
   secure: false,
@@ -71,13 +70,15 @@ export const sendMailUsingSendGrid = async ({
 export const sendMail = async ({
   template: templateName,
   to,
+  from,
+  subject,
   templateVars,
   ...restOfOptions
 }) => {
   try {
     const tranEmailApi = new Sib.TransactionalEmailsApi();
     const sender = {
-      email: "whitelist@artfi.world",
+      email: from,
       name: "Artfi",
     };
     const templatePath = path.join(
@@ -95,14 +96,9 @@ export const sendMail = async ({
     const res = await tranEmailApi.sendTransacEmail({
       sender,
       to: receivers,
-      subject: "Thank you for joining the Whitelist for Artfi NFT offerings!",
-      textContent: `
-      Cules Coding will teach you how to become {{params.role}} a developer.
-      `,
+      subject,
       htmlContent: source,
-      params: {
-        role: "Frontend",
-      },
+      params: templateVars,
     });
     console.log(res);
     return res;
