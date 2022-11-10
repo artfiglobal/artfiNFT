@@ -289,17 +289,32 @@
     width: 100%;
     height: inherit;
     text-align: center;
-    height: 130%;
+    height: 850px;
 
-    @media screen and (max-width: 1200px) {
-      height: 100%;
-
-    }
-
-    @media screen and (max-width: 1000px) {
-      height: 100%;
+    @media screen and (max-width: 1350px) {
+      height: 800px;
 
     }
+    @media screen and (max-width: 1350px) {
+      height: 750px;
+
+    }
+    @media screen and (max-width: 1152px) {
+      height: 680px;
+
+    }
+    @media screen and (max-width: 1013px) {
+      height: 590px;
+
+    }
+    @media screen and (max-width: 700px) {
+      height: 550px;
+
+    }
+    // @media screen and (max-width: 1000px) {
+    //   height: 120%;
+
+    // }
 
     @media screen and (max-width: 700px) {
       height: 200%;
@@ -307,7 +322,7 @@
     }
 
     @media screen and (max-width: 600px) {
-      height: 180%;
+      height: 120%;
 
     }
 
