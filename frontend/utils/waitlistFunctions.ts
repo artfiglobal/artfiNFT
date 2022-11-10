@@ -6,7 +6,7 @@ async function addToWaitlist(
     referralCode: string | string[] | undefined | ""
 ) {
   if (email !== "") {
-    let response = await fetch(`${serverURI}/api/waitlist/send-mail`, {
+    let response = await fetch(`${serverURI}/waitlist/send-mail`, {
       method: "POST",
       headers: {
         "Accept": "application/json",

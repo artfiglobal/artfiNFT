@@ -87,7 +87,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
     try {
       e.preventDefault();
       // console.log(process.env,"hii")
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/whitelist/`, formData);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/whitelist/`, formData);
       setOpened(true);
       setIsWhiteListed(true);
     } catch (error) {

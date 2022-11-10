@@ -118,7 +118,7 @@ export const Footer = ({}: FooterProps): JSX.Element => {
 
   async function sendMailToUser() {
     try {
-      const res = await API.post("/api/whitelist/send-mail", { email });
+      const res = await API.post("/whitelist/send-mail", { email });
 
       console.log({ res });
       setEmail("");
