@@ -173,6 +173,8 @@ export const Footer = ({display}: FooterProps): JSX.Element => {
      
                   <img src="/Publiced/Powered by.svg" alt="Powerd By" className={styles.pwd} />
                    <a href="https://alturaashart.com/" target="_blank"><img src="/Publiced/AS.svg" alt="alturaash" className={styles.alturaash} /></a>
+                   <a href="https://ethereum.org/en/" target="_blank"><img src="/Publiced/et.svg" alt="alturaash" className={styles.polygon}/></a>
+                   
                    <a href="https://polygon.technology/" target="_blank"><img src="/Publiced/Pol.svg" alt="alturaash" className={styles.polygon}/></a>
 
       </div>
