@@ -26,9 +26,9 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/nft", nftRoutes);
-app.use("/waitlist", waitlistRoutes);
-app.use("/whitelist", whitelistRoutes);
+app.use("nft", nftRoutes);
+app.use("waitlist", waitlistRoutes);
+app.use("whitelist", whitelistRoutes);
 
 app.get("/", (_req, res) => res.send("OK"));
 
