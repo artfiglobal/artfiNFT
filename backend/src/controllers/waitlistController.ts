@@ -25,8 +25,8 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
         referCode,
       },
     });
-    return res.status(200).json({ message: "Mail Sent", res: res2 });
+    res.status(200).json({ message: "Mail Sent", res: res2 });
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error", error });
+    res.status(500).json({ message: "Internal Server Error", error });
   }
 });
