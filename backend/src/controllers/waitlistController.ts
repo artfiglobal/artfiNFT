@@ -1,6 +1,5 @@
 import asyncHandler from "express-async-handler";
-
-import { sendMail } from "../utils/sendEmail";
+import { sendMailUsingSendGrid } from "../utils/sendEmail";
 import { getReferCode } from '../utils'
 import dotenv from "dotenv";
 
@@ -16,8 +15,8 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
         message: "Email is required",
       });
     }
-
-    const res2 = await sendMail({
+    
+    const res2 = await sendMailUsingSendGrid({
       to: email,
       from: process.env.WAITLIST_SENDER,
       subject: "Thank you for joining the waitlist for Artfi NFT offerings!",
@@ -26,8 +25,8 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
         referCode,
       },
     });
-    res.status(200).json({ message: "Mail Sent", res: res2 });
+    return res.status(200).json({ message: "Mail Sent", res: res2 });
   } catch (error) {
-    res.status(500).json({ message: "Internal Server Error", error });
+    return res.status(500).json({ message: "Internal Server Error", error });
   }
 });

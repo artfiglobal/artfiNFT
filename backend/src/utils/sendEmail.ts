@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
 import ejs from "ejs";
+import sgMail from "@sendgrid/mail";
 import { htmlToText } from "html-to-text";
 import dotenv from "dotenv";
 import path from "path";
@@ -15,56 +15,37 @@ const apiKey = client.authentications["api-key"];
 apiKey.apiKey = process.env.SENDINBLUE_EMAIL_API_KEY;
 
 if (!fs.existsSync(temp_dir)) fs.mkdirSync(temp_dir);
-// const smtp = nodemailer.createTransport({
-//   host: settings?.smtp?.host,
-//   port: settings?.smtp?.port,
-//   secure: process.env.NODE_ENV !== "development",
-//   auth: {
-//     user: settings?.smtp?.username,
-//     pass: settings?.smtp?.password,
-//   },
-// });
-var smtp = nodemailer.createTransport({
-  port: "587", //25, 587 for unencrypted/TLS connections, 465 for SSL connections
-  secure: false,
-  host: process.env.SMTP_HOST,
-  auth: {
-    user: process.env.SENDGRID_EMAIL_AUTH_USERNAME, //Given By SendGrid
-    pass: process.env.SENDGRID_EMAIL_AUTH_PASSWORD,
-  },
-});
+
+const authPasswd = process.env.SENDGRID_EMAIL_AUTH_PASSWORD || "";
+sgMail.setApiKey(authPasswd);
 
 export const sendMailUsingSendGrid = async ({
   template: templateName,
   templateVars,
   ...restOfOptions
 }) => {
-  console.log(templateName);
-  // const templatePath = "/templates/template.html";
   const templatePath = path.join(
     process.cwd(),
     "templates/" + templateName + ".html"
   );
-  // const templatePath = "app/src/utils/templates/" + templateName + ".html";
-
+  
   const options = {
     ...restOfOptions,
   };
-  console.log(templatePath);
   const source = fs.readFileSync(templatePath, "utf-8").toString();
-  console.log("THis is string", source);
-  if (templateName) {
-    const html = await ejs.renderFile(templatePath, templateVars);
-    const text = htmlToText(source);
-    // const htmlWithStylesInlined = juice(html);
-    options.html = html;
-    options.text = text;
-  }
+  
+  const html = await ejs.renderFile(templatePath, templateVars);
+  const text = htmlToText(source);
 
-  console.log("Sending mail....");
-  const res = await smtp.sendMail(options);
-  console.log(res);
-  return res;
+  const msg = {
+    to: options.to,
+    from: options.from,
+    subject: options.subject,
+    text: text,
+    html: html
+  };
+
+  return await sgMail.send(msg);
 };
 
 export const sendMail = async ({
