@@ -1,12 +1,9 @@
 import mongoose from 'mongoose'
 
-const connectDB = async (databaseURL) => {
+const connectDB = async (databaseURL: string) => {
   try {
-    const DB_OPTIONS = {
-      dbName:'ArtiFi'
-    }
-      const conn = await mongoose.connect(databaseURL , DB_OPTIONS)
-      console.log(`MongoDB Connected: ${conn.connection.host}`)
+    const conn = await mongoose.connect(databaseURL)
+    console.log(`MongoDB Connected: ${conn.connection.host}`)
   } catch (error) {
     console.log(error)
     process.exit(1)

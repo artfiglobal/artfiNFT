@@ -1,11 +1,7 @@
 import express from "express";
-
 import cors from "cors";
-
-import fs from "fs";
-import path from "path";
 import http from "http";
-import https from "https";
+
 import nftRoutes from "./routes/nftRoutes";
 import waitlistRoutes from './routes/waitlistRoute';
 import whitelistRoutes from "./routes/whitelistRoutes";
@@ -13,11 +9,11 @@ import whitelistRoutes from "./routes/whitelistRoutes";
 import connectDB from "./config/db";
 
 const port = process.env.PORT || 8000;
-const databaseURL = process.env.MONGO_URI;
+const databaseURL = process.env.MONGO_URI || "";
 
-// connectDB(databaseURL).then((res) => {
-//   console.log(res);
-// });
+connectDB(databaseURL).then((res) => {
+  console.log(res);
+});
 
 const app = express();
 app.use(express.static(__dirname + "/static", { dotfiles: "allow" }));
@@ -48,11 +44,4 @@ app.use((req, res, next) => {
   });
 });
 
-const httpServer = http.createServer(app);
-// const httpsServer = https.createServer(credentials, app);
-
-httpServer.listen(8080);
-// httpsServer.listen(8443, () => {
-//   console.log("SSL PORT on 8443")
-// });
-
+http.createServer(app).listen(8080);
