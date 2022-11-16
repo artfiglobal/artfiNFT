@@ -87,10 +87,20 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
                 {
                   addToWaitlist(email, checked, referralCode).then((res) => {
                       // toast.success("Sucessfully Added to Waitlist");
+                      console.log(res.message)
+                      if(res.message == "You email was already registed")
+                      {
+                        setSendEmail({
+                          open:true,
+                          messege:"You are already Waitlisted!"
+                        })
+                      }
+                      else{
                       setSendEmail({
                         open:true,
                         messege:"Thank you for joining our Waitlist!"
                       })
+                    }
                       setEmail("");
                      
                       setIsLoading(false);
