@@ -17,5 +17,5 @@ const waitlistSchema = new mongoose.Schema({
     }
 });
 
-const waitlistModel = mongoose.model('artist' , waitlistSchema)
+const waitlistModel = mongoose.model('waitlist' , waitlistSchema)
 export default waitlistModel

@@ -16,10 +16,9 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
       });
     }
 
-    const existingEmail = await waitlistModel.findOne({ email: email })
-
+    const existingEmail = await waitlistModel.findOne({ email })
     if(existingEmail && existingEmail.email != "") {
-      res.status(400).json({ message: "You email was already registed"});
+      res.status(500).json({ message: "You email was already registed"});
     }
 
     const referCode = referral && referral.length > 0 ? referral : getReferCode();
