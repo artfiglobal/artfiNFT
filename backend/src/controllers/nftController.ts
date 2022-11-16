@@ -73,7 +73,7 @@ export const mintNFT = asyncHandler(async (req, res) => {
 
   const contractABI = new ethers.utils.Interface(abi);
   const transaction = {
-    to: req.body.minter,
+    to: process.env.CONTRACT_ADDRESS,
     nonce: nonce,
     gas: 30000,
     gasPrice: ethers.utils.hexlify(gasPrice),
