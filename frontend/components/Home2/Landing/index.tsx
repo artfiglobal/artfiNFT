@@ -13,7 +13,7 @@ import { Tabs, Accordion, Modal } from "@mantine/core";
 import { FiHeart } from "react-icons/fi";
 import { FormDataInterface } from "../../../types";
 import style from "./Landing.module.scss";
-// import { ethers } from "ethers";
+import { ethers } from "ethers";
 import axios from "axios"
 
 type LandingProps = {
@@ -29,6 +29,7 @@ import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { Avatar, ButtonBase, Divider } from "@mui/material";
 import Link from "next/link";
+import { AuthProvider } from '@arcana/auth'
 
 export const Landing = ({ likes }: LandingProps): JSX.Element => {
   likes = 10;
@@ -100,6 +101,27 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
   //     getData();
   //   }
   // }, [web3Data]);
+
+  const connectArcana = async () => {
+    const auth = new AuthProvider(`D3681ee2cE02bE847c0227d2a85867a2Dd4C604D`);
+    
+    try {
+      await auth.init({
+        //appMode can be 0, 1, or 2 depending upon the wallet UI mode that needs to be configured
+        // no ui, widget, full UI modes.
+        appMode: 1,
+        position: "right",
+      });
+  
+      // const arcanaProvider = await auth.loginWithSocial('google')
+      // const provider = new ethers.providers.Web3Provider(arcanaProvider)
+  
+      // const blockNumber = await provider.getBlockNumber()
+      // console.log(blockNumber);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <Container>
@@ -356,6 +378,20 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                   </div>
                   <label>or</label>
                   <Image src="/Icons/arcana.svg" width="223px" height="68px"/>
+                  <Button
+                      variant="primary"
+                      style={{
+                        background:"white",
+                        color:"black",
+                        border:"1px solid #1E1E1E",
+                        boxShadow:"0"
+                      }}
+                      onClick={async () => {
+                        await connectArcana();
+                      }}
+                    >
+                      Connect Arcana
+                  </Button>
                 </div>
               )}
             </Tabs.Panel>
