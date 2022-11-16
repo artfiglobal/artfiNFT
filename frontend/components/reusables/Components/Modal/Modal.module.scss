@@ -122,3 +122,67 @@
     }
   }
 }
+.models {
+  z-index: 1000000;
+  
+  div {
+    div {
+      border-radius: 20px;
+      box-shadow: none;
+      text-align: center;
+      margin: 40px;
+      @media screen and (max-width: 651px) {
+        // width: 80%;
+        padding: 0;
+       
+      }
+      h1 {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 150%;
+         padding: 0 50px;
+         margin-top: 34px;
+
+        // width: 314px;
+        /* or 48px */
+
+
+        text-align: center;
+
+        color: #000000;
+        @media screen and (max-width: 651px) {
+          font-size: 26px;
+          padding: 0;
+          padding-top: 20px;
+        }
+        @media screen and (max-width: 400px) {
+          // width: 80%;
+          margin: 0;
+          font-size: 17px;
+        }
+      }
+      button{
+        border: 1px solid #000000;
+        margin-top: 40px;
+border-radius: 16.5953px;
+width: 223px;
+height: 70px;
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20.7442px;
+line-height: 26px;
+cursor: pointer;
+color: #000000;
+background-color: white;
+@media screen and (max-width: 651px) {
+  width: 80%;
+  font-size: 17px;
+}
+      }
+    }
+
+  }
+}
