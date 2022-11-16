@@ -38,7 +38,7 @@ export const sendMailToUser = asyncHandler(async (req, res) => {
     {
         email: email,
         referralCode: referCode,
-        subsciption: subscription,
+        subscription: subscription,
     });
     await createWaitlist.save();
 
