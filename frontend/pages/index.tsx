@@ -17,16 +17,26 @@ import toast, { Toaster } from "react-hot-toast";
 import { Footer, Head, Navigation } from "../components/reusables/Components";
 import Modal from "../components/reusables/Components/Modal";
 import styles from "../styles/Home.module.scss";
-import { Featured } from "../components/Home/Featured/Index";
+import Featured from "../components/Home/Featured/Index";
+import { fetchFeaturedInDate } from "../lib/apis/featuredInData";
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+  const data = await fetchFeaturedInDate();
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+const Home: NextPage = (props: any) => {
   //isopen state
+  console.log(props.data);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
- 
-
     <div className={styles.container}>
-        <Head title="Artfi" />
+      <Head title="Artfi" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -36,14 +46,17 @@ const Home: NextPage = () => {
         <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
       )}
       <Navigation />
-      
+
       <main className={styles.main}>
-        <div><Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} /></div>
+        <div>
+          <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+        </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
-        <Featured isWhite={false} />
+
+        <Featured featuredData={props.data} isWhite={false} />
       </main>
       <Toaster />
-      <Footer display="none"/>
+      <Footer display="none" />
     </div>
   );
 };
