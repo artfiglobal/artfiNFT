@@ -60,7 +60,7 @@ const projects = () => {
           <img src="/images/reusables/polygonBlack.png" alt="Polygon logo" />
         </div>
         <ul>
-          <li>Arti is proud to be built on Polygon.</li>
+          <li>Artfi is proud to be built on Polygon.</li>
           <li>
             Polygon is the premiere Layer 2 scaling solution for the Ethereum
             blockchain, and is known for its speed, security, and convenience.
