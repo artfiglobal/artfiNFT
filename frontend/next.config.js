@@ -5,9 +5,9 @@ const nextConfig = {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   },
   swcMinify: true,
-    eslint: {
-      ignoreDuringBuilds: true,
-    }
-  }
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

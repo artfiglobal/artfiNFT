@@ -56,9 +56,6 @@ a {
 }
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-
-
-
 * {
   box-sizing: border-box;
 }
@@ -104,12 +101,11 @@ a {
     // border: 3px solid rgba(190, 190, 190, 1) !important;
     // border-radius: 10px;
   }
-  @media screen and (max-width: 980px)
-  {
+  @media screen and (max-width: 980px) {
     border-radius: 10px;
     width: 76px !important;
     height: 66px;
-    margin-right: 9px!important;
+    margin-right: 9px !important;
   }
 
   @media screen and (max-width: 480px) {
@@ -273,4 +269,12 @@ a {
     color: #4527b3;
     font-weight: 700;
   }
+}
+.react-transform-wrapper {
+  height: 100% !important;
+  width: 100% !important;
+}
+.transform-component-module_wrapper__1_Fgj {
+  // width: 90% !important;
+  box-sizing: border-box !important;
 }

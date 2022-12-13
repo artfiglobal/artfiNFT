@@ -1,60 +1,70 @@
-import React from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import { FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 import styles from "../../../styles/Team.module.scss";
 
 type CardProps = {
-  name: string;
-  src: string;
-  title: string;
-  designation: string;
+  fullName: string;
+  photo: string;
+  position: string;
+  bio: string;
   content: string;
-  linkedIn?: string;
-  twitter?: string;
-  instagram?: string;
+  linkedinUrl?: string;
+  twitterUrl?: string;
+  instagramUrl?: string;
+  type?: string;
 };
 
 const Card = ({
-  name,
-  src,
-  title,
-  designation,
-  content,
-  linkedIn,
-  twitter,
-  instagram,
+  bio,
+  fullName,
+  instagramUrl,
+  linkedinUrl,
+  photo,
+  position,
+  twitterUrl,
+  type,
 }: CardProps) => {
   return (
     <div>
       <div className={styles.flipCard}>
         <div className={styles.flipCard_inner}>
-         <div className={name?styles.flipCard_front:styles.flipCard_front_after }  >
-            <img src={src} alt="" />
+          <div
+            className={
+              fullName ? styles.flipCard_front : styles.flipCard_front_after
+            }
+          >
+            <img
+              src={`${process.env.React_App_Base_Url}/${photo}`}
+              alt=""
+              width={100}
+            />
             <div className={styles.cardFrontContent}>
-              <p>{name}</p>
-              <p className={styles.designation}>{designation}</p>
+              <p>{fullName}</p>
+              <p className={styles.designation}>{position}</p>
             </div>
           </div>
           <div className={styles.flipCard_back}>
-            <div className={styles.name}>{name}</div>
-            <div className={styles.cardtitle}>{title}</div>
-            <label>{content}</label>
+            <div className={styles.name}>{fullName}</div>
+            <div className={styles.cardtitle}>{position}</div>
+            <label>{bio}</label>
             <div className={styles.social}>
-              {twitter && (
-                <a href={twitter}>
+              {twitterUrl && (
+                <a href={twitterUrl}>
                   <div>
                     <FaTwitter />
                   </div>
                 </a>
               )}
-              {linkedIn && (
-                <a href={linkedIn}>
+              {linkedinUrl && (
+                <a href={linkedinUrl}>
                   <div>
                     <FaLinkedinIn />
                   </div>
                 </a>
               )}
-              {instagram && (
-                <a href={instagram}>
+              {instagramUrl && (
+                <a href={instagramUrl}>
                   <div>
                     <FaInstagram />
                   </div>

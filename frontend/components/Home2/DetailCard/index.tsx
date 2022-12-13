@@ -16,6 +16,7 @@ export const DetailCard = ({
 }: DetailCardProps): JSX.Element => {
   return (
     <div className={style.card}>
+      {/* <div style={{ width: "60px", height: "60px" }}> */}
       <Image
         src={`/Icons/${url}.svg`}
         alt=""
@@ -23,6 +24,7 @@ export const DetailCard = ({
         height="60px"
         className={style.cardImage}
       />
+      {/* </div> */}
       <div className={style.cardContent}>
         <Typography
           variant="subheading"
@@ -31,9 +33,7 @@ export const DetailCard = ({
         >
           {title}
         </Typography>
-        <p>
-          {content}
-        </p>
+        <p>{content}</p>
       </div>
     </div>
   );

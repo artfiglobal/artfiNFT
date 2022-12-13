@@ -16,7 +16,8 @@
   }
 }
 
-.subheading {
+.subheading,
+.newHeading {
   font-family: "Plus Jakarta Sans";
   font-style: normal;
   font-weight: 500;
@@ -35,7 +36,11 @@
     font-size: 11px;
   }
 }
-
+.newHeading {
+  font-size: 24px;
+  color: white !important;
+  font-weight: 600 !important;
+}
 .body {
   font-family: "Plus Jakarta Sans";
   font-style: normal;
@@ -53,7 +58,39 @@
     font-size: 10px;
   }
 }
-
+.smallest,
+.small {
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  line-height: 19.5px;
+  text-align: left;
+  font-weight: 500;
+  font-style: normal;
+  margin: 30px auto;
+  display: block;
+  width: fit-content;
+}
+.small {
+  margin: 0;
+}
+.light,
+.bold {
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  line-height: 19.5px;
+  font-weight: 400;
+  font-style: normal;
+  display: block;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  width: fit-content;
+}
+.bold {
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 4px;
+  line-height: 26px;
+}
 .white {
   color: #ffffff;
 }
@@ -68,4 +105,7 @@
 
 .grey {
   color: #85858c;
+}
+.lightGray {
+  color: rgba(255, 255, 255, 0.7);
 }

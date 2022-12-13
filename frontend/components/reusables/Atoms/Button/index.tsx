@@ -6,6 +6,7 @@ const variantsMapping = {
   md: style.md,
   lg: style.lg,
   xl: style.xl,
+  connect: style.connect,
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
