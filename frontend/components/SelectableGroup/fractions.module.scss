@@ -10,7 +10,43 @@
   flex-wrap: wrap;
   // padding: 20px;
 }
-
+.popUpMenu {
+  padding: 7px;
+  background-color: #ffffff99;
+  width: fit-content;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  .popUpInnerContainer {
+    background-color: white;
+    padding: 16px;
+    border-radius: 10px;
+    height: 119px;
+    width: 223px;
+  }
+  .menuImage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: 35px;
+      height: 35px;
+      margin-right: 12px;
+      background-color: red;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .menuDetails {
+    display: flex;
+    margin-top: 16px;
+    gap: 30px;
+    h3 {
+      margin: 0;
+    }
+  }
+}
 .box {
   margin: 1px;
   border-radius: 0;

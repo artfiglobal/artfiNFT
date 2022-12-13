@@ -85,6 +85,13 @@
   color: rgba(255, 255, 255, 0.7);
   width: fit-content;
 }
+.popUp {
+  font-family: "Plus Jakarta Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
 .bold {
   font-weight: 600;
   margin: 0;
@@ -98,7 +105,9 @@
 .purple {
   color: #4527b3;
 }
-
+.mauve {
+  color: #6231c8;
+}
 .black {
   color: #000000;
 }

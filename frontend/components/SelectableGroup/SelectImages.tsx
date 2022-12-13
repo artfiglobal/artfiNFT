@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { SelectableGroup } from "react-selectable-fast";
 import ImageFraction from "./Image";
 import style from "./fractions.module.scss";
+import Image from "next/image";
+import { Typography } from "../reusables2/Atoms/Typography/index";
 // import style from "./Landing.module.scss";
 
 export default function SelectFractionNFTs() {
-  const [boxCount, setBoxCount] = useState<string | number>(10001);
+  const [boxCount, setBoxCount] = useState<string | number>(1001);
   const [isShown, setIsShown] = useState(false);
   const [singleImage, setSingleImage] = useState();
 
@@ -71,16 +73,27 @@ export default function SelectFractionNFTs() {
         </SelectableGroup>
       </div>
       {isShown && (
-        <div
-          style={{
-            width: "100px",
-            height: "100px",
-            backgroundColor: "red",
-            padding: "10px",
-            position: "relative",
-          }}
-        >
-          <h1>{singleImage}</h1>
+        <div className={style.popUpMenu}>
+          <div className={style.popUpInnerContainer}>
+            <div className={style.menuImage}>
+              <img src="" alt="" />
+              <Typography variant="popUp" color="mauve">
+                Available
+              </Typography>
+            </div>
+            <div className={style.menuDetails}>
+              <div>
+                <small>FRACTION</small>
+                <br />
+                <h3>#5/1000</h3>
+              </div>
+              <div>
+                <small>COORDINATES</small>
+                <br />
+                <h3>AF 22</h3>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
