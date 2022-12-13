@@ -5,10 +5,19 @@ const variantsMapping = {
   primaryNav: style.primaryNav,
   primary: style.primary,
   secondary: style.secondary,
+  connect: style.connect,
+  clear: style.clear,
+  fractionBTN: style.fractionBTN,
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "primaryNav" | "primary" | "secondary";
+  variant:
+    | "primaryNav"
+    | "primary"
+    | "secondary"
+    | "connect"
+    | "clear"
+    | "fractionBTN";
   children: any;
   // onClick?: () => void;
   extraClass?: string;

@@ -62,7 +62,41 @@
     border-radius: 10px;
   }
 }
-
+.connect {
+  font-weight: 600;
+  padding: 16px 0;
+  font-family: "Plus Jakarta Sans";
+  width: 100%;
+  font-style: normal;
+  position: relative;
+  line-height: 20px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  outline: none;
+}
+.clear,
+.fractionBTN {
+  color: black;
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  border: 1px solid #000000;
+  font-weight: 600;
+  padding: 11px 16px;
+  border-radius: 20px;
+  font-style: normal;
+  background-color: transparent;
+  line-height: 17.64px;
+}
+.fractionBTN {
+  font-size: 12px;
+  padding: 7px 16px;
+  border: 1px solid #efefef;
+  border-radius: 15px;
+  line-height: 15px;
+}
 .secondary {
   display: inline-flex;
   flex-direction: row;
@@ -107,3 +141,6 @@
     }
   }
 }
+// .create-wallet {
+//   border: 1px solid white !important ;
+// }

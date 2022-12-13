@@ -1,29 +1,28 @@
 .card {
-  width: 48%;
+  width: 100%;
+  // width: 281px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-bottom: 56px;
+  gap: 16px;
+  margin-bottom: 40px;
   @media screen and (max-width: 980px) {
     gap: 12px;
     margin-bottom: 24px;
-  width: 100%;
-
+    width: 100%;
   }
 
   @media screen and (max-width: 480px) {
     gap: 12px;
     margin-bottom: 24px;
-  width: 100%;
-
+    width: 100%;
   }
-
+  img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+  }
   .cardImage {
-    width: 50px;
-    height: 50px;
-
     @media screen and (max-width: 1366px) {
-      // width: 52px;
     }
 
     @media screen and (max-width: 768px) {
@@ -38,50 +37,44 @@
   .cardContent {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 
     @media screen and (max-width: 480px) {
       gap: 2px;
     }
 
     .cardTitle {
-      font-family: 'Plus Jakarta Sans';
+      font-family: "Plus Jakarta Sans";
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       line-height: 18px;
-      /* identical to box height */
       padding: 0;
       margin: 0;
-     
       letter-spacing: 0.16em;
-      color: #85858C;
+      color: #85858c;
       text-transform: uppercase;
 
       @media screen and (max-width: 1366px) {
-      //   font-size: 18px;
       }
 
       @media screen and (max-width: 768px) {
-        // font-size: 16px;
       }
 
       @media screen and (max-width: 480px) {
-        // font-size: 12px;
-        // letter-spacing: 0.1em;
       }
     }
-    p{
-      font-family: 'Plus Jakarta Sans';
+    p {
+      font-family: "Plus Jakarta Sans";
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 20px;
+      width: 200px;
       padding: 0;
       margin: 0;
-      
+
       color: #000000;
-      
     }
   }
 }

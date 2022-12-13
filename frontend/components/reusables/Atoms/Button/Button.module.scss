@@ -16,7 +16,8 @@
   color: #ffffff;
 }
 
-.md {
+.md,
+.connect {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -35,7 +36,10 @@
 
   color: #ffffff;
 }
-
+.connect {
+  height: 40px;
+  padding: 10px 16.5px;
+}
 .lg {
   display: inline-flex;
   flex-direction: row;
