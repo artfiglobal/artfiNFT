@@ -8,54 +8,66 @@
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   // padding: 20px;
 }
-.popUpMenu {
-  padding: 7px;
-  background-color: #ffffff99;
-  width: fit-content;
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  .popUpInnerContainer {
-    background-color: white;
-    padding: 16px;
-    border-radius: 10px;
-    height: 119px;
-    width: 223px;
-  }
-  .menuImage {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    img {
-      width: 35px;
-      height: 35px;
-      margin-right: 12px;
-      background-color: red;
-    }
-    p {
-      margin: 0;
-    }
-  }
-  .menuDetails {
-    display: flex;
-    margin-top: 16px;
-    gap: 30px;
-    h3 {
-      margin: 0;
-    }
-  }
-}
+// .popUpMenu {
+//   padding: 7px;
+//   background-color: #ffffff99;
+//   width: fit-content;
+//   border-radius: 10px;
+//   position: fixed;
+//   top: 0;
+//   // position: relative;
+//   // top: 0;
+//   .popUpInnerContainer {
+//     background-color: white;
+//     padding: 16px;
+//     border-radius: 10px;
+//     height: 119px;
+//     width: 223px;
+//   }
+//   .menuImage {
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     img {
+//       width: 35px;
+//       height: 35px;
+//       margin-right: 12px;
+//       background-color: red;
+//     }
+//     p {
+//       margin: 0;
+//     }
+//   }
+//   .menuDetails {
+//     display: flex;
+//     margin-top: 16px;
+//     gap: 30px;
+//     small {
+//       font-weight: 400px;
+//       font-family: "Plus Jakarta Sans";
+//       font-size: 12px;
+//       line-height: 15px;
+//     }
+
+//     h3 {
+//       margin: 0;
+//     }
+//   }
+// }
 .box {
   margin: 1px;
   border-radius: 0;
   width: 20px;
   height: 20px;
+  position: relative;
   transition: background 100ms ease;
   &:hover {
-    transform: scale(1.2);
-    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+    z-index: 9;
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 0.75rem #00000093);
   }
 }
 

@@ -11,8 +11,8 @@ const variantsMapping = {
   bold: "bold",
   small: "small",
   smallest: "small",
-  popUp: "popUp",
-  popUp2: "popUp2",
+  popup: "popup",
+  popup2: "popup2",
 };
 
 const variantStyleMapping = {
@@ -24,8 +24,8 @@ const variantStyleMapping = {
   light: style.light,
   bold: style.bold,
   small: style.small,
-  popUp: style.popUp,
-  popUp2: style.popUp2,
+  popup: style.popup,
+  popup2: style.popup2,
 };
 
 const colorStyleMapping = {
@@ -47,7 +47,8 @@ type TypographyProps = {
     | "light"
     | "small"
     | "bold"
-    | "popUp";
+    | "popup"
+    | "popup2";
   color: "purple" | "white" | "black" | "grey" | "lightGray" | "mauve";
   children: ReactNode;
   className?: string;
