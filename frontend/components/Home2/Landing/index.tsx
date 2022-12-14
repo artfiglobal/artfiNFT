@@ -9,7 +9,7 @@ import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
 import { FormDataInterface } from "../../../types";
-
+import Timer2 from "../Timer2";
 type LandingProps = {
   likes: number;
 };
@@ -22,7 +22,7 @@ import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Avatar, ButtonBase, Divider } from "@mui/material";
+import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
 import Link from "next/link";
 import { AuthProvider } from "@arcana/auth";
 import metamask from "../../../public/metamask.png";
@@ -52,14 +52,42 @@ const useKey = (setPressKey: any) => {
   }, []);
 };
 
-export const Landing = ({ likes }: LandingProps): JSX.Element => {
-  likes = 10;
+type offerWhitelistTypes = {
+  FractionNumber?: number;
+  Title?: string;
+  artistName?: string;
+  authencity?: string;
+  columnNumber?: number;
+  description?: string;
+  factSheet?: string;
+  height?: number;
+  imageOfArtWork?: string;
+  medium?: string;
+  price?: number;
+  provenence?: string;
+  rowNumber?: number;
+  signature?: string;
+  width?: number;
+  year?: number;
+  _id?: string;
+};
+
+export const Landing = ({
+  offerWhitelist,
+  likes,
+  offerUnveiling,
+}: LandingProps | any): JSX.Element => {
+  // console.log(offerWhitelist);
+  // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
   const [activeIcon, setActiveIcon] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [unitValueTotal, setUnitValueTotal] = useState(10000);
   const [pressKey, setPressKey] = useState(true);
+  const [coords, setCoords] = useState([0, 0]);
+  const [isShown, setIsShown] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
@@ -93,7 +121,15 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
   // console.log({ connectWallet });
 
   useKey(setPressKey);
-
+  const handleSelectionClear = (items: any) => {
+    // console.log({ items }, "asdasd");
+    // items?.map((item: any, index: any) => {
+    //   console.log(item);
+    //   // return (item.state.isSelected = false);
+    // });
+    // setSelectedItems([]);
+    // console.log(items);
+  };
   // console.log(pressKey);
   const disconnectWallet = () => {
     setWeb3Data(null);
@@ -127,7 +163,6 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
   //     getData();
   //   }
   // }, [web3Data]);
-
   const connectArcana = async () => {
     const auth = new AuthProvider(`D3681ee2cE02bE847c0227d2a85867a2Dd4C604D`);
 
@@ -148,7 +183,43 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
       console.log(e);
     }
   };
-
+  // console.log(coords, "coords");
+  const ToolTipCard = ({}) => {
+    return (
+      <div
+        style={{
+          top: coords[1] - 150,
+          left: coords[0] < 84 ? coords[0] - 20 : coords[0] - 110,
+        }}
+        className={style.popUpMenu}
+      >
+        <div className={style.popUpInnerContainer}>
+          <div className={style.menuImage}>
+            <img src="" alt="" />
+            <Typography variant="popup" color="mauve">
+              Available
+            </Typography>
+          </div>
+          <div className={style.menuDetails}>
+            <div>
+              <small>FRACTION</small>
+              <br />
+              <Typography variant="popup2" color="black">
+                #5/1000
+              </Typography>
+            </div>
+            <div>
+              <small>COORDINATES</small>
+              <br />
+              <Typography variant="popup2" color="black">
+                AF 22
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <Container>
       <div className={style.landing}>
@@ -174,7 +245,8 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
           <div className={style.likes}>
             <button className={style.timer}>
               <img src="Publiced/time.svg" />
-              <label>12h:43m:10s</label>
+              <Timer2 endDate={offerUnveiling.endDate} />
+              {/* <label>12h:43m:10s</label> */}
             </button>
 
             <div className={style.shareandlike}>
@@ -193,14 +265,25 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
             </div>
           </div>
           <div className={style.contentHeader}>
-            <h2>Floral Artwork</h2>
+            <h2>{offerWhitelist.Title}</h2>
           </div>
-          <ArtInfo artist="vs gaitonde" price={1500} sheetName="factsheet" />
+          <ArtInfo
+            artist={offerWhitelist.artistName}
+            price={offerWhitelist.price}
+            sheetName={offerWhitelist.factSheet}
+          />
         </div>
         <div className={style.fractionImage}>
+          {isShown && <ToolTipCard />}
           <TransformWrapper panning={{ disabled: pressKey }}>
             <TransformComponent>
-              <SelectFractionNFTs />
+              <SelectFractionNFTs
+                isShown={isShown}
+                setSelectedItems={setSelectedItems}
+                setIsShown={setIsShown}
+                setCoords={setCoords}
+                handleSelectionClear={handleSelectionClear}
+              />
             </TransformComponent>
           </TransformWrapper>
         </div>
@@ -222,10 +305,15 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                 Upto 50
               </Typography>
             </div>
-            <Button variant="clear">Clear</Button>
+            <Button onClick={handleSelectionClear} variant="clear">
+              Clear
+            </Button>
           </div>
           <div className={style.NFTsFractions}>
-            {Array(10)
+            {selectedItems.map((item, index) => {
+              return <Button variant="fractionBTN">#{index}</Button>;
+            })}
+            {/* {Array(10)
               .fill(" ")
               .map((item, index) => {
                 return (
@@ -233,7 +321,7 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                   // </div>
                   <Button variant="fractionBTN">#05</Button>
                 );
-              })}
+              })} */}
           </div>
         </div>
         <div className={style.landingBottom}>
@@ -280,39 +368,40 @@ export const Landing = ({ likes }: LandingProps): JSX.Element => {
                 <div className={style.tabContent}>
                   <div className={style.contentInfo}>
                     <h6>Description</h6>
-                    <p>
-                      Love is in the Air is a quintessential Banksy painting:
-                      instantly recognizable, the image has become synonymous
-                      with the artist&apos;s indelible graphic style, wry humor
-                      and galvanizing political commentary.
-                    </p>
+                    <p>{offerWhitelist.description}</p>
                   </div>
                   <div className={style.contentCards}>
                     <DetailCard
                       url="osw"
                       title="Original Size"
-                      content="78 x 78 inch"
+                      content={
+                        offerWhitelist.width + " x " + offerWhitelist.height
+                      }
                     />
                     <DetailCard
                       url="siw"
                       title="signature"
-                      content="Signed on the ownership."
+                      content={offerWhitelist.signature}
                     />
-                    <DetailCard url="yew" title="year" content="2021" />
+                    <DetailCard
+                      url="yew"
+                      title="year"
+                      content={offerWhitelist.year}
+                    />
                     <DetailCard
                       url="mew"
                       title="medium"
-                      content="Acrylic on canvas."
+                      content={offerWhitelist.medium}
                     />
                     <DetailCard
                       url="low"
                       title="authenticity"
-                      content="Love is in the Air is accompanied by a..."
+                      content={offerWhitelist.provenence}
                     />
                     <DetailCard
                       url="perserve"
                       title="PROVENENCE"
-                      content="From the collection of Shahrukh Khan."
+                      content={offerWhitelist.authencity}
                     />
                     {/* <DetailCard url="rew" title="Remaining " content="9999" /> */}
                   </div>

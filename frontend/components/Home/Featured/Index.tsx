@@ -1,21 +1,21 @@
 import { Card } from "@mantine/core";
 import type { NextPage } from "next";
 import Image from "next/image";
-import { fetchFeaturedInDate } from "../../../lib/apis/featuredInData";
 import styles from "./fetures.module.scss";
+import GetStaticProps from "./types";
 
-interface Props {
-  featuredData: {
-    medialogo: string;
-    mediaurl: string;
-    IsActive: boolean;
-    createdAt: string;
-    mediatitle: string;
-    _id: string;
-    __v: number;
-  }[];
-  isWhite: boolean;
-}
+// interface Props {
+//   featuredData: {
+//     medialogo: string;
+//     mediaurl: string;
+//     IsActive: boolean;
+//     createdAt: string;
+//     mediatitle: string;
+//     _id: string;
+//     __v: number;
+//   }[];
+//   isWhite: boolean;
+// }
 // const images = [
 //   {
 //     src: "/Publiced/CNBC.svg",
@@ -125,17 +125,16 @@ interface Props {
 //     link: "https://www.nftgators.com/sheikha-hend-al-qassemi-jumps-on-the-nft-train-with-web3-art-startup-artfi/",
 //   },
 // ];
-
-const Featured: React.FC<Props> = ({ featuredData }) => {
-  // const {data} = featuredData ;
-  console.log(featuredData, "featured in ");
+const Featured: React.FC<GetStaticProps> = ({ data }) => {
+  // const { data } = featuredData;
+  // console.log(featuredData, "featured in ");
   return (
     <div className={styles.container}>
       <h1 className={styles.styleText}>Featured In</h1>
 
       <div className={styles.innerContainer}>
-        {featuredData.length > 0 &&
-          featuredData.map((item: any, index: any) => {
+        {data?.length > 0 &&
+          data?.map((item: any, index: any) => {
             return (
               <div key={index} className={styles.eachImg}>
                 <a href={item.mediaurl} target="_blank" className={styles.card}>

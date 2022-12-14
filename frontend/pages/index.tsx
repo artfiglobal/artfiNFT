@@ -19,6 +19,7 @@ import Modal from "../components/reusables/Components/Modal";
 import styles from "../styles/Home.module.scss";
 import Featured from "../components/Home/Featured/Index";
 import { fetchFeaturedInDate } from "../lib/apis/featuredInData";
+import GetStaticProps from "../components/Home/Featured/types";
 
 export async function getStaticProps() {
   const data = await fetchFeaturedInDate();
@@ -29,7 +30,7 @@ export async function getStaticProps() {
   };
 }
 
-const Home: NextPage = (props: any) => {
+const Home: NextPage<GetStaticProps> = (props) => {
   //isopen state
   console.log(props.data);
 
@@ -53,7 +54,7 @@ const Home: NextPage = (props: any) => {
         </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
 
-        <Featured featuredData={props.data} isWhite={false} />
+        <Featured data={props.data} isWhite={false} />
       </main>
       <Toaster />
       <Footer display="none" />

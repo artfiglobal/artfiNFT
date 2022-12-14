@@ -4,8 +4,10 @@
   margin-top: 62px;
   align-items: flex-start;
   width: 100%;
+  position: relative;
   flex-direction: column;
   // overflow-x: hidden;
+  overflow: visible !important;
   //  padding: 16px;
   // gap: 80px;
   height: auto;
@@ -33,7 +35,53 @@
     padding: 15vh 0 40px;
     gap: 12px;
   }
+  .popUpMenu {
+    padding: 7px;
+    background-color: #ffffff99;
+    width: fit-content;
+    float: inline-start;
+    border-radius: 10px;
+    z-index: 9999999999 !important;
+    position: absolute !important;
+    // position: relative;
+    // top: 0;
+    .popUpInnerContainer {
+      background-color: white;
+      padding: 16px;
+      border-radius: 10px;
+      height: 119px;
+      width: 223px;
+    }
+    .menuImage {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      img {
+        width: 35px;
+        height: 35px;
+        margin-right: 12px;
+        background-color: red;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .menuDetails {
+      display: flex;
+      margin-top: 16px;
+      gap: 30px;
+      small {
+        font-weight: 400px;
+        font-family: "Plus Jakarta Sans";
+        font-size: 12px;
+        line-height: 15px;
+      }
 
+      h3 {
+        margin: 0;
+      }
+    }
+  }
   // transform-component-module_wrapper__1_Fgj
   .fractionImage {
     margin: 0 auto;
@@ -46,6 +94,9 @@
     background-color: #f5f5f5;
     height: 600px;
     margin-top: 60px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
   }
   .selectNFTs {
     border: 1px solid #d2d2d2;

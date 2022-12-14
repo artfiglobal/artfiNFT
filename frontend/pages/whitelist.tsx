@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Landing } from "../components/Home2";
 import { Container, Button } from "../components/reusables2/Atoms";
 import { Footer } from "../components/reusables/Components/Footer2";
@@ -7,8 +7,42 @@ import styles from "../styles/Home.module.scss";
 // import { Container, Typography,  } from "../../reusables2/Atoms";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
+import axios from "axios";
 
 export default function WhitelistLanding() {
+  const [offerWhitelist, setOfferWhitelist] = useState({});
+  const [offerUnveiling, setOfferUnveiling] = useState({});
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallheader`,
+          {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
+              "Content-Type": "application/json",
+              "Content-Length": "<calculated when request is sent>",
+            },
+          }
+        );
+        const data = response.data.data;
+        const defineWhitelist = () => {
+          data.map((item: any, index: number) => {
+            if (item.IsOnGoingOffering) {
+              setOfferWhitelist(item.whitelistDetails);
+              setOfferUnveiling(item.unveilingDetails);
+            }
+          });
+        };
+        defineWhitelist();
+        // console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchOffers();
+  }, []);
+  // console.log(offerWhitelist);
   const [wallet, setWallet] = useState(false);
   const [likes, setLikes] = useState(0);
   const { web3Data, setWeb3Data, connectWallet, walletAddress } =
@@ -43,7 +77,11 @@ export default function WhitelistLanding() {
         </Button>
       </div>
       <main className={styles.main}>
-        <Landing likes={likes} />
+        <Landing
+          offerWhitelist={offerWhitelist}
+          offerUnveiling={offerUnveiling}
+          likes={likes}
+        />
       </main>
       {/* <Footer /> */}
     </div>

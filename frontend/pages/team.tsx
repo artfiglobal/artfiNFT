@@ -74,21 +74,21 @@ export async function getStaticProps() {
 }
 
 interface Props {
-  props: {
-    data: {
-      medialogo: string;
-      mediaurl: string;
-      IsActive: boolean;
-      createdAt: string;
-      mediatitle: string;
-      _id: string;
-      __v: number;
-    }[];
-  };
+  // props: {
+  data: {
+    medialogo: string;
+    mediaurl: string;
+    IsActive: boolean;
+    createdAt: string;
+    mediatitle: string;
+    _id: string;
+    __v: number;
+  }[];
+  // };
   isWhite: boolean;
 }
 
-const Home: NextPage<Props> = ({ props }) => {
+const Home: NextPage<Props> = (props) => {
   // console.log(props);
 
   return (
@@ -108,7 +108,7 @@ const Home: NextPage<Props> = ({ props }) => {
           </Typography>
           <br />
           <div className={styles.cardHolder}>
-            {props.data.length > 0 &&
+            {props?.data?.length > 0 &&
               props.data.map(
                 (card: any, index: any) =>
                   card.type === "coreTeam" && <Card key={index} {...card} />
@@ -119,7 +119,7 @@ const Home: NextPage<Props> = ({ props }) => {
           Our Patrons
         </Typography>
         <div className={styles.cardHolder}>
-          {props.data.map(
+          {props?.data?.map(
             (card: any, index: any) =>
               card.type === "patrons" && <Card key={index} {...card} />
           )}
@@ -128,7 +128,7 @@ const Home: NextPage<Props> = ({ props }) => {
           Our Advisors
         </Typography>
         <div className={styles.cardHolder}>
-          {props.data.map(
+          {props?.data?.map(
             (card: any, index: any) =>
               card.type === "advisors" && <Card key={index} {...card} />
           )}

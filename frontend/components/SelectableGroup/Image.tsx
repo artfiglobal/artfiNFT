@@ -3,6 +3,7 @@ import { createSelectable } from "react-selectable-fast";
 import style from "./fractions.module.scss";
 import Tooltip from "@mui/material/Tooltip";
 import { Instance } from "@popperjs/core";
+import Image from "next/image";
 
 function ImageFraction(props: any) {
   const {
@@ -14,15 +15,16 @@ function ImageFraction(props: any) {
     setIsShown,
     singleImage,
     setSingleImage,
+    item,
   } = props;
 
   /// tooltip instances
-  const positionRef = React.useRef<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
-  const popperRef = React.useRef<Instance>(null);
-  const areaRef = React.useRef<HTMLDivElement>(null);
+  //   const positionRef = React.useRef<{ x: number; y: number }>({
+  //     x: 0,
+  //     y: 0,
+  //   });
+  //   const popperRef = React.useRef<Instance>(null);
+  //   const areaRef = React.useRef<HTMLDivElement>(null);
 
   //   const handleMouseMove = (event: React.MouseEvent) => {
   //     positionRef.current = { x: event.clientX, y: event.clientY };
@@ -33,7 +35,7 @@ function ImageFraction(props: any) {
   //   };
 
   return (
-    <div style={{ position: "relative" }} ref={areaRef}>
+    <div style={{ position: "relative" }}>
       <div
         ref={selectableRef}
         className={style.box}
@@ -48,13 +50,15 @@ function ImageFraction(props: any) {
         style={{
           height: props.height,
           width: props.width,
-          background: isSelected
-            ? "crimson"
+          border: isSelected
+            ? "2px solid red"
             : isSelecting
-            ? "lime"
-            : props.background,
+            ? "2px solid green"
+            : "2px solid black",
         }}
-      ></div>
+      >
+        {/* <Image src={item} alt="" /> */}
+      </div>
     </div>
   );
 }
