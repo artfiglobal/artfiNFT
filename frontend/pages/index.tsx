@@ -54,7 +54,7 @@ const Home: NextPage<GetStaticProps> = (props) => {
         </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
 
-        <Featured data={props.data} isWhite={false} />
+        <Featured data={props.data} />
       </main>
       <Toaster />
       <Footer display="none" />

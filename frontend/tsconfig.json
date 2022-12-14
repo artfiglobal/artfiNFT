@@ -22,7 +22,10 @@
     "***/**/*.ts",
     "***/**/*.tsx",
     "****/***/**/*.ts",
-    "****/***/**/*.tsx"
-, "components/video/Video.jsx", "components/artist/Carousel/Carousel.jsx"  ],
+    "****/***/**/*.tsx",
+    "components/video/Video.jsx",
+    "components/artist/Carousel/Carousel.jsx",
+    "components/SelectableGroup/SelectImages.jsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -127,7 +127,7 @@ import GetStaticProps from "./types";
 // ];
 const Featured: React.FC<GetStaticProps> = ({ data }) => {
   // const { data } = featuredData;
-  // console.log(featuredData, "featured in ");
+  console.log(data, "data");
   return (
     <div className={styles.container}>
       <h1 className={styles.styleText}>Featured In</h1>
@@ -139,7 +139,7 @@ const Featured: React.FC<GetStaticProps> = ({ data }) => {
               <div key={index} className={styles.eachImg}>
                 <a href={item.mediaurl} target="_blank" className={styles.card}>
                   <img
-                    src={`${process.env.React_App_Base_Url}/${item.medialogo}`}
+                    src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${item.medialogo}`}
                     className={styles.img}
                   />
                 </a>

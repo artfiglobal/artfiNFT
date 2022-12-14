@@ -8,5 +8,5 @@ export default interface GetStaticProps {
     _id: string;
     __v: number;
   }[];
-  isWhite: boolean;
+  // isWhite: boolean;
 }
