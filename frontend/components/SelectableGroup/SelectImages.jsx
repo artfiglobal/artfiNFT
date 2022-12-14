@@ -12,8 +12,8 @@ export default function SelectFractionNFTs({
   setCoords,
   setSelectedItems,
   handleSelectionClear,
-}: any) {
-  const [boxCount, setBoxCount] = useState<string | number>(100);
+}) {
+  const [boxCount, setBoxCount] = useState(100);
   //   const [isShown, setIsShown] = useState(false);
   // const [coords, setCoords] = useState([0, 0]);
   const [singleImage, setSingleImage] = useState();
@@ -22,31 +22,31 @@ export default function SelectFractionNFTs({
   const getRandomNumber = (min = 50, max = 200) => {
     return Math.random() * (max - min) + min;
   };
-  const handleSelectedItemUnmount = (items: any) => {
+  const handleSelectedItemUnmount = (items) => {
     // console.log("item unmount");
-    // items?.map((item: any, index: any) => {
+    // items?.map((item, index) => {
     //   // console.log(item);
     //   return (item.state.isSelected = false);
     // });
-    // items?.map((item: any, index: any) => {
+    // items?.map((item, index) => {
     //     item.context.selectable.clearSelection();
     //   });
     // console.log(items);
   };
-  //   const handleSelectionClear = (items: any) => {
-  //     items?.map((item: any, index: any) => {
+  //   const handleSelectionClear = (items) => {
+  //     items?.map((item, index) => {
   //       item.context.selectable.clearSelection();
   //     });
   //     console.log(items);
   //   };
 
-  const handleSelecting = (items: any) => {
+  const handleSelecting = (items) => {
     console.log("selecting:", items);
   };
 
-  const handleSelectionFinish = (items: any) => {
+  const handleSelectionFinish = (items) => {
     // console.log("finish selecting:", items);
-    // items?.map((item: any, index: any) => {
+    // items?.map((item, index) => {
     //     item.context.selectable.clearSelection();
     //   });
     // console.log(items);
@@ -54,7 +54,7 @@ export default function SelectFractionNFTs({
     setSelectedItems(items);
   };
 
-  const handleMouseMove = (event: any) => {
+  const handleMouseMove = (event) => {
     // let bounds = event.target.getBoundingClientRect();
     // let x = event.clientX - bounds.left;
     // let y = event.clientY - bounds.top;
@@ -75,11 +75,10 @@ export default function SelectFractionNFTs({
           enableDeselect
           tolerance={0}
           globalMouse={false}
-          disabled={NoSelectedItems}
           allowClickWithoutSelected={false}
           duringSelection={handleSelecting}
-          onSelectionClear={(items: any) => handleSelectionClear(items)}
-          onSelectionFinish={(items: any) => handleSelectionFinish(items)}
+          onSelectionClear={(items) => handleSelectionClear(items)}
+          onSelectionFinish={(items) => handleSelectionFinish(items)}
           //   onSelectedItemUnmount={handleSelectedItemUnmount}
         >
           {Array(boxCount)

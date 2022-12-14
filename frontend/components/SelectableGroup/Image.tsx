@@ -1,8 +1,6 @@
 import React from "react";
 import { createSelectable } from "react-selectable-fast";
 import style from "./fractions.module.scss";
-import Tooltip from "@mui/material/Tooltip";
-import { Instance } from "@popperjs/core";
 import Image from "next/image";
 
 function ImageFraction(props: any) {

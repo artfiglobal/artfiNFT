@@ -29,6 +29,11 @@ import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
 import RightArrow from "../../../public/Icons/Combined-Shape.svg";
 import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
+import {
+  createSelectable,
+  SelectAll,
+  DeselectAll,
+} from "react-selectable-fast";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
