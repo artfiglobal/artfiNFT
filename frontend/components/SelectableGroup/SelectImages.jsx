@@ -5,7 +5,11 @@ import style from "./fractions.module.scss";
 // import Image from "next/image";
 // import { Typography } from "../reusables2/Atoms/Typography/index";
 // import style from "./Landing.module.scss";
-
+import {
+  createSelectable,
+  SelectAll,
+  DeselectAll,
+} from "react-selectable-fast";
 export default function SelectFractionNFTs({
   isShown,
   setIsShown,
@@ -22,17 +26,7 @@ export default function SelectFractionNFTs({
   const getRandomNumber = (min = 50, max = 200) => {
     return Math.random() * (max - min) + min;
   };
-  const handleSelectedItemUnmount = (items) => {
-    // console.log("item unmount");
-    // items?.map((item, index) => {
-    //   // console.log(item);
-    //   return (item.state.isSelected = false);
-    // });
-    // items?.map((item, index) => {
-    //     item.context.selectable.clearSelection();
-    //   });
-    // console.log(items);
-  };
+  const handleSelectedItemUnmount = (items) => {};
   //   const handleSelectionClear = (items) => {
   //     items?.map((item, index) => {
   //       item.context.selectable.clearSelection();
@@ -41,16 +35,10 @@ export default function SelectFractionNFTs({
   //   };
 
   const handleSelecting = (items) => {
-    console.log("selecting:", items);
+    // console.log("selecting:", items);
   };
 
   const handleSelectionFinish = (items) => {
-    // console.log("finish selecting:", items);
-    // items?.map((item, index) => {
-    //     item.context.selectable.clearSelection();
-    //   });
-    // console.log(items);
-
     setSelectedItems(items);
   };
 
@@ -98,6 +86,9 @@ export default function SelectFractionNFTs({
                 background="coral"
               />
             ))}
+          <DeselectAll>
+            <button>Clear</button>
+          </DeselectAll>
         </SelectableGroup>
       </div>
     </div>

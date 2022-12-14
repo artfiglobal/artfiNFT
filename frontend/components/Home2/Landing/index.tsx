@@ -25,6 +25,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
 import Link from "next/link";
 import { AuthProvider } from "@arcana/auth";
+
 import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
 import RightArrow from "../../../public/Icons/Combined-Shape.svg";
@@ -127,13 +128,11 @@ export const Landing = ({
 
   useKey(setPressKey);
   const handleSelectionClear = (items: any) => {
-    // console.log({ items }, "asdasd");
     // items?.map((item: any, index: any) => {
     //   console.log(item);
     //   // return (item.state.isSelected = false);
     // });
     // setSelectedItems([]);
-    // console.log(items);
   };
   // console.log(pressKey);
   const disconnectWallet = () => {
