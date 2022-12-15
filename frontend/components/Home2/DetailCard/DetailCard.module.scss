@@ -20,6 +20,22 @@
     width: 60px !important;
     height: 60px !important;
     object-fit: cover !important;
+    @media screen and (max-width: 1200px) {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    @media screen and (max-width: 992px) {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    @media screen and (max-width: 768px) {
+      width: 32px !important;
+      height: 32px !important;
+    }
+    @media screen and (max-width: 576px) {
+      // width: 32px !important;
+      // height: 32px !important;
+    }
   }
   .cardImage {
     @media screen and (max-width: 1366px) {

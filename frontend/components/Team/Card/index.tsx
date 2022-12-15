@@ -35,7 +35,7 @@ const Card = ({
             }
           >
             <img
-              src={`${process.env.React_App_Base_Url}/${photo}`}
+              src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${photo}`}
               alt=""
               width={100}
             />

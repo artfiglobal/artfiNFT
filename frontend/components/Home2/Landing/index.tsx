@@ -83,7 +83,17 @@ export const Landing = ({
   likes,
   offerUnveiling,
 }: LandingProps | any): JSX.Element => {
-  // console.log(offerWhitelist);
+  //ref//
+
+  let makeItWork: any = useRef(null);
+  useEffect(() => {
+    makeItWork.currrent;
+  }, []);
+
+  const triggerClearButton = () => {
+    makeItWork.current.context.selectable.clearSelection();
+  };
+
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
@@ -152,7 +162,7 @@ export const Landing = ({
       e.preventDefault();
       // console.log(process.env,"hii")
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/whitelist/`,
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/apiasd/offering/getallheader`,
         formData
       );
       setOpened(true);
@@ -249,7 +259,7 @@ export const Landing = ({
           <div className={style.likes}>
             <button className={style.timer}>
               <img src="Publiced/time.svg" />
-              <Timer2 endDate={offerUnveiling.endDate} />
+              <Timer2 endDate={offerUnveiling?.endDate} />
               {/* <label>12h:43m:10s</label> */}
             </button>
 
@@ -269,20 +279,21 @@ export const Landing = ({
             </div>
           </div>
           <div className={style.contentHeader}>
-            <h2>{offerWhitelist.Title}</h2>
+            <h2>{offerWhitelist?.Title || "FranK"} </h2>
           </div>
           <ArtInfo
-            artist={offerWhitelist.artistName}
-            price={offerWhitelist.price}
-            sheetName={offerWhitelist.factSheet}
+            artist={offerWhitelist?.artistName || "James"}
+            price={offerWhitelist?.price || "300"}
+            sheetName={offerWhitelist?.factSheet}
           />
         </div>
-        <div className={style.fractionImage}>
+        <div className={style?.fractionImage}>
           {isShown && <ToolTipCard />}
           <TransformWrapper panning={{ disabled: pressKey }}>
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
+                makeItWork={makeItWork}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
                 setCoords={setCoords}
@@ -309,7 +320,7 @@ export const Landing = ({
                 Upto 50
               </Typography>
             </div>
-            <Button onClick={handleSelectionClear} variant="clear">
+            <Button onClick={triggerClearButton} variant="clear">
               Clear
             </Button>
           </div>
@@ -349,7 +360,7 @@ export const Landing = ({
                 height="68px"
               />
             </div>
-          </div> */}
+            </div> */}
 
             <div className={style.prf}>
               <Avatar
@@ -372,40 +383,42 @@ export const Landing = ({
                 <div className={style.tabContent}>
                   <div className={style.contentInfo}>
                     <h6>Description</h6>
-                    <p>{offerWhitelist.description}</p>
+                    <p>{offerWhitelist?.description || "description"}</p>
                   </div>
                   <div className={style.contentCards}>
                     <DetailCard
                       url="osw"
                       title="Original Size"
                       content={
-                        offerWhitelist.width + " x " + offerWhitelist.height
+                        offerWhitelist?.width ||
+                        30 + " x " + offerWhitelist?.height ||
+                        30
                       }
                     />
                     <DetailCard
                       url="siw"
                       title="signature"
-                      content={offerWhitelist.signature}
+                      content={offerWhitelist?.signature || "My Signature"}
                     />
                     <DetailCard
                       url="yew"
                       title="year"
-                      content={offerWhitelist.year}
+                      content={offerWhitelist?.year || "2022"}
                     />
                     <DetailCard
                       url="mew"
                       title="medium"
-                      content={offerWhitelist.medium}
+                      content={offerWhitelist?.medium || "Medium"}
                     />
                     <DetailCard
                       url="low"
                       title="authenticity"
-                      content={offerWhitelist.provenence}
+                      content={offerWhitelist?.provenence || "provenence"}
                     />
                     <DetailCard
                       url="perserve"
                       title="PROVENENCE"
-                      content={offerWhitelist.authencity}
+                      content={offerWhitelist?.authencity || "authencity"}
                     />
                     {/* <DetailCard url="rew" title="Remaining " content="9999" /> */}
                   </div>
