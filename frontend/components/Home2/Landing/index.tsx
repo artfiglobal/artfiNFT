@@ -390,9 +390,7 @@ export const Landing = ({
                       url="osw"
                       title="Original Size"
                       content={
-                        offerWhitelist?.width ||
-                        30 + " x " + offerWhitelist?.height ||
-                        30
+                        offerWhitelist?.width + " x " + offerWhitelist?.height
                       }
                     />
                     <DetailCard
@@ -610,6 +608,26 @@ export const Landing = ({
                 Connect your wallet to whitelist
               </Typography>
               <div className={style.contentBtns}>
+                {/* <Button
+                 variant="connect"
+                 style={{
+                   backgroundColor: "white",
+                   color: "#4527B3",
+                   width: "100%",
+                   margin: "40px 0 16px 0 ",
+                   border: "1px solid white",
+                 }}
+                  onClick={async () => {
+                    await connectWallet();
+                    setWallet(true);
+                  }}
+                >
+                  <div style={{ position: "absolute", left: "5px" }}>
+                    <Image src={metamask} alt="" />
+                  </div>
+                  Connect your wallet
+                </Button> */}
+
                 <Button
                   variant="connect"
                   style={{
@@ -619,9 +637,20 @@ export const Landing = ({
                     margin: "40px 0 16px 0 ",
                     border: "1px solid white",
                   }}
+                  // variant="primary"
+                  // style={{
+                  //   width: "190px",
+                  //   fontSize: "16px",
+                  //   padding: "10px 16.5px",
+                  // }}
                   onClick={async () => {
                     await connectWallet();
                     setWallet(true);
+                    // connectWallet().then(() => {
+                    //   getData();
+                    //   setWallet(true);
+                    //   console.log("hello");
+                    // });
                   }}
                 >
                   <div style={{ position: "absolute", left: "5px" }}>

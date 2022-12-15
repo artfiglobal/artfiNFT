@@ -7,11 +7,10 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 
 export const providerOptions = {
-  
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId:"https://matic-mainnet.chainstacklabs.com",
+      infuraId: "https://matic-mainnet.chainstacklabs.com",
     },
   },
 };
