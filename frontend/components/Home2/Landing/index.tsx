@@ -259,7 +259,7 @@ export const Landing = ({
           <div className={style.likes}>
             <button className={style.timer}>
               <img src="Publiced/time.svg" />
-              <Timer2 endDate={offerUnveiling.endDate} />
+              <Timer2 endDate={offerUnveiling?.endDate} />
               {/* <label>12h:43m:10s</label> */}
             </button>
 
