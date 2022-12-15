@@ -8,16 +8,20 @@ import styles from "../styles/Home.module.scss";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import axios from "axios";
+import { formatEther } from "ethers/lib/utils";
 
 export default function WhitelistLanding() {
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
+  const [formattedAddress, setFormattedAddress] = useState("");
 
+  // console.log(formattedAddress, "formattedAddress");
   useEffect(() => {
     const fetchOffers = async () => {
       try {
+        //
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallheader`,
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getwhitelistheaderdetails`,
           {
             headers: {
               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
@@ -27,6 +31,7 @@ export default function WhitelistLanding() {
           }
         );
         const data = response.data.data;
+        // console.log(data);
         const defineWhitelist = () => {
           data.map((item: any, index: number) => {
             if (item.IsOnGoingOffering) {
@@ -36,7 +41,7 @@ export default function WhitelistLanding() {
           });
         };
         defineWhitelist();
-        // console.log(data);
+        // console.log(offerWhitelist);
       } catch (err) {
         console.log(err);
       }
@@ -46,8 +51,27 @@ export default function WhitelistLanding() {
   // console.log(offerWhitelist);
   const [wallet, setWallet] = useState(false);
   const [likes, setLikes] = useState(0);
-  const { web3Data, setWeb3Data, connectWallet, walletAddress } =
-    useContext(Web3Context);
+  const {
+    web3Data,
+    setWeb3Data,
+    connectWallet,
+    walletAddress,
+    disconnectWallet,
+  } = useContext(Web3Context);
+
+  useEffect(() => {
+    if (walletAddress) {
+      const addressFormatter = () => {
+        const address =
+          walletAddress.slice(0, 6) + "..." + walletAddress.slice(37, 42);
+        setFormattedAddress(address);
+      };
+      addressFormatter();
+    }
+  }, [walletAddress]);
+
+  // console.log(formattedAddress);
+  // console.log(walletAddress);
   return (
     <div className={styles.home}>
       <Head title="Artfi" />
@@ -61,21 +85,40 @@ export default function WhitelistLanding() {
           height={30}
           width={75}
         />
-        <Button
-          variant="primary"
-          style={{ width: "190px", fontSize: "16px", padding: "10px 16.5px" }}
-          onClick={async () => {
-            await connectWallet();
-            setWallet(true);
-            // connectWallet().then(() => {
-            //   getData();
-            //   setWallet(true);
-            //   console.log("hello");
-            // });
-          }}
-        >
-          Connect your wallet
-        </Button>
+        {walletAddress ? (
+          <Button
+            variant="primary"
+            style={{ width: "190px", fontSize: "16px", padding: "10px 16.5px" }}
+            onClick={async () => {
+              await disconnectWallet();
+              setWallet(false);
+              // addressFormatter(walletAddress);
+              // connectWallet().then(() => {
+              //   getData();
+              //   setWallet(true);
+              //   console.log("hello");
+              // });
+            }}
+          >
+            {walletAddress && formattedAddress}
+          </Button>
+        ) : (
+          <Button
+            variant="primary"
+            style={{ width: "190px", fontSize: "16px", padding: "10px 16.5px" }}
+            onClick={async () => {
+              await connectWallet();
+              setWallet(true);
+              // connectWallet().then(() => {
+              //   getData();
+              //   setWallet(true);
+              //   console.log("hello");
+              // });
+            }}
+          >
+            Connect your wallet
+          </Button>
+        )}
       </div>
       <main className={styles.main}>
         <Landing
