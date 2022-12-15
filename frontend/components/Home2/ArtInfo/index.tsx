@@ -63,7 +63,7 @@ export const ArtInfo = ({
         <div className={style.divider}></div>
         <a
           download
-          href={`http://localhost:4200/${sheetName}`}
+          href={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${sheetName}`}
           className={sheetName}
         >
           {/* <h6>{pureSheetName}</h6> */}
