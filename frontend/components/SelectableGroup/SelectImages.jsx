@@ -16,6 +16,7 @@ export default function SelectFractionNFTs({
   setCoords,
   setSelectedItems,
   handleSelectionClear,
+  makeItWork,
 }) {
   const [boxCount, setBoxCount] = useState(100);
   //   const [isShown, setIsShown] = useState(false);
@@ -86,9 +87,7 @@ export default function SelectFractionNFTs({
                 background="coral"
               />
             ))}
-          <DeselectAll>
-            <button>Clear</button>
-          </DeselectAll>
+          <DeselectAll ref={makeItWork}></DeselectAll>
         </SelectableGroup>
       </div>
     </div>

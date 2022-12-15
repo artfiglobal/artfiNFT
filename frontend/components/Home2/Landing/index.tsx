@@ -83,7 +83,17 @@ export const Landing = ({
   likes,
   offerUnveiling,
 }: LandingProps | any): JSX.Element => {
-  // console.log(offerWhitelist);
+  //ref//
+
+  let makeItWork: any = useRef(null);
+  useEffect(() => {
+    makeItWork.currrent;
+  }, []);
+
+  const triggerClearButton = () => {
+    makeItWork.current.context.selectable.clearSelection();
+  };
+
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
@@ -283,6 +293,7 @@ export const Landing = ({
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
+                makeItWork={makeItWork}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
                 setCoords={setCoords}
@@ -309,7 +320,7 @@ export const Landing = ({
                 Upto 50
               </Typography>
             </div>
-            <Button onClick={handleSelectionClear} variant="clear">
+            <Button onClick={triggerClearButton} variant="clear">
               Clear
             </Button>
           </div>
@@ -349,7 +360,7 @@ export const Landing = ({
                 height="68px"
               />
             </div>
-          </div> */}
+            </div> */}
 
             <div className={style.prf}>
               <Avatar
