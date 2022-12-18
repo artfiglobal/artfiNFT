@@ -11,8 +11,8 @@ function ImageFraction(props: any) {
     index,
     isShown,
     setIsShown,
-    singleImage,
     setSingleImage,
+    singleImage,
     item,
   } = props;
 
@@ -49,10 +49,10 @@ function ImageFraction(props: any) {
           height: props.height,
           width: props.width,
           border: isSelected
-            ? "2px solid red"
+            ? ".1px solid red"
             : isSelecting
-            ? "2px solid green"
-            : "2px solid black",
+            ? ".1px solid green"
+            : ".1px solid black",
         }}
       >
         {/* <Image src={item} alt="" /> */}
