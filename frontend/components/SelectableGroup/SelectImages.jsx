@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SelectableGroup } from "react-selectable-fast";
 import ImageFraction from "./Image";
 import style from "./fractions.module.scss";
@@ -10,6 +10,7 @@ import {
   SelectAll,
   DeselectAll,
 } from "react-selectable-fast";
+
 export default function SelectFractionNFTs({
   isShown,
   setIsShown,
@@ -17,13 +18,83 @@ export default function SelectFractionNFTs({
   setSelectedItems,
   handleSelectionClear,
   makeItWork,
+  artWorkImage,
+  pressKey,
+  setCellProps,
+  cellProps,
+  setInitialCellProps,
+  setSingleImage,
+  singleImage,
+  setCoordinates,
+  // rowCnt,
+  // columnCnt,
+  tableRowsCols,
+  fractionSize,
 }) {
-  const [boxCount, setBoxCount] = useState(100);
+  // console.log(rowCnt);
+  const { rowCnt, columnCnt } = tableRowsCols;
+  const { width, height } = fractionSize;
+  // console.log(fractionSize);
+  // console.log(tableRowsCols);
+  // const [boxCount, setBoxCount] = useState(100);
   //   const [isShown, setIsShown] = useState(false);
   // const [coords, setCoords] = useState([0, 0]);
-  const [singleImage, setSingleImage] = useState();
-  const [NoSelectedItems, setNoSelectedItems] = useState(false);
+  // const [NoSelectedItems, setNoSelectedItems] = useState(false);
+  const [selCnt, setSelCnt] = useState(0);
+  const [maxSel, setMaxSel] = useState(50);
 
+  // console.log(tableRowsCols);
+  // console.log(selCnt);
+  useEffect(() => {
+    for (let i = 0; i < rowCnt * columnCnt; i++) {
+      cellProps[i] = "";
+    }
+    for (let i = 0; i < 50; i++) {
+      cellProps[parseInt(Math.random() * 600)] = "disable";
+    }
+    cellClickUp();
+  }, []);
+
+  const mouseOver = (e, selInd) => {
+    if (pressKey) {
+      if (
+        cellProps[selInd] != "disable" &&
+        e.buttons === 1 &&
+        selCnt < maxSel
+      ) {
+        const selLen = cellProps[selInd]?.length > 0;
+        cellProps[selInd] = selLen ? "" : "selected";
+        setCellProps(cellProps);
+        setSelCnt(selLen ? selCnt - 1 : selCnt + 1);
+      }
+    }
+  };
+
+  const cellClickUp = () => {
+    if (pressKey) {
+      setCellProps(cellProps);
+    }
+  };
+  const cellClick = (selInd) => {
+    if (pressKey) {
+      if (cellProps[selInd] != "disable") {
+        if (cellProps[selInd] == "") {
+          if (selCnt < maxSel) {
+            setSelCnt(selCnt + 1);
+            cellProps[selInd] = "selected";
+            setCellProps(cellProps);
+          }
+          // else {
+        }
+        //   alert("over max sel");
+        // }
+      } else {
+        setSelCnt(selCnt - 1);
+        cellProps[selInd] = "";
+        setCellProps(cellProps);
+      }
+    }
+  };
   const getRandomNumber = (min = 50, max = 200) => {
     return Math.random() * (max - min) + min;
   };
@@ -45,20 +116,32 @@ export default function SelectFractionNFTs({
 
   const handleMouseMove = (event) => {
     // let bounds = event.target.getBoundingClientRect();
+    let x = event.clientX;
+    let y = event.clientY;
     // let x = event.clientX - bounds.left;
     // let y = event.clientY - bounds.top;
     let cord = [
-      event.target?.offsetParent?.offsetLeft,
-      event.target?.offsetParent?.offsetTop,
+      x,
+      y,
+      // event.target?.offsetParent?.offsetLeft,
+      // event.target?.offsetParent?.offsetTop,
     ];
 
     // console.log(cord);
     setCoords(cord);
   };
+  // console.log(artWorkImage);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignContent: "center",
+        justifyContent: "center",
+      }}
+    >
       <div onMouseMove={(event) => handleMouseMove(event)}>
-        <SelectableGroup
+        {/* <SelectableGroup
           className={style.main}
           clickClassName="tick"
           enableDeselect
@@ -69,7 +152,54 @@ export default function SelectFractionNFTs({
           onSelectionClear={(items) => handleSelectionClear(items)}
           onSelectionFinish={(items) => handleSelectionFinish(items)}
           //   onSelectedItemUnmount={handleSelectedItemUnmount}
-        >
+        > */}
+        <div className={style.grid}>
+          <img
+            src={`http://localhost:4200/${artWorkImage}`}
+            alt="not working"
+            width={width * columnCnt}
+            height={height * rowCnt}
+          />
+          <table
+            style={{
+              width: `${width * columnCnt}px`,
+              height: `${height * rowCnt}px`,
+            }}
+            className={style.imgtbl}
+          >
+            <tbody>
+              {[...Array(rowCnt)].map((x, i) => {
+                return (
+                  <tr key={i}>
+                    {[...Array(columnCnt)].map((x1, i1) => (
+                      <td
+                        key={i1}
+                        onMouseDown={() => cellClick(i * columnCnt + i1)}
+                        onMouseUp={() => cellClickUp()}
+                        onMouseOver={(e) => mouseOver(e, i * columnCnt + i1)}
+                        onMouseEnter={() => {
+                          setIsShown(true);
+                          setSingleImage(i * columnCnt + (i1 + 1));
+                          setCoordinates([i + 1, i1 + 1]);
+                        }}
+                        onMouseLeave={() => {
+                          setIsShown(false);
+                          setCoordinates();
+                          setSingleImage();
+                        }}
+                        className={style[cellProps[i * columnCnt + i1]]}
+                      />
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          {/* <img
+            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
+            style={{ position: "absolute", width: "500px", height: "500px" }}
+            alt=""
+          />
           {Array(boxCount)
             .fill(1)
             // images
@@ -86,9 +216,10 @@ export default function SelectFractionNFTs({
                 width={40}
                 background="coral"
               />
-            ))}
-          <DeselectAll ref={makeItWork}></DeselectAll>
-        </SelectableGroup>
+            ))} */}
+          {/* <DeselectAll ref={makeItWork}></DeselectAll> */}
+        </div>
+        {/* </SelectableGroup> */}
       </div>
     </div>
   );

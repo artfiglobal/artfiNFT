@@ -14,14 +14,23 @@ export default function WhitelistLanding() {
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
   const [formattedAddress, setFormattedAddress] = useState("");
-
+  const [artistId, setArtistId] = useState("");
+  const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
+  const [artWorkImage, setArtWorkImage] = useState("");
+  const [artistImage, setArtistImage] = useState("");
+  // const [rowCnt, setRowCnt] = useState();
+  const [tableRowsCols, setTableRowsCols] = useState({
+    columnCnt: 0,
+    rowCnt: 0,
+  });
+  // const [columnCnt, setColumnCnt] = useState();
   // console.log(formattedAddress, "formattedAddress");
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        //
+        //${process.env.NEXT_PUBLIC_React_App_Base_Url}
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getwhitelistheaderdetails`,
+          `http://localhost:4200/api/offering/getallongoingtrueoffering`,
           {
             headers: {
               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
@@ -30,10 +39,27 @@ export default function WhitelistLanding() {
             },
           }
         );
-        const data = response.data.data;
+        const data = response.data.data.trueOfferings;
+        const artistImage = response.data.data.artistImage;
+        setArtistImage(artistImage);
+        setArtistId(data[0].artistId);
         // console.log(data);
+        setTableRowsCols({
+          columnCnt: data[0].whitelistDetails.columnNumber,
+          rowCnt: data[0].whitelistDetails.rowNumber,
+        });
+        // setRowCnt(data[0].whitelistDetails.rowNumber);
+        // setColumnCnt(data[0].whitelistDetails.columnNumber);
+        setFractionSize({
+          width: data[0].whitelistDetails.width,
+          height: data[0].whitelistDetails.height,
+        });
+        // console.log(fractionSize);
+
+        setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
         const defineWhitelist = () => {
           data.map((item: any, index: number) => {
+            // console.log(item.whitelistDetails);
             if (item.IsOnGoingOffering) {
               setOfferWhitelist(item.whitelistDetails);
               setOfferUnveiling(item.unveilingDetails);
@@ -46,6 +72,27 @@ export default function WhitelistLanding() {
         console.log(err);
       }
     };
+    // console.log(artWorkImage);
+    // const fetchArtist = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/artist/getartist/${artistId}`,
+    //       {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           "Content-Length": "<calculated when request is sent>",
+    //         },
+    //       }
+    //     );
+    //     const data = response.data.artist[0];
+    //     setArtistDetails(data);
+    //     // console.log(artistDetails);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+    // fetchArtist();
+
     fetchOffers();
   }, []);
   // console.log(offerWhitelist);
@@ -75,6 +122,7 @@ export default function WhitelistLanding() {
   return (
     <div className={styles.home}>
       <Head title="Artfi" />
+      <img src={`http://localhost:4200/api/${artWorkImage}`} alt="" />
       {/* <Navigation /> */}
       <div className={styles.whitelistNavbar}>
         <img
@@ -125,6 +173,13 @@ export default function WhitelistLanding() {
           offerWhitelist={offerWhitelist}
           offerUnveiling={offerUnveiling}
           likes={likes}
+          artistId={artistId}
+          artistImage={artistImage}
+          artWorkImage={artWorkImage}
+          // rowCnt={rowCnt}
+          // columnCnt={columnCnt}
+          fractionSize={fractionSize}
+          tableRowsCols={tableRowsCols}
         />
       </main>
       {/* <Footer /> */}

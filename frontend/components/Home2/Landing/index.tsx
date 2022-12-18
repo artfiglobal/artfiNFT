@@ -8,6 +8,7 @@ import { FiHeart } from "react-icons/fi";
 import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
+import Link from "next/link";
 import { FormDataInterface } from "../../../types";
 import Timer2 from "../Timer2";
 type LandingProps = {
@@ -23,7 +24,6 @@ import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
-import Link from "next/link";
 import { AuthProvider } from "@arcana/auth";
 
 import metamask from "../../../public/metamask.png";
@@ -35,6 +35,7 @@ import {
   SelectAll,
   DeselectAll,
 } from "react-selectable-fast";
+import { FaBlackTie } from "react-icons/fa";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -82,17 +83,19 @@ export const Landing = ({
   offerWhitelist,
   likes,
   offerUnveiling,
+  artWorkImage,
+  artistId,
+  artistImage,
+  // rowCnt,
+  // columnCnt,
+  tableRowsCols,
+  fractionSize,
 }: LandingProps | any): JSX.Element => {
   //ref//
-
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
   }, []);
-
-  const triggerClearButton = () => {
-    makeItWork.current.context.selectable.clearSelection();
-  };
 
   // likes = 10;
   const [opened, setOpened] = useState(false);
@@ -104,7 +107,14 @@ export const Landing = ({
   const [coords, setCoords] = useState([0, 0]);
   const [isShown, setIsShown] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [cellProps, setCellProps] = useState([]);
+  const [singleImage, setSingleImage] = useState();
+  const [coordinates, setCoordinates] = useState();
+  const [initialCellProps, setInitialCellProps] = useState([]);
+  console.log(cellProps);
 
+  const ftactionsNo = offerWhitelist.FractionNumber;
+  // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -113,7 +123,21 @@ export const Landing = ({
     chain: "Matic",
     termsSignature: Date.now().toString(),
   });
+  const triggerClearButton = () => {
+    // setCellProps([]);
+    // const items = ;
 
+    const items = cellProps.map((item) => {
+      return item === "selected"
+        ? ""
+        : item === "disable"
+        ? "disable"
+        : item === "" && "";
+    });
+    console.group(items);
+    setCellProps(initialCellProps);
+    // makeItWork.current.context.selectable.clearSelection();
+  };
   const [tabActiveButton, setTabActiveButton] = useState(true);
   const { web3Data, setWeb3Data, connectWallet, walletAddress } =
     useContext(Web3Context);
@@ -197,12 +221,17 @@ export const Landing = ({
       console.log(e);
     }
   };
-  // console.log(coords, "coords");
-  const ToolTipCard = ({}) => {
+  const removeItem = (item: any, index: any) => {
+    cellProps.map((im: any, inx: any) => {
+      if (index === inx) return (im = "");
+    });
+  };
+  // console.log(coordinates, "coordinates");
+  const ToolTipCard = ({ singleImage, coordinates }: any) => {
     return (
       <div
         style={{
-          top: coords[1] - 150,
+          top: coords[1] - 250,
           left: coords[0] < 84 ? coords[0] - 20 : coords[0] - 110,
         }}
         className={style.popUpMenu}
@@ -219,14 +248,15 @@ export const Landing = ({
               <small>FRACTION</small>
               <br />
               <Typography variant="popup2" color="black">
-                #5/1000
+                #{singleImage} /{ftactionsNo}
               </Typography>
             </div>
             <div>
               <small>COORDINATES</small>
               <br />
               <Typography variant="popup2" color="black">
-                AF 22
+                {/* AF 22 */}
+                {coordinates[0]}/{coordinates[1]}
               </Typography>
             </div>
           </div>
@@ -285,22 +315,80 @@ export const Landing = ({
             artist={offerWhitelist?.artistName || "James"}
             price={offerWhitelist?.price || "300"}
             sheetName={offerWhitelist?.factSheet}
+            artistId={artistId}
+            artistImage={artistImage}
+            artWorkImage={artWorkImage}
           />
         </div>
         <div className={style?.fractionImage}>
-          {isShown && <ToolTipCard />}
+          <div
+            style={{
+              width: "fit-content",
+              margin: "0 auto",
+              marginBottom: "30px",
+              marginTop: "44px",
+            }}
+          >
+            <Typography variant="popup2" color={"black"}>
+              Drag to select NFTs
+            </Typography>
+          </div>
+          {isShown && (
+            <ToolTipCard singleImage={singleImage} coordinates={coordinates} />
+          )}
           <TransformWrapper panning={{ disabled: pressKey }}>
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
+                // columnCnt={columnCnt}
+                // rowCnt={rowCnt}
+                tableRowsCols={tableRowsCols}
+                cellProps={cellProps}
+                fractionSize={fractionSize}
+                setCellProps={setCellProps}
                 makeItWork={makeItWork}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
+                pressKey={pressKey}
                 setCoords={setCoords}
+                artWorkImage={artWorkImage}
+                setInitialCellProps={setInitialCellProps}
                 handleSelectionClear={handleSelectionClear}
+                setSingleImage={setSingleImage}
+                singleImage={singleImage}
+                setCoordinates={setCoordinates}
               />
             </TransformComponent>
           </TransformWrapper>
+          <div className={style.selectGroupFooter}>
+            <div className={style.selectGroupFooterRight}>
+              <div
+                style={{
+                  backgroundColor: "red",
+                  width: "12px",
+                  height: "12px",
+                  marginRight: "10px",
+                }}
+              ></div>
+              <Typography variant="popup" color={"black"}>
+                Sold
+              </Typography>
+            </div>
+            <div className={style.selectGroupFooterRight}>
+              <div
+                style={{
+                  backgroundColor: "white",
+                  width: "12px",
+                  height: "12px",
+                  border: "1px solid black",
+                  marginRight: "10px",
+                }}
+              ></div>
+              <Typography variant="popup" color={"black"}>
+                Available
+              </Typography>
+            </div>
+          </div>
         </div>
 
         {/* <div className={style.newEra}>
@@ -325,8 +413,17 @@ export const Landing = ({
             </Button>
           </div>
           <div className={style.NFTsFractions}>
-            {selectedItems.map((item, index) => {
-              return <Button variant="fractionBTN">#{index}</Button>;
+            {cellProps.map((item, index) => {
+              if (item === "selected") {
+                return (
+                  <Button
+                    onClick={() => removeItem(item, index)}
+                    variant="fractionBTN"
+                  >
+                    #{index}
+                  </Button>
+                );
+              }
             })}
             {/* {Array(10)
               .fill(" ")
@@ -595,20 +692,78 @@ export const Landing = ({
             <p>Connect your wallet to whitelist</p>
           </div> */}
           <div className={style.bottomRight}>
-            <div className={style.landingCard}>
-              <div className={style.contentHeader}>
-                <Typography variant="newHeading" color={"black"}>
-                  Get Whitelisted
-                </Typography>
-              </div>
-              {/* <div className={style.contentInfo}>
+            {walletAddress ? (
+              <form onSubmit={handleAddWhitelist} className={style.tabContent}>
+                <div className={style.contentHeader}>
+                  <img src="/images/like.png" alt="" />
+                  <Typography variant="heading" color={"black"}>
+                    Order Summary
+                  </Typography>
+                </div>
+                <div className={style.contentData}>
+                  <Accordion
+                    variant="contained"
+                    radius="md"
+                    chevronSize={26}
+                    defaultValue="customization"
+                    className={style.accordion}
+                  >
+                    <Accordion.Item
+                      value="customization"
+                      className={style.accordionItem}
+                    >
+                      <Accordion.Control className={style.accordionControl}>
+                        Important points
+                      </Accordion.Control>
+                      <Accordion.Panel className={style.accordionPanel}>
+                        <ul>
+                          <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
+                          <li>
+                            Please check your email Inbox / Junk section for the
+                            confirmation email after the whitelisting.
+                          </li>
+                          <li>
+                            We will notify you to claim your NFTs one week
+                            before the Public Mint.
+                          </li>
+                          <li>
+                            If you do not claim your NFTs, we will offer them to
+                            the public through our public mint offering.
+                          </li>
+                        </ul>
+                      </Accordion.Panel>
+                    </Accordion.Item>
+                  </Accordion>
+                </div>
+                <OrderForm
+                  formData={formData}
+                  setFormData={setFormData}
+                  unitValueTotal={10000}
+                  initialPrice={1}
+                ></OrderForm>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  style={{ padding: "15px 30px", marginTop: "10px" }}
+                >
+                  Whitelist
+                </Button>
+              </form>
+            ) : (
+              <div className={style.landingCard}>
+                <div className={style.contentHeader}>
+                  <Typography variant="newHeading" color={"black"}>
+                    Get Whitelisted
+                  </Typography>
+                </div>
+                {/* <div className={style.contentInfo}>
               Connect your wallet to whitelist
             </div> */}
-              <Typography variant="light" color={"lightGray"}>
-                Connect your wallet to whitelist
-              </Typography>
-              <div className={style.contentBtns}>
-                {/* <Button
+                <Typography variant="light" color={"lightGray"}>
+                  Connect your wallet to whitelist
+                </Typography>
+                <div className={style.contentBtns}>
+                  {/* <Button
                  variant="connect"
                  style={{
                    backgroundColor: "white",
@@ -628,79 +783,80 @@ export const Landing = ({
                   Connect your wallet
                 </Button> */}
 
-                <Button
-                  variant="connect"
-                  style={{
-                    backgroundColor: "white",
-                    color: "#4527B3",
-                    width: "100%",
-                    margin: "40px 0 16px 0 ",
-                    border: "1px solid white",
-                  }}
-                  // variant="primary"
-                  // style={{
-                  //   width: "190px",
-                  //   fontSize: "16px",
-                  //   padding: "10px 16.5px",
-                  // }}
-                  onClick={async () => {
-                    await connectWallet();
-                    setWallet(true);
-                    // connectWallet().then(() => {
-                    //   getData();
-                    //   setWallet(true);
-                    //   console.log("hello");
-                    // });
-                  }}
-                >
-                  <div style={{ position: "absolute", left: "5px" }}>
-                    <Image src={metamask} alt="" />
-                  </div>
-                  Connect your wallet
-                </Button>
-                <Button
-                  variant="connect"
-                  style={{
-                    background: "transparent",
-                    color: "white",
-                    border: "1px solid white",
-                  }}
-                  onClick={async () => {
-                    await connectWallet();
-                    setWallet(true);
-                    // connectWallet().then(() => {
-                    //   getData();
-                    //   setWallet(true);
-                    //   console.log("hello");
-                    // });
-                  }}
-                >
-                  Create a new wallet
-                </Button>
-                <Typography variant="smallest" color={"white"}>
-                  OR
-                </Typography>
-              </div>
-
-              <button
-                className={style.connectArcana}
-                onClick={async () => {
-                  await connectWallet();
-                  setWallet(true);
-                }}
-              >
-                <div style={{ marginRight: "20px" }}>
-                  <Image src={arcana} alt="" />
+                  <Button
+                    variant="connect"
+                    style={{
+                      backgroundColor: "white",
+                      color: "#4527B3",
+                      width: "100%",
+                      margin: "40px 0 16px 0 ",
+                      border: "1px solid white",
+                    }}
+                    // variant="primary"
+                    // style={{
+                    //   width: "190px",
+                    //   fontSize: "16px",
+                    //   padding: "10px 16.5px",
+                    // }}
+                    onClick={async () => {
+                      await connectWallet();
+                      setWallet(true);
+                      // connectWallet().then(() => {
+                      //   getData();
+                      //   setWallet(true);
+                      //   console.log("hello");
+                      // });
+                    }}
+                  >
+                    <div style={{ position: "absolute", left: "5px" }}>
+                      <Image src={metamask} alt="" />
+                    </div>
+                    Connect your wallet
+                  </Button>
+                  <Button
+                    variant="connect"
+                    style={{
+                      background: "transparent",
+                      color: "white",
+                      border: "1px solid white",
+                    }}
+                    onClick={async () => {
+                      await connectWallet();
+                      setWallet(true);
+                      // connectWallet().then(() => {
+                      //   getData();
+                      //   setWallet(true);
+                      //   console.log("hello");
+                      // });
+                    }}
+                  >
+                    Create a new wallet
+                  </Button>
+                  <Typography variant="smallest" color={"white"}>
+                    OR
+                  </Typography>
                 </div>
-                <Typography variant="small" color={"black"}>
-                  Connect using
-                  <br />
-                  social accounts
-                </Typography>
-                {/* <Typography variant="smallest" color={"black"}></Typography> */}
-              </button>
-              {/* <Image src="/Icons/arcana.svg" width="223px" height="68px" /> */}
-              {/* <Button
+
+                <a
+                  href="https://dashboard.beta.arcana.network/login"
+                  className={style.connectArcana}
+                  // onClick={async () => {
+                  //   await connectWallet();
+                  //   setWallet(true);
+                  // }}
+                >
+                  <div style={{ marginRight: "20px" }}>
+                    <Image src={arcana} alt="" />
+                  </div>
+                  <Typography variant="small" color={"black"}>
+                    Connect using
+                    <br />
+                    social accounts
+                  </Typography>
+                  {/* <Typography variant="smallest" color={"black"}></Typography> */}
+                </a>
+                {/* <Image src="/Icons/arcana.svg" width="223px" height="68px" /> */}
+                {/* <Button
               variant="primary"
               style={{
                 background: "white",
@@ -714,7 +870,9 @@ export const Landing = ({
             >
               Connect Arcana
             </Button> */}
-            </div>
+              </div>
+            )}
+
             <div className={style.get}>
               <div>
                 <h3 style={{ margin: "0" }}>
