@@ -111,7 +111,7 @@ export const Landing = ({
   const [singleImage, setSingleImage] = useState();
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
-  console.log(cellProps);
+  // console.log(cellProps);
 
   const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
@@ -700,6 +700,7 @@ export const Landing = ({
                     Order Summary
                   </Typography>
                 </div>
+                <br />
                 <div className={style.contentData}>
                   <Accordion
                     variant="contained"
