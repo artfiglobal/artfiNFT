@@ -53,7 +53,7 @@ export const ArtInfo = ({
       {/* <img src={`http://localhost:4200/api/${artWorkImage}`} alt="" /> */}
       <div className={style.info}>
         <Avatar
-          src={`http://localhost:4200/${artistImage}`}
+          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artistImage}`}
           // src="/images/artist.png"
           alt="Artist profile"
           className={style.artistProfile}
@@ -79,7 +79,7 @@ export const ArtInfo = ({
         <a
           // ${process.env.NEXT_PUBLIC_React_App_Base_Url}
           download
-          href={`http://localhost:4200/${sheetName}`}
+          href={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${sheetName}`}
           className={style.factsheet}
         >
           <h6>{sheetName?.slice(40, -4)}</h6>

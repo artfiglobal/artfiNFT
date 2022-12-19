@@ -221,8 +221,16 @@
   border: 0.1px solid #dee2e6;
 }
 
+// td {
+//   // &:hover {
+//   transform: scale(2);
+//   background-color: red;
+//   // }
+// }
 td.selected {
   background-color: rgba(68, 255, 0, 0.594);
+
+  // background-color: rgba(68, 255, 0, 0.594);
 }
 
 td.disable {

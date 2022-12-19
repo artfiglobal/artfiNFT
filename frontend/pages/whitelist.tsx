@@ -30,7 +30,7 @@ export default function WhitelistLanding() {
       try {
         //${process.env.NEXT_PUBLIC_React_App_Base_Url}
         const response = await axios.get(
-          `http://localhost:4200/api/offering/getallongoingtrueoffering`,
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
           {
             headers: {
               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
@@ -54,7 +54,6 @@ export default function WhitelistLanding() {
           width: data[0].whitelistDetails.width,
           height: data[0].whitelistDetails.height,
         });
-        // console.log(fractionSize);
 
         setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
         const defineWhitelist = () => {
@@ -72,6 +71,8 @@ export default function WhitelistLanding() {
         console.log(err);
       }
     };
+    // console.log(tableRowsCols, "this is data is from backend");
+
     // console.log(artWorkImage);
     // const fetchArtist = async () => {
     //   try {
@@ -122,7 +123,10 @@ export default function WhitelistLanding() {
   return (
     <div className={styles.home}>
       <Head title="Artfi" />
-      <img src={`http://localhost:4200/api/${artWorkImage}`} alt="" />
+      <img
+        src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/${artWorkImage}`}
+        alt=""
+      />
       {/* <Navigation /> */}
       <div className={styles.whitelistNavbar}>
         <img

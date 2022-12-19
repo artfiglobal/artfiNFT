@@ -35,6 +35,8 @@ export default function SelectFractionNFTs({
   const { rowCnt, columnCnt } = tableRowsCols;
   const { width, height } = fractionSize;
   // console.log(fractionSize);
+  // console.log(tableRowsCols, "this is data is from backend");
+
   // console.log(tableRowsCols);
   // const [boxCount, setBoxCount] = useState(100);
   //   const [isShown, setIsShown] = useState(false);
@@ -52,7 +54,7 @@ export default function SelectFractionNFTs({
     for (let i = 0; i < 50; i++) {
       cellProps[parseInt(Math.random() * 600)] = "disable";
     }
-    cellClickUp();
+    // console.log();
   }, []);
 
   const mouseOver = (e, selInd) => {
@@ -78,17 +80,16 @@ export default function SelectFractionNFTs({
   const cellClick = (selInd) => {
     if (pressKey) {
       if (cellProps[selInd] != "disable") {
-        if (cellProps[selInd] == "") {
+        if (cellProps[selInd] === "") {
           if (selCnt < maxSel) {
             setSelCnt(selCnt + 1);
             cellProps[selInd] = "selected";
             setCellProps(cellProps);
           }
-          // else {
         }
-        //   alert("over max sel");
+        // else if (cellProps[selInd] === "selected") {
         // }
-      } else {
+      } else if ((cellProps[selInd] = "selected")) {
         setSelCnt(selCnt - 1);
         cellProps[selInd] = "";
         setCellProps(cellProps);
@@ -155,7 +156,7 @@ export default function SelectFractionNFTs({
         > */}
         <div className={style.grid}>
           <img
-            src={`http://localhost:4200/${artWorkImage}`}
+            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
             alt="not working"
             width={width * columnCnt}
             height={height * rowCnt}
