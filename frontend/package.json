@@ -32,6 +32,7 @@
     "@mui/styled-engine-sc": "^5.10.6",
     "@walletconnect/web3-provider": "^1.8.0",
     "axios": "^1.1.2",
+    "canvas": "^2.10.2",
     "chart.js": "^3.9.1",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",

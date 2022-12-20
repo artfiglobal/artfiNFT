@@ -30,31 +30,38 @@ export default function SelectFractionNFTs({
   // columnCnt,
   tableRowsCols,
   fractionSize,
+  selCnt,
+  setSelCnt,
 }) {
   // console.log(rowCnt);
   const { rowCnt, columnCnt } = tableRowsCols;
   const { width, height } = fractionSize;
+  // console.log(tableRowsCols);
   // console.log(fractionSize);
-  // console.log(tableRowsCols, "this is data is from backend");
-
   // console.log(tableRowsCols);
   // const [boxCount, setBoxCount] = useState(100);
   //   const [isShown, setIsShown] = useState(false);
   // const [coords, setCoords] = useState([0, 0]);
   // const [NoSelectedItems, setNoSelectedItems] = useState(false);
-  const [selCnt, setSelCnt] = useState(0);
+  // const [selCnt, setSelCnt] = useState(0);
   const [maxSel, setMaxSel] = useState(50);
+
+  // const [tableRowsCols, setTableRowsCols] = useState({
+  //   columnCnt: 0,
+  //   rowCnt: 0,
+  // });
 
   // console.log(tableRowsCols);
   // console.log(selCnt);
   useEffect(() => {
-    for (let i = 0; i < rowCnt * columnCnt; i++) {
-      cellProps[i] = "";
-    }
-    for (let i = 0; i < 50; i++) {
-      cellProps[parseInt(Math.random() * 600)] = "disable";
-    }
-    // console.log();
+    // for (let i = 0; i < rowCnt * columnCnt; i++) {
+    //   cellProps[i] = "";
+    // }
+    // for (let i = 0; i < 50; i++) {
+    //   cellProps[parseInt(Math.random() * 600)] = "disable";
+    // }
+    cellClickUp();
+    // console.log("here");
   }, []);
 
   const mouseOver = (e, selInd) => {
@@ -77,29 +84,30 @@ export default function SelectFractionNFTs({
       setCellProps(cellProps);
     }
   };
+
   const cellClick = (selInd) => {
     if (pressKey) {
       if (cellProps[selInd] != "disable") {
-        if (cellProps[selInd] === "") {
+        if (cellProps[selInd] == "") {
           if (selCnt < maxSel) {
             setSelCnt(selCnt + 1);
             cellProps[selInd] = "selected";
             setCellProps(cellProps);
+          } else {
+            alert("over max selection");
           }
+        } else {
+          setSelCnt(selCnt - 1);
+          cellProps[selInd] = "";
+          setCellProps(cellProps);
         }
-        // else if (cellProps[selInd] === "selected") {
-        // }
-      } else if ((cellProps[selInd] = "selected")) {
-        setSelCnt(selCnt - 1);
-        cellProps[selInd] = "";
-        setCellProps(cellProps);
       }
     }
   };
-  const getRandomNumber = (min = 50, max = 200) => {
-    return Math.random() * (max - min) + min;
-  };
-  const handleSelectedItemUnmount = (items) => {};
+  // const getRandomNumber = (min = 50, max = 200) => {
+  //   return Math.random() * (max - min) + min;
+  // };
+  // const handleSelectedItemUnmount = (items) => {};
   //   const handleSelectionClear = (items) => {
   //     items?.map((item, index) => {
   //       item.context.selectable.clearSelection();
@@ -107,13 +115,13 @@ export default function SelectFractionNFTs({
   //     console.log(items);
   //   };
 
-  const handleSelecting = (items) => {
-    // console.log("selecting:", items);
-  };
+  // const handleSelecting = (items) => {
+  //   // console.log("selecting:", items);
+  // };
 
-  const handleSelectionFinish = (items) => {
-    setSelectedItems(items);
-  };
+  // const handleSelectionFinish = (items) => {
+  //   setSelectedItems(items);
+  // };
 
   const handleMouseMove = (event) => {
     // let bounds = event.target.getBoundingClientRect();
@@ -128,7 +136,6 @@ export default function SelectFractionNFTs({
       // event.target?.offsetParent?.offsetTop,
     ];
 
-    // console.log(cord);
     setCoords(cord);
   };
   // console.log(artWorkImage);
@@ -158,13 +165,13 @@ export default function SelectFractionNFTs({
           <img
             src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
             alt="not working"
-            width={width * columnCnt}
-            height={height * rowCnt}
+            width={900}
+            height={900}
           />
           <table
             style={{
-              width: `${width * columnCnt}px`,
-              height: `${height * rowCnt}px`,
+              width: `${900}px`,
+              height: `${900}px`,
             }}
             className={style.imgtbl}
           >

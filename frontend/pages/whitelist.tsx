@@ -23,6 +23,8 @@ export default function WhitelistLanding() {
     columnCnt: 0,
     rowCnt: 0,
   });
+  const [cellProps, setCellProps] = useState<any>([]);
+
   // const [columnCnt, setColumnCnt] = useState();
   // console.log(formattedAddress, "formattedAddress");
   useEffect(() => {
@@ -54,7 +56,18 @@ export default function WhitelistLanding() {
           width: data[0].whitelistDetails.width,
           height: data[0].whitelistDetails.height,
         });
-
+        for (
+          let i = 0;
+          i <
+          data[0].whitelistDetails.rowNumber *
+            data[0].whitelistDetails.columnNumber;
+          i++
+        ) {
+          cellProps[i] = "";
+        }
+        for (let i = 0; i < 50; i++) {
+          cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
+        }
         setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
         const defineWhitelist = () => {
           data.map((item: any, index: number) => {
@@ -182,6 +195,8 @@ export default function WhitelistLanding() {
           artWorkImage={artWorkImage}
           // rowCnt={rowCnt}
           // columnCnt={columnCnt}
+          cellProps={cellProps}
+          setCellProps={setCellProps}
           fractionSize={fractionSize}
           tableRowsCols={tableRowsCols}
         />
