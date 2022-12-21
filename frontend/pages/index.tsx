@@ -13,7 +13,7 @@ import {
   Whitelist,
 } from "../components/Home";
 import toast, { Toaster } from "react-hot-toast";
-
+import { offeringData } from "../lib/apis/offeringData";
 import { Footer, Head, Navigation } from "../components/reusables/Components";
 import Modal from "../components/reusables/Components/Modal";
 import styles from "../styles/Home.module.scss";
@@ -21,18 +21,23 @@ import Featured from "../components/Home/Featured/Index";
 import { fetchFeaturedInDate } from "../lib/apis/featuredInData";
 import GetStaticProps from "../components/Home/Featured/types";
 
+
+
+
 export async function getStaticProps() {
   const data = await fetchFeaturedInDate();
+  const offerData = await offeringData();
   return {
     props: {
       data,
+      offerData
     },
   };
 }
 
-const Home: NextPage<GetStaticProps> = (props) => {
+const Home: NextPage<GetStaticProps> = (props:any) => {
   //isopen state
-  console.log(props.data);
+  console.log(props,"offering");
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
@@ -50,7 +55,7 @@ const Home: NextPage<GetStaticProps> = (props) => {
 
       <main className={styles.main}>
         <div>
-          <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+          <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} offerData={props.offerData}/>
         </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
 

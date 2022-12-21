@@ -139,6 +139,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        gap:200px;
 
         div {
             width: 50%;
@@ -206,4 +207,40 @@ line-height: 26px;
 color:white;
 margin-bottom: 137px;
 margin-top: 40px;
+}
+
+.secBg
+{
+    background: url(../../public/Background/Rectangle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 40px 100px;
+    
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        div {
+            width: 50%;
+            // text-align: center;
+
+            h1 {
+                font-family: 'Plus Jakarta Sans';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 64px;
+                line-height: 130%;
+                width: 70%;
+                // text-align: center;
+                /* or 83px */
+                color: white;
+                margin-bottom: 0;
+
+            }
+
+        }
+    
+
 }

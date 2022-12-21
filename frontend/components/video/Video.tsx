@@ -39,7 +39,7 @@ const Video = () => {
         <video ref={videoRef} muted loop autoPlay>
           <source src="/Publiced/video (1).mp4" type="video/mp4" />
         </video>
-
+x
 
       </div>
       <section className={styles2.containerContent}>
