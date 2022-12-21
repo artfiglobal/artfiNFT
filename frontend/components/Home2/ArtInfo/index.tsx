@@ -6,8 +6,9 @@ import Link from "next/link";
 import style from "./ArtInfo.module.scss";
 import { Avatar } from "@mui/material";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+// import axios from "axios";
+import { GeneralContext } from "../../../context/GeneralState";
 
 type ArtInfoProps = {
   artist: string;
@@ -19,11 +20,10 @@ export const ArtInfo = ({
   artist,
   price,
   sheetName,
-  artistId,
-  artWorkImage,
+  // artWorkImage,
   artistImage,
 }: ArtInfoProps | any): JSX.Element => {
-  const [artistDetails, setArtistDetails] = useState({});
+  const { artistId } = useContext(GeneralContext);
 
   // useEffect(() => {
   //   const fetchArtist = async () => {
@@ -53,7 +53,7 @@ export const ArtInfo = ({
       {/* <img src={`http://localhost:4200/api/${artWorkImage}`} alt="" /> */}
       <div className={style.info}>
         <Avatar
-          src={`http://localhost:4200/${artistImage}`}
+          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artistImage}`}
           // src="/images/artist.png"
           alt="Artist profile"
           className={style.artistProfile}
@@ -63,7 +63,7 @@ export const ArtInfo = ({
           alt=""
           src={`http://localhost:4200/${artistImage}`}
         /> */}
-        <Link href="/artist-details">
+        <Link href={`artist/${artistId}`}>
           <h6 style={{ cursor: "pointer" }}>{artist}</h6>
         </Link>
         <img src="/Publiced/Vector.svg" />
@@ -79,7 +79,7 @@ export const ArtInfo = ({
         <a
           // ${process.env.NEXT_PUBLIC_React_App_Base_Url}
           download
-          href={`http://localhost:4200/${sheetName}`}
+          href={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${sheetName}`}
           className={style.factsheet}
         >
           <h6>{sheetName?.slice(40, -4)}</h6>

@@ -34,14 +34,18 @@ export const LandingCarousel = ({}: LandingCarouselProps): JSX.Element => {
           <img src="/images/carousel.jpg" alt="" />
         </div>
       </Carousel>
-      <Divider/>
+      <Divider />
 
       <div className={style.get}>
-          <h4>WHAT YOU’LL GET</h4>
-          <h3>Artfi NFT</h3>
-          <Button variant="outlined" color="primary" style={{color:"#4527B3", border:"1px solid #4527B3"}}>
-            View
-          </Button>
+        <h4>WHAT YOU’LL GET</h4>
+        <h3>Artfi NFT</h3>
+        <Button
+          variant="outlined"
+          color="primary"
+          style={{ color: "#4527B3", border: "1px solid #4527B3" }}
+        >
+          View
+        </Button>
       </div>
     </div>
   );

@@ -90,6 +90,8 @@ export const Landing = ({
   // columnCnt,
   tableRowsCols,
   fractionSize,
+  setCellProps,
+  cellProps,
 }: LandingProps | any): JSX.Element => {
   //ref//
   let makeItWork: any = useRef(null);
@@ -100,20 +102,21 @@ export const Landing = ({
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
-  const [activeIcon, setActiveIcon] = useState(false);
+  // const [activeIcon, setActiveIcon] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [unitValueTotal, setUnitValueTotal] = useState(10000);
   const [pressKey, setPressKey] = useState(true);
   const [coords, setCoords] = useState([0, 0]);
   const [isShown, setIsShown] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [cellProps, setCellProps] = useState([]);
+  // const [cellProps, setCellProps] = useState([]);
   const [singleImage, setSingleImage] = useState();
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
-  console.log(cellProps);
+  // console.log(cellProps);
+  const [selCnt, setSelCnt] = useState(0);
 
-  const ftactionsNo = offerWhitelist.FractionNumber;
+  // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
@@ -123,19 +126,21 @@ export const Landing = ({
     chain: "Matic",
     termsSignature: Date.now().toString(),
   });
+  // console.log(cellProps, "cellProps");
   const triggerClearButton = () => {
     // setCellProps([]);
     // const items = ;
 
-    const items = cellProps.map((item) => {
+    const items = cellProps.map((item: any) => {
       return item === "selected"
         ? ""
         : item === "disable"
         ? "disable"
         : item === "" && "";
     });
-    console.group(items);
-    setCellProps(initialCellProps);
+    // console.group(cellProps);
+    setSelCnt(0);
+    setCellProps(items);
     // makeItWork.current.context.selectable.clearSelection();
   };
   const [tabActiveButton, setTabActiveButton] = useState(true);
@@ -186,7 +191,7 @@ export const Landing = ({
       e.preventDefault();
       // console.log(process.env,"hii")
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/apiasd/offering/getallheader`,
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallheader`,
         formData
       );
       setOpened(true);
@@ -240,7 +245,9 @@ export const Landing = ({
           <div className={style.menuImage}>
             <img src="" alt="" />
             <Typography variant="popup" color="mauve">
-              Available
+              {cellProps[singleImage - 1] === ""
+                ? "Available"
+                : "Not Available"}
             </Typography>
           </div>
           <div className={style.menuDetails}>
@@ -248,7 +255,7 @@ export const Landing = ({
               <small>FRACTION</small>
               <br />
               <Typography variant="popup2" color="black">
-                #{singleImage} /{ftactionsNo}
+                #{singleImage} /{tableRowsCols.columnCnt * tableRowsCols.rowCnt}
               </Typography>
             </div>
             <div>
@@ -315,7 +322,6 @@ export const Landing = ({
             artist={offerWhitelist?.artistName || "James"}
             price={offerWhitelist?.price || "300"}
             sheetName={offerWhitelist?.factSheet}
-            artistId={artistId}
             artistImage={artistImage}
             artWorkImage={artWorkImage}
           />
@@ -357,6 +363,8 @@ export const Landing = ({
                 setSingleImage={setSingleImage}
                 singleImage={singleImage}
                 setCoordinates={setCoordinates}
+                selCnt={selCnt}
+                setSelCnt={setSelCnt}
               />
             </TransformComponent>
           </TransformWrapper>
@@ -408,12 +416,16 @@ export const Landing = ({
                 Upto 50
               </Typography>
             </div>
-            <Button onClick={triggerClearButton} variant="clear">
+            <Button
+              disabled={selCnt === 0}
+              onClick={triggerClearButton}
+              variant="clear"
+            >
               Clear
             </Button>
           </div>
           <div className={style.NFTsFractions}>
-            {cellProps.map((item, index) => {
+            {cellProps.map((item: any, index: any) => {
               if (item === "selected") {
                 return (
                   <Button
@@ -458,7 +470,6 @@ export const Landing = ({
               />
             </div>
             </div> */}
-
             <div className={style.prf}>
               <Avatar
                 src="/images/artist.png"
@@ -700,6 +711,7 @@ export const Landing = ({
                     Order Summary
                   </Typography>
                 </div>
+                <br />
                 <div className={style.contentData}>
                   <Accordion
                     variant="contained"
