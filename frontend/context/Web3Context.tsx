@@ -61,7 +61,7 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
       if (walletAddress) setWalletAddress(walletAddress[0]);
       setNetwork(network);
       const newWeb3Data = { provider, library };
-      console.log({ newWeb3Data });
+      // console.log({ newWeb3Data });
       setWeb3Data(newWeb3Data);
       return newWeb3Data;
     } catch (error) {
@@ -71,7 +71,7 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
 
   const disconnectWallet = async () => {
     await web3Modal.clearCachedProvider();
-    console.log("hello");
+    // console.log("hello");
     setWalletAddress("");
   };
   useEffect(() => {

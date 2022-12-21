@@ -220,7 +220,7 @@ export const OrderForm = ({
               ?.signMessage("I have read and confirmed the Terms of Sale.")
               .then((res: string) => {
                 setFormData({ ...formData, contractSigned: true });
-                console.log(res);
+                // console.log(res);
               })
               .catch((err: any) => {
                 setFormData({ ...formData, contractSigned: false });
