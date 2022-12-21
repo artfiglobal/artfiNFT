@@ -1,0 +1,120 @@
+.card
+{
+    width: 360px;
+height: 402px;
+
+position: relative;
+background: #FFFFFF;
+border-radius: 20px;
+// border:1px solid black;
+padding: 8px;
+margin: 0 auto;
+
+.cardHead
+{
+    position: absolute;
+    top: 20px;
+    left: 19px;
+    display: flex;
+    gap: 232px;
+    .heartContainer
+    {
+        width: 44px;
+height: 44px;
+border-radius: 100%;
+background: rgba(0, 0, 0, 0.4);
+display: flex;
+justify-content: center;
+align-items: center;
+    }
+}
+.card_price
+{
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    
+    letter-spacing: 0.12em;
+    
+    
+    color: #6435C7;
+}
+.price_date_container
+{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 130px;
+    align-items: center;
+}
+.whitelist
+{
+   p{ font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+letter-spacing: 0.17em;
+
+color: #85858C;
+   }
+   span {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    
+    text-align: right;
+    
+    color: #000000;
+    
+   };
+  
+}
+}
+
+.name{
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 120%;
+/* identical to box height, or 24px */
+
+
+color: #000000;
+   }
+   .artist
+   {
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+letter-spacing: 0.15em;
+
+color: #85858C;
+
+   }
+
+   .btn
+   {
+    background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 10px;
+padding: 15px 24px;
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height */
+
+cursor: pointer;
+color: #000000;
+   }
