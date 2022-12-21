@@ -9,12 +9,12 @@ import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import axios from "axios";
 import { formatEther } from "ethers/lib/utils";
+import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
   const [formattedAddress, setFormattedAddress] = useState("");
-  const [artistId, setArtistId] = useState("");
   const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
   const [artWorkImage, setArtWorkImage] = useState("");
   const [artistImage, setArtistImage] = useState("");
@@ -24,6 +24,7 @@ export default function WhitelistLanding() {
     rowCnt: 0,
   });
   const [cellProps, setCellProps] = useState<any>([]);
+  const { setArtistId } = useContext(GeneralContext);
 
   // const [columnCnt, setColumnCnt] = useState();
   // console.log(formattedAddress, "formattedAddress");
@@ -41,6 +42,7 @@ export default function WhitelistLanding() {
             },
           }
         );
+        // console.log(response);
         const data = response.data.data.trueOfferings;
         const artistImage = response.data.data.artistImage;
         setArtistImage(artistImage);
@@ -190,7 +192,7 @@ export default function WhitelistLanding() {
           offerWhitelist={offerWhitelist}
           offerUnveiling={offerUnveiling}
           likes={likes}
-          artistId={artistId}
+          // artistId={artistId}
           artistImage={artistImage}
           artWorkImage={artWorkImage}
           // rowCnt={rowCnt}

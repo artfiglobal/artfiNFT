@@ -32,7 +32,7 @@ export async function getStaticProps() {
 
 const Home: NextPage<GetStaticProps> = (props) => {
   //isopen state
-  console.log(props.data);
+  // console.log(props.data);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (

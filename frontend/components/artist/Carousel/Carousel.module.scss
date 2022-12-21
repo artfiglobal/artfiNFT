@@ -1,28 +1,162 @@
-.carousel
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slider_component {
+  margin: auto;
+  width: 70%;
+  max-width: 956px;
+  max-height: fit-content;
+  background-color: transparent;
+  // overflow: hidden;
+  @media screen and (max-width: 1380px) {
+    width: 846px !important;
+    height: 497px;
+  }
+  @media screen and (max-width: 1240px) {
+    width: 746px !important;
+    height: 400px;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 646px !important;
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 546px !important;
+    height: 350px;
+  }
+  @media screen and (max-width: 576px) {
+    width: 400px !important;
+    height: 300px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 300px !important;
+    height: 250px;
+  }
+}
+.slick-slide {
+  div {
+    width: 946px !important;
+  }
 }
 
-.carouselTitle
-{
-    font-family: 'Plus Jakarta Sans';
-    margin-left: 119px;
-font-style: normal;
-font-weight: 700;
-font-size: 64px;
-line-height: 120%;
-/* identical to box height, or 77px */
+// .highlight {
+//   .arrow {
+//     transform: translateY(-35%);
+//     color: rgb(255, 183, 0);
+//     position: absolute;
+//     cursor: pointer;
+//     z-index: 120;
+//     width: 20px;
+//     height: 20px;
+//   }
+//   .arrow:hover {
+//     color: gold;
+//   }
 
+//   .left-direction {
+//     margin-top: 20% !important;
+//     margin-left: 5% !important;
+//   }
+//   .right-direction {
+//     margin-top: 20% !important;
+//     margin-left: -5% !important;
+//   }
+//   .next {
+//     right: 0%;
+//     top: 42%;
+//   }
+//   .prev {
+//     left: 0%;
+//     top: 42%;
+//   }
 
-color: #000000;
-@media screen and (max-width: 1100px)
-{
-  font-size: 38px;
-  margin-left: 80px;
-//   margin: 0;
+//   height: 700px;
+//   // height: 1000px;
+// }
+.carouselTitle {
+  font-family: "Plus Jakarta Sans";
+  margin-left: 119px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120%;
+  /* identical to box height, or 77px */
+
+  color: #000000;
+  @media screen and (max-width: 1100px) {
+    font-size: 38px;
+    margin-left: 80px;
+    //   margin: 0;
+  }
+}
+.highlight {
+  width: 956px !important;
+  height: 497px;
+  object-fit: fill;
+  // margin: 0 auto !important;
+  @media screen and (max-width: 1380px) {
+    width: 846px !important;
+    height: 497px;
+  }
+  @media screen and (max-width: 1240px) {
+    width: 746px !important;
+    height: 400px;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 646px !important;
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 546px !important;
+    height: 350px;
+  }
+  @media screen and (max-width: 576px) {
+    width: 400px !important;
+    height: 300px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 300px !important;
+    height: 250px;
+  }
+}
+.arrow {
+  // transform: translateY(-35%);
+  color: black;
+  position: absolute;
+  cursor: pointer;
+  z-index: 120;
+  // width: 60px;
+  font-size: 20px;
+  // height: 60px;
+}
+.arrow:hover {
+  // color: gold;
 }
 
+.left_direction,
+.right_direction {
+  // margin-top: 20% !important;
+  // margin-left: 5% !important;
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+.right_direction {
+  // margin-top: 20% !important;
+  // margin-left: -5% !important;
+}
+.next {
+  right: -10%;
+  top: 42%;
+}
+.prev {
+  left: -10%;
+  top: 42%;
 }

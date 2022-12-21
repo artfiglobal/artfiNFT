@@ -1,13 +1,11 @@
-import Link from 'next/link';
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 import styles from "./Navigation.module.scss";
-
 
 const NavArtfiOnly = () => {
   return (
-    <nav className={styles.container} style={{paddingLeft:"120px"}}>
-    
-        <Link href="/" passHref>
+    <nav className={styles.container} style={{ paddingLeft: "120px" }}>
+      <Link href="/" passHref>
         <img
           style={{ cursor: "pointer" }}
           src="/images/reusables/Artfi.png"
@@ -18,7 +16,7 @@ const NavArtfiOnly = () => {
         />
       </Link>
     </nav>
-  )
-}
+  );
+};
 
-export default NavArtfiOnly
+export default NavArtfiOnly;

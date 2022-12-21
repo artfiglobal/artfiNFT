@@ -102,7 +102,7 @@ export const Landing = ({
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
-  const [activeIcon, setActiveIcon] = useState(false);
+  // const [activeIcon, setActiveIcon] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [unitValueTotal, setUnitValueTotal] = useState(10000);
   const [pressKey, setPressKey] = useState(true);
@@ -116,7 +116,7 @@ export const Landing = ({
   // console.log(cellProps);
   const [selCnt, setSelCnt] = useState(0);
 
-  const ftactionsNo = offerWhitelist.FractionNumber;
+  // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
@@ -191,7 +191,7 @@ export const Landing = ({
       e.preventDefault();
       // console.log(process.env,"hii")
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/apiasd/offering/getallheader`,
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallheader`,
         formData
       );
       setOpened(true);
@@ -322,7 +322,6 @@ export const Landing = ({
             artist={offerWhitelist?.artistName || "James"}
             price={offerWhitelist?.price || "300"}
             sheetName={offerWhitelist?.factSheet}
-            artistId={artistId}
             artistImage={artistImage}
             artWorkImage={artWorkImage}
           />
