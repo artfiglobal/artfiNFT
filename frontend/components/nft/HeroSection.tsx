@@ -25,13 +25,14 @@ const HeroSection = ({nft,artist}:any) => {
                 </div>
         </section>
         <section className={styles.description}>
-               <p>Love is in the Air is a quintessential Banksy painting: instantly recognizable, the image has become synonymous with the artist’s indelible graphic style, wry humor and galvanizing political commentary</p>
+               <p><span >Sagarmatha National Park – Mount Everest</span> is a roaming tryptich with fierce brush strokes that evoke the transcendental beauty of Earth’s highest peak. The oversized, three-canvas creation is the standout work from Jafri’s 50-painting series of UNESCO World Heritage Sites.</p>
         </section>
         <section className={styles.secBg} style={{width:"100%"}}>
           {/* <img src="" alt="bg" width="100%" height="100%"/>hii */}
           
               <div>
-                   <h1 >Display on Devices</h1>
+                   <h1 >Display on
+Digital Screens</h1>
               </div>
               <div style={{textAlign:"center"}}>
                  {/* <img  src="/Background/Group 18803.svg"/> */}
