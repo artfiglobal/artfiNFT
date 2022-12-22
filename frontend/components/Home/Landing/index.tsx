@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { Button } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Typography } from "../../reusables/Atoms";
 import PowerdBy from "../PowerdBy";
@@ -12,8 +13,9 @@ type LandingProps = {
   offerData:any
 };
 
-const Landing = ({ setIsOpen, isOpen,offerData }: LandingProps) => {
+const Landing = ({ setIsOpen, isOpen,offerData }: any) => {
   const [offer, setOffer] = useState(offerData.trueOfferings?offerData.trueOfferings[0]:{})
+  const router = useRouter()
   console.log(offer,"jkl")
   return (
     <div className={styles.landing}>
@@ -30,7 +32,7 @@ const Landing = ({ setIsOpen, isOpen,offerData }: LandingProps) => {
           <span className={styles.heading_highlight}>Collect</span> &{" "}
           <span className={styles.heading_highlight}>Invest</span> <br /> in 
           Bluechip Fine Art
-        </Typography>
+        </Typography> 
 
         <Typography color="black" variant="body" >
             <label className={styles.secondHedding}> A new era of investing in fine art enabled by <br/>  NFTs and blockchain </label>
@@ -73,9 +75,11 @@ const Landing = ({ setIsOpen, isOpen,offerData }: LandingProps) => {
       <PowerdBy />
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
-        <img className={styles.container_img} src="/Logo/artfinew.svg" />
+        
+         
+        <div className={styles.container_img}><img  src="/Logo/art.svg" /> <img  src="/Logo/x.svg" /> {offer.headerDetails.artistName}</div>
         <img className={styles.container_img_mbl} src="/Logo/Mobile.png" />
-
+         {/* {offer.headerDetails.artistName} */}
         <div className={styles.btn_container}>
           {offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist"?<Button
             className={styles.waitlist_btn}
@@ -83,7 +87,7 @@ const Landing = ({ setIsOpen, isOpen,offerData }: LandingProps) => {
             onClick={() => setIsOpen(!isOpen)}
           >
             Waitlist now
-          </Button>:<Button   style={{ textTransform: "capitalize" }}className={styles.waitlist_btn}>Whitelist Now</Button>:<Button
+          </Button>:<Button   style={{ textTransform: "capitalize" }}className={styles.waitlist_btn} onClick={()=>router.push("/whitelist")}>Whitelist Now</Button>:<Button
             className={styles.waitlist_btn}
             style={{ textTransform: "capitalize" }}
             onClick={() => setIsOpen(!isOpen)}

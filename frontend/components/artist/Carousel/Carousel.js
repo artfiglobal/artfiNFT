@@ -15,8 +15,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const CarouselComponent = ({ artistDetails }: any) => {
-  const NextArrow = ({ onClick }: any) => {
+const CarouselComponent = ({ artistDetails }) => {
+  const NextArrow = ({ onClick }) => {
     return (
       <div className={cls(styles.arrow, styles.next)} onClick={onClick}>
         {/* <img src={arrowRight} alt="" className={styles.right_direction} /> */}
@@ -27,7 +27,7 @@ const CarouselComponent = ({ artistDetails }: any) => {
     );
   };
 
-  const PrevArrow = ({ onClick }: any) => {
+  const PrevArrow = ({ onClick }) => {
     return (
       <div className={cls(styles.arrow, styles.prev)} onClick={onClick}>
         {/* <img src={arrowLeft} alt="" className={styles.left_direction} /> */}
@@ -76,7 +76,7 @@ const CarouselComponent = ({ artistDetails }: any) => {
     <div>
       <h1 className={styles.carouselTitle}>Highlights</h1>
       <Slider className={styles.slider_component} {...settings}>
-        {artistDetails?.highlight?.map((item: any, index: any) => (
+        {artistDetails?.highlight?.map((item, index) => (
           <img
             key={index}
             className={styles.highlight}

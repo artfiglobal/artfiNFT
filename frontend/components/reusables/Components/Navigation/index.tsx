@@ -27,6 +27,13 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
       </Link>
 
       <div className={open ? styles.navigation : styles.open}>
+      <div className={styles.navItem}>
+          <Link href="/header" passHref>
+            <Typography variant="body" color="black" className={styles.text}>
+              Offerings
+            </Typography>
+          </Link>
+        </div>
         <div className={styles.navItem}>
           <Link href="/about-us" passHref>
             <Typography variant="body" color="black" className={styles.text}>
@@ -41,6 +48,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
             </Typography>
           </Link>
         </div>
+       
         <div className={styles.navItem}>
           <Link href="/how-it-works" passHref>
             <Typography variant="body" color="black" className={styles.text}>
