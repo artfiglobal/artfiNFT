@@ -95,6 +95,7 @@
     .imgBlock {
         text-align: center;
         margin: auto;
+        margin-top: 180px;
         display: flex;
         width: 100%;
         justify-content: center;
@@ -121,10 +122,14 @@
         line-height: 50px;
         /* or 156% */
 
-        text-align: center;
+        // text-align: center;
         margin: 0 auto;
         width: 60%;
         color: #000000;
+        span{
+            color: black;
+            font-weight:700;
+        }
     }
 
     margin:100px 0;
@@ -214,7 +219,7 @@ margin-top: 40px;
     background: url(../../public/Background/Rectangle.png);
     background-repeat: no-repeat;
     background-position: center;
-    padding: 40px 100px;
+    padding: 100px 100px;
     
 
         display: flex;

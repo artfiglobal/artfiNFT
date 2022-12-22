@@ -23,10 +23,10 @@ function MyTimer({ endDate }: any) {
   return (
     <div style={{ textAlign: "left" }}>
       <div style={{ fontSize: "16px" }}>
-        <span>{days > 9 ? days : "0" + days}</span>:
-        <span>{hours > 9 ? hours : "0" + hours}</span>:
-        <span>{minutes > 9 ? minutes : "0" + minutes}</span>:
-        <span>{seconds > 9 ? seconds : "0" + seconds}</span>
+        <span>{days > 9 ? days + "d" : "0" + days +"d"}</span>:
+        <span>{hours > 9 ? hours + "h" : "0" + hours+"h"}</span>:
+        <span>{minutes > 9 ? minutes + "m" : "0" + minutes+"m"}</span>:
+        <span>{seconds > 9 ? seconds + "s": "0" + seconds + "s"}</span>
       </div>
     </div>
   );

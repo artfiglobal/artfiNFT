@@ -50,9 +50,9 @@ interface Props {
     // };
     isWhite: boolean;
 }
-const Header = (props: Props) => {
+const Header = (props:any) => {
     const [header, setHeader] = useState(props.data)
-
+    console.log(header,"jkl")
     return (
         <>
             <Navigation />
