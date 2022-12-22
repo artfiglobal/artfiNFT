@@ -436,6 +436,12 @@
     }
 
     .container_img {
+      color:white;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
       @media screen and (max-width: 800px) {
         display: none;
       }
