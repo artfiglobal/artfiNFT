@@ -8,6 +8,7 @@ const variantsMapping = {
   connect: style.connect,
   clear: style.clear,
   fractionBTN: style.fractionBTN,
+  detailsPageBtn: style.detailsPageBtn,
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,7 +18,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "secondary"
     | "connect"
     | "clear"
-    | "fractionBTN";
+    | "fractionBTN"
+    | "detailsPageBtn";
   children: any;
   // onClick?: () => void;
   extraClass?: string;

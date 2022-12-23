@@ -1,0 +1,12 @@
+.webBtnStyle {
+  display: block;
+  @media screen and (max-width: 1088px) {
+    display: none;
+  }
+}
+.mobBtnStyle {
+  display: none;
+  @media screen and (max-width: 1088px) {
+    display: block;
+  }
+}
