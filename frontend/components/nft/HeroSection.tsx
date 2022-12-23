@@ -52,8 +52,6 @@ Devices</h1>
               <div style={{textAlign:"center"}}>
                  {/* <img  src="/Background/Group 18803.svg"/> */}
                {nft.instagramNFTImage?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.instagramNFTImage}`} alt="bg" width="350px" height="100%"/>:<img src="/Background/Group 18803.png" alt="bg" width="350px" height="100%"/>}
-                 
-               
               </div>
           </div>
         </section>
