@@ -796,7 +796,6 @@ export const Landing = ({
                   </div>
                   Connect your wallet
                 </Button> */}
-
                   <Button
                     variant="connect"
                     style={{
@@ -850,7 +849,6 @@ export const Landing = ({
                     OR
                   </Typography>
                 </div>
-
                 <a
                   href="https://dashboard.beta.arcana.network/login"
                   className={style.connectArcana}
@@ -886,7 +884,6 @@ export const Landing = ({
             </Button> */}
               </div>
             )}
-
             <div className={style.get}>
               <div>
                 <h3 style={{ margin: "0" }}>
@@ -896,7 +893,13 @@ export const Landing = ({
                 </h3>
               </div>
               <div>
-                <Image src={RightArrow} alt="" />
+                <Link href="/artwork-details">
+                  <Image
+                    style={{ cursor: "pointer" }}
+                    src={RightArrow}
+                    alt=""
+                  />
+                </Link>
                 {/* <RightArrow /> */}
                 {/* <ButtonView>View</ButtonView> */}
               </div>

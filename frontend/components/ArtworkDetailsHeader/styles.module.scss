@@ -1,0 +1,75 @@
+.header_container {
+  font-family: "Plus Jakarta Sans";
+  margin: 0 auto;
+  margin-top: 95px;
+  display: flex;
+  flex-direction: column;
+  width: 1400px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  height: 720px;
+  h5 {
+    font-weight: 600;
+    letter-spacing: 13px;
+    font-size: 20px;
+    margin: 0;
+    line-height: 25px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  .artist_name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 218px;
+    p {
+      font-weight: 700;
+      margin: 0;
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+  .play_btn {
+    width: 223px;
+    height: 70px;
+
+    border: 1px solid #ffffff;
+
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 16.5953px;
+    // filter: blur(100px);
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.7442px;
+    line-height: 26px;
+    margin-top: 60px;
+    color: #ffffff;
+    background: radial-gradient(
+        121.3% 1030.91% at -3.14% -7.86%,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 16.5953px;
+
+    @media screen and (max-width: 800px) {
+      height: 60px;
+      font-size: 18px;
+    }
+  }
+  .play_btn:hover {
+  }
+}

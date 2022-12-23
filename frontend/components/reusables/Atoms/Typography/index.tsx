@@ -27,7 +27,7 @@ type TypographyProps = {
   children: ReactNode;
   className?: string;
   extraClass?: string;
-  onClick?: ()=> void 
+  onClick?: () => void;
 };
 
 export const Typography = ({
