@@ -9,8 +9,10 @@ import VideoAboutArtist from "../components/VideoAboutArtist/VideoAboutArtist";
 
 const ArtworkDetails = () => {
   return (
+    <>
+     <Navigation />
     <div className={style.details_container}>
-      <Navigation />
+     
       <ArtworkDetailsHeader />
       <div className={style.artworkImage_container}>
         <Image
@@ -86,6 +88,7 @@ const ArtworkDetails = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 
