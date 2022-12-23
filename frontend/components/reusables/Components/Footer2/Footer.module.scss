@@ -4,9 +4,7 @@
   align-items: center;
   height: 87px;
   overflow: hidden;
-  border-top: 1px solid #E6E6E6;
-  ;
-
+  border-top: 1px solid #e6e6e6;
   @media screen and (max-width: 819px) {
     // padding: 30px 10px;
     flex-direction: column;
@@ -23,8 +21,6 @@
     margin-left: 0;
     padding: 10px;
     width: 240px;
-
-
   }
 }
 
@@ -38,7 +34,6 @@
     // width: 100%;
     width: 190px;
     height: 100%;
-
   }
 }
 
@@ -49,7 +44,6 @@
     margin-left: 0;
     padding: 10px;
     width: 190px;
-
   }
 }
 
@@ -67,7 +61,7 @@
     // padding: 30px 10px;
     // display: block;
     flex-direction: row;
-    padding:0 50px;
+    padding: 0 50px;
   }
 
   .poweredBy {
@@ -80,8 +74,7 @@
     width: 100%;
     gap: 40px;
     padding-bottom: 12px;
-    background-color: #E6E6E6;
-
+    background-color: #e6e6e6;
 
     @media screen and (max-width: 992px) {
       display: flex;
@@ -93,7 +86,6 @@
         width: 90px;
       }
     }
-
   }
 
   .main {
@@ -132,7 +124,7 @@
 
       .text {
         margin-top: 40px;
-        font-family: 'Plus Jakarta Sans';
+        font-family: "Plus Jakarta Sans";
         font-style: normal;
         font-weight: 600;
         font-size: 22px;
@@ -140,7 +132,7 @@
         margin-bottom: 42px;
         width: 80%;
 
-        color: #FFFFFF;
+        color: #ffffff;
         @media screen and (max-width: 992px) {
           width: 100%;
           margin-top: 0;
@@ -167,12 +159,9 @@
           justify-content: center;
           margin-left: auto;
           margin-right: auto;
-          @media screen and (max-width: 998px){
+          @media screen and (max-width: 998px) {
             width: 300px;
-          
-
           }
-
         }
 
         a {
@@ -181,11 +170,9 @@
           margin-bottom: 0;
           margin-left: auto;
           margin-right: auto;
-          @media screen and (max-width: 998px){
+          @media screen and (max-width: 998px) {
             width: 47px;
             height: 47px;
-          
-
           }
         }
 
@@ -204,7 +191,7 @@
           width: 39.32px;
           height: 39.32px;
 
-          background: #4527B3;
+          background: #4527b3;
           border-radius: 32px;
 
           @media screen and (max-width: 992px) {
@@ -257,7 +244,7 @@
         width: 200px;
         height: 48px;
 
-        background: #2C2C2C;
+        background: #2c2c2c;
         border-radius: 40px;
 
         font-family: "Plus Jakarta Sans";
@@ -275,9 +262,8 @@
         }
       }
 
-
       .text {
-        font-family: 'Plus Jakarta Sans';
+        font-family: "Plus Jakarta Sans";
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
@@ -288,9 +274,8 @@
         margin-bottom: 16px;
         display: block;
         @media screen and (max-width: 992px) {
-         display: none;
+          display: none;
         }
-
       }
 
       .patreon {
@@ -309,7 +294,7 @@
         left: 891px;
         top: 3565px;
 
-        background: #2C2C2C;
+        background: #2c2c2c;
         border-radius: 10px;
         color: #e8e8e8;
         @media screen and (max-width: 998px) {
@@ -387,14 +372,18 @@
       width: 409px;
       height: 76px;
 
-      background: linear-gradient(102.93deg,
+      background: linear-gradient(
+          102.93deg,
           #ffd08a 0.61%,
           #ffc06f 43.58%,
-          #683e08 93.31%),
+          #683e08 93.31%
+        ),
         linear-gradient(0deg, #000000, #000000),
-        linear-gradient(0deg,
+        linear-gradient(
+          0deg,
           rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.2));
+          rgba(255, 255, 255, 0.2)
+        );
 
       border-radius: 16px;
 
@@ -489,7 +478,6 @@
 }
 
 .models {
-
   div {
     div {
       border-radius: 20px;
@@ -500,11 +488,10 @@
       @media screen and (max-width: 651px) {
         // width: 80%;
         padding: 0;
-
       }
 
       h1 {
-        font-family: 'Plus Jakarta Sans';
+        font-family: "Plus Jakarta Sans";
         font-style: normal;
         font-weight: 600;
         font-size: 32px;
@@ -514,7 +501,6 @@
 
         // width: 314px;
         /* or 48px */
-
 
         text-align: center;
 
@@ -539,7 +525,7 @@
         border-radius: 16.5953px;
         width: 223px;
         height: 70px;
-        font-family: 'Plus Jakarta Sans';
+        font-family: "Plus Jakarta Sans";
         font-style: normal;
         font-weight: 700;
         font-size: 20.7442px;
@@ -554,71 +540,68 @@
         }
       }
     }
-
   }
 }
 
-.patreonMobile{
+.patreonMobile {
   display: none;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-        // max-width: 371px;
+  // max-width: 371px;
 
-        padding: 8px 24px 8px 8px;
-        // height: 48px;
+  padding: 8px 24px 8px 8px;
+  // height: 48px;
 
-        width: 429px;
-        height: 48px;
-        left: 891px;
-        top: 3565px;
+  width: 429px;
+  height: 48px;
+  left: 891px;
+  top: 3565px;
 
-        background: #2C2C2C;
-        border-radius: 10px;
-        color: #e8e8e8;
-        // margin-bottom: 30px;
-        @media screen and (max-width: 998px) {
-          display: flex;
-          width: 100%;
-          margin-bottom: 60px;
-        }
+  background: #2c2c2c;
+  border-radius: 10px;
+  color: #e8e8e8;
+  // margin-bottom: 30px;
+  @media screen and (max-width: 998px) {
+    display: flex;
+    width: 100%;
+    margin-bottom: 60px;
+  }
 
-        .left {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-          input {
-            all: unset;
-          }
+    input {
+      all: unset;
+    }
 
-          ::placeholder {
-            // color: rgba(255, 255, 255, 0.767);
-          }
-        }
+    ::placeholder {
+      // color: rgba(255, 255, 255, 0.767);
+    }
+  }
 
-        button {
-          all: unset;
-          cursor: pointer;
-        }
-      
+  button {
+    all: unset;
+    cursor: pointer;
+  }
 }
 
-.textMobile
-{
+.textMobile {
   text-align: left;
-  font-family: 'Plus Jakarta Sans';
+  font-family: "Plus Jakarta Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-  
+
   display: none;
-  color: #FFFFFF;
+  color: #ffffff;
 
   // color: #FFFFFF;
   @media screen and (max-width: 998px) {
@@ -626,23 +609,21 @@
     width: 100%;
     margin-bottom: 10px;
   }
-
 }
 
-.textCCMobile
-{
-  font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-width: 100%;
-/* identical to box height */
-color: #FFFFFF;
-display: none;
-@media screen and (max-width: 998px) {
-  display: block;
+.textCCMobile {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
   width: 100%;
-  margin-bottom: 10px;
-}
+  /* identical to box height */
+  color: #ffffff;
+  display: none;
+  @media screen and (max-width: 998px) {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

@@ -117,6 +117,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
       <PowerdBy />
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
+
         <div className={styles.container_img}>
           <img src="/Logo/art.svg" /> <img src="/Logo/x.svg" />{" "}
           {offer.headerDetails.artistName}

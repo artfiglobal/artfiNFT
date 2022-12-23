@@ -1,251 +1,234 @@
 @import url("https://fonts.googleapis.com/css?family=Aguafina Script|Akronim|Aldrich|Alegreya|Alex Brush|Allerta Stencil|Allura|Almendra SC|Amethysta|Annie Use Your Telescope|Arbutus|Arizonia|Asset|Astloch|Bad Script|Barrio|Bellefair|Berkshire Swash|Bilbo|BioRhyme Expanded|Bonbon|Butcherman|Butterfly Kids|Caveat|Charmonman|Cinzel Decorative|Codystar|Crafty Girls|Dawning of a New Day|Faster One|Frijole|Geostar|Give You Glory|Hi Melody|Italianno|Jacques Francois Shadow|KhandMajor Mono Display|Meddon|Miltonian|Monofett|Monoton|Mystery Quest|Nosifer|Orbitron|Petit Formal Script|Sacramento|Shadows Into Light Two|Snowburst One|Dancing Script|Vibur|Raleway");
 
 .herosection {
-    background: linear-gradient(180deg, #FFFFFF 75.68%, #EFEFEF 83.91%);
-    padding: 10px;
-   
+  background: linear-gradient(180deg, #ffffff 75.68%, #efefef 83.91%);
+  padding: 10px;
 
-    h1 {
-        font-family: 'Arizonia';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 96px;
-        line-height: 120%;
-        padding: 0;
-        margin: 0;
-        /* or 115px */
+  h1 {
+    font-family: "Arizonia";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 120%;
+    padding: 0;
+    margin: 0;
+    /* or 115px */
 
-        text-align: center;
-        color: #CBCBCB;
+    text-align: center;
+    color: #cbcbcb;
+  }
 
-    }
+  h2 {
+    font-family: "Christmas Elegant-Personal use";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100px;
+    padding: 0;
+    margin: 0;
+    line-height: 120%;
+    /* identical to box height, or 120px */
+    src: local("Christmas Elegant-Personal use Regular"),
+      url("../../public/font/ChristmasElegantPersonalUse-gxrPp.woff")
+        format("woff");
 
-    h2 {
-        font-family: 'Christmas Elegant-Personal use';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 100px;
-        padding: 0;
-        margin: 0;
-        line-height: 120%;
-        /* identical to box height, or 120px */
-        src: local('Christmas Elegant-Personal use Regular'), url('../../public/font/ChristmasElegantPersonalUse-gxrPp.woff') format('woff');
+    text-align: center;
+    letter-spacing: 0.09em;
 
+    color: #000000;
+  }
 
-        text-align: center;
-        letter-spacing: 0.09em;
-
-        color: #000000;
-    }
-
-    h4 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        margin: 0;
-        padding: 0;
-        margin-top: 6px;
-
-
-        label {
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 130%;
-            // color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 0.12em;
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 130%;
-            /* identical to box height, or 26px */
-
-            letter-spacing: 0.12em;
-
-            color: rgba(0, 0, 0, 0.5);
-
-            @media screen and (max-width: 600px) {
-                // height: 500px;
-                font-size: 15px;
-            }
-
-        }
-
-        p {
-            display: flex;
-            align-items: center;
-            color: black;
-            margin-left: 10px;
-            font-family: 'Plus Jakarta Sans';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 130%;
-
-
-
-            // font-size: 15px;
-            @media screen and (max-width: 600px) {
-                // height: 500px;
-                font-size: 15px;
-            }
-        }
-    }
-
-    .imgBlock {
-        text-align: center;
-        margin: auto;
-        margin-top: 180px;
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        background: url(../../public/Background/Artfibg.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-
-        img {
-            margin: 0 auto;
-            // position: relative!important;
-        }
-    }
-}
-
-.description {
-
-    // text-align: center ;
-    padding:  100px 0;
-    p {
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 50px;
-        /* or 156% */
-
-        // text-align: center;
-        margin: 0 auto;
-        width: 60%;
-        color: #000000;
-        span{
-            color: black;
-            font-weight:700;
-        }
-    }
-
-    margin:100px 0;
-
-}
-
-.watchSection {
-    margin: 120px;
-
-    .watchInnerSection {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        gap:200px;
-
-        div {
-            width: 50%;
-            // text-align: center;
-
-            h1 {
-                font-family: 'Plus Jakarta Sans';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 64px;
-                line-height: 130%;
-                width: 80%;
-                /* or 83px */
-                color: #000000;
-                margin-bottom: 0;
-
-            }
-
-        }
-    }
-
-}
-
-.social {
-    display: flex;
-    width: 100%;
-    gap: 30px;
-
-    p {
-        font-family: 'Plus Jakarta Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 120%;
-        /* identical to box height, or 24px */
-
-
-        color: #585858
-    }
-
-    img {
-        margin-top: 24px;
-        width: 50px !important;
-        height: 50px !important;
-    }
-}
-.play{
-    width: 223px;
+  h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:11px;
-height: 70px;
-background: #4527B3;
-backdrop-filter: blur(12px);
-/* Note: backdrop-filter has minimal browser support */
-border: 0;
-border-radius: 16.5953px;
-margin: 0 auto;
-font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 20.7442px;
-line-height: 26px;
-color:white;
-margin-bottom: 137px;
-margin-top: 40px;
-}
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    margin-top: 6px;
 
-.secBg
-{
-    background: url(../../public/Background/Rectangle.png);
+    label {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 130%;
+      // color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.12em;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 130%;
+      /* identical to box height, or 26px */
+
+      letter-spacing: 0.12em;
+
+      color: rgba(0, 0, 0, 0.5);
+
+      @media screen and (max-width: 600px) {
+        // height: 500px;
+        font-size: 15px;
+      }
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      color: black;
+      margin-left: 10px;
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 130%;
+
+      // font-size: 15px;
+      @media screen and (max-width: 600px) {
+        // height: 500px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .imgBlock {
+    text-align: center;
+    margin: auto;
+    margin-top: 180px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background: url(../../public/Background/Artfibg.svg);
     background-repeat: no-repeat;
     background-position: center;
-    padding: 100px 100px;
-    
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+    img {
+      margin: 0 auto;
+      // position: relative!important;
+    }
+  }
+}
 
-        div {
-            width: 50%;
-            // text-align: center;
+.description {
+  // text-align: center ;
+  padding: 100px 0;
+  p {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    /* or 156% */
 
-            h1 {
-                font-family: 'Plus Jakarta Sans';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 64px;
-                line-height: 130%;
-                width: 70%;
-                // text-align: center;
-                /* or 83px */
-                color: white;
-                margin-bottom: 0;
+    // text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    color: #000000;
+    span {
+      color: black;
+      font-weight: 700;
+    }
+  }
 
-            }
+  margin: 100px 0;
+}
 
-        }
-    
+.watchSection {
+  margin: 120px;
 
+  .watchInnerSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 200px;
+
+    div {
+      width: 50%;
+      // text-align: center;
+
+      h1 {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 64px;
+        line-height: 130%;
+        width: 80%;
+        /* or 83px */
+        color: #000000;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.social {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+
+  p {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    /* identical to box height, or 24px */
+
+    color: #585858;
+  }
+
+  img {
+    margin-top: 24px;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+.play {
+  width: 223px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  height: 70px;
+  background: #4527b3;
+  backdrop-filter: blur(12px);
+  /* Note: backdrop-filter has minimal browser support */
+  border: 0;
+  border-radius: 16.5953px;
+  margin: 0 auto;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20.7442px;
+  line-height: 26px;
+  color: white;
+  margin-bottom: 137px;
+  margin-top: 40px;
+}
+
+.secBg {
+  background: url(../../public/Background/Rectangle.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 100px 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  div {
+    width: 50%;
+    // text-align: center;
+
+    h1 {
+      font-family: "Plus Jakarta Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 130%;
+      width: 70%;
+      // text-align: center;
+      /* or 83px */
+      color: white;
+      margin-bottom: 0;
+    }
+  }
 }
