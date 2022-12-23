@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import Image from "next/image";
-import rectangle from "../../public/Background/Rectangle.png";
 import style from "./styles.module.scss";
+import bk2 from "../../pages/bk2.jpg";
 
 const ArtworkDetailsHeader = ({}) => {
   const [showVideo, setShowVideo] = useState(false);
@@ -17,7 +17,12 @@ const ArtworkDetailsHeader = ({}) => {
           allowFullScreen
         ></iframe>
       ) : (
-        <Image className={style.header_inner} src={rectangle} alt="" />
+        <Image
+          style={{ height: "800px" }}
+          className={style.header_inner}
+          src={bk2}
+          alt=""
+        />
       )}
 
       <div className={style.header_details}>

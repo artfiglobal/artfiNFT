@@ -5,27 +5,39 @@
   height: 100%;
   margin: 0 auto;
   margin-top: 95px;
+  // span {
+  //   display: none !important;
+  // }
   .backdrop {
     position: absolute;
     z-index: 1;
     border-radius: 30px;
     width: 100%;
-    height: 100%;
+    height: 720px;
     background: black;
   }
+
   .header_inner {
-    outline: none;
-    border: 0;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 30px;
-    z-index: 2;
-    overflow: hidden;
-    // top: 0;
-    padding: 0;
-    position: relative;
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    top: unset !important;
+    left: unset !important;
+    bottom: unset !important;
+    right: unset !important;
+    outline: none !important;
+    border: 0 !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    border-radius: 30px !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    // top: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
     --controls: none !important;
-    height: 720px;
+    height: 720px !important;
   }
 
   .header_details {
