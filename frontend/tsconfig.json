@@ -26,6 +26,6 @@
     "components/video/Video.jsx",
     "components/artist/Carousel/Carousel.jsx",
     "components/SelectableGroup/SelectImages.jsx"
-  ],
+, "components/artist/Carousel/Carousel.js", "components/artist/Carousel/Carousel.js", "components/Home2/Timer2.jsx", "components/Home2/Timer2.jsx", "components/Home2/Timer2.jsx", "components/Home2/Timer2.jsx", "components/Home2/Timer2.jsx"  ],
   "exclude": ["node_modules"]
 }

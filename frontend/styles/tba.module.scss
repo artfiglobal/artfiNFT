@@ -1,0 +1,80 @@
+.tba{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 400px;
+    margin-top: 120px;
+.ts{
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+letter-spacing: 0.6em;
+
+color: #000000;
+margin-bottom: 24px;
+}
+.waitlist_btn
+{
+    width: 223px;
+height: 60px;
+font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 23px;
+margin-top: 50px;
+/* identical to box height */
+color: #FFFFFF;
+background: #4527B3;
+backdrop-filter: blur(12px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 15px;
+}
+    .title{
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 64px;
+line-height: 120%;
+/* identical to box height, or 77px */
+
+text-align: center;
+text-transform: capitalize;
+
+color: #000000;
+margin-bottom: 20px;
+    }
+    .by
+    {
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 130%;
+text-transform: uppercase;
+/* identical to box height, or 26px */
+
+letter-spacing: 0.12em;
+
+color: rgba(0, 0, 0, 0.7);
+
+    }
+    .name
+    {
+        font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 130%;
+text-transform: uppercase;
+/* identical to box height, or 26px */
+
+
+color: #000000;
+    }
+}

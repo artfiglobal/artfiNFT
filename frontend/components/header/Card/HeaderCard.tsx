@@ -38,15 +38,14 @@ const HeaderCard = ({headerData}:any) => {
 .headerDetails.Title}</div>
             <div className={style.price_date_container}>
               <div ><div><img src="/Icons/price.png"/></div>
-              <div className={style.card_price}> {headerData.offeringData
-.whitelistDetails?"$"+headerData.offeringData
-.whitelistDetails.price:headerData.offeringData
-.headerDetails.price}</div>
+              <div className={style.card_price}> {headerData.offeringData.whitelistDetails?"$"+headerData.offeringData
+                  .whitelistDetails.price:<Link href={`/tba/${headerData.offeringData._id}`}>{headerData.offeringData
+                  .headerDetails.price}</Link>}</div>
               </div>
               
               
               <div className={style.whitelist}>{headerData.offeringData
-.whitelistDetails?headerData.offeringData.IsOnGoingOffering?<button className={style.btn} onClick={()=>router.push("/whitelist")}>Whitelist</button>:<><p>Whitelist Start</p><span>20 Feb, 2022</span></>:""}</div>
+                    .whitelistDetails?headerData.offeringData.IsOnGoingOffering?<button className={style.btn} onClick={()=>router.push("/whitelist")}>Whitelist</button>:<><p>Whitelist Start</p><span>20 Feb, 2022</span></>:""}</div>
             </div>
             {/* <div className={style.whitelist}>{headerData.}</div> */}
         </div>
