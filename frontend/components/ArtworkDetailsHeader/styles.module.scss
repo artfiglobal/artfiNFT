@@ -1,16 +1,60 @@
 .header_container {
-  font-family: "Plus Jakarta Sans";
+  position: relative;
+  width: 1400px;
+  z-index: 5;
+  height: 100%;
   margin: 0 auto;
   margin-top: 95px;
-  display: flex;
-  flex-direction: column;
-  width: 1400px;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: black;
-  height: 720px;
+  // span {
+  //   display: none !important;
+  // }
+  .backdrop {
+    position: absolute;
+    z-index: 1;
+    border-radius: 30px;
+    width: 100%;
+    height: 720px;
+    background: black;
+  }
+
+  .header_inner {
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    top: unset !important;
+    left: unset !important;
+    bottom: unset !important;
+    right: unset !important;
+    outline: none !important;
+    border: 0 !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    border-radius: 30px !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    // top: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    --controls: none !important;
+    height: 720px !important;
+  }
+
+  .header_details {
+    font-family: "Plus Jakarta Sans";
+    width: 1400px;
+    height: 720px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    background: transparent;
+    text-align: center;
+  }
   h5 {
     font-weight: 600;
     letter-spacing: 13px;

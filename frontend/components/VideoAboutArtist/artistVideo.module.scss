@@ -1,0 +1,26 @@
+.artistVideo_container {
+  margin: 80px auto;
+  display: flex;
+  width: 1260px;
+  justify-content: space-between;
+  align-items: center;
+  .hisOwnWords {
+    width: 515px;
+    font-family: "Plus Jakarta Sans";
+    h1,
+    p {
+      margin: 0;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 58px;
+    }
+    p {
+      font-weight: 400;
+    }
+  }
+  .video_inner {
+    width: 600px;
+    height: 450px;
+    padding: 0 !important;
+  }
+}
