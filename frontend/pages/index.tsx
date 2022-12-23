@@ -21,23 +21,20 @@ import Featured from "../components/Home/Featured/Index";
 import { fetchFeaturedInDate } from "../lib/apis/featuredInData";
 import GetStaticProps from "../components/Home/Featured/types";
 
-
-
-
 export async function getStaticProps() {
   const data = await fetchFeaturedInDate();
   const offerData = await offeringData();
   return {
     props: {
       data,
-      offerData
+      offerData,
     },
   };
 }
 
-const Home: NextPage<GetStaticProps> = (props:any) => {
+const Home: NextPage<GetStaticProps> = (props: any) => {
   //isopen state
-  console.log(props,"offering");
+  console.log(props, "offering");
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
@@ -47,7 +44,6 @@ const Home: NextPage<GetStaticProps> = (props:any) => {
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-
       {isOpen && (
         <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
       )}
@@ -55,7 +51,12 @@ const Home: NextPage<GetStaticProps> = (props:any) => {
 
       <main className={styles.main}>
         <div>
-          <Landing setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} offerData={props.offerData}/>
+          <Landing
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            referralCode={""}
+            offerData={props.offerData}
+          />
         </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
 

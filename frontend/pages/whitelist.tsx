@@ -36,7 +36,7 @@ export default function WhitelistLanding() {
           `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE1ZGJkNmE0YjZjZWQ2YzJiZjZlIiwiaWF0IjoxNjY5ODA5MTY5LCJleHAiOjE2NzI0MDExNjl9.oXlcdA_DLpOHROcMCX2rTHeviiWcvkEMarYhmkXB8gE`,
               "Content-Type": "application/json",
               "Content-Length": "<calculated when request is sent>",
             },
@@ -47,7 +47,7 @@ export default function WhitelistLanding() {
         const artistImage = response.data.data.artistImage;
         setArtistImage(artistImage);
         setArtistId(data[0].artistId);
-        // console.log(data);
+        console.log(data);
         setTableRowsCols({
           columnCnt: data[0].whitelistDetails.columnNumber,
           rowCnt: data[0].whitelistDetails.rowNumber,

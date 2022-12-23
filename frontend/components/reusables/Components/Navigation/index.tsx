@@ -1,17 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Navigation.module.scss";
-import { Button, Typography } from "../../Atoms";
+import { Typography } from "../../Atoms";
 import { FaBars, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
+import ConnectWalletNav from "../ConnectWalletNav/ConnectWalletNav";
+import { useRouter } from "next/router";
+import { style, width } from "@mui/system";
 
 type NavigationProps = {};
 
 export const Navigation = ({}: NavigationProps): JSX.Element => {
   const [open, setIsOpen] = useState(true);
   const [isDown, setIsDown] = useState(false);
+
   const [isDown2, setIsDown2] = useState(false);
   const [btnRotate, setBtnRotate] = useState(false);
+  const [showConnectWallet, setShowConnectWallet] = useState(false);
+  const router = useRouter();
+  const pageName = router.pathname;
+
+  useEffect(() => {
+    if (pageName === "/artwork-details") {
+      setShowConnectWallet(true);
+    } else setShowConnectWallet(false);
+  }, [pageName]);
 
   return (
     <nav className={styles.container}>
@@ -27,7 +40,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
       </Link>
 
       <div className={open ? styles.navigation : styles.open}>
-      <div className={styles.navItem}>
+        <div className={styles.navItem}>
           <Link href="/header" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Offerings
@@ -48,7 +61,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
             </Typography>
           </Link>
         </div>
-       
+
         <div className={styles.navItem}>
           <Link href="/how-it-works" passHref>
             <Typography variant="body" color="black" className={styles.text}>
@@ -84,6 +97,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
             </Typography>
           </Link>
         </div>
+        {showConnectWallet && <ConnectWalletNav walletBtnStyle="webBtnStyle" />}
         {/* <div className={styles.navItem}>
           <Typography variant="body" color="black" className={styles.text}>
             Price Database
@@ -224,9 +238,18 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           </Link>
         </div> */}
       </div>
-      <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
-        <FaBars />
-      </div>
+      {showConnectWallet ? (
+        <div className={styles.connectWallet_mobile_nav}>
+          <ConnectWalletNav walletBtnStyle="mobBtnStyle" />
+          <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
+            <FaBars />
+          </div>
+        </div>
+      ) : (
+        <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
+          <FaBars />
+        </div>
+      )}
     </nav>
   );
 };

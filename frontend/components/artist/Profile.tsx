@@ -50,8 +50,8 @@ const Profile = ({ artistDetails }: any) => {
           Award in 1971. */}
         </p>
         <div className={styles.profileInfo}>
-          <ProfileData title="born" value={bornDate} />
-          <ProfileData title="Died" value={deathDate} />
+          {bornDate && <ProfileData title="born" value={bornDate} />}
+          {deathDate && <ProfileData title="Died" value={deathDate} />}
         </div>
         <div className={styles.profileInfo}>
           <ProfileData

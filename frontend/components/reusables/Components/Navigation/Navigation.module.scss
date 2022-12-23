@@ -6,7 +6,7 @@
   position: fixed;
   width: 100%;
   height: 75px;
-  top:0;
+  top: 0;
   left: 0px;
   padding: 0px 70px;
   background: rgba(255, 255, 255, 0.6);
@@ -38,7 +38,7 @@
 
   .navigation {
     // width: 52.5%;
-    gap:40px;
+    gap: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,7 +48,7 @@
 
     @media screen and (max-width: 1280px) {
       // width: 60%;
-      gap:35px;
+      gap: 15px;
     }
     @media screen and (max-width: 1088px) {
       position: absolute;
@@ -85,7 +85,6 @@
         text-align: center;
         // margin-right: 8px;
         overflow: hidden;
-        
 
         .dropdownBtn {
           margin-left: 4px;
@@ -100,7 +99,6 @@
       .text:hover {
         color: #4527b3;
       }
-    
     }
 
     .navDropdown {
@@ -189,5 +187,14 @@
         text-align: right;
       }
     }
+  }
+}
+.connectWallet_mobile_nav {
+  display: none;
+
+  @media screen and (max-width: 1088px) {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
   }
 }
