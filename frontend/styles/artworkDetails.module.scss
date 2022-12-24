@@ -5,24 +5,30 @@
   display: flex;
   justify-content: center;
   position: relative;
+
+  @media screen and (max-width: 1240px) {
+    // width: 100%;
+    height: 670px;
+  }
 }
 .artworkImage {
   height: 720px;
   position: relative;
   margin: 0 auto;
   width: 100%;
+  // object-fit: contain;
+  @media screen and (max-width: 1440px) {
+    // width: 100%;
+    height: 100%;
+  }
 }
 .about_artwork {
-  //   display: flex;
   line-height: 50px;
   font-size: 32px;
-  width: 971px;
+  padding: 75px 0 !important;
+  width: 67.5%;
   margin: 0 auto;
-  margin-top: 75px;
   font-family: "Plus Jakarta Sans";
-
-  //   justify-content: center;
-  //   align-content: center;
   h2 {
     margin: 0;
     font-size: 32px;
@@ -30,38 +36,92 @@
     font-weight: 700;
   }
   p {
-    font-size: 32px;
     display: inline;
     margin: 0;
     font-weight: 400;
   }
 }
 .artwork_Details {
-  margin-top: 75px;
-  h1 {
-    font-family: "Plus Jakarta Sans";
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 60px;
-    width: fit-content;
+  padding-top: 75px;
+  padding-bottom: 50px;
+
+  h3 {
     margin: 0 auto;
   }
   .artwork_details_inner {
-    // display: flex;
     display: grid;
     max-width: 1188px;
-    justify-content: center;
-    grid-template-columns: 30% 30% 30%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    grid-template-columns: 24% 24% 24%;
+    column-gap: 50px;
     margin: 0 auto;
     row-gap: 71px;
     margin-top: 80px;
     div {
       margin: 0;
       display: flex;
+      // max-width: 275px;
       flex-direction: column;
       align-items: flex-start;
+      p {
+        width: fit-content;
+        font-family: "Plus Jakarta Sans";
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+    a {
+      font-size: 20px;
+      font-family: "Plus Jakarta Sans";
+      font-weight: 600;
+      color: #4527b3;
+    }
+    @media screen and (max-width: 1240px) {
+      margin-top: 69px;
+      row-gap: 61px;
+
+      a {
+        font-size: 17px;
+      }
+      p {
+        font-size: 17px !important;
+        line-height: 24px !important;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      row-gap: 50px;
+      margin-top: 57px;
+      grid-template-columns: 30% 30%;
+      justify-content: center;
+      a {
+        font-size: 14px;
+      }
+      p {
+        font-size: 14px !important;
+        line-height: 20px !important;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      row-gap: 38px;
+      margin-top: 43px;
+      grid-template-columns: 35% 35%;
+      justify-content: center;
+      a {
+        font-size: 11px;
+      }
+      p {
+        font-size: 11px !important;
+        line-height: 15px !important;
+      }
+    }
+    @media screen and (max-width: 576px) {
+      row-gap: 28px;
+      margin-top: 32px;
+      grid-template-columns: 50%;
       justify-content: center;
     }
+
     img {
       object-fit: contain !important;
       width: 30px !important;
@@ -70,28 +130,137 @@
   }
 }
 .about_artist {
-  font-family: "Plus Jakarta Sans";
   width: 1036px;
   margin: 0 auto;
-  margin-top: 100px;
+  padding: 100px 0;
   display: flex;
   flex-direction: column;
-  h1 {
-    font-family: "Plus Jakarta Sans";
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 60px;
-    width: fit-content;
-    margin: 0 auto;
-    // margin-bottom: 50px;
-  }
   gap: 40px;
+
+  h3 {
+    margin: 0 auto;
+  }
 
   p {
     font-size: 24px;
+    font-family: "Plus Jakarta Sans";
     margin: 0;
     line-height: 36px;
     font-weight: 400;
     color: #585858;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .artwork_Details {
+    padding-top: 65px;
+    padding-bottom: 43px;
+  }
+  .artworkImage_container {
+    margin-top: 95px;
+    height: 670px;
+  }
+  .about_artwork {
+    line-height: 43px;
+    padding: 65px 0 !important;
+    font-size: 28px;
+    h2 {
+      font-size: 28px;
+    }
+  }
+  .about_artist {
+    width: 70%;
+    padding: 86px 0;
+    p {
+      font-size: 21px;
+      line-height: 31px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .artwork_Details {
+    padding-bottom: 36px;
+    padding-top: 53px;
+  }
+  .artworkImage_container {
+    margin-top: 78px;
+    height: 512px;
+  }
+  .about_artwork {
+    line-height: 36px;
+    padding: 53px 0 !important;
+    font-size: 23px;
+    h2 {
+      font-size: 23px;
+    }
+  }
+  .about_artist {
+    gap: 30px;
+    padding: 71px 0;
+
+    p {
+      font-size: 17px;
+      line-height: 21px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .artwork_Details {
+    padding-bottom: 27px;
+    padding-top: 40px;
+  }
+  .artworkImage_container {
+    height: 384px;
+    margin-top: 59px;
+  }
+  .about_artwork {
+    gap: 20px;
+    line-height: 27px;
+    padding: 40px 0 !important;
+    font-size: 17px;
+    h2 {
+      font-size: 17px;
+    }
+  }
+  .about_artist {
+    padding: 53px 0;
+    p {
+      line-height: 19.2px;
+      font-size: 13px;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .artwork_Details {
+    padding-bottom: 20px;
+    padding-top: 30px;
+  }
+  .artworkImage_container {
+    height: 288px;
+    margin-top: 44px;
+  }
+  .about_artwork {
+    line-height: 20px;
+    padding: 30px 0 !important;
+    font-size: 13px;
+    h2 {
+      font-size: 13px;
+    }
+  }
+  .about_artist {
+    padding: 40px 0;
+    p {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .artwork_Details {
+    padding-bottom: 17px;
+    padding-top: 25px;
+  }
+  .artworkImage_container {
+    height: 240px;
+    margin-top: 44px;
   }
 }

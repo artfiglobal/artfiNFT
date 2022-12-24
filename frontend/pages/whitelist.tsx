@@ -8,7 +8,6 @@ import styles from "../styles/Home.module.scss";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import axios from "axios";
-import { formatEther } from "ethers/lib/utils";
 import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
@@ -18,7 +17,6 @@ export default function WhitelistLanding() {
   const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
   const [artWorkImage, setArtWorkImage] = useState("");
   const [artistImage, setArtistImage] = useState("");
-  // const [rowCnt, setRowCnt] = useState();
   const [tableRowsCols, setTableRowsCols] = useState({
     columnCnt: 0,
     rowCnt: 0,
@@ -26,8 +24,6 @@ export default function WhitelistLanding() {
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
 
-  // const [columnCnt, setColumnCnt] = useState();
-  // console.log(formattedAddress, "formattedAddress");
   useEffect(() => {
     const fetchOffers = async () => {
       try {
@@ -42,18 +38,17 @@ export default function WhitelistLanding() {
             },
           }
         );
-        // console.log(response);
+        console.log(response);
         const data = response.data.data.trueOfferings;
         const artistImage = response.data.data.artistImage;
         setArtistImage(artistImage);
         setArtistId(data[0].artistId);
-        console.log(data);
+        console.log(data[0], "data");
         setTableRowsCols({
           columnCnt: data[0].whitelistDetails.columnNumber,
           rowCnt: data[0].whitelistDetails.rowNumber,
         });
-        // setRowCnt(data[0].whitelistDetails.rowNumber);
-        // setColumnCnt(data[0].whitelistDetails.columnNumber);
+
         setFractionSize({
           width: data[0].whitelistDetails.width,
           height: data[0].whitelistDetails.height,
@@ -73,7 +68,6 @@ export default function WhitelistLanding() {
         setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
         const defineWhitelist = () => {
           data.map((item: any, index: number) => {
-            // console.log(item.whitelistDetails);
             if (item.IsOnGoingOffering) {
               setOfferWhitelist(item.whitelistDetails);
               setOfferUnveiling(item.unveilingDetails);
@@ -86,32 +80,9 @@ export default function WhitelistLanding() {
         console.log(err);
       }
     };
-    // console.log(tableRowsCols, "this is data is from backend");
-
-    // console.log(artWorkImage);
-    // const fetchArtist = async () => {
-    //   try {
-    //     const response = await axios.get(
-    //       `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/artist/getartist/${artistId}`,
-    //       {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           "Content-Length": "<calculated when request is sent>",
-    //         },
-    //       }
-    //     );
-    //     const data = response.data.artist[0];
-    //     setArtistDetails(data);
-    //     // console.log(artistDetails);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-    // fetchArtist();
 
     fetchOffers();
   }, []);
-  // console.log(offerWhitelist);
   const [wallet, setWallet] = useState(false);
   const [likes, setLikes] = useState(0);
   const {

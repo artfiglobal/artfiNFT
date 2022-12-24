@@ -1,26 +1,94 @@
 .artistVideo_container {
-  margin: 80px auto;
+  padding: 100px 0;
+  margin: 0 auto;
   display: flex;
   width: 1260px;
   justify-content: space-between;
   align-items: center;
+  column-gap: 30px;
+  @media screen and (max-width: 1240px) {
+    padding: 86px 0;
+    width: 87.5%;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 71px 0;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 53px 0;
+    flex-direction: column;
+    gap: 50px;
+    column-gap: unset;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 40px 0;
+    gap: 30px;
+  }
   .hisOwnWords {
-    width: 515px;
-    font-family: "Plus Jakarta Sans";
-    h1,
-    p {
-      margin: 0;
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 58px;
+    width: 500px;
+    @media screen and (max-width: 1240px) {
+      width: 70%;
     }
-    p {
-      font-weight: 400;
+    @media screen and (max-width: 768px) {
+    }
+    @media screen and (max-width: 576px) {
+      width: 70%;
     }
   }
+
   .video_inner {
-    width: 600px;
-    height: 450px;
-    padding: 0 !important;
+    margin: 0;
+    z-index: 3;
+    border: 0;
+    outline: none;
+    object-fit: cover;
+    position: relative;
+    // width: 600px;
+    background-size: cover;
+    // height: 450px;
+    // iframe {
+    //   width: 100%;
+    //   height: 100%;
+    //   aspect-ratio: 1 / 1;
+    //   // width: 600px;
+    //   padding-bottom: 100%;
+    //   position: absolute;
+    //   padding: 0;
+    //   // width: 600px;
+    //   // height: 450px;
+    //   outline: 0;
+    //   object-fit: cover ;
+
+    //   // border-radius: 20px;
+    //   border: none;
+    // }
+    video {
+      width: 600px;
+      object-fit: cover;
+      height: 450px;
+      outline: 0;
+      border-radius: 30px;
+      border: none;
+      @media screen and (max-width: 1240px) {
+        width: 517px;
+        height: 388px;
+      }
+      @media screen and (max-width: 1024px) {
+        width: 427px;
+        height: 320px;
+      }
+      @media screen and (max-width: 900px) {
+        width: 375px;
+        height: 281px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 427px;
+        height: 320px;
+      }
+
+      @media screen and (max-width: 576px) {
+        width: 300px;
+        height: 225px;
+      }
+    }
   }
 }

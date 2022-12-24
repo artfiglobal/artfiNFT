@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ArtworkDetailsHeader from "../components/ArtworkDetailsHeader/ArtworkDetailsHeader";
 import bk from "./bk.jpg";
 import { Navigation } from "../components/reusables/Components";
@@ -6,84 +6,121 @@ import style from "../styles/artworkDetails.module.scss";
 import Image from "next/image";
 import { DetailCard } from "../components/Home2";
 import VideoAboutArtist from "../components/VideoAboutArtist/VideoAboutArtist";
+import Link from "next/link";
+import { GeneralContext } from "../context/GeneralState";
+import Typography from "../components/reusables2/Atoms/Typography2";
+import axios from "axios";
 
 const ArtworkDetails = () => {
+  const [artworkDetails, setArtworkDetails] = useState({});
+  const [artworkWidth, setArtworkWidth] = useState<number>(0);
+  const [artworkHeight, setArtworkHeight] = useState<number>(0);
+  const [artWorkDescription, setArtWorkDescription] = useState("");
+  const [artworkName, setArtworkName] = useState("");
+  const [signature, setSignature] = useState("");
+  const [year, setYear] = useState("");
+  const [authencity, setAuthencity] = useState("");
+  const [medium, setMedium] = useState("");
+  const [provenence, setProvenence] = useState("");
+  const [aboutArtist, setAboutArtist] = useState("");
+  const [artistName, setArtistName] = useState("");
+
+  // console.log(artworkDetails);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        //${process.env.NEXT_PUBLIC_React_App_Base_Url}
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
+          {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE1ZGJkNmE0YjZjZWQ2YzJiZjZlIiwiaWF0IjoxNjY5ODA5MTY5LCJleHAiOjE2NzI0MDExNjl9.oXlcdA_DLpOHROcMCX2rTHeviiWcvkEMarYhmkXB8gE`,
+              "Content-Type": "application/json",
+              "Content-Length": "<calculated when request is sent>",
+            },
+          }
+        );
+        // console.log(response);
+        const data = response.data.data.trueOfferings;
+        setArtworkDetails({
+          whitelistDetails: data[0].whitelistDetails,
+          artwork: data[0].addDetails,
+        });
+        setArtworkWidth(
+          Math.floor(
+            data[0]?.whitelistDetails?.width *
+              data[0]?.whitelistDetails?.columnNumber *
+              0.0265
+          )
+        );
+        setArtworkHeight(
+          Math.floor(
+            data[0]?.whitelistDetails?.height *
+              data[0]?.whitelistDetails?.rowNumber *
+              0.0265
+          )
+        );
+        // setArtworkHeight(data[0].whitelistDetails.height);
+        setArtworkName(data[0]?.whitelistDetails?.Title);
+        setSignature(data[0]?.whitelistDetails?.signature);
+        setYear(data[0]?.whitelistDetails?.year);
+        setMedium(data[0]?.whitelistDetails?.medium);
+        setProvenence(data[0]?.whitelistDetails?.provenence);
+        setAuthencity(data[0]?.whitelistDetails?.authencity);
+        setArtWorkDescription(data[0]?.addDetails?.artWorkDescription);
+        setArtistName(data[0]?.whitelistDetails?.artistName);
+        setAboutArtist(data[0]?.addDetails?.aboutArtist);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className={style.details_container}>
       <Navigation />
-      <ArtworkDetailsHeader />
+      <ArtworkDetailsHeader artworkDetails={artworkDetails} />
       <div className={style.artworkImage_container}>
         <Image
           height="720"
           style={{ margin: "0 auto" }}
-          // width="1400"
           src={bk}
           className={style.artworkImage}
         />
       </div>
       <div className={style.about_artwork}>
-        <h2>Sagarmatha National Park – Mount Everest </h2>
-        <p>
-          is a roaming tryptich with fierce brush strokes that evoke the
-          transcendental beauty of Earth’s highest peak. The oversized,
-          three-canvas creation is the standout work from Jafri’s 50-painting
-          series of UNESCO World Heritage Sites.
-        </p>
+        <h2>{artworkName} </h2>
+        <p>{artWorkDescription}</p>
       </div>
       <div className={style.artwork_Details}>
-        <h1>Artwork Details</h1>
+        <Typography color="black" fontWeight="semiBold" variant="subheading">
+          Artwork Details
+        </Typography>
         <div className={style.artwork_details_inner}>
           <DetailCard
             url="image"
             title="ORIGINAL SIZE"
-            content="380cm x 160cm"
+            content={artworkWidth + "cm" + " x " + artworkHeight + "cm"}
           />
-          <DetailCard
-            url="note"
-            title="SIGNATURE"
-            content="Signed on the ownership"
-          />
-          <DetailCard url="calander" title="year" content="2021" />
-
-          <DetailCard
-            url="check"
-            title="AUTHENTICITY"
-            content="Sagarmatha National Park - Mount Everest  is
-            accompanied by...
-            Read more"
-          />
-
-          <DetailCard
-            url="paint"
-            title="medium"
-            content="Oil  paint on canvas"
-          />
-          <DetailCard
-            url="look"
-            title="PROVENENCE"
-            content="From the collection of Raza Beig"
-          />
+          <DetailCard url="note" title="signature" content={signature} />
+          <DetailCard url="calander" title="year" content={year} />
+          <div>
+            <DetailCard url="check" title="authencity" content={authencity} />
+            <Link href="/">Read more</Link>
+          </div>
+          <DetailCard url="paint" title="medium" content={medium} />
+          <DetailCard url="look" title="provenence" content={provenence} />
         </div>
       </div>
-      <VideoAboutArtist />
+      <VideoAboutArtist artworkName={artworkName} artistName={artistName} />
       <div className={style.about_artist}>
-        <h1>About Sacha Jafri</h1>
-        <p>
-          Sacha Jafri is one of the world’s most celebrated living artists. He
-          is best known for his sprawling 17,177 square foot painting Journey of
-          Humanity. It set records in 2020 as the largest-ever painting on
-          canvas and is the second most expensive painting sold at auction by a
-          living artist.{" "}
-        </p>
-        <p>
-          Jafri holds an MFA from Oxford University and his artworks can be
-          found in the personal collections of Spike Lee, Susan Sarandon, George
-          Clooney, and Sharon Stone, among others.{" "}
-        </p>
-        <p>
-          Jafri’s abract paintings activate the rich history of magic realism to
-          reconnect humanity and awaken the child within us all.
-        </p>
+        <Typography color="black" fontWeight="semiBold" variant="subheading">
+          About {artistName}
+        </Typography>
+        <p>{aboutArtist}</p>
       </div>
     </div>
   );

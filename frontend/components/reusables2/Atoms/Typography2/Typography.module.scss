@@ -1,0 +1,108 @@
+.heading {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-size: 40px;
+  margin: 0 0;
+  line-height: 130%;
+  @media screen and (max-width: 1400px) {
+    font-size: 34px;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+.bold {
+  font-weight: 700;
+}
+.semiBold {
+  font-weight: 600;
+}
+.medium {
+  font-weight: 400;
+}
+.subheading {
+  font-family: "Plus Jakarta Sans";
+  font-size: 48px;
+  line-height: 60px;
+  width: fit-content;
+  margin: 0;
+  @media screen and (max-width: 1240px) {
+    font-size: 41px;
+    line-height: 52px;
+  }
+  @media screen and (max-width: 1024px) {
+    font-size: 34px;
+    line-height: 43px;
+  }
+  @media screen and (max-width: 768px) {
+    line-height: 32px;
+    font-size: 27px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
+
+.newHeading {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0.17em;
+  margin: 0 0;
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 11px;
+  }
+}
+.newHeading {
+  font-size: 24px;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.body {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-size: 18px;
+  line-height: 180%;
+  margin: 0 0;
+  @media screen and (max-width: 1400px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 10px;
+  }
+}
+
+.white {
+  color: #ffffff;
+}
+.purple {
+  color: #4527b3;
+}
+.mauve {
+  color: #6231c8;
+}
+.black {
+  color: #000000;
+}
+
+.grey {
+  color: #85858c;
+}
+.lightGray {
+  color: rgba(255, 255, 255, 0.7);
+}
