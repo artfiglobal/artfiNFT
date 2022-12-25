@@ -97,6 +97,8 @@ const HeaderCard = ({ headerData }: any) => {
         </div>
       </div>
     </div>
+    </div>
+    </div>
   );
 };
 
