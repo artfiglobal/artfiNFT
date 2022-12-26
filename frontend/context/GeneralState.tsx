@@ -11,7 +11,6 @@ const GeneralProvider: React.FC<GeneralContextProviderInterface> = ({
   children,
 }) => {
   const [artistId, setArtistId] = useState<string>("");
-  // console.log(artistDetails, "this is useContext");
   return (
     <GeneralContext.Provider value={{ artistId, setArtistId }}>
       {children}

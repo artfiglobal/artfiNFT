@@ -3,7 +3,7 @@ import { useState, useContext, useEffect, useCallback, useRef } from "react";
 import { Container, Typography, Button } from "../../reusables2/Atoms";
 import ButtonView from "@mui/material/Button";
 import { ArtInfo, DetailCard, LandingCarousel, OrderForm, Timer } from "..";
-import { Tabs, Accordion, Modal, StylesApiProvider } from "@mantine/core";
+import { Tabs, Accordion, Modal } from "@mantine/core";
 import { FiHeart } from "react-icons/fi";
 import style from "./Landing.module.scss";
 import { ethers } from "ethers";
