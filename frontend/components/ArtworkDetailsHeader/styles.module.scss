@@ -1,9 +1,10 @@
 .header_container {
   position: relative;
-  width: 1400px;
+  // width: 1400px;
+  // margin: ;
   z-index: 5;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 20px;
   margin-top: 95px;
   @media screen and (max-width: 1440px) {
     width: 97.2%;

@@ -80,49 +80,52 @@ const ArtworkDetails = () => {
   }, []);
 
   return (
-    <div className={style.details_container}>
+    <>
       <Navigation />
-      <ArtworkDetailsHeader artworkDetails={artworkDetails} />
-      <div className={style.artworkImage_container}>
-        <Image
-          height="720"
-          style={{ margin: "0 auto" }}
-          src={bk}
-          className={style.artworkImage}
-        />
-      </div>
-      <div className={style.about_artwork}>
-        <h2>{artworkName} </h2>
-        <p>{artWorkDescription}</p>
-      </div>
-      <div className={style.artwork_Details}>
-        <Typography color="black" fontWeight="semiBold" variant="subheading">
-          Artwork Details
-        </Typography>
-        <div className={style.artwork_details_inner}>
-          <DetailCard
-            url="image"
-            title="ORIGINAL SIZE"
-            content={artworkWidth + "cm" + " x " + artworkHeight + "cm"}
+      <div className={style.details_container}>
+        <Navigation />
+        <ArtworkDetailsHeader artworkDetails={artworkDetails} />
+        <div className={style.artworkImage_container}>
+          <Image
+            height="720"
+            style={{ margin: "0 auto" }}
+            src={bk}
+            className={style.artworkImage}
           />
-          <DetailCard url="note" title="signature" content={signature} />
-          <DetailCard url="calander" title="year" content={year} />
-          <div>
-            <DetailCard url="check" title="authencity" content={authencity} />
-            <Link href="/">Read more</Link>
+        </div>
+        <div className={style.about_artwork}>
+          <h2>{artworkName} </h2>
+          <p>{artWorkDescription}</p>
+        </div>
+        <div className={style.artwork_Details}>
+          <Typography color="black" fontWeight="semiBold" variant="subheading">
+            Artwork Details
+          </Typography>
+          <div className={style.artwork_details_inner}>
+            <DetailCard
+              url="image"
+              title="ORIGINAL SIZE"
+              content={artworkWidth + "cm" + " x " + artworkHeight + "cm"}
+            />
+            <DetailCard url="note" title="signature" content={signature} />
+            <DetailCard url="calander" title="year" content={year} />
+            <div>
+              <DetailCard url="check" title="authencity" content={authencity} />
+              <Link href="/">Read more</Link>
+            </div>
+            <DetailCard url="paint" title="medium" content={medium} />
+            <DetailCard url="look" title="provenence" content={provenence} />
           </div>
-          <DetailCard url="paint" title="medium" content={medium} />
-          <DetailCard url="look" title="provenence" content={provenence} />
+        </div>
+        <VideoAboutArtist artworkName={artworkName} artistName={artistName} />
+        <div className={style.about_artist}>
+          <Typography color="black" fontWeight="semiBold" variant="subheading">
+            About {artistName}
+          </Typography>
+          <p>{aboutArtist}</p>
         </div>
       </div>
-      <VideoAboutArtist artworkName={artworkName} artistName={artistName} />
-      <div className={style.about_artist}>
-        <Typography color="black" fontWeight="semiBold" variant="subheading">
-          About {artistName}
-        </Typography>
-        <p>{aboutArtist}</p>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -36,6 +36,7 @@ import {
   DeselectAll,
 } from "react-selectable-fast";
 import { FaBlackTie } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -115,6 +116,7 @@ export const Landing = ({
   const [initialCellProps, setInitialCellProps] = useState([]);
   // console.log(cellProps);
   const [selCnt, setSelCnt] = useState(0);
+  const router = useRouter()
 
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
@@ -911,6 +913,7 @@ export const Landing = ({
                 <ButtonView
                   variant="outlined"
                   color="primary"
+                  onClick={()=>router.push("/nft-detail")}
                   style={{
                     color: "#4527B3",
                     border: "1px solid #4527B3",
