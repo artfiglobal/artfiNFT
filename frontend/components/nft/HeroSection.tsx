@@ -11,7 +11,7 @@ const HeroSection = ({nft,artist}:any) => {
     <div>
         <section className={styles.herosection}>
             <h1>Vs</h1>
-            <h2>{nft.artWorkName}</h2>
+            <h2>{nft?nft.artWorkName:""}</h2>
             <h4><label>NEW ARTWORK</label> <p> BY {artistName} {artist.IsArtistVerified?<img src="/Publiced/Vector.svg"/>:""}</p></h4>
             
                {/* <div style={{textAlign:"center"}}><button className={styles.play}><img src="/Icons/playIcon.svg"/>Play</button></div> */}
@@ -19,7 +19,7 @@ const HeroSection = ({nft,artist}:any) => {
           
             <div className={styles.imgBlock}>
                 <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-                    <Card srcdata={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.uploadNFTDesign}`}/>
+                   {nft? <Card srcdata={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.uploadNFTDesign}`}/>:""}
                   </div>
 
                 </div>
@@ -37,7 +37,7 @@ Digital Screens</h1>
               <div style={{textAlign:"center"}}>
                  {/* <img  src="/Background/Group 18803.svg"/> */}
                  
-                {nft.uploadNFTDesign.length > 0?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.gadgetsNFTImage}`} alt="bg" width="350px" height="100%"/>: <img src="/Background/Group 18803.png" alt="bg" width="350px" height="100%"/>}
+                {nft?nft.uploadNFTDesign.length > 0?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.gadgetsNFTImage}`} alt="bg" width="350px" height="100%"/>: <img src="/Background/Group 18803.png" alt="bg" width="350px" height="100%"/>:""}
                  
                
               </div>
@@ -51,7 +51,7 @@ Devices</h1>
               </div>
               <div style={{textAlign:"center"}}>
                  {/* <img  src="/Background/Group 18803.svg"/> */}
-               {nft.instagramNFTImage?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.instagramNFTImage}`} alt="bg" width="350px" height="100%"/>:<img src="/Background/Group 18803.png" alt="bg" width="350px" height="100%"/>}
+               {nft?nft.instagramNFTImage?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.instagramNFTImage}`} alt="bg" width="350px" height="100%"/>:<img src="/Background/Group 18803.png" alt="bg" width="350px" height="100%"/>:""}
               </div>
           </div>
         </section>
@@ -69,7 +69,7 @@ on Instagram</h1>
               </div>
               <div style={{textAlign:"center"}}>
                  {/* <img  src="/Background/Group 18803.svg" alt="bg2" width="100%" height="100%"/> */}
-                 {nft.digitalScreenNFTImage?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.digitalScreenNFTImage}`} width="100%"/>:<img src="/Background/iPhone 12 Pro (Wooden Hands).svg"/>}
+                 {nft?nft.digitalScreenNFTImage?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.digitalScreenNFTImage}`} width="100%"/>:<img src="/Background/iPhone 12 Pro (Wooden Hands).svg"/>:""}
                
               </div>
           </div>
