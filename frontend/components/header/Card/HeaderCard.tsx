@@ -9,7 +9,11 @@ import { useRouter } from "next/router";
 
 const HeaderCard = ({ headerData }: any) => {
   const router = useRouter();
-  console.log(headerData, "headerData");
+  let date = new Date(headerData?.offeringData.whitelistDetails?.startDate);
+  var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][date.getMonth()];
+var str = date.getDate() + ' ' + month + ',' + date.getFullYear();
+console.log(str)
   return (
     <div style={{ display: "inline-block" }}>
       <div style={{ position: "relative" }} className={style.card}>
@@ -72,16 +76,16 @@ const HeaderCard = ({ headerData }: any) => {
           </div>
           <div className={style.price_date_container}>
             <div>
-              <div>
+              {/* <div>
                 <img src="/Icons/price.png" />
-              </div>
-            <div style={{display:"flex",justifyItems:"center",alignItems:"center",gap:"8px"}}>
+              </div> */}
+            {/* <div style={{display:"flex",justifyItems:"center",alignItems:"center",gap:"8px"}}>
                 <Avatar src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${headerData.artistImage}`}/>
                  <div className={style.artist}>{headerData.offeringData.headerDetails.artistName}</div>
                  {headerData.IsArtistVerified? <img src="/Icons/right.png"/>:""}
-            </div>
-            <div className={style.name}>{headerData.offeringData
-.headerDetails.Title}</div>
+            </div> */}
+            {/* <div className={style.name}>{headerData.offeringData
+.headerDetails.Title}</div> */}
             <div className={style.price_date_container}>
               <div ><div><img src="/Icons/price.png"/></div>
               <div className={style.card_price}> {headerData.offeringData.whitelistDetails?"$"+headerData.offeringData
@@ -91,7 +95,7 @@ const HeaderCard = ({ headerData }: any) => {
               
               
               <div className={style.whitelist}>{headerData.offeringData
-                    .whitelistDetails?headerData.offeringData.IsOnGoingOffering?<button className={style.btn} onClick={()=>router.push("/whitelist")}>Whitelist</button>:<><p>Whitelist Start</p><span>20 Feb, 2022</span></>:""}</div>
+                    .whitelistDetails?headerData.offeringData.IsOnGoingOffering?<button className={style.btn} onClick={()=>router.push("/whitelist")}>Whitelist</button>:<><p>Whitelist Start</p><span>{str?str:"20 Feb, 2022"}</span></>:""}</div>
             </div>
             {/* <div className={style.whitelist}>{headerData.}</div> */}
         </div>
