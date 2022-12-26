@@ -29,6 +29,7 @@ const tba = () => {
       console.log(res.data,"resss")
       setHeader(res.data.data.offering)
       setId(true)
+      console.log(res)
 
     
    }
