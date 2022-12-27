@@ -2,7 +2,7 @@
 
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Typography } from "../../reusables/Atoms";
 import PowerdBy from "../PowerdBy";
 import styles from "./Landing.module.scss";
@@ -13,12 +13,18 @@ type LandingProps = {
   offerData: any;
 };
 
-const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
-  const [offer, setOffer] = useState(
-    offerData.trueOfferings ? offerData.trueOfferings[0] : {}
-  );
+const Landing = ({ setIsOpen, isOpen, offering }: any) => {
+  const [offer, setOffer] = useState<any>({});
   const router = useRouter();
-  console.log(offer, "jkl");
+  // console.log(offer, "jklmno");
+  useEffect(() => {
+  console.log(offering,"offeringklll")
+    if(offering)
+    {
+    setOffer(offering.trueOfferings?offering.trueOfferings[0]:{})
+    }
+
+  }, [offering])
   return (
     <div className={styles.landing}>
       <div
@@ -27,7 +33,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
       >
         {offer.annoucmentDetails ? (
           <iframe
-            src={offer.annoucmentDetails.backgroundCollabarationVideoLink}
+            src={offer?offer.annoucmentDetails.backgroundCollabarationVideoLink:""}
             style={{
               position: "absolute",
               top: 0,
@@ -57,10 +63,10 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         )}
       </div>
       {offer.annoucmentDetails ? (
-      <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+      <iframe src={offer?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
          
         ) : (
-          <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+          <iframe src={offer.annoucmentDetails?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
 
         )}
       
@@ -81,7 +87,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
 
         <div className={styles.container_img}>
           <img src="/Logo/art.svg" /> <img src="/Logo/x.svg" />{" "}
-          <p className={styles.artistName}>{offer.headerDetails.artistName}</p>
+          <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p>
         </div>
         {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
         {/* {offer.headerDetails.artistName} */}
@@ -114,7 +120,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
             </Button>
           )}
           <a
-            href={offer.annoucmentDetails.announcementVideoLink}
+            href={offer.annoucmentDetails?offer.annoucmentDetails.announcementVideoLink:""}
             target="_blank"
           >
             <Button
