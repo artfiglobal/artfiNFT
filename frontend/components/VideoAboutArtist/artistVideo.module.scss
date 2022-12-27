@@ -94,4 +94,20 @@
       }
     }
   }
+  .video-react-poster {
+    // object-fit: cover !important;
+    // background-size: cover !important;
+    height: 450px !important;
+    width: 600px !important;
+  }
+  video {
+    height: 450px !important;
+    aspect-ratio: 1 / 1;
+    width: 600px !important;
+    object-fit: cover !important;
+    background-size: cover !important;
+    object-fit: cover !important;
+    // position: relative !important;
+    // border-radius: 30px !important;
+  }
 }
