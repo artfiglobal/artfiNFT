@@ -12,7 +12,7 @@ import Typography from "../components/reusables2/Atoms/Typography2";
 import axios from "axios";
 
 const ArtworkDetails = () => {
-  const [artworkDetails, setArtworkDetails] = useState({});
+  const [artworkDetails, setArtworkDetails] = useState<any>({});
   const [artworkWidth, setArtworkWidth] = useState<number>(0);
   const [artworkHeight, setArtworkHeight] = useState<number>(0);
   const [artWorkDescription, setArtWorkDescription] = useState("");
@@ -24,6 +24,7 @@ const ArtworkDetails = () => {
   const [provenence, setProvenence] = useState("");
   const [aboutArtist, setAboutArtist] = useState("");
   const [artistName, setArtistName] = useState("");
+  const [innerWidth, setInnerWidth] = useState(0);
 
   // console.log(artworkDetails);
 
@@ -78,7 +79,11 @@ const ArtworkDetails = () => {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    const width = globalThis?.window?.innerWidth;
 
+    setInnerWidth(width);
+  }, [innerWidth]);
   return (
     <>
       <Navigation />
@@ -87,7 +92,8 @@ const ArtworkDetails = () => {
         <ArtworkDetailsHeader artworkDetails={artworkDetails} />
         <div className={style.artworkImage_container}>
           <Image
-            height="720"
+            height={innerWidth * 0.5}
+            width={innerWidth}
             style={{ margin: "0 auto" }}
             src={bk}
             className={style.artworkImage}
@@ -117,7 +123,11 @@ const ArtworkDetails = () => {
             <DetailCard url="look" title="provenence" content={provenence} />
           </div>
         </div>
-        <VideoAboutArtist artworkName={artworkName} artistName={artistName} />
+        <VideoAboutArtist
+          explanationVideoLink={artworkDetails?.artwork?.explanationVideoLink}
+          artworkName={artworkName}
+          artistName={artistName}
+        />
         <div className={style.about_artist}>
           <Typography color="black" fontWeight="semiBold" variant="subheading">
             About {artistName}

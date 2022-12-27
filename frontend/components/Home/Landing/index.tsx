@@ -27,7 +27,11 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
       >
         {offer.annoucmentDetails ? (
           <iframe
-            src={offer?offer.annoucmentDetails.backgroundCollabarationVideoLink:""}
+            src={
+              offer
+                ? offer.annoucmentDetails.backgroundCollabarationVideoLink
+                : ""
+            }
             style={{
               position: "absolute",
               top: 0,
@@ -57,16 +61,29 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         )}
       </div>
       {offer.annoucmentDetails ? (
-      <iframe src={offer?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
-         
-        ) : (
-          <iframe src={offer.annoucmentDetails?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+        <iframe
+          src={offer ? offer.annoucmentDetails.mobileAndAnnouncementURL : ""}
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <iframe
+          src={
+            offer.annoucmentDetails
+              ? offer.annoucmentDetails.mobileAndAnnouncementURL
+              : ""
+          }
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
 
-        )}
-      
-      
-      
-      
       <script src="https://player.vimeo.com/api/player.js"></script>
       {/* <iframe
         src={offer.annoucmentDetails.mobileAndAnnouncementURL}
@@ -75,7 +92,9 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         allowFullScreen
       ></iframe>
       <script src="https://player.vimeo.com/api/player.js"></script> */}
-      <div className={styles.pby}><PowerdBy /></div>
+      <div className={styles.pby}>
+        <PowerdBy />
+      </div>
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
 
@@ -114,7 +133,11 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
             </Button>
           )}
           <a
-            href={offer.annoucmentDetails?offer.annoucmentDetails.announcementVideoLink:""}
+            href={
+              offer.annoucmentDetails
+                ? offer.annoucmentDetails.announcementVideoLink
+                : ""
+            }
             target="_blank"
           >
             <Button

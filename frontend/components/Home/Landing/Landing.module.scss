@@ -1,11 +1,9 @@
-
- .pby
- {
-   @media screen and (max-width: 600px) {
-     // display: none;
-     margin-top: -310px;
-   }
-   @media screen and (max-width: 390px) {
+.pby {
+  @media screen and (max-width: 600px) {
+    // display: none;
+    margin-top: -310px;
+  }
+  @media screen and (max-width: 390px) {
     // display: none;
     margin-top: -330px;
   }
@@ -284,28 +282,26 @@
 
 .landing {
   margin-top: 80px;
-position: relative;
+  position: relative;
 
-.videos
-{
-  display: block;
-  margin-top: -10px;
-  @media screen and (max-width: 600px) {
+  .videos {
+    display: block;
+    margin-top: -10px;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+  .mobilevideo {
     display: none;
+    @media screen and (max-width: 600px) {
+      display: block;
+      margin-top: -500px;
+    }
+    @media screen and (max-width: 420px) {
+      display: block;
+      margin-top: -550px;
+    }
   }
-}
-.mobilevideo
-{
-  display: none;
-  @media screen and (max-width: 600px) {
-    display: block;
-    margin-top: -500px;
-  }
-  @media screen and (max-width: 420px) {
-    display: block;
-    margin-top: -550px;
-  }
-}
 
   .container {
     background: rgba(0, 0, 0, 0.5);
@@ -437,7 +433,7 @@ margin: 0;
         gap: 13px;
       }
     }
-   
+
     .container_img_mbl {
       display: none;
 

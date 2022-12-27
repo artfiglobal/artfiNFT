@@ -67,6 +67,7 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
       </main>
       <Toaster />
       {/* <Footer display="none" /> */}
+      <Footer />
     </div>
   );
 };

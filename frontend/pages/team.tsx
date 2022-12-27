@@ -64,14 +64,14 @@ import { fetchTeamDate } from "../lib/apis/teamData";
 import styles from "../styles/Team.module.scss";
 import cardData from "../teamDetails.json";
 
-export async function getStaticProps() {
-  const data = await fetchTeamDate();
-  return {
-    props: {
-      data,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const data = await fetchTeamDate();
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
 
 interface Props {
   // props: {
@@ -88,9 +88,20 @@ interface Props {
   isWhite: boolean;
 }
 
-const Home: NextPage<Props> = (props) => {
+const Home: NextPage = () => {
   // console.log(props);
-
+  const [team, setTeam] = useState<[] | undefined>();
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/team/getallteam`
+      );
+      const data = await response.data.list;
+      setTeam(data);
+      console.log(data, "team data");
+    };
+    fetchFaqs();
+  }, []);
   return (
     <>
       <Head title="Artfi | Team" />
@@ -108,8 +119,9 @@ const Home: NextPage<Props> = (props) => {
           </Typography>
           <br />
           <div className={styles.cardHolder}>
-            {props?.data?.length > 0 &&
-              props.data.map(
+            {team &&
+              team?.length > 0 &&
+              team?.map(
                 (card: any, index: any) =>
                   card.type === "coreTeam" && <Card key={index} {...card} />
               )}
@@ -119,7 +131,7 @@ const Home: NextPage<Props> = (props) => {
           Our Patrons
         </Typography>
         <div className={styles.cardHolder}>
-          {props?.data?.map(
+          {team?.map(
             (card: any, index: any) =>
               card.type === "patrons" && <Card key={index} {...card} />
           )}
@@ -128,7 +140,7 @@ const Home: NextPage<Props> = (props) => {
           Our Advisors
         </Typography>
         <div className={styles.cardHolder}>
-          {props?.data?.map(
+          {team?.map(
             (card: any, index: any) =>
               card.type === "advisors" && <Card key={index} {...card} />
           )}
