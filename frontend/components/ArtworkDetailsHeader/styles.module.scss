@@ -4,7 +4,8 @@
   // margin: ;
   z-index: 5;
   height: 100%;
-  margin: 0 20px;
+  margin: 0 auto;
+  // width: 97.2%;
   margin-top: 95px;
   @media screen and (max-width: 1440px) {
     width: 97.2%;
@@ -23,16 +24,21 @@
     }
   }
   .imageContainer {
-    width: 1400px;
-    // margin: 0 auto;
+    // width: 1400px;
+    width: 100%;
+    // width: 97.2%;
+    width: 97.2%;
+    margin: 0 auto;
     z-index: 3;
     position: relative;
-    height: 720px;
+    // height: 720px;
     @media screen and (max-width: 1440px) {
       width: 100%;
       height: 100%;
     }
     img {
+      width: 100%;
+      height: 100%;
       border-radius: 30px;
     }
   }
@@ -69,8 +75,10 @@
   }
   .header_details {
     font-family: "Plus Jakarta Sans";
-    width: 1400px;
-    height: 720px;
+    // width: 1400px;
+    width: 100%;
+    // height: 720px;
+    height: 100%;
     color: white;
     display: flex;
     flex-direction: column;

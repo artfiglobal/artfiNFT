@@ -1,10 +1,17 @@
 import React from "react";
 import Typography from "../reusables2/Atoms/Typography2";
 import style from "./artistVideo.module.scss";
-
-const VideoAboutArtist = ({ artworkName, artistName }: any) => {
+// import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
+import type { NextPage } from "next";
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const VideoAboutArtist = ({
+  explanationVideoLink,
+  artworkName,
+  artistName,
+}: any) => {
   // console.log(artworkName);
-  // console.log(artistName);
+  console.log(explanationVideoLink);
   // const artistName = artworkDetails.whitelistDetails.artistName;
   // const artistName = artworkDetails.whitelistDetails.artistName;
 
@@ -26,9 +33,36 @@ const VideoAboutArtist = ({ artworkName, artistName }: any) => {
           // width="600"
           // height="450p"
         ></iframe> */}
-        <video muted loop autoPlay>
-          <source src="/Publiced/video.mp4" type="video/mp4" />
-        </video>
+
+        {/* <div
+          className={style.video}
+          style={{
+            padding: "56.25% 0 0 0",
+            position: "relative",
+          }}
+        >
+          <iframe
+            src={explanationVideoLink}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "0",
+            }}
+            className={style.videos}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div> */}
+        <ReactPlayer url="https://player.vimeo.com/video/784067091?h=9bd9ab629c&badge=0&autopause=0&player_id=0&app_id=58479/embed" />
+        {/* <video muted loop autoPlay>
+          <source
+            src="https://player.vimeo.com/video/784067091?h=9bd9ab629c&badge=0&autopause=0&player_id=0&app_id=58479/embed"
+            type="video/mp4"
+          />
+        </video> */}
       </div>
     </div>
   );

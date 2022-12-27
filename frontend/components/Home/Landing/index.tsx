@@ -57,16 +57,25 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         )}
       </div>
       {offer.annoucmentDetails ? (
-      <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
-         
-        ) : (
-          <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+        <iframe
+          src={offer.annoucmentDetails.mobileAndAnnouncementURL}
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <iframe
+          src={offer.annoucmentDetails.mobileAndAnnouncementURL}
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
 
-        )}
-      
-      
-      
-      
       <script src="https://player.vimeo.com/api/player.js"></script>
       {/* <iframe
         src={offer.annoucmentDetails.mobileAndAnnouncementURL}
@@ -75,7 +84,9 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         allowFullScreen
       ></iframe>
       <script src="https://player.vimeo.com/api/player.js"></script> */}
-      <div className={styles.pby}><PowerdBy /></div>
+      <div className={styles.pby}>
+        <PowerdBy />
+      </div>
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
 
