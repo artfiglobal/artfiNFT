@@ -20,10 +20,11 @@ const HeaderSection = ({ header }: any) => {
       <div>
         <div
           style={{
-            width: "80%",
+            width: "100%",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "-150px",
+            textAlign:"center"
           }}
         >
           {" "}
@@ -32,8 +33,9 @@ const HeaderSection = ({ header }: any) => {
               <div
                 style={{
                   display: "inline-block",
-                  marginLeft: "30px",
+                  marginLeft: "60px",
                   marginBottom: "30px",
+                  textAlign:'left'
                 }}
                 key={index}
               >

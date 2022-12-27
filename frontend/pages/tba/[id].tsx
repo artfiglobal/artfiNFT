@@ -54,7 +54,7 @@ const tba = () => {
           </div>
       </div>
       <div>
-         {id? <img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${header.headerDetails.chooseImageOfArtWork}`} width="458px" height="556px"/>:<img src=""/>}
+         {id? <img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${header.headerDetails.chooseImageOfArtWork}`} className={styles.img}/>:<img src=""/>}
       </div>
     </div>
    

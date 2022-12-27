@@ -3,8 +3,27 @@
     align-items: center;
     width: 100%;
     justify-content: center;
-    gap: 400px;
+    gap: 340px;
+    // margin: 40px;
     margin-top: 120px;
+    @media screen and (max-width: 1400px) {
+        gap: 180px;
+
+    }
+    @media screen and (max-width: 1300px) {
+        gap: 100px;
+
+    }
+    @media screen and (max-width: 1100px) {
+        gap: 20px;
+
+    }
+    @media screen and (max-width: 1040px) {
+        flex-direction: column;
+        gap: 60px;
+        text-align: center;
+
+    }
 .ts{
     font-family: 'Plus Jakarta Sans';
 font-style: normal;
@@ -13,9 +32,18 @@ font-size: 16px;
 line-height: 20px;
 text-align: center;
 letter-spacing: 0.6em;
-
 color: #000000;
 margin-bottom: 24px;
+}
+.img
+{
+    width: 458px;
+    height: 458px;
+    @media screen and (max-width: 1040px) {
+       width: 300px;
+       height: 300px;
+
+    }
 }
 .waitlist_btn
 {
@@ -34,6 +62,8 @@ backdrop-filter: blur(12px);
 /* Note: backdrop-filter has minimal browser support */
 
 border-radius: 15px;
+
+
 }
     .title{
         font-family: 'Plus Jakarta Sans';
@@ -42,12 +72,23 @@ font-weight: 700;
 font-size: 64px;
 line-height: 120%;
 /* identical to box height, or 77px */
+width: 500px;
+text-align: left;
 
-text-align: center;
+
+// text-align: center;
 text-transform: capitalize;
 
 color: #000000;
 margin-bottom: 20px;
+@media screen and (max-width: 1040px) {
+    // text-align: center;
+    width: 100%;
+    // margin-left: 10px;
+    text-align: center;
+    font-size: 40px;
+
+}
     }
     .by
     {

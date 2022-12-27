@@ -32,7 +32,10 @@ console.log(str)
           </div>
         </div>
         <div style={{ padding: "0 20px" }}>
-          <div
+     
+            {headerData?.offeringData.whitelistDetails ? (
+              <>
+                   <div
             style={{
               position: "absolute",
               display: "flex",
@@ -44,17 +47,17 @@ console.log(str)
               borderRadius: "20px",
             }}
           >
-            {headerData?.offeringData.whitelistDetails ? (
-              <>
                 <img src="/Logo/time.png" width="15px" height="15px" />
                 <Timer2
                   endDate={headerData?.offeringData.whitelistDetails.endDate}
                 />
+                </div>
               </>
             ) : (
               ""
             )}
-          </div>
+            <div style={{textAlign:"right",marginTop:"-25px"}}><img src="Logo/polygon.png"/></div>
+          
           <div
             style={{
               display: "flex",
@@ -74,7 +77,7 @@ console.log(str)
           <div className={style.name}>
             {headerData.offeringData.headerDetails.Title}
           </div>
-          <div className={style.price_date_container}>
+          <div className={style.price_date_container} style={!headerData.offeringData.whitelistDetails?{justifyContent:"center",textAlign:"center",gap:"0",marginLeft:"50px",width:"100%"}:{textAlign:"left"}}>
             <div>
               {/* <div>
                 <img src="/Icons/price.png" />
@@ -87,7 +90,7 @@ console.log(str)
             {/* <div className={style.name}>{headerData.offeringData
 .headerDetails.Title}</div> */}
             <div className={style.price_date_container}>
-              <div ><div><img src="/Icons/price.png"/></div>
+              <div ><div style={{marginBottom:"6px"}}><img src="/Icons/price.png"/></div>
               <div className={style.card_price}> {headerData.offeringData.whitelistDetails?"$"+headerData.offeringData
                   .whitelistDetails.price:<Link href={`/tba/${headerData.offeringData._id}`}>{headerData.offeringData
                   .headerDetails.price}</Link>}</div>
