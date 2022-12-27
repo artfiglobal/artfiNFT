@@ -14,7 +14,9 @@ import {
 } from "../components/Home";
 import toast, { Toaster } from "react-hot-toast";
 import { offeringData } from "../lib/apis/offeringData";
-import { Footer, Head, Navigation } from "../components/reusables/Components";
+import { Head, Navigation } from "../components/reusables/Components";
+import { Footer } from "../components/reusables/Components/Footer2";
+
 import Modal from "../components/reusables/Components/Modal";
 import styles from "../styles/Home.module.scss";
 import Featured from "../components/Home/Featured/Index";
@@ -63,7 +65,8 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
         <Featured data={props.data} />
       </main>
       <Toaster />
-      <Footer display="none" />
+      {/* <Footer display="none" /> */}
+      <Footer/>
     </div>
   );
 };
