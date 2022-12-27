@@ -10,6 +10,20 @@
     margin-top: -330px;
   }
  }
+ .artlogo
+{
+  @media screen and (max-width: 420px) {
+    width: 154.18px;
+    height: 60.89px;
+  }
+}
+.close
+{
+  @media screen and (max-width: 420px) {
+    width: 13px;
+    height: 26px;
+  }
+}
 // .landing {
 //   // padding: 0px 0px 0px 120px;
 //   height: 720px;
@@ -401,8 +415,13 @@ margin: 0;
   // height: 700px;
   // width: 100%;
   // margin-top: 45px;
-  font-size: 45px;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
 }
+
 }
     .container_img {
       color: white;
@@ -414,6 +433,7 @@ margin: 0;
       @media screen and (max-width: 600px) {
         // display: none;
         flex-direction: column;
+        
         gap: 13px;
       }
     }

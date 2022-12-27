@@ -2,7 +2,7 @@
 
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { Typography } from "../../reusables/Atoms";
 import PowerdBy from "../PowerdBy";
 import styles from "./Landing.module.scss";
@@ -13,18 +13,12 @@ type LandingProps = {
   offerData: any;
 };
 
-const Landing = ({ setIsOpen, isOpen, offering }: any) => {
-  const [offer, setOffer] = useState<any>({});
+const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
+  const [offer, setOffer] = useState(
+    offerData.trueOfferings ? offerData.trueOfferings[0] : {}
+  );
   const router = useRouter();
-  // console.log(offer, "jklmno");
-  useEffect(() => {
-  console.log(offering,"offeringklll")
-    if(offering)
-    {
-    setOffer(offering.trueOfferings?offering.trueOfferings[0]:{})
-    }
-
-  }, [offering])
+  console.log(offer, "jkl");
   return (
     <div className={styles.landing}>
       <div
@@ -86,7 +80,7 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
 
         <div className={styles.container_img}>
-          <img src="/Logo/art.svg" /> <img src="/Logo/x.svg" />{" "}
+          <img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" />{" "}
           <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p>
         </div>
         {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
