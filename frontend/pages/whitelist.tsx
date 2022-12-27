@@ -13,10 +13,12 @@ import { GeneralContext } from "../context/GeneralState";
 export default function WhitelistLanding() {
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
+  const [offeringId, setOfferingId] = useState("");
   const [formattedAddress, setFormattedAddress] = useState("");
   const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
   const [artWorkImage, setArtWorkImage] = useState("");
   const [artistImage, setArtistImage] = useState("");
+  const [previosFractions, setPreviosFractions] = useState([]);
   const [tableRowsCols, setTableRowsCols] = useState({
     columnCnt: 0,
     rowCnt: 0,
@@ -25,64 +27,146 @@ export default function WhitelistLanding() {
   const { setArtistId } = useContext(GeneralContext);
 
   useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        //${process.env.NEXT_PUBLIC_React_App_Base_Url}
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE1ZGJkNmE0YjZjZWQ2YzJiZjZlIiwiaWF0IjoxNjY5ODA5MTY5LCJleHAiOjE2NzI0MDExNjl9.oXlcdA_DLpOHROcMCX2rTHeviiWcvkEMarYhmkXB8gE`,
-              "Content-Type": "application/json",
-              "Content-Length": "<calculated when request is sent>",
-            },
+    const fetchOffers = () => {
+      fetch(
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE1ZGJkNmE0YjZjZWQ2YzJiZjZlIiwiaWF0IjoxNjY5ODA5MTY5LCJleHAiOjE2NzI0MDExNjl9.oXlcdA_DLpOHROcMCX2rTHeviiWcvkEMarYhmkXB8gE`,
+            "Content-Type": "application/json",
+            "Content-Length": "<calculated when request is sent>",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then(
+          (response) => {
+            const data = response.data.trueOfferings;
+            const offerId = data[0]._id;
+            setOfferingId(data[0]._id);
+            const artistImage = response.data.artistImage;
+            setArtistImage(artistImage);
+            setArtistId(data[0].artistId);
+            setTableRowsCols({
+              columnCnt: data[0].whitelistDetails.columnNumber,
+              rowCnt: data[0].whitelistDetails.rowNumber,
+            });
+            setFractionSize({
+              width: data[0].whitelistDetails.width,
+              height: data[0].whitelistDetails.height,
+            });
+            setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
+            const defineWhitelist = () => {
+              data.map((item: any, index: number) => {
+                if (item.IsOnGoingOffering) {
+                  setOfferWhitelist(item.whitelistDetails);
+                  setOfferUnveiling(item.unveilingDetails);
+                }
+              });
+            };
+            defineWhitelist();
+            const fetchFractions = (data: any) => {
+              fetch(
+                `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/getfraction/${offerId}`
+              )
+                .then((response) => response.json())
+                .then((response) => {
+                  console.log(response);
+                  for (
+                    let i = 0;
+                    i <
+                    data[0].whitelistDetails.rowNumber *
+                      data[0].whitelistDetails.columnNumber;
+                    i++
+                  ) {
+                    cellProps[i] = "";
+                  }
+                  const fractions = response.fraction;
+                  console.log(fractions, "fractions");
+                  const array = response?.fraction[0]?.fractionInfo;
+                  console.log(array, "array");
+                  for (
+                    let i = 0;
+                    i <
+                    data[0].whitelistDetails.rowNumber *
+                      data[0].whitelistDetails.columnNumber;
+                    i++
+                  ) {
+                    if (array?.length > 0 && array[i]) {
+                      const j = array[i];
+                      console.log(j);
+                      cellProps[j] = "disable";
+                    }
+                  }
+                  setPreviosFractions(fractions);
+                });
+            };
+            fetchFractions(data);
           }
-        );
-        console.log(response);
-        const data = response.data.data.trueOfferings;
-        const artistImage = response.data.data.artistImage;
-        setArtistImage(artistImage);
-        setArtistId(data[0].artistId);
-        console.log(data[0], "data");
-        setTableRowsCols({
-          columnCnt: data[0].whitelistDetails.columnNumber,
-          rowCnt: data[0].whitelistDetails.rowNumber,
-        });
+          // const fetchFractions = async (previousResponse: any) => {
+          //   // console.log(data, "data");
 
-        setFractionSize({
-          width: data[0].whitelistDetails.width,
-          height: data[0].whitelistDetails.height,
-        });
-        for (
-          let i = 0;
-          i <
-          data[0].whitelistDetails.rowNumber *
-            data[0].whitelistDetails.columnNumber;
-          i++
-        ) {
-          cellProps[i] = "";
-        }
-        for (let i = 0; i < 50; i++) {
-          cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
-        }
-        setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
-        const defineWhitelist = () => {
-          data.map((item: any, index: number) => {
-            if (item.IsOnGoingOffering) {
-              setOfferWhitelist(item.whitelistDetails);
-              setOfferUnveiling(item.unveilingDetails);
-            }
-          });
-        };
-        defineWhitelist();
-        // console.log(offerWhitelist);
-      } catch (err) {
-        console.log(err);
-      }
+          // console.log(offerWhitelist);
+          // console.log(data)
+        );
+      // var data = response.data.data.trueOfferings;
+      // const offerId = data[0]._id;
+      // setOfferingId(data[0]._id);
+      // const artistImage = response.data.data.artistImage;
+      // setArtistImage(artistImage);
+      // setArtistId(data[0].artistId);
+      // setTableRowsCols({
+      //   columnCnt: data[0].whitelistDetails.columnNumber,
+      //   rowCnt: data[0].whitelistDetails.rowNumber,
+      // });
+      // setFractionSize({
+      //   width: data[0].whitelistDetails.width,
+      //   height: data[0].whitelistDetails.height,
+      // });
+      // setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
+      // const defineWhitelist = () => {
+      //   data.map((item: any, index: number) => {
+      //     if (item.IsOnGoingOffering) {
+      //       setOfferWhitelist(item.whitelistDetails);
+      //       setOfferUnveiling(item.unveilingDetails);
+      //     }
+      //   });
+      // };
+      // defineWhitelist();
+      // const fetchFractions = async (previousResponse: any) => {
+      //   // console.log(data, "data");
+      //   const response = await axios.get(
+      //     `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/getfraction/${offerId}`
+      //   );
+      //   for (
+      //     let i = 0;
+      //     i <
+      //     previousResponse[0].whitelistDetails.rowNumber *
+      //       previousResponse[0].whitelistDetails.columnNumber;
+      //     i++
+      //   ) {
+      //     cellProps[i] = "";
+      //   }
+      //   for (
+      //     let i = 0;
+      //     i <
+      //     previousResponse[0].whitelistDetails.rowNumber *
+      //       previousResponse[0].whitelistDetails.columnNumber;
+      //     i++
+      //   ) {
+      //     cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
+      //   }
+      //   const data = response.data.fraction;
+      //   setPreviosFractions(data);
+      // };
+      // fetchFractions(data);
+      // console.log(offerWhitelist);
     };
 
     fetchOffers();
   }, []);
+
+  // console.log(previosFractions, "previosFractions");
   const [wallet, setWallet] = useState(false);
   const [likes, setLikes] = useState(0);
   const {
@@ -163,8 +247,9 @@ export default function WhitelistLanding() {
           offerWhitelist={offerWhitelist}
           offerUnveiling={offerUnveiling}
           likes={likes}
-          // artistId={artistId}
+          previosFractions={previosFractions}
           artistImage={artistImage}
+          offeringId={offeringId}
           artWorkImage={artWorkImage}
           // rowCnt={rowCnt}
           // columnCnt={columnCnt}
