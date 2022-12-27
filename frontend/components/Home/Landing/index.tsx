@@ -21,47 +21,6 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
   console.log(offer, "jkl");
   return (
     <div className={styles.landing}>
-      {/* <div className={styles.landing}>
-      <div className={styles.heading_wrapper} style={{textAlign:"center"}} >
-        <Typography color="black" variant="heading" className={styles.webHeading}>
-          <span className={styles.heading_highlight}>Discover</span>,{" "}
-          <span className={styles.heading_highlight}>Collect</span> &{" "}
-          <span className={styles.heading_highlight}>Invest</span> <br /> in 
-          Bluechip Fine Art
-        </Typography>
-        <Typography color="black" variant="heading" className={styles.mblHeading}>
-        <span className={styles.heading_highlight}>Discover</span>,{" "}
-          <span className={styles.heading_highlight}>Collect</span> &{" "}
-          <span className={styles.heading_highlight}>Invest</span> <br /> in 
-          Bluechip Fine Art
-        </Typography> 
-
-        <Typography color="black" variant="body" >
-            <label className={styles.secondHedding}> A new era of investing in fine art enabled by <br/>  NFTs and blockchain </label>
-        </Typography>
-        <div className={styles.button_holder}>
-          <button
-            className={styles.waitlistBtn}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            Waitlist now
-          </button>
-        </div>
-      </div>
-    </div> */}
-      {/* <video
-        muted
-        loop
-        preload="auto"
-        autoPlay
-        playsInline
-        className={styles.video}
-        style={{ width: "100%" }}
-      > */}
-      {/* <source src="https://vimeo.com/781871288" type="video/mp4" />
-       */}
-      {/* </video> */}
-      {/* <iframe src="https://player.vimeo.com/video/781871288?h=bf477f42a4"  frameBorder="0" allow="autoplay fullscreen" allowFullScreen></iframe> */}
       <div
         className={styles.video}
         style={{ padding: "56.25% 0 0 0", position: "relative" }}
@@ -77,6 +36,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
               height: "100%",
               border: "0",
             }}
+            className={styles.videos}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -96,33 +56,34 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
           ></iframe>
         )}
       </div>
+      {offer.annoucmentDetails ? (
+      <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+         
+        ) : (
+          <iframe src={offer.annoucmentDetails.mobileAndAnnouncementURL} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+
+        )}
+      
+      
+      
+      
       <script src="https://player.vimeo.com/api/player.js"></script>
-      {/* <video
-        muted
-        loop
-        preload="auto"
-        autoPlay
-        playsInline
-        className={styles.videombl}
-      >
-        <source src="/Background/artfimbl.mp4" type="video/mp4" />
-      </video> */}
-      <iframe
+      {/* <iframe
         src={offer.annoucmentDetails.mobileAndAnnouncementURL}
         className={styles.videombl}
         allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
       ></iframe>
-      <script src="https://player.vimeo.com/api/player.js"></script>
-      <PowerdBy />
+      <script src="https://player.vimeo.com/api/player.js"></script> */}
+      <div className={styles.pby}><PowerdBy /></div>
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
 
         <div className={styles.container_img}>
           <img src="/Logo/art.svg" /> <img src="/Logo/x.svg" />{" "}
-          {offer.headerDetails.artistName}
+          <p className={styles.artistName}>{offer.headerDetails.artistName}</p>
         </div>
-        <img className={styles.container_img_mbl} src="/Logo/Mobile.png" />
+        {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
         {/* {offer.headerDetails.artistName} */}
         <div className={styles.btn_container}>
           {offer.unveilingDetails ? (
