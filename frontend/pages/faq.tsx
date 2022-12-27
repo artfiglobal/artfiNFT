@@ -201,14 +201,15 @@ const questionsList1: Array<questions> = [
     open: false,
   },
 ];
-// export async function getStaticProps() {
-//   const data = await faqData();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
+export async function getStaticProps() {
+  const data = await faqData();
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+}
 
 interface Props {
   // props: {
@@ -225,20 +226,21 @@ interface Props {
   isWhite: boolean;
 }
 const Faq = (props: Props) => {
+  // console.log(props.data, "props");
   //   const [ques, setQes] = React.useState(questionsList1);
   //   const [ques2, setQes2] = React.useState(questionsList2);
-  const [data, setData] = React.useState<[] | undefined>();
-  React.useEffect(() => {
-    const fetchFaqs = async () => {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/faq/getallfaq`
-      );
-      const data = await response.data.FAQlist;
-      //   console.log(data[0], "data[0]");
-      setData(data);
-    };
-    fetchFaqs();
-  }, []);
+  // const [data, setData] = React.useState<[] | undefined>();
+  // React.useEffect(() => {
+  //   const fetchFaqs = async () => {
+  //     const response = await axios.get(
+  //       `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/faq/getallfaq`
+  //     );
+  //     const data = await response.data.FAQlist;
+  //     //   console.log(data[0], "data[0]");
+  //     setData(data);
+  //   };
+  //   fetchFaqs();
+  // }, []);
 
   //   console.log(props, "data");
 
@@ -310,11 +312,10 @@ const Faq = (props: Props) => {
           component="nav"
           aria-labelledby="nested-list-subheader"
         >
-          {data &&
-            data?.map((question: any, index: any) => {
+          {props?.data?.length > 0 &&
+            props?.data?.map((question: any, index: any) => {
               return (
                 <>
-                  {/* <CollapseData question={question} index={index}/> */}
                   {question.section == "section1" ? (
                     <CollapseData question={question} index={index} />
                   ) : (
@@ -337,8 +338,8 @@ const Faq = (props: Props) => {
           component="nav"
           aria-labelledby="nested-list-subheader"
         >
-          {data &&
-            data.map((question: any, index: any) => {
+          {props?.data?.length > 0 &&
+            props?.data?.map((question: any, index: any) => {
               return (
                 <>
                   {question.section === "section2" ? (
