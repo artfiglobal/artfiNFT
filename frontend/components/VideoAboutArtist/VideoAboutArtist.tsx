@@ -115,8 +115,8 @@ const VideoAboutArtist = ({
           //     type="video/mp4"
           //   />
           // </video>
-          <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-          // <h1></h1>
+          // <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+          <h1></h1>
         )}
       </div>
     </div>
