@@ -41,12 +41,13 @@ import { useRouter } from "next/router";
 const useKey = (setPressKey: any) => {
   useEffect(() => {
     function handle(event: any) {
-      if (event.ctrlKey) {
+      if (event.ctrlKey || event.metaKey) {
+        // macKeys
         setPressKey(false);
       }
     }
     function handle2(event: any) {
-      if (!event.ctrlKey) {
+      if (!event.ctrlKey || !event.metaKey) {
         setPressKey(true);
       }
     }
@@ -82,6 +83,7 @@ type offerWhitelistTypes = {
 
 export const Landing = ({
   offerWhitelist,
+  previosFractions,
   likes,
   offerUnveiling,
   artWorkImage,
@@ -93,13 +95,14 @@ export const Landing = ({
   fractionSize,
   setCellProps,
   cellProps,
+  offeringId,
 }: LandingProps | any): JSX.Element => {
   //ref//
+  // console.log(offeringId, "offeringId");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
   }, []);
-
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
@@ -116,7 +119,7 @@ export const Landing = ({
   const [initialCellProps, setInitialCellProps] = useState([]);
   // console.log(cellProps);
   const [selCnt, setSelCnt] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
 
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
@@ -148,7 +151,7 @@ export const Landing = ({
   const [tabActiveButton, setTabActiveButton] = useState(true);
   const { web3Data, setWeb3Data, connectWallet, walletAddress } =
     useContext(Web3Context);
-  // console.log({ web3Data });
+  // console.log(walletAddress);
   const { API, setWalletAddress } = useContext(APIContext);
   // const [web3Data, setWeb3Data] = useState<Web3DataInterface>();
   // const connectWallet = async () => {
@@ -187,7 +190,36 @@ export const Landing = ({
   useEffect(() => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
-
+  const completePurchase = async () => {
+    const whitelistId = offerWhitelist._id;
+    // console.log(whitelistId);
+    console.log(whitelistId);
+    // console.log(walletAddress);
+    let sendSelected: any = [];
+    cellProps.map((item: any, index: any) => {
+      if (item === "selected") {
+        // return index;
+        sendSelected.push(index);
+      }
+    });
+    // console.log(sendSelected);
+    var form = new FormData();
+    for (let i = 0; i < sendSelected.length; i++) {
+      form.append("fractionInfo[]", sendSelected[i]);
+    }
+    form.append("whitelistId", offeringId);
+    form.append("walletAddress", walletAddress);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
+        form,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
@@ -759,6 +791,7 @@ export const Landing = ({
                   type="submit"
                   variant="primary"
                   style={{ padding: "15px 30px", marginTop: "10px" }}
+                  onClick={completePurchase}
                 >
                   Whitelist
                 </Button>
@@ -913,7 +946,7 @@ export const Landing = ({
                 <ButtonView
                   variant="outlined"
                   color="primary"
-                  onClick={()=>router.push("/nft-detail")}
+                  onClick={() => router.push("/nft-detail")}
                   style={{
                     color: "#4527B3",
                     border: "1px solid #4527B3",
