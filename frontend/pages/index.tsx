@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   Benefits,
   Discover,
@@ -39,6 +39,20 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
   console.log(props, "offering");
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [data, setData] = useState<any>()
+  const [offerings, setOfferings] = useState<any>([])
+  useEffect(() => {
+   getOffering()
+  }, [])
+  const getOffering = async()=>{
+    const items = await fetchFeaturedInDate();
+    console.log(items,"item")
+    setData(items)
+  const offerData = await offeringData();
+  console.log(offerData,"off")
+
+  setOfferings(offerData)
+  }
   return (
     <div className={styles.container}>
       <Head title="Artfi" />
@@ -57,12 +71,12 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             referralCode={""}
-            offerData={props.offerData}
+            offering={offerings}
           />
         </div>
         <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
 
-        <Featured data={props.data} />
+        <Featured data={data} />
       </main>
       <Toaster />
       {/* <Footer display="none" /> */}
