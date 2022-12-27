@@ -2,7 +2,7 @@
 
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Typography } from "../../reusables/Atoms";
 import PowerdBy from "../PowerdBy";
 import styles from "./Landing.module.scss";
@@ -18,13 +18,11 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
   const router = useRouter();
   // console.log(offer, "jklmno");
   useEffect(() => {
-  console.log(offering,"offeringklll")
-    if(offering)
-    {
-    setOffer(offering.trueOfferings?offering.trueOfferings[0]:{})
+    console.log(offering, "offeringklll");
+    if (offering) {
+      setOffer(offering.trueOfferings ? offering.trueOfferings[0] : {});
     }
-
-  }, [offering])
+  }, [offering]);
   return (
     <div className={styles.landing}>
       <div
@@ -33,7 +31,11 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
       >
         {offer.annoucmentDetails ? (
           <iframe
-            src={offer?offer.annoucmentDetails.backgroundCollabarationVideoLink:""}
+            src={
+              offer
+                ? offer.annoucmentDetails.backgroundCollabarationVideoLink
+                : ""
+            }
             style={{
               position: "absolute",
               top: 0,
@@ -63,16 +65,29 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
         )}
       </div>
       {offer.annoucmentDetails ? (
-      <iframe src={offer?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
-         
-        ) : (
-          <iframe src={offer.annoucmentDetails?offer.annoucmentDetails.mobileAndAnnouncementURL:""} width="100%" className={styles.mobilevideo} height="1300px" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+        <iframe
+          src={offer ? offer.annoucmentDetails.mobileAndAnnouncementURL : ""}
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <iframe
+          src={
+            offer.annoucmentDetails
+              ? offer.annoucmentDetails.mobileAndAnnouncementURL
+              : ""
+          }
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
 
-        )}
-      
-      
-      
-      
       <script src="https://player.vimeo.com/api/player.js"></script>
       {/* <iframe
         src={offer.annoucmentDetails.mobileAndAnnouncementURL}
@@ -81,13 +96,17 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
         allowFullScreen
       ></iframe>
       <script src="https://player.vimeo.com/api/player.js"></script> */}
-      <div className={styles.pby}><PowerdBy /></div>
+      <div className={styles.pby}>
+        <PowerdBy />
+      </div>
       <div className={styles.container}>
         <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
 
         <div className={styles.container_img}>
           <img src="/Logo/art.svg" /> <img src="/Logo/x.svg" />{" "}
-          <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p>
+          <p className={styles.artistName}>
+            {offer.headerDetails ? offer.headerDetails.artistName : ""}
+          </p>
         </div>
         {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
         {/* {offer.headerDetails.artistName} */}
@@ -120,7 +139,11 @@ const Landing = ({ setIsOpen, isOpen, offering }: any) => {
             </Button>
           )}
           <a
-            href={offer.annoucmentDetails?offer.annoucmentDetails.announcementVideoLink:""}
+            href={
+              offer.annoucmentDetails
+                ? offer.annoucmentDetails.announcementVideoLink
+                : ""
+            }
             target="_blank"
           >
             <Button

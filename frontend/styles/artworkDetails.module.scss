@@ -1,14 +1,15 @@
 .artworkImage_container {
   width: 100%;
-  height: 720px;
+  // height: 720px;
   margin-top: 110px;
   display: flex;
   justify-content: center;
   position: relative;
+  object-fit: contain;
 
   @media screen and (max-width: 1240px) {
     // width: 100%;
-    height: 670px;
+    // height: 670px;
   }
 }
 .artworkImage {
@@ -39,6 +40,8 @@
     display: inline;
     margin: 0;
     font-weight: 400;
+    max-width: 971px;
+    word-wrap: break-word;
   }
 }
 .artwork_Details {
@@ -157,7 +160,7 @@
   }
   .artworkImage_container {
     margin-top: 95px;
-    height: 670px;
+    // height: 670px;
   }
   .about_artwork {
     line-height: 43px;
@@ -173,6 +176,7 @@
     p {
       font-size: 21px;
       line-height: 31px;
+      max-width: 971px;
     }
   }
 }
@@ -183,7 +187,7 @@
   }
   .artworkImage_container {
     margin-top: 78px;
-    height: 512px;
+    // height: 512px;
   }
   .about_artwork {
     line-height: 36px;
@@ -200,6 +204,7 @@
     p {
       font-size: 17px;
       line-height: 21px;
+      word-wrap: break-word;
     }
   }
 }
@@ -209,7 +214,7 @@
     padding-top: 40px;
   }
   .artworkImage_container {
-    height: 384px;
+    // height: 384px;
     margin-top: 59px;
   }
   .about_artwork {
@@ -235,7 +240,7 @@
     padding-top: 30px;
   }
   .artworkImage_container {
-    height: 288px;
+    // height: 288px;
     margin-top: 44px;
   }
   .about_artwork {
@@ -260,7 +265,7 @@
     padding-top: 25px;
   }
   .artworkImage_container {
-    height: 240px;
+    // height: 240px;
     margin-top: 44px;
   }
 }
