@@ -5,4 +5,5 @@ export type FormDataInterface = {
   email: string | undefined;
   chain: string;
   termsSignature: string;
+  selCnt: number;
 };

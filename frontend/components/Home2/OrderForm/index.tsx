@@ -22,11 +22,11 @@ export const OrderForm = ({
   const amountRef = useRef<HTMLInputElement>(null);
   const { web3Data } = useContext(Web3Context);
   unitValueTotal = 10000 - formData.amount;
-  initialPrice = 1500;
+  // initialPrice = 1500;
   const [price, setPrice] = React.useState(initialPrice);
-  if (price < 0) {
-    setPrice(initialPrice);
-  }
+  // if (price < 0) {
+  //   setPrice(initialPrice);
+  // }
   // useEffect(() => {
   //   console.log({ formData });
   // });
@@ -107,7 +107,7 @@ export const OrderForm = ({
               id="input-demo"
               required
               placeholder="Number of NFTs"
-              disabled={formData.amount < 0 ? true : false}
+              disabled={true}
               className={style.inputBox}
               data={[
                 { label: "1", value: "1" },
@@ -161,10 +161,10 @@ export const OrderForm = ({
                 { label: "49", value: "49" },
                 { label: "50", value: "50" },
               ]}
-              onChange={(res) => {
-                if (res) {
-                  setFormData({ ...formData, amount: parseInt(res) });
-                  setPrice(initialPrice * parseInt(res));
+              onChange={(selCnt) => {
+                if (selCnt) {
+                  // setFormData({ ...formData, amount: parseInt(res) });
+                  setPrice(initialPrice * parseInt(selCnt));
                 }
               }}
             />

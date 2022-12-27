@@ -98,7 +98,7 @@ export const Landing = ({
   offeringId,
 }: LandingProps | any): JSX.Element => {
   //ref//
-  // console.log(offeringId, "offeringId");
+  console.log(offerWhitelist, "offerWhitelist");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
@@ -130,6 +130,7 @@ export const Landing = ({
     email: "",
     chain: "Matic",
     termsSignature: Date.now().toString(),
+    selCnt,
   });
   // console.log(cellProps, "cellProps");
   const triggerClearButton = () => {
@@ -785,7 +786,7 @@ export const Landing = ({
                   formData={formData}
                   setFormData={setFormData}
                   unitValueTotal={10000}
-                  initialPrice={1}
+                  initialPrice={offerWhitelist.price}
                 ></OrderForm>
                 <Button
                   type="submit"
