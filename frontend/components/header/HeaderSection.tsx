@@ -12,6 +12,7 @@ const HeaderSection = ({ header }: any) => {
           background: "url(/Background/Header.png)",
           width: "100%",
           height: "450px",
+          marginTop: "80px"
         }}
       >
         <h1>Discover & Collect Artfi NFT</h1>
