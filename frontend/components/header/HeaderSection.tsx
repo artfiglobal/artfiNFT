@@ -12,6 +12,7 @@ const HeaderSection = ({ header }: any) => {
           background: "url(/Background/Header.png)",
           width: "100%",
           height: "450px",
+          marginTop: "80px"
         }}
       >
         <h1>Discover & Collect Artfi NFT</h1>
@@ -31,12 +32,8 @@ const HeaderSection = ({ header }: any) => {
           {header.map((headerData: any, index: number) => {
             return (
               <div
-                style={{
-                  display: "inline-block",
-                  marginLeft: "60px",
-                  marginBottom: "30px",
-                  textAlign:'left'
-                }}
+               
+                className={style.headData}
                 key={index}
               >
                 <HeaderCard headerData={headerData} />

@@ -41,7 +41,7 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{overflow:"hidden"}}>
       <Head title="Artfi" />
       <meta
         name="viewport"

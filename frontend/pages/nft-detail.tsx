@@ -15,15 +15,16 @@ export async function getStaticProps() {
     props: {
       data
     },
+    revalidate: 2,
   };
 }
 
 const Nft = (props:any) => {
-console.log(props.data.trueOfferings[0].nftDetails,"nft")
+// console.log(props.data.trueOfferings[0].nftDetails,"nft")
 // const [nft, setNft] = useState(props.trueOffering[0])
 
   return (
-    <div >
+    <div style={{overflow:"hidden"}}>
       <Head title="Artfi | Nft" />
       <NavArtfiOnly/>
       <div style={{marginTop:"80px"}}>

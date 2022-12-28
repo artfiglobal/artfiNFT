@@ -6,19 +6,47 @@ import { FaBars, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import ConnectWalletNav from "../ConnectWalletNav/ConnectWalletNav";
 import { useRouter } from "next/router";
+// import Web3Context from "../context/Web3Context";
+import Web3Context from "../../../../context/Web3Context";
+
 import { style, width } from "@mui/system";
+import { Button } from "@mui/material";
 
 type NavigationProps = {};
 
 export const Navigation = ({}: NavigationProps): JSX.Element => {
   const [open, setIsOpen] = useState(true);
-  const [isDown, setIsDown] = useState(false);
+  const [wallet, setWallet] = useState(false);
 
+  const [isDown, setIsDown] = useState(false);
+  const [offerWhitelist, setOfferWhitelist] = useState({});
+  const [offerUnveiling, setOfferUnveiling] = useState({});
   const [isDown2, setIsDown2] = useState(false);
   const [btnRotate, setBtnRotate] = useState(false);
   const [showConnectWallet, setShowConnectWallet] = useState(false);
+  const [formattedAddress, setFormattedAddress] = useState("");
+
   const router = useRouter();
   const pageName = router.pathname;
+
+  const {
+    web3Data,
+    setWeb3Data,
+    connectWallet,
+    walletAddress,
+    disconnectWallet,
+  } = useContext(Web3Context);
+
+  useEffect(() => {
+    if (walletAddress) {
+      const addressFormatter = () => {
+        const address =
+          walletAddress.slice(0, 6) + "..." + walletAddress.slice(37, 42);
+        setFormattedAddress(address);
+      };
+      addressFormatter();
+    }
+  }, [walletAddress]);
 
   useEffect(() => {
     if (pageName === "/artwork-details") {
@@ -96,7 +124,43 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
               Contact Us
             </Typography>
           </Link>
+
         </div>
+        {walletAddress ? (
+          <Button
+            
+            style={{ width: "fit-content",marginLeft:"32px", fontSize: "16px",color:"black",border:"1px solid black", padding: "10px 16.5px" }}
+            onClick={async () => {
+              await disconnectWallet();
+              setWallet(false);
+              // addressFormatter(walletAddress);
+              // connectWallet().then(() => {
+              //   getData();
+              //   setWallet(true);
+              //   console.log("hello");
+              // });
+            }}
+          >
+            {walletAddress && formattedAddress}
+          </Button>
+        ) : (
+          <Button
+            
+            style={{ width: "fit-content",marginLeft:"32px",borderRadius:"10px", fontSize: "16px",color:"black",border:"1px solid black",background: "rgba(255, 255, 255, 0.6)", padding: "10px 16.5px",fontWeight:"700",fontFamily: 'Plus Jakarta Sans' }}
+            onClick={async () => {
+              await connectWallet();
+              setWallet(true);
+              // connectWallet().then(() => {
+              //   getData();
+              //   setWallet(true);
+              //   console.log("hello");
+              // });
+            }}
+          >
+            Connect your wallet
+          </Button>
+          
+        )}
         {showConnectWallet && <ConnectWalletNav walletBtnStyle="webBtnStyle" />}
         {/* <div className={styles.navItem}>
           <Typography variant="body" color="black" className={styles.text}>
