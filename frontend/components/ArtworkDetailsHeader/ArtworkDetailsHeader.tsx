@@ -7,11 +7,11 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
   const [showVideo, setShowVideo] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
   // console.log(artworkDetails);
-  const artworkImage = artworkDetails?.whitelistDetails?.imageOfArtWork;
+  // const artworkImage = artworkDetails?.whitelistDetails?.imageOfArtWork;
   const artistName = artworkDetails?.whitelistDetails?.artistName;
   const artworkName = artworkDetails?.whitelistDetails?.Title;
   const backgroundCoverPhoto = artworkDetails?.artwork?.backgroundCoverPhoto;
-  const explanationVideoLink = artworkDetails?.artwork?.explanationVideoLink;
+  // const explanationVideoLink = artworkDetails?.artwork?.explanationVideoLink;
   const playNowButtonVideoLink =
     artworkDetails?.artwork?.playNowButtonVideoLink;
   console.log(playNowButtonVideoLink);
@@ -26,74 +26,41 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
   // console.log(width, "newnewnew");
   return (
     <div className={style.header_container}>
-      {/* <div className={style.backdrop}></div> */}
+      <div className={style.backdrop}></div>
       {showVideo ? (
-        // <div className={style.backgroundVideo}>
-        //   {/* <iframe
-        //     src="https://player.vimeo.com/video/781871288?h=bf477f42a4&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&controls=0"
-        //     allow="autoplay; fullscreen; picture-in-picture; background"
-        //     allowFullScreen
-        //   ></iframe> */}
-        //   <video muted loop autoPlay>
-        //     <source src="/Publiced/video.mp4" type="video/mp4" />
-        //   </video>
-        // </div>
-
         <div>
-          <div
-            className={style.video}
-            style={{
-              padding: "56.25% 0 0 0",
-              position: "relative",
-            }}
-          >
-            <iframe
-              src={playNowButtonVideoLink}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "0",
-              }}
-              className={style.videos}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            {/* <iframe
-              src="https://player.vimeo.com/video/781871288?h=bf477f42a4&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&controls=0"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "0",
-              }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            ></iframe> */}
+          <div className={style.video}>
+            {playNowButtonVideoLink ? (
+              <iframe
+                src={playNowButtonVideoLink}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "0",
+                }}
+                className={style.videos}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <iframe
+                src="https://player.vimeo.com/video/784067091?h=9bd9ab629c&badge=0&autopause=0&player_id=0&app_id=58479/embed?&autoplay=1&background=1&muted=1"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "0",
+                }}
+                className={style.videos}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
-          {/* offer.annoucmentDetails ? (
-          <iframe
-            src={explanationVideoLink}
-            width="100%"
-            className={style.mobilevideo}
-            height="1300px"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-          ) : (
-          <iframe
-            src={explanationVideoLink}
-            width="100%"
-            className={style.mobilevideo}
-            height="1300px"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          ></iframe> */}
-          {/* ) */}
+
           <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
       ) : (
@@ -105,12 +72,6 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
             src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${backgroundCoverPhoto}`}
             alt="image"
           />
-          {/* <Avatar
-            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artworkImage}`}
-            // src="/images/artist.png"
-            alt="Artist profile"
-            className={style.artistProfile}
-          /> */}
         </div>
       )}
       <div className={style.header_details}>
