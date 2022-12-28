@@ -1,22 +1,37 @@
 .header_container {
   position: relative;
-  // width: 1400px;
-  // margin: ;
   z-index: 5;
   height: 100%;
   margin: 0 auto;
-  // width: 97.2%;
   margin-top: 95px;
+  .video {
+    padding: 55% 0 0 0;
+    position: relative;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    iframe {
+      border-radius: 30px;
+    }
+    width: 97.2% !important;
+    @media screen and (max-width: 1440px) {
+      width: 100% !important;
+      padding: 56.25% 0 0 0;
+    }
+  }
   @media screen and (max-width: 1440px) {
     width: 97.2%;
   }
   .backdrop {
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     border-radius: 30px;
-    width: 100%;
-    // height: 720px;
-    height: 100%;
+    width: 97.2%;
+    left: 50%;
+    top: 4px;
+    transform: translate(-50%, 0);
+    height: 99.5%;
     background: black;
     @media screen and (max-width: 1440px) {
       width: 100%;
@@ -68,10 +83,10 @@
       height: 100%;
       // height: 100%;
     }
-    video {
-      object-fit: cover !important;
-      width: 100%;
-    }
+    // video {
+    //   object-fit: cover !important;
+    //   width: 100%;
+    // }
   }
   .header_details {
     font-family: "Plus Jakarta Sans";
