@@ -71,26 +71,28 @@ const VideoAboutArtist = ({
         ></iframe> */}
         {/* <div
           className={style.video}
+          style={
+            {
+              // padding: "25% 0 0 0",
+              // position: "relative",
+            }
+          }
+        > */}
+        <iframe
+          src={explanationVideoLink}
           style={{
-            padding: "56.25% 0 0 0",
-            position: "relative",
+            position: "absolute",
+            top: 0,
+            right: 0,
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            height: "100%",
+            border: "0",
           }}
-        >
-          <iframe
-            src={explanationVideoLink}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              border: "0",
-            }}
-            className={style.videos}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div> */}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        {/* </div> */}
         {/* {windowHash && (
           // <ReactPlayer
           //   width={600}
@@ -105,7 +107,7 @@ const VideoAboutArtist = ({
             src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
           />
         )} */}
-        {windowHash && (
+        {/* {windowHash && (
           // <VideoTag src={mySrc} poster={myPoster} />
           // <video muted loop autoPlay>
           //   <source
@@ -117,7 +119,7 @@ const VideoAboutArtist = ({
           // </video>
           // <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
           <h1></h1>
-        )}
+        )} */}
       </div>
     </div>
   );

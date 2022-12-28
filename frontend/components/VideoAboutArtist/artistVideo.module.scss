@@ -1,5 +1,5 @@
 .artistVideo_container {
-  padding: 100px 0;
+  padding: 100px 30px;
   margin: 0 auto;
   display: flex;
   width: 1260px;
@@ -40,74 +40,83 @@
     z-index: 3;
     border: 0;
     outline: none;
-    // object-fit: cover;
-
-    position: relative;
-    // width: 600px;
-    // background-size: cover;
-    // height: 450px;
-    // iframe {
-    //   width: 100%;
-    //   height: 100%;
-    //   aspect-ratio: 1 / 1;
-    //   // width: 600px;
-    //   padding-bottom: 100%;
-    //   position: absolute;
-    //   padding: 0;
-    //   // width: 600px;
-    //   // height: 450px;
-    //   outline: 0;
-    //   object-fit: cover ;
-
-    //   // border-radius: 20px;
-    //   border: none;
-    // }
     width: 600px;
+    overflow: hidden;
+    border-radius: 30px !important;
     height: 450px;
-    .video {
-      width: 600px;
-      height: 450px;
-      object-fit: cover;
-      outline: 0;
-      border-radius: 30px !important;
-      border: none;
+    position: relative;
+    @media screen and (max-width: 1240px) {
+      height: 387px;
+      width: 517px;
+    }
+    @media screen and (max-width: 1024px) {
+      height: 320px;
+      width: 427px;
+    }
+    @media screen and (max-width: 768px) {
+      height: 370px;
+      width: 477px;
+    }
+    @media screen and (max-width: 576px) {
+      height: 320px;
+      width: 427px;
+    }
+    @media screen and (max-width: 480px) {
+      height: 243px;
+      width: 350px;
+    }
+    iframe {
+      width: 800px;
       @media screen and (max-width: 1240px) {
-        width: 517px;
-        height: 388px;
+        width: 689px;
       }
       @media screen and (max-width: 1024px) {
-        width: 427px;
-        height: 320px;
-      }
-      @media screen and (max-width: 900px) {
-        width: 375px;
-        height: 281px;
+        width: 569px;
       }
       @media screen and (max-width: 768px) {
-        width: 427px;
-        height: 320px;
+        width: 659px;
       }
-
       @media screen and (max-width: 576px) {
-        width: 300px;
-        height: 225px;
+        width: 569px;
+      }
+      @media screen and (max-width: 480px) {
+        width: 450px;
       }
     }
+    // .video {
+    //   width: 600px;
+    //   height: 450px;
+    //   object-fit: cover;
+    //   outline: 0;
+    //   border-radius: 30px !important;
+    //   border: none;
+    //   @media screen and (max-width: 1240px) {
+    //     width: 517px;
+    //     height: 388px;
+    //   }
+    //   @media screen and (max-width: 1024px) {
+    //     width: 427px;
+    //     height: 320px;
+    //   }
+    //   @media screen and (max-width: 900px) {
+    //     width: 375px;
+    //     height: 281px;
+    //   }
+    //   @media screen and (max-width: 768px) {
+    //     width: 427px;
+    //     height: 320px;
+    //   }
+
+    //   @media screen and (max-width: 576px) {
+    //     width: 300px;
+    //     height: 225px;
+    //   }
+    // }
   }
-  .video-react-poster {
-    // object-fit: cover !important;
-    // background-size: cover !important;
-    height: 450px !important;
-    width: 600px !important;
-  }
-  video {
-    height: 450px !important;
-    aspect-ratio: 1 / 1;
-    width: 600px !important;
-    object-fit: cover !important;
-    background-size: cover !important;
-    object-fit: cover !important;
-    // position: relative !important;
-    // border-radius: 30px !important;
-  }
+  // .video-react-poster {
+  //   // object-fit: cover !important;
+  //   // background-size: cover !important;
+  //   height: 450px !important;
+  //   width: 600px !important;
+  // }
 }
