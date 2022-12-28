@@ -16,9 +16,12 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import { offeringAllData } from "../lib/apis/offeringData";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
-import { Footer, Navigation } from "../components/reusables/Components";
+import { Navigation } from "../components/reusables/Components";
 import { Divider } from "@mui/material";
 import HeaderSection from "../components/header/HeaderSection";
+// import Footer from "../components/reusables/Atoms/Footer2";
+import { Footer } from "../components/reusables/Components/Footer2";
+
 
 export async function getStaticProps() {
   const data = await offeringAllData();
@@ -51,12 +54,14 @@ const Header = (props: any) => {
   const [header, setHeader] = useState(props.data);
   console.log(header, "jkl");
   return (
-    <>
+    <div style={{overflow:"hidden",background:"#F2F2F2"}}>
       <Navigation />
       <HeaderSection header={header} />
       <br />
-      <Footer display="" />
-    </>
+      {/* <Footer display="" /> */}
+      <Footer/>
+      
+    </div>
   );
 };
 

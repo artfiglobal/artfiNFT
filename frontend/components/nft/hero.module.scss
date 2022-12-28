@@ -1,8 +1,57 @@
 @import url("https://fonts.googleapis.com/css?family=Aguafina Script|Akronim|Aldrich|Alegreya|Alex Brush|Allerta Stencil|Allura|Almendra SC|Amethysta|Annie Use Your Telescope|Arbutus|Arizonia|Asset|Astloch|Bad Script|Barrio|Bellefair|Berkshire Swash|Bilbo|BioRhyme Expanded|Bonbon|Butcherman|Butterfly Kids|Caveat|Charmonman|Cinzel Decorative|Codystar|Crafty Girls|Dawning of a New Day|Faster One|Frijole|Geostar|Give You Glory|Hi Melody|Italianno|Jacques Francois Shadow|KhandMajor Mono Display|Meddon|Miltonian|Monofett|Monoton|Mystery Quest|Nosifer|Orbitron|Petit Formal Script|Sacramento|Shadows Into Light Two|Snowburst One|Dancing Script|Vibur|Raleway");
+.instaImg
+{
+  // margin: 70px;
+  display: flex;
+  align-items: center;
+  gap: 10px;  //  justify-content: center;
+  img{
+    margin-top: 23px;
+    // width: 0%;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.imggnft
+{
+  // width="350px" height="100%"
+  width:350px;
+  height:100%;
+  @media screen and (max-width: 800px) {
 
+    width: 100%;
+
+  }
+  @media screen and (max-width: 600px) {
+   width: 100%;
+}
+}
+.imgdnft
+{
+  width:350px;
+  height:100%;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+ }
+}
+.ot
+{
+  font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 800;
+font-size: 32px;
+line-height: 40px;
+text-align: center;
+margin-top: 118px;
+
+color: #000000;
+}
 .herosection {
   background: linear-gradient(180deg, #ffffff 75.68%, #efefef 83.91%);
   padding: 10px;
+  
 
   h1 {
     font-family: "Arizonia";
@@ -19,22 +68,33 @@
   }
 
   h2 {
-    font-family: "Christmas Elegant-Personal use";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 100px;
-    padding: 0;
-    margin: 0;
-    line-height: 120%;
-    /* identical to box height, or 120px */
-    src: local("Christmas Elegant-Personal use Regular"),
-      url("../../public/font/ChristmasElegantPersonalUse-gxrPp.woff")
-        format("woff");
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 64px;
+line-height: 120%;
+/* identical to box height, or 77px */
 
-    text-align: center;
-    letter-spacing: 0.09em;
+text-align: center;
 
-    color: #000000;
+color: #000000;
+margin: 0;
+    // font-family: "Christmas Elegant-Personal use";
+    // font-style: normal;
+    // font-weight: 400;
+    // font-size: 100px;
+    // padding: 0;
+    // margin: 0;
+    // line-height: 120%;
+    // /* identical to box height, or 120px */
+    // src: local("Christmas Elegant-Personal use Regular"),
+    //   url("../../public/font/ChristmasElegantPersonalUse-gxrPp.woff")
+    //     format("woff");
+
+    // text-align: center;
+    // letter-spacing: 0.09em;
+
+    // color: #000000;
   }
 
   h4 {
@@ -90,7 +150,7 @@
   .imgBlock {
     text-align: center;
     margin: auto;
-    margin-top: 180px;
+    margin-top: 111px;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -108,6 +168,10 @@
 .description {
   // text-align: center ;
   padding: 100px 0;
+  @media screen and (max-width: 600px) {
+
+    padding: 10px 0;
+  }
   p {
     font-family: "Plus Jakarta Sans";
     font-style: normal;
@@ -115,7 +179,10 @@
     font-size: 32px;
     line-height: 50px;
     /* or 156% */
+    @media screen and (max-width: 600px) {
 
+      font-size: 20px;
+    }
     // text-align: center;
     margin: 0 auto;
     width: 60%;
@@ -131,6 +198,11 @@
 
 .watchSection {
   margin: 120px;
+  @media screen and (max-width: 600px) {
+
+    margin: 120px 50px 120px 50px;
+    
+  }
 
   .watchInnerSection {
     display: flex;
@@ -138,6 +210,12 @@
     align-items: center;
     width: 100%;
     gap: 200px;
+    @media screen and (max-width: 1100px) {
+      // font-size: 40px;
+      flex-direction: column;
+      gap: 50px;
+      // gap: 100px;
+    }
 
     div {
       width: 50%;
@@ -153,6 +231,10 @@
         /* or 83px */
         color: #000000;
         margin-bottom: 0;
+        @media screen and (max-width: 1100px) {
+          font-size: 40px;
+          // gap: 100px;
+        }
       }
     }
   }
@@ -204,7 +286,7 @@
 }
 
 .secBg {
-  background: url(../../public/Background/Rectangle.png);
+  // background: url(../../public/Background/Rectangle.png);
   background-repeat: no-repeat;
   background-position: center;
   padding: 100px 100px;
@@ -213,22 +295,43 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  @media screen and (max-width: 1100px) {
+    font-size: 40px;
+    gap: 100px;
+  }
+  @media screen and (max-width: 800px) {
+
+    flex-direction: column;
+    gap: 50px;
+
+  }
+  @media screen and (max-width: 600px) {
+
+    // padding: 30px 30px;
+    padding: 0;
+    margin: 10px;
+
+  }
 
   div {
     width: 50%;
     // text-align: center;
 
     h1 {
-      font-family: "Plus Jakarta Sans";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 64px;
-      line-height: 130%;
-      width: 70%;
-      // text-align: center;
-      /* or 83px */
-      color: white;
+      font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 64px;
+line-height: 120%;
+width: 70%;
+/* or 77px */
+
+
+color: #000000;
       margin-bottom: 0;
+      @media screen and (max-width: 1100px) {
+        font-size: 40px;
+      }
     }
   }
 }

@@ -1,3 +1,18 @@
+
+.headData
+{
+  display: inline-block;
+  margin-left: 60px;
+  // margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: left;
+  @media screen and (max-width: 420px) {
+
+    margin-left: 10px;
+    margin-top: 20px;
+
+  }
+}
 .header
 {
   h1{  font-family: 'Plus Jakarta Sans';
@@ -11,6 +26,9 @@ text-align: center;
 padding-top:80px;
 
 color: #FFFFFF;
+@media screen and (max-width: 420px) {
+font-size: 40px;
+}
   }
   p{
     font-family: 'Plus Jakarta Sans';
@@ -24,5 +42,9 @@ text-align: center;
 letter-spacing: 20px;
 
 color: #FFFFFF;
+@media screen and (max-width: 420px) {
+font-size: 17px;
+line-height: 30px;
+}
   }
 }

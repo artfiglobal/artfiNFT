@@ -9,7 +9,7 @@ const Card = ({srcdata}:any) => {
     <div className={styles.flipCardInner}>
       <div className={styles.flipcardFront}> */}
         {/* <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;"> */}
-        <img src={srcdata} alt="ellipose" width="380px" height="512px"/>  
+        <img src={srcdata} alt="ellipose"  className={styles.nftImg} />  
       {/* </div> */}
       {/* <div className={styles.flipCardBack}> */}
         {/* <h1>John Doe</h1> 
