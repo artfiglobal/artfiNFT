@@ -282,6 +282,8 @@ export const Landing = ({
             <Typography variant="popup" color="mauve">
               {cellProps[singleImage - 1] === ""
                 ? "Available"
+                : cellProps[singleImage - 1] === "selected"
+                ? "Selected"
                 : "Not Available"}
             </Typography>
           </div>

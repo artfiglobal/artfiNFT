@@ -124,12 +124,17 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
               Contact Us
             </Typography>
           </Link>
-
         </div>
         {walletAddress ? (
           <Button
-            
-            style={{ width: "fit-content",marginLeft:"32px", fontSize: "16px",color:"black",border:"1px solid black", padding: "10px 16.5px" }}
+            style={{
+              width: "fit-content",
+              marginLeft: "32px",
+              fontSize: "16px",
+              color: "black",
+              border: "1px solid black",
+              padding: "10px 16.5px",
+            }}
             onClick={async () => {
               await disconnectWallet();
               setWallet(false);
@@ -145,8 +150,18 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           </Button>
         ) : (
           <Button
-            
-            style={{ width: "fit-content",marginLeft:"32px",borderRadius:"10px", fontSize: "16px",color:"black",border:"1px solid black",background: "rgba(255, 255, 255, 0.6)", padding: "10px 16.5px",fontWeight:"700",fontFamily: 'Plus Jakarta Sans' }}
+            style={{
+              width: "fit-content",
+              marginLeft: "32px",
+              borderRadius: "10px",
+              fontSize: "16px",
+              color: "black",
+              border: "1px solid black",
+              background: "rgba(255, 255, 255, 0.6)",
+              padding: "10px 16.5px",
+              fontWeight: "700",
+              fontFamily: "Plus Jakarta Sans",
+            }}
             onClick={async () => {
               await connectWallet();
               setWallet(true);
@@ -159,9 +174,8 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           >
             Connect your wallet
           </Button>
-          
         )}
-        {showConnectWallet && <ConnectWalletNav walletBtnStyle="webBtnStyle" />}
+        {/* {showConnectWallet && <ConnectWalletNav walletBtnStyle="webBtnStyle" />} */}
         {/* <div className={styles.navItem}>
           <Typography variant="body" color="black" className={styles.text}>
             Price Database
@@ -302,7 +316,7 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
           </Link>
         </div> */}
       </div>
-      {showConnectWallet ? (
+      {/* {showConnectWallet ? (
         <div className={styles.connectWallet_mobile_nav}>
           <ConnectWalletNav walletBtnStyle="mobBtnStyle" />
           <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
@@ -313,7 +327,10 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
         <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
           <FaBars />
         </div>
-      )}
+      )} */}
+      <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
+        <FaBars />
+      </div>
     </nav>
   );
 };

@@ -31,24 +31,40 @@ export default function WhitelistLanding() {
     columnCnt: 0,
     rowCnt: 0,
   });
-  const [first, setfirst] = useState();
+  // const [first, setfirst] = useState("");
 
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
   // const [findWallet, setFindWallet] = useState("");
+  console.log(cellProps, "cellProps");
 
   useEffect(() => {
+    const first: any = localStorage?.getItem("walletAddress");
+    const parsedData = JSON.parse(first);
     // let variable;
+    // console.log(parsedData, "asdasdasdasd");
 
-    const getWalletAddress: any = async () => {
-      const provider = await web3Modal.connect();
-      const library = new ethers.providers.Web3Provider(provider);
-      const walletAddress = await library.listAccounts();
-      // console.log(walletAddress);
+    // const getWalletAddress: any = async () => {
+    //   const provider = await web3Modal.connect();
+    //   const library = new ethers.providers.Web3Provider(provider);
+    //   const walletAddress = await library.listAccounts();
+    //   // console.log(walletAddress);
 
-      return walletAddress[0];
-      // setFindWallet(walletAddress[0]);
-    };
+    //   return walletAddress[0];
+    //   // setFindWallet(walletAddress[0]);
+    // };
+    // var makeitWork = "";
+    // const walletAddress = getWalletAddress().then((response: any) => {
+    //   function runrunrn(response: string) {
+    //     makeitWork = response;
+
+    //     return makeitWork;
+    //   }
+    //   return runrunrn(response);
+    //   // return makeitWork;
+    // // });
+    // console.log(makeitWork);
+
     // getWalletAddress();
 
     // console.log(findWallet, "findWallet");
@@ -60,6 +76,9 @@ export default function WhitelistLanding() {
     // });
     // console.log(walletAddress);
     const fetchOffers = () => {
+      // if (items) {
+      //  setItems(items);
+      // }
       fetch(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
         {
@@ -104,59 +123,47 @@ export default function WhitelistLanding() {
               )
                 .then((response) => response.json())
                 .then((response) => {
-                  // console.log(response);
-                  const walletAddress = getWalletAddress().then(
-                    (response: any) => {
-                      for (let i = 0; i < fractions?.length; i++) {
-                        if (fractions[i]?.walletAddress === response) {
-                          for (
-                            let i = 0;
-                            i <
-                            data[0].whitelistDetails.rowNumber *
-                              data[0].whitelistDetails.columnNumber;
-                            i++
-                          ) {
-                            if (fractions?.length > 0) {
-                              const j = array[i];
-                              // console.log(j);
-                              cellProps[j] = "selected";
-                            }
-                          }
-                        } else {
-                          for (
-                            let i = 0;
-                            i <
-                            data[0].whitelistDetails.rowNumber *
-                              data[0].whitelistDetails.columnNumber;
-                            i++
-                          ) {
-                            if (fractions?.length > 0) {
-                              const j = array[i];
-                              // console.log(j);
-                              cellProps[j] = "selected";
-                            }
-                          }
+                  // const address = "0x4438e0fc3715D7A7519e49247E8b416564f883ED";
+                  const fractions = response.fraction;
+                  console.log(fractions);
+                  for (let i = 0; i < fractions?.length; i++) {
+                    if (fractions[i]?.walletAddress === parsedData) {
+                      const array = fractions[i].fractionInfo;
+                      for (
+                        let i = 0;
+                        i <
+                        data[0].whitelistDetails.rowNumber *
+                          data[0].whitelistDetails.columnNumber;
+                        i++
+                      ) {
+                        if (fractions?.length > 0) {
+                          const j = array[i];
+                          console.log(j);
+                          cellProps[array[i]] = "selected";
+                        }
+                      }
+                    } else if (fractions[i]?.walletAddress !== response) {
+                      const array = fractions[i].fractionInfo;
+                      for (
+                        let i = 0;
+                        i <
+                        data[0].whitelistDetails.rowNumber *
+                          data[0].whitelistDetails.columnNumber;
+                        i++
+                      ) {
+                        if (fractions?.length > 0) {
+                          // const j = array[i];
+                          // console.log(j);
+                          if (array === cellProps[i]) {
+                            cellProps[i] = "disable";
+                          } else cellProps[i] = "";
                         }
                       }
                     }
-                  );
-                  // for (
-                  //   let i = 0;
-                  //   i <
-                  //   data[0].whitelistDetails.rowNumber *
-                  //     data[0].whitelistDetails.columnNumber;
-                  //   i++
-                  // ) {
-                  //   cellProps[i] = "";
-                  // }
-                  const fractions = response.fraction;
-                  console.log(fractions, "fractions");
-                  const array = response?.fraction[0]?.fractionInfo;
-                  // for(let i=0;i < fractions?.length;i++){
-                  //   if(fractions[i]?.walletAddress
-                  //  ===     )
-                  // }
-                  // console.log(walletAddress, "wallet address");
+                  }
+
+                  // if (fractions[0]?.walletAddress === parsedData) {
+                  // const array = fractions[0].fractionInfo;
                   // for (
                   //   let i = 0;
                   //   i <
@@ -166,12 +173,25 @@ export default function WhitelistLanding() {
                   // ) {
                   //   if (fractions?.length > 0) {
                   //     // const j = array[i];
-                  //     // console.log(j);
-                  //     // cellProps[j] = "selected";
+                  //     cellProps[i] = "";
                   //   }
                   // }
-
-                  // console.log(array, "array");
+                  // }
+                  // else if (fractions[1]?.walletAddress !== parsedData) {
+                  //   const array = fractions[1].fractionInfo;
+                  //   for (
+                  //     let i = 0;
+                  //     i <
+                  //     data[0].whitelistDetails.rowNumber *
+                  //       data[0].whitelistDetails.columnNumber;
+                  //     i++
+                  //   ) {
+                  //     if (fractions?.length > 0) {
+                  //       const j = array[i];
+                  //       cellProps[j] = "disable";
+                  //     }
+                  //   }
+                  // }
                   // for (
                   //   let i = 0;
                   //   i <
@@ -179,11 +199,16 @@ export default function WhitelistLanding() {
                   //     data[0].whitelistDetails.columnNumber;
                   //   i++
                   // ) {
-                  //   if (array?.length > 0 && array[i]) {
-                  //     const j = array[i];
-                  //     // console.log(j);
-                  //     cellProps[j] = "selected";
-                  //   }
+                  //   cellProps[i] = "";
+                  // }
+                  // for (
+                  //   let i = 0;
+                  //   i <
+                  //   data[0].whitelistDetails.rowNumber *
+                  //     data[0].whitelistDetails.columnNumber;
+                  //   i++
+                  // ) {
+                  //   cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
                   // }
                   setPreviosFractions(fractions);
                 });

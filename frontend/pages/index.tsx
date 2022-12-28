@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Benefits,
   Discover,
@@ -22,6 +22,7 @@ import styles from "../styles/Home.module.scss";
 import Featured from "../components/Home/Featured/Index";
 import { fetchFeaturedInDate } from "../lib/apis/featuredInData";
 import GetStaticProps from "../components/Home/Featured/types";
+import Web3Context from "../context/Web3Context";
 
 export async function getStaticProps() {
   const data = await fetchFeaturedInDate();
@@ -36,12 +37,33 @@ export async function getStaticProps() {
 }
 
 const Home: NextPage<GetStaticProps> = (props: any) => {
+  const {
+    // web3Data,
+    // setWeb3Data,
+    // connectWallet,
+    walletAddress,
+    // disconnectWallet,
+  } = useContext(Web3Context);
   //isopen state
-  console.log(props, "offering");
+  // console.log(props, "offering");
+  useEffect(() => {
+    // console.log(walletAddress);
+    // useEffect(() => {
+    localStorage.setItem("walletAddress", JSON.stringify(walletAddress));
+    // }, [items]);
+    // if (walletAddress) {
+    //   const addressFormatter = () => {
+    //     const address =
+    //       walletAddress.slice(0, 6) + "..." + walletAddress.slice(37, 42);
+    //     setFormattedAddress(address);
+    //   };
+    //   addressFormatter();
+    // }
+  }, [walletAddress]);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className={styles.container} style={{overflow:"hidden"}}>
+    <div className={styles.container} style={{ overflow: "hidden" }}>
       <Head title="Artfi" />
       <meta
         name="viewport"
