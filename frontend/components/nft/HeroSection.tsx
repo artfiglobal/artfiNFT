@@ -10,7 +10,7 @@ const HeroSection = ({nft,artist}:any) => {
   return (
     <div>
         <section className={styles.herosection}>
-            <h1><img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.uploadsignature}`}/></h1>
+            <h1>{nft?nft.uploadsignature?<img src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${nft.uploadsignature}`}/>:"":""}</h1>
             <h2>{nft?nft.artWorkName:""}</h2>
             <h4><label>NEW ARTWORK</label> <p> BY {artistName} {!artist.IsArtistVerified?<img style={{marginLeft:"10px"}} src="/Publiced/Vector.svg"/>:""}</p></h4>
             

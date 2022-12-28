@@ -64,10 +64,12 @@ console.log(str)
               justifyItems: "center",
               alignItems: "center",
               gap: "8px",
+              marginTop:"-7px"
             }}
           >
             <Avatar
               src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${headerData.artistImage}`}
+              style={{width:"25px",height:"25px"}}
             />
             <div className={style.artist}>
               {headerData.offeringData.headerDetails.artistName}
