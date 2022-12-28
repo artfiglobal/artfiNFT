@@ -98,7 +98,7 @@ export const Landing = ({
   offeringId,
 }: LandingProps | any): JSX.Element => {
   //ref//
-  console.log(offerWhitelist, "offerWhitelist");
+  // console.log(offerWhitelist, "offerWhitelist");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;

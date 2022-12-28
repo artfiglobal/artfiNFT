@@ -5,12 +5,20 @@ import { Footer } from "../components/reusables/Components/Footer2";
 import { Navigation, Head } from "../components/reusables/Components";
 import styles from "../styles/Home.module.scss";
 // import { Container, Typography,  } from "../../reusables2/Atoms";
+import { ethers } from "ethers";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import axios from "axios";
 import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
+  const {
+    web3Data,
+    setWeb3Data,
+    connectWallet,
+    walletAddress,
+    disconnectWallet,
+  } = useContext(Web3Context);
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
   const [offeringId, setOfferingId] = useState("");
@@ -23,10 +31,34 @@ export default function WhitelistLanding() {
     columnCnt: 0,
     rowCnt: 0,
   });
+  const [first, setfirst] = useState();
+
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
+  // const [findWallet, setFindWallet] = useState("");
 
   useEffect(() => {
+    // let variable;
+
+    const getWalletAddress: any = async () => {
+      const provider = await web3Modal.connect();
+      const library = new ethers.providers.Web3Provider(provider);
+      const walletAddress = await library.listAccounts();
+      // console.log(walletAddress);
+
+      return walletAddress[0];
+      // setFindWallet(walletAddress[0]);
+    };
+    // getWalletAddress();
+
+    // console.log(findWallet, "findWallet");
+    // console.log(walletAddress, "walletAddress");
+    // .then((response) => {
+    //   variable = response;
+    //   console.log(variable, "response");
+    //   return variable;
+    // });
+    // console.log(walletAddress);
     const fetchOffers = () => {
       fetch(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
@@ -41,6 +73,7 @@ export default function WhitelistLanding() {
         .then((response) => response.json())
         .then(
           (response) => {
+            console.log(response.data.trueOfferings[0], "response");
             const data = response.data.trueOfferings;
             const offerId = data[0]._id;
             setOfferingId(data[0]._id);
@@ -71,33 +104,87 @@ export default function WhitelistLanding() {
               )
                 .then((response) => response.json())
                 .then((response) => {
-                  console.log(response);
-                  for (
-                    let i = 0;
-                    i <
-                    data[0].whitelistDetails.rowNumber *
-                      data[0].whitelistDetails.columnNumber;
-                    i++
-                  ) {
-                    cellProps[i] = "";
-                  }
+                  // console.log(response);
+                  const walletAddress = getWalletAddress().then(
+                    (response: any) => {
+                      for (let i = 0; i < fractions?.length; i++) {
+                        if (fractions[i]?.walletAddress === response) {
+                          for (
+                            let i = 0;
+                            i <
+                            data[0].whitelistDetails.rowNumber *
+                              data[0].whitelistDetails.columnNumber;
+                            i++
+                          ) {
+                            if (fractions?.length > 0) {
+                              const j = array[i];
+                              // console.log(j);
+                              cellProps[j] = "selected";
+                            }
+                          }
+                        } else {
+                          for (
+                            let i = 0;
+                            i <
+                            data[0].whitelistDetails.rowNumber *
+                              data[0].whitelistDetails.columnNumber;
+                            i++
+                          ) {
+                            if (fractions?.length > 0) {
+                              const j = array[i];
+                              // console.log(j);
+                              cellProps[j] = "selected";
+                            }
+                          }
+                        }
+                      }
+                    }
+                  );
+                  // for (
+                  //   let i = 0;
+                  //   i <
+                  //   data[0].whitelistDetails.rowNumber *
+                  //     data[0].whitelistDetails.columnNumber;
+                  //   i++
+                  // ) {
+                  //   cellProps[i] = "";
+                  // }
                   const fractions = response.fraction;
                   console.log(fractions, "fractions");
                   const array = response?.fraction[0]?.fractionInfo;
-                  console.log(array, "array");
-                  for (
-                    let i = 0;
-                    i <
-                    data[0].whitelistDetails.rowNumber *
-                      data[0].whitelistDetails.columnNumber;
-                    i++
-                  ) {
-                    if (array?.length > 0 && array[i]) {
-                      const j = array[i];
-                      console.log(j);
-                      cellProps[j] = "disable";
-                    }
-                  }
+                  // for(let i=0;i < fractions?.length;i++){
+                  //   if(fractions[i]?.walletAddress
+                  //  ===     )
+                  // }
+                  // console.log(walletAddress, "wallet address");
+                  // for (
+                  //   let i = 0;
+                  //   i <
+                  //   data[0].whitelistDetails.rowNumber *
+                  //     data[0].whitelistDetails.columnNumber;
+                  //   i++
+                  // ) {
+                  //   if (fractions?.length > 0) {
+                  //     // const j = array[i];
+                  //     // console.log(j);
+                  //     // cellProps[j] = "selected";
+                  //   }
+                  // }
+
+                  // console.log(array, "array");
+                  // for (
+                  //   let i = 0;
+                  //   i <
+                  //   data[0].whitelistDetails.rowNumber *
+                  //     data[0].whitelistDetails.columnNumber;
+                  //   i++
+                  // ) {
+                  //   if (array?.length > 0 && array[i]) {
+                  //     const j = array[i];
+                  //     // console.log(j);
+                  //     cellProps[j] = "selected";
+                  //   }
+                  // }
                   setPreviosFractions(fractions);
                 });
             };
@@ -169,13 +256,6 @@ export default function WhitelistLanding() {
   // console.log(previosFractions, "previosFractions");
   const [wallet, setWallet] = useState(false);
   const [likes, setLikes] = useState(0);
-  const {
-    web3Data,
-    setWeb3Data,
-    connectWallet,
-    walletAddress,
-    disconnectWallet,
-  } = useContext(Web3Context);
 
   useEffect(() => {
     if (walletAddress) {

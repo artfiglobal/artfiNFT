@@ -14,7 +14,7 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
   // const explanationVideoLink = artworkDetails?.artwork?.explanationVideoLink;
   const playNowButtonVideoLink =
     artworkDetails?.artwork?.playNowButtonVideoLink;
-  console.log(playNowButtonVideoLink);
+  // console.log(playNowButtonVideoLink);
   // var width = 0;
   // const newnewnew = globalThis?.window?.innerWidth;
   useEffect(() => {
