@@ -88,7 +88,7 @@ const ArtworkDetails = () => {
     <>
       <Navigation />
       <div className={style.details_container}>
-        <Navigation />
+        {/* <Navigation /> */}
         <ArtworkDetailsHeader artworkDetails={artworkDetails} />
         <div className={style.artworkImage_container}>
           <Image

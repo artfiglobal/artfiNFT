@@ -90,7 +90,6 @@ export default function SelectFractionNFTs({
       if (cellProps[selInd] != "disable") {
         if (cellProps[selInd] == "") {
           if (selCnt < maxSel) {
-            setSelCnt(selCnt + 1);
             cellProps[selInd] = "selected";
             setCellProps(cellProps);
           } else {
