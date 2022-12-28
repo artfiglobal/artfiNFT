@@ -127,41 +127,40 @@ export default function WhitelistLanding() {
                   const fractions = response.fraction;
                   console.log(fractions);
                   for (let i = 0; i < fractions?.length; i++) {
+                    const array = fractions[i]?.fractionInfo;
                     if (fractions[i]?.walletAddress === parsedData) {
-                      const array = fractions[i].fractionInfo;
                       for (
                         let i = 0;
                         i <
-                        data[0].whitelistDetails.rowNumber *
-                          data[0].whitelistDetails.columnNumber;
+                        data[0]?.whitelistDetails?.rowNumber *
+                          data[0]?.whitelistDetails?.columnNumber;
                         i++
                       ) {
-                        if (fractions?.length > 0) {
-                          const j = array[i];
-                          console.log(j);
-                          cellProps[array[i]] = "selected";
-                        }
-                      }
-                    } else if (fractions[i]?.walletAddress !== response) {
-                      const array = fractions[i].fractionInfo;
-                      for (
-                        let i = 0;
-                        i <
-                        data[0].whitelistDetails.rowNumber *
-                          data[0].whitelistDetails.columnNumber;
-                        i++
-                      ) {
-                        if (fractions?.length > 0) {
-                          // const j = array[i];
-                          // console.log(j);
-                          if (array === cellProps[i]) {
-                            cellProps[i] = "disable";
-                          } else cellProps[i] = "";
-                        }
+                        // if (cellProps[i] === array[i]) {
+                        const j = array[i];
+                        console.log(j);
+                        cellProps[j] = "selected";
+                        // }
                       }
                     }
                   }
-
+                  // else if (fractions[i]?.walletAddress !== response) {
+                  //     // const array = fractions[i].fractionInfo;
+                  //     for (
+                  //       let i = 0;
+                  //       i <
+                  //       data[0].whitelistDetails.rowNumber *
+                  //         data[0].whitelistDetails.columnNumber;
+                  //       i++
+                  //     ) {
+                  //       // if (fractions?.length > 0) {
+                  //       const j = array[i];
+                  //       console.log(j);
+                  //       cellProps[array[j]] = "disable";
+                  //       // }
+                  //     }
+                  //   }
+                  // }
                   // if (fractions[0]?.walletAddress === parsedData) {
                   // const array = fractions[0].fractionInfo;
                   // for (

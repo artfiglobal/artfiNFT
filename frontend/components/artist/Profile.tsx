@@ -51,7 +51,9 @@ const Profile = ({ artistDetails }: any) => {
         </p>
         <div className={styles.profileInfo}>
           {bornDate && <ProfileData title="born" value={bornDate} />}
-          {deathDate && <ProfileData title="Died" value={deathDate} />}
+          {deathDate?.length > 4 && (
+            <ProfileData title="Died" value={deathDate} />
+          )}
         </div>
         <div className={styles.profileInfo}>
           <ProfileData

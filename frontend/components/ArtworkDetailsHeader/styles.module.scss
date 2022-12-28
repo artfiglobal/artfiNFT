@@ -128,7 +128,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 218px;
+    // width: 218px;
+    width: fit-content;
+    div {
+      margin-left: 4px !important;
+      display: flex;
+      align-items: center;
+    }
     p {
       font-weight: 700;
       margin: 0;
@@ -189,7 +195,7 @@
       height: 60px;
     }
     .artist_name {
-      width: 188px;
+      // width: 188px;
       p {
         font-size: 17px;
         line-height: 22px;
@@ -215,7 +221,7 @@
       height: 50px;
     }
     .artist_name {
-      width: 185px;
+      // width: 185px;
       p {
         font-size: 17px;
         line-height: 19px;
@@ -245,7 +251,7 @@
       height: 37px;
     }
     .artist_name {
-      width: 116px;
+      // width: 116px;
       p {
         font-size: 11px;
         line-height: 14px;
