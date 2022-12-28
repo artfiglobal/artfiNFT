@@ -1,6 +1,7 @@
 import { Card } from "@mantine/core";
 import type { NextPage } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./fetures.module.scss";
 import GetStaticProps from "./types";
 
@@ -137,11 +138,16 @@ const Featured: React.FC<GetStaticProps> = ({ data }) => {
           data?.map((item: any, index: any) => {
             return (
               <div key={index} className={styles.eachImg}>
-                <a href={item.mediaurl} target="_blank" className={styles.card}>
+                <a
+                  target="_blank"
+                  href={`http://${item.mediaurl}`}
+                  className={styles.card}
+                >
                   <img
                     src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${item.medialogo}`}
                     className={styles.img}
                   />
+                  {/* </a> */}
                 </a>
               </div>
             );
