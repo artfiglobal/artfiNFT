@@ -25,7 +25,25 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         className={styles.video}
         style={{ padding: "56.25% 0 0 0", position: "relative" }}
       >
-        {offer.annoucmentDetails ? (
+        {offer.annoucmentDetails ?offer.unveilingDetails?  (<iframe
+            src={
+              offer
+                ? offer.unveilingDetails.unvielingBackgroundVideoLink
+                : ""
+            }
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "0",
+            }}
+            className={styles.videos}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ): (
           <iframe
             src={
               offer
@@ -60,7 +78,16 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
           ></iframe>
         )}
       </div>
-      {offer.annoucmentDetails ? (
+      {offer.annoucmentDetails ?offer.unveilingDetails?(
+        <iframe
+          src={offer ? offer.unveilingDetails.mobileAndAnnouncementURL : ""}
+          width="100%"
+          className={styles.mobilevideo}
+          height="1300px"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
         <iframe
           src={offer ? offer.annoucmentDetails.mobileAndAnnouncementURL : ""}
           width="100%"
@@ -96,10 +123,10 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         <PowerdBy />
       </div>
       <div className={styles.container}>
-        <h6 className={styles.container_h6}>NEW ANNOUNCEMENT</h6>
+        <h6 className={styles.container_h6}>{offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?"NEW ANNOUNCEMENT":"NEW UNVEILING":"NEW ANNOUNCEMENT"}</h6>
 
         <div className={styles.container_img}>
-          <img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" />{" "}
+        {offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?(<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /></>):"":<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /></>}{" "}
           <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p>
         </div>
         {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
