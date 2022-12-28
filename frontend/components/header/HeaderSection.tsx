@@ -31,12 +31,8 @@ const HeaderSection = ({ header }: any) => {
           {header.map((headerData: any, index: number) => {
             return (
               <div
-                style={{
-                  display: "inline-block",
-                  marginLeft: "60px",
-                  marginBottom: "30px",
-                  textAlign:'left'
-                }}
+               
+                className={style.headData}
                 key={index}
               >
                 <HeaderCard headerData={headerData} />

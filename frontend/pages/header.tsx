@@ -51,12 +51,12 @@ const Header = (props: any) => {
   const [header, setHeader] = useState(props.data);
   console.log(header, "jkl");
   return (
-    <>
+    <div style={{overflow:"hidden"}}>
       <Navigation />
       <HeaderSection header={header} />
       <br />
       <Footer display="" />
-    </>
+    </div>
   );
 };
 

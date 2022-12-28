@@ -1,3 +1,12 @@
+.nftImg
+{
+  width:376px;
+  height: 500px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
 .card{
     position: relative;
     overflow: hidden;
