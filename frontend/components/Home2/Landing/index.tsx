@@ -1,35 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useContext, useEffect, useCallback, useRef } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { Container, Typography, Button } from "../../reusables2/Atoms";
 import ButtonView from "@mui/material/Button";
-import { ArtInfo, DetailCard, LandingCarousel, OrderForm, Timer } from "..";
-import { Tabs, Accordion, Modal } from "@mantine/core";
-import { FiHeart } from "react-icons/fi";
+import { Accordion, Modal } from "@mantine/core";
 import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
 import Link from "next/link";
-import { FormDataInterface } from "../../../types";
-import Timer2 from "../Timer2";
-type LandingProps = {
-  likes: number;
-};
-
-import { web3Modal } from "../../../lib/Web3Modal";
-import { web3Context } from "../../../context";
-// import web3Context from "../../../context/Web3Context";
-import { Web3DataInterface } from "../../../context/types";
-import APIContext from "../../../context/APIContext";
-import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { AuthProvider } from "@arcana/auth";
 
-import metamask from "../../../public/metamask.png";
-import arcana from "../../../public/arcana.png";
-import RightArrow from "../../../public/Icons/Combined-Shape.svg";
-import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
 import {
   createSelectable,
   SelectAll,
@@ -37,6 +19,26 @@ import {
 } from "react-selectable-fast";
 import { FaBlackTie } from "react-icons/fa";
 import { useRouter } from "next/router";
+
+import { FormDataInterface } from "../../../types";
+import Timer2 from "../Timer2";
+
+import { web3Modal } from "../../../lib/Web3Modal";
+import APIContext from "../../../context/APIContext";
+import Web3Context from "../../../context/Web3Context";
+
+import { ArtInfo, DetailCard, OrderForm } from "..";
+import metamask from "../../../public/metamask.png";
+import arcana from "../../../public/arcana.png";
+import RightArrow from "../../../public/Icons/Combined-Shape.svg";
+import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
+
+import { abi as ArtfiWhitelistABI } from '../../../abi/ArtfiWhitelist.json';
+import { ARTFIWHITELIST, RPCURL, USDCADDR } from '../../../config';
+
+type LandingProps = {
+  likes: number;
+};
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -58,27 +60,7 @@ const useKey = (setPressKey: any) => {
       document.removeEventListener("keydown", handle);
       document.addEventListener("keyup", handle2);
     };
-  }, []);
-};
-
-type offerWhitelistTypes = {
-  FractionNumber?: number;
-  Title?: string;
-  artistName?: string;
-  authencity?: string;
-  columnNumber?: number;
-  description?: string;
-  factSheet?: string;
-  height?: number;
-  imageOfArtWork?: string;
-  medium?: string;
-  price?: number;
-  provenence?: string;
-  rowNumber?: number;
-  signature?: string;
-  width?: number;
-  year?: number;
-  _id?: string;
+  }, [setPressKey]);
 };
 
 export const Landing = ({
@@ -89,16 +71,12 @@ export const Landing = ({
   artWorkImage,
   artistId,
   artistImage,
-  // rowCnt,
-  // columnCnt,
   tableRowsCols,
   fractionSize,
   setCellProps,
   cellProps,
   offeringId,
 }: LandingProps | any): JSX.Element => {
-  //ref//
-  // console.log(offerWhitelist, "offerWhitelist");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
@@ -117,12 +95,9 @@ export const Landing = ({
   const [singleImage, setSingleImage] = useState();
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
-  // console.log(cellProps);
   const [selCnt, setSelCnt] = useState(0);
   const router = useRouter();
 
-  // const ftactionsNo = offerWhitelist.FractionNumber;
-  // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -132,11 +107,8 @@ export const Landing = ({
     termsSignature: Date.now().toString(),
     selCnt,
   });
-  // console.log(cellProps, "cellProps");
+  
   const triggerClearButton = () => {
-    // setCellProps([]);
-    // const items = ;
-
     const items = cellProps.map((item: any) => {
       return item === "selected"
         ? ""
@@ -144,32 +116,20 @@ export const Landing = ({
         ? "disable"
         : item === "" && "";
     });
-    // console.group(cellProps);
+    
     setSelCnt(0);
     setCellProps(items);
-    // makeItWork.current.context.selectable.clearSelection();
   };
   const [tabActiveButton, setTabActiveButton] = useState(true);
-  const { web3Data, setWeb3Data, connectWallet, walletAddress } =
+  const { web3Data, setWeb3Data, signer, connectWallet, walletAddress } =
     useContext(Web3Context);
-  // console.log(walletAddress);
-  const { API, setWalletAddress } = useContext(APIContext);
-  // const [web3Data, setWeb3Data] = useState<Web3DataInterface>();
-  // const connectWallet = async () => {
-  //   const instance = await web3Modal.connect();
-  //   const provider = new ethers.providers.Web3Provider(instance);
-  //   // const res = await provider.send("eth_requestAccounts", []);
-  //   // console.log({ res });
-  //   const signer = provider.getSigner();
-  //   // console.log("Account:", await signer.getAddress());
-
-  //   // console.log({ provider });
-  //   console.log("Connect wallet ran");
-  //   const newWeb3Data = { provider: provider, signer: signer };
-  //   setWeb3Data(newWeb3Data);
-  //   return newWeb3Data;
-  // };
-  // console.log({ connectWallet });
+  
+  const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
+  const artfiWhitelistContract = new ethers.Contract(
+    ARTFIWHITELIST,
+    ArtfiWhitelistABI,
+    web3Provider
+  )
 
   useKey(setPressKey);
   const handleSelectionClear = (items: any) => {
@@ -179,11 +139,7 @@ export const Landing = ({
     // });
     // setSelectedItems([]);
   };
-  // console.log(pressKey);
-  const disconnectWallet = () => {
-    setWeb3Data(null);
-    web3Modal.clearCachedProvider();
-  };
+
   useEffect(() => {
     setFormData((prev) => ({ ...prev, address: walletAddress }));
   }, [walletAddress]);
@@ -191,36 +147,49 @@ export const Landing = ({
   useEffect(() => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
+
   const completePurchase = async () => {
-    const whitelistId = offerWhitelist._id;
-    // console.log(whitelistId);
-    console.log(whitelistId);
-    // console.log(walletAddress);
     let sendSelected: any = [];
     cellProps.map((item: any, index: any) => {
       if (item === "selected") {
-        // return index;
         sendSelected.push(index);
       }
     });
-    // console.log(sendSelected);
+    
     var form = new FormData();
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
+    
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
         form,
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log(response);
+      
+      console.log(response.data.signature)
+      if (response.status == 200 && response.data.signature) {
+        const chkPrice = ethers.utils.parseEther(
+          (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
+        );
+      
+        const tx = await artfiWhitelistContract.connect(signer).doWhitelist(
+          USDCADDR,
+          chkPrice,
+          ethers.utils.formatBytes32String(offeringId),
+          sendSelected.join(','),
+          response.data.signature
+        )
+        if (tx) await tx.wait();
+      }
     } catch (err) {
       console.log(err);
     }
   };
+
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
@@ -332,7 +301,7 @@ export const Landing = ({
         <div className={style.landingTop}>
           <div className={style.likes}>
             <button className={style.timer}>
-              <img src="Publiced/time.svg" />
+              <img src="Publiced/time.svg" alt="time img" />
               <Timer2 endDate={offerUnveiling?.endDate} />
               {/* <label>12h:43m:10s</label> */}
             </button>
@@ -466,6 +435,7 @@ export const Landing = ({
               if (item === "selected") {
                 return (
                   <Button
+                    key={index}
                     onClick={() => removeItem(item, index)}
                     variant="fractionBTN"
                   >
@@ -519,6 +489,7 @@ export const Landing = ({
                 </Link>
                 <img
                   src="/Publiced/Vector.svg"
+                  alt="vector img"
                   style={{ width: "16px", height: "16px" }}
                 />
               </h6>
@@ -838,6 +809,7 @@ export const Landing = ({
                       backgroundColor: "white",
                       color: "#4527B3",
                       width: "100%",
+                      cursor: 'pointer',
                       margin: "40px 0 16px 0 ",
                       border: "1px solid white",
                     }}

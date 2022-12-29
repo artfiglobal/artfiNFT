@@ -1,20 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { Landing } from "../components/Home2";
-import { Container, Button } from "../components/reusables2/Atoms";
-import { Footer } from "../components/reusables/Components/Footer2";
-import { Navigation, Head } from "../components/reusables/Components";
+import { Button } from "../components/reusables2/Atoms";
+import { Head } from "../components/reusables/Components";
 import styles from "../styles/Home.module.scss";
+import Image from "next/image";
 // import { Container, Typography,  } from "../../reusables2/Atoms";
 import { ethers } from "ethers";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
-import axios from "axios";
 import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
   const {
-    web3Data,
-    setWeb3Data,
     connectWallet,
     walletAddress,
     disconnectWallet,
@@ -31,7 +28,8 @@ export default function WhitelistLanding() {
     columnCnt: 0,
     rowCnt: 0,
   });
-  // const [first, setfirst] = useState("");
+  const [wallet, setWallet] = useState(false);
+  const [likes, setLikes] = useState(0);
 
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
@@ -270,10 +268,6 @@ export default function WhitelistLanding() {
     fetchOffers();
   }, []);
 
-  // console.log(previosFractions, "previosFractions");
-  const [wallet, setWallet] = useState(false);
-  const [likes, setLikes] = useState(0);
-
   useEffect(() => {
     if (walletAddress) {
       const addressFormatter = () => {
@@ -348,8 +342,6 @@ export default function WhitelistLanding() {
           artistImage={artistImage}
           offeringId={offeringId}
           artWorkImage={artWorkImage}
-          // rowCnt={rowCnt}
-          // columnCnt={columnCnt}
           cellProps={cellProps}
           setCellProps={setCellProps}
           fractionSize={fractionSize}
