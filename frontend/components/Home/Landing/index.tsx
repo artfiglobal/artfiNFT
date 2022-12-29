@@ -123,7 +123,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         <PowerdBy />
       </div>
       <div className={styles.container}>
-        <h6 className={styles.container_h6}>{offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?"NEW ANNOUNCEMENT":"NEW UNVEILING":"NEW ANNOUNCEMENT"}</h6>
+        <h6 className={styles.container_h6}>{offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?"NEW UNVEILING":"NEW UNVEILING":"NEW ANNOUNCEMENT"}</h6>
 
         <div className={styles.container_img}>
         {offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?(<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /> <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p></>):<><p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.Title:""} <label className={styles.artistNameInner}><span className={styles.by}>By</span>{offer?offer.headerDetails?offer.headerDetails.artistName:"":""}{offer?offerData.IsArtistVerified?<img src="/Publiced/Vector.svg" width="24px" height="24px"/>:"":""} </label></p> </>:<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /><p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p></>}{" "}
