@@ -5,8 +5,32 @@
   display: flex;
   justify-content: center;
   position: relative;
+  padding: 102px 0;
   object-fit: contain;
-
+  img {
+    width: 843px !important;
+    height: 515px !important;
+    @media screen and (max-width: 1240px) {
+      width: 726px !important;
+      height: 444px !important;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 600px !important;
+      height: 366px !important;
+    }
+    @media screen and (max-width: 768px) {
+      width: 450px !important;
+      height: 275px !important;
+    }
+    @media screen and (max-width: 576px) {
+      width: 337px !important;
+      height: 206px !important;
+    }
+    @media screen and (max-width: 480px) {
+      width: 281px !important;
+      height: 172px !important;
+    }
+  }
   @media screen and (max-width: 1240px) {
     // width: 100%;
     // height: 670px;
@@ -161,6 +185,7 @@
   .artworkImage_container {
     margin-top: 95px;
     // height: 670px;
+    padding: 88px 0;
   }
   .about_artwork {
     line-height: 43px;
@@ -187,6 +212,7 @@
   }
   .artworkImage_container {
     margin-top: 78px;
+    padding: 73px 0;
     // height: 512px;
   }
   .about_artwork {
@@ -215,6 +241,7 @@
   }
   .artworkImage_container {
     // height: 384px;
+    padding: 54px 0;
     margin-top: 59px;
   }
   .about_artwork {
@@ -241,6 +268,7 @@
   }
   .artworkImage_container {
     // height: 288px;
+    padding: 41px 0;
     margin-top: 44px;
   }
   .about_artwork {
@@ -265,6 +293,7 @@
     padding-top: 25px;
   }
   .artworkImage_container {
+    padding: 34px 0;
     // height: 240px;
     margin-top: 44px;
   }

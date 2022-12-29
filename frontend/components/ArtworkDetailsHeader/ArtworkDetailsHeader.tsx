@@ -27,7 +27,7 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
   return (
     <div className={style.header_container}>
       <div className={style.backdrop}></div>
-      {showVideo ? (
+      {/* {showVideo ? (
         <div>
           <div className={style.video}>
             {playNowButtonVideoLink ? (
@@ -63,35 +63,39 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
 
           <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
-      ) : (
-        <div className={style.imageContainer}>
-          <Image
-            width={innerWidth}
-            height={innerWidth * 0.5}
-            // layout="fill"
-            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${backgroundCoverPhoto}`}
-            alt="image"
-          />
-        </div>
-      )}
+      ) : ( */}
+      <div className={style.imageContainer}>
+        <Image
+          width={innerWidth}
+          height={innerWidth * 0.5}
+          // layout="fill"
+          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${backgroundCoverPhoto}`}
+          alt="image"
+        />
+      </div>
+      {/* )} */}
       <div className={style.header_details}>
         <h5>ARTWORK UNVEILING</h5>
         <h1>{artworkName}</h1>
         <div className={style.artist_name}>
-          <p style={{ opacity: ".7" }}>BY</p>
+          <p style={{ opacity: ".7", marginRight: "6px" }}>BY</p>
           <p style={{ opacity: "1" }}>{artistName}</p>
-          <Image src="/Publiced/Vector.svg" width={24} height={24} />
+          <div>
+            <Image src="/Publiced/Vector.svg" width={24} height={24} />
+          </div>
         </div>
-        <Button
-          onClick={() => {
-            setShowVideo(!showVideo);
-          }}
-          className={style.play_btn}
-          style={{ textTransform: "capitalize" }}
-        >
-          <img src="/Icons/play.svg" style={{ marginRight: "10px" }} />
-          Play now{" "}
-        </Button>
+        <a href={playNowButtonVideoLink + "&allowfullscreen"} target="_blank">
+          <Button
+            onClick={() => {
+              setShowVideo(!showVideo);
+            }}
+            className={style.play_btn}
+            style={{ textTransform: "capitalize" }}
+          >
+            <img src="/Icons/play.svg" style={{ marginRight: "10px" }} />
+            Play now{" "}
+          </Button>
+        </a>
       </div>
     </div>
   );
