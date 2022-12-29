@@ -36,7 +36,6 @@ export default function WhitelistLanding() {
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
   // const [findWallet, setFindWallet] = useState("");
-  console.log(cellProps, "cellProps");
 
   useEffect(() => {
     const first: any = localStorage?.getItem("walletAddress");
@@ -44,15 +43,15 @@ export default function WhitelistLanding() {
     // let variable;
     // console.log(parsedData, "asdasdasdasd");
 
-    // const getWalletAddress: any = async () => {
-    //   const provider = await web3Modal.connect();
-    //   const library = new ethers.providers.Web3Provider(provider);
-    //   const walletAddress = await library.listAccounts();
-    //   // console.log(walletAddress);
+    const getWalletAddress: any = async () => {
+      const provider = await web3Modal.connect();
+      const library = new ethers.providers.Web3Provider(provider);
+      const walletAddress = await library.listAccounts();
+      // console.log(walletAddress);
 
-    //   return walletAddress[0];
-    //   // setFindWallet(walletAddress[0]);
-    // };
+      return walletAddress[0];
+      // setFindWallet(walletAddress[0]);
+    };
     // var makeitWork = "";
     // const walletAddress = getWalletAddress().then((response: any) => {
     //   function runrunrn(response: string) {
@@ -62,7 +61,7 @@ export default function WhitelistLanding() {
     //   }
     //   return runrunrn(response);
     //   // return makeitWork;
-    // // });
+    // });
     // console.log(makeitWork);
 
     // getWalletAddress();
@@ -125,45 +124,44 @@ export default function WhitelistLanding() {
                 .then((response) => {
                   // const address = "0x4438e0fc3715D7A7519e49247E8b416564f883ED";
                   const fractions = response.fraction;
-                  console.log(fractions);
-                  for (let i = 0; i < fractions?.length; i++) {
-                    if (fractions[i]?.walletAddress === parsedData) {
-                      const array = fractions[i].fractionInfo;
-                      for (
-                        let i = 0;
-                        i <
-                        data[0].whitelistDetails.rowNumber *
-                          data[0].whitelistDetails.columnNumber;
-                        i++
-                      ) {
-                        if (fractions?.length > 0) {
-                          const j = array[i];
-                          console.log(j);
-                          cellProps[array[i]] = "selected";
+                  console.log(fractions, "fractions");
+                  console.log(cellProps, "cellProps");
+
+                  for (
+                    let i = 0;
+                    i <
+                    data[0].whitelistDetails.rowNumber *
+                      data[0].whitelistDetails.columnNumber;
+                    i++
+                  ) {
+                    for (let j = 0; j < fractions?.length; j++) {
+                      const array = fractions[j]?.fractionInfo;
+                      // if (fractions[j]?.walletAddress !== parsedData) {
+                      // console.log(fractions[j]?.walletAddress, "same");
+                      // -------------
+                      if (array?.includes(`${i}`)) {
+                        if (fractions[j]?.walletAddress === parsedData) {
+                          cellProps[i] = "selected";
+                        } else if (fractions[j]?.walletAddress !== parsedData) {
+                          // console.log("make it work ");
+                          cellProps[i] = "disable";
+                        } else {
+                          cellProps[i] = "";
                         }
                       }
-                    } else if (fractions[i]?.walletAddress !== response) {
-                      const array = fractions[i].fractionInfo;
-                      for (
-                        let i = 0;
-                        i <
-                        data[0].whitelistDetails.rowNumber *
-                          data[0].whitelistDetails.columnNumber;
-                        i++
-                      ) {
-                        if (fractions?.length > 0) {
-                          // const j = array[i];
-                          // console.log(j);
-                          if (array === cellProps[i]) {
-                            cellProps[i] = "disable";
-                          } else cellProps[i] = "";
-                        }
-                      }
+                      // }
+                      // else if (fractions[j]?.walletAddress === parsedData) {
+                      // console.log(fractions[j]?.walletAddress, "same");
+                      // -------------
+                      // if (array?.includes(`${i}`)) {
+                      //   console.log("make it work ");
+                      //   cellProps[i] = "selected";
+                      // } else {
+                      //   cellProps[i] = "";
+                      // }
+                      // }
                     }
                   }
-
-                  // if (fractions[0]?.walletAddress === parsedData) {
-                  // const array = fractions[0].fractionInfo;
                   // for (
                   //   let i = 0;
                   //   i <
@@ -171,27 +169,21 @@ export default function WhitelistLanding() {
                   //     data[0].whitelistDetails.columnNumber;
                   //   i++
                   // ) {
-                  //   if (fractions?.length > 0) {
-                  //     // const j = array[i];
-                  //     cellProps[i] = "";
-                  //   }
-                  // }
-                  // }
-                  // else if (fractions[1]?.walletAddress !== parsedData) {
-                  //   const array = fractions[1].fractionInfo;
-                  //   for (
-                  //     let i = 0;
-                  //     i <
-                  //     data[0].whitelistDetails.rowNumber *
-                  //       data[0].whitelistDetails.columnNumber;
-                  //     i++
-                  //   ) {
-                  //     if (fractions?.length > 0) {
-                  //       const j = array[i];
-                  //       cellProps[j] = "disable";
+                  //   for (let j = 0; j < fractions?.length; j++) {
+                  //     if (fractions[j]?.walletAddress === parsedData) {
+                  //       // console.log(fractions[j]?.walletAddress, "same");
+                  //       const array = fractions[j]?.fractionInfo;
+                  //       // -------------
+                  //       if (array?.includes(`${i}`)) {
+                  //         console.log("make it work ");
+                  //         cellProps[i] = "selected";
+                  //       } else {
+                  //         cellProps[i] = "";
+                  //       }
                   //     }
                   //   }
                   // }
+
                   // for (
                   //   let i = 0;
                   //   i <

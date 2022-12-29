@@ -26,8 +26,9 @@ const ArtworkDetails = () => {
   const [artistName, setArtistName] = useState("");
   const [innerWidth, setInnerWidth] = useState(0);
 
-  // console.log(artworkDetails);
-
+  // console.log(artworkDetails.whitelistDetails.imageOfArtWork);
+  const artworkImage = artworkDetails?.whitelistDetails?.imageOfArtWork;
+  console.log(artworkImage);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -92,10 +93,10 @@ const ArtworkDetails = () => {
         <ArtworkDetailsHeader artworkDetails={artworkDetails} />
         <div className={style.artworkImage_container}>
           <Image
-            height={innerWidth * 0.5}
-            width={innerWidth}
+            height={"100%"}
+            width={"100%"}
             style={{ margin: "0 auto" }}
-            src={bk}
+            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artworkImage}`}
             className={style.artworkImage}
           />
         </div>
