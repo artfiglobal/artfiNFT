@@ -1,3 +1,33 @@
+
+.by
+{
+  font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 130%;
+/* identical to box height, or 26px */
+
+letter-spacing: 0.12em;
+
+color: rgba(255, 255, 255, 0.7);
+}
+.artistNameInner
+{
+  font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 130%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+/* identical to box height, or 26px */
+
+
+color: #FFFFFF;
+}
 .pby {
   @media screen and (max-width: 600px) {
     // display: none;

@@ -18,7 +18,7 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
     offerData.trueOfferings ? offerData.trueOfferings[0] : {}
   );
   const router = useRouter();
-  console.log(offer, "jkl");
+  console.log(offerData, "jkl");
   return (
     <div className={styles.landing}>
       <div
@@ -126,8 +126,8 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         <h6 className={styles.container_h6}>{offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?"NEW ANNOUNCEMENT":"NEW UNVEILING":"NEW ANNOUNCEMENT"}</h6>
 
         <div className={styles.container_img}>
-        {offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?(<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /></>):"":<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /></>}{" "}
-          <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p>
+        {offer.unveilingDetails?offer.unveilingDetails.CTAButtonType == "waitlist" ?(<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /> <p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p></>):<><p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.Title:""} <label className={styles.artistNameInner}><span className={styles.by}>By</span>{offer?offer.headerDetails?offer.headerDetails.artistName:"":""}{offer?offerData.IsArtistVerified?<img src="/Publiced/Vector.svg" width="24px" height="24px"/>:"":""} </label></p> </>:<><img className={styles.artlogo}src="/Logo/art.svg" /> <img className={styles.close} src="/Logo/x.svg" /><p className={styles.artistName}>{offer.headerDetails?offer.headerDetails.artistName:""}</p></>}{" "}
+          
         </div>
         {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
         {/* {offer.headerDetails.artistName} */}
