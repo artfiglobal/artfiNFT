@@ -547,7 +547,11 @@ LandingProps | any): JSX.Element => {
                       url="osw"
                       title="Original Size"
                       content={
-                        offerWhitelist?.width + " x " + offerWhitelist?.height
+                        offerWhitelist?.width +
+                        " cm" +
+                        " x " +
+                        offerWhitelist?.height +
+                        " cm"
                       }
                     />
                     <DetailCard
