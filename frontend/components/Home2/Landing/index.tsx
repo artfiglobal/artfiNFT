@@ -96,9 +96,15 @@ export const Landing = ({
   setCellProps,
   cellProps,
   offeringId,
-}: LandingProps | any): JSX.Element => {
+  selCntPrevious,
+  price,
+  setPrice,
+}: // selCnt,
+// setSelCnt,
+LandingProps | any): JSX.Element => {
   //ref//
-  // console.log(offerWhitelist, "offerWhitelist");
+  const initialPrice = offerWhitelist.price;
+  // console.log(initialPrice, "offerWhitelist from landing");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
@@ -114,13 +120,14 @@ export const Landing = ({
   const [isShown, setIsShown] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   // const [cellProps, setCellProps] = useState([]);
+  const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
   // console.log(cellProps);
-  const [selCnt, setSelCnt] = useState(0);
+  // const [selCnt, setSelCnt] = useState<any>(0);
   const router = useRouter();
-
+  // console.log(selCnt);
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
@@ -193,17 +200,20 @@ export const Landing = ({
   }, [formData]);
   const completePurchase = async () => {
     const whitelistId = offerWhitelist._id;
-    // console.log(whitelistId);
-    console.log(whitelistId);
-    // console.log(walletAddress);
-    let sendSelected: any = [];
+
+    console.log(previosFractions, "previosFractions");
+
+    let sendSelected: any = previosFractions.map((item: any, index: any) => {
+      console.log(item, "item");
+      return parseInt(item);
+    });
+
     cellProps.map((item: any, index: any) => {
       if (item === "selected") {
-        // return index;
         sendSelected.push(index);
       }
     });
-    // console.log(sendSelected);
+    console.log(sendSelected);
     var form = new FormData();
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
@@ -308,6 +318,7 @@ export const Landing = ({
       </div>
     );
   };
+
   return (
     <Container>
       <div className={style.landing}>
@@ -401,6 +412,7 @@ export const Landing = ({
                 singleImage={singleImage}
                 setCoordinates={setCoordinates}
                 selCnt={selCnt}
+                selCntPrevious={selCntPrevious}
                 setSelCnt={setSelCnt}
               />
             </TransformComponent>
@@ -788,10 +800,14 @@ export const Landing = ({
                   formData={formData}
                   setFormData={setFormData}
                   unitValueTotal={10000}
-                  initialPrice={offerWhitelist.price}
+                  // initialPrice={initialPrice}
+                  selCnt={selCnt}
+                  setPrice={setPrice}
+                  price={price}
                 ></OrderForm>
                 <Button
                   type="submit"
+                  disabled={cellProps.length === 0}
                   variant="primary"
                   style={{ padding: "15px 30px", marginTop: "10px" }}
                   onClick={completePurchase}

@@ -11,25 +11,37 @@ import Web3Context from "../../../context/Web3Context";
 export const OrderForm = ({
   formData,
   setFormData,
-  initialPrice,
+  // initialPrice,
+  selCnt,
+  setPrice,
+  price,
   unitValueTotal,
 }: {
   formData: FormDataInterface;
   setFormData: (data: FormDataInterface) => void;
-  initialPrice: number;
+  // initialPrice: number;
   unitValueTotal: number;
+  selCnt: number;
+  price: number;
+  setPrice: any;
 }) => {
   const amountRef = useRef<HTMLInputElement>(null);
   const { web3Data } = useContext(Web3Context);
   unitValueTotal = 10000 - formData.amount;
   // initialPrice = 1500;
-  const [price, setPrice] = React.useState(initialPrice);
+  // const [price, setPrice] = React.useState(initialPrice);
   // if (price < 0) {
   //   setPrice(initialPrice);
   // }
   // useEffect(() => {
   //   console.log({ formData });
   // });
+
+  // console.log(price, "price");
+  // {
+  //   console.log(selCnt);
+  // }
+
   return (
     <div className={style.orderForm}>
       <br />
@@ -164,7 +176,7 @@ export const OrderForm = ({
               onChange={(selCnt) => {
                 if (selCnt) {
                   // setFormData({ ...formData, amount: parseInt(res) });
-                  setPrice(initialPrice * parseInt(selCnt));
+                  setPrice(price * parseInt(selCnt));
                 }
               }}
             />
@@ -206,7 +218,7 @@ export const OrderForm = ({
             MATIC 12.35
           </Typography> */}
           <Typography variant="subheading" color={"black"}>
-            $ {price}
+            {price != undefined ? price * selCnt : 0}$
           </Typography>
         </div>
       </div>
