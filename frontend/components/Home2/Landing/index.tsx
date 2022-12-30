@@ -157,7 +157,7 @@ LandingProps | any): JSX.Element => {
     // makeItWork.current.context.selectable.clearSelection();
   };
   const [tabActiveButton, setTabActiveButton] = useState(true);
-  const { web3Data, setWeb3Data, connectWallet, walletAddress } =
+  const { web3Data, setWeb3Data, connectWallet, walletAddress, signer } =
     useContext(Web3Context);
 
   const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
@@ -203,39 +203,43 @@ LandingProps | any): JSX.Element => {
       }
     });
     console.log(sendSelected);
+    // console.log(selCntPrevious + selCnt, "summation");
     var form = new FormData();
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
-
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
-        form,
-        { headers: { "Content-Type": "application/json" } }
-      );
-
-      console.log(response.data.signature);
-      if (response.status == 200 && response.data.signature) {
-        const chkPrice = ethers.utils.parseEther(
-          (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
+    if (selCntPrevious + selCnt <= 50) {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
+          form,
+          { headers: { "Content-Type": "application/json" } }
         );
 
-        const tx = await artfiWhitelistContract
-          .connect(signer)
-          .doWhitelist(
-            USDCADDR,
-            chkPrice,
-            ethers.utils.formatBytes32String(offeringId),
-            sendSelected.join(","),
-            response.data.signature
+        console.log(response.data.signature);
+        if (response.status == 200 && response.data.signature) {
+          const chkPrice = ethers.utils.parseEther(
+            (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
-        if (tx) await tx.wait();
+
+          const tx = await artfiWhitelistContract
+            .connect(signer)
+            .doWhitelist(
+              USDCADDR,
+              chkPrice,
+              ethers.utils.formatBytes32String(offeringId),
+              sendSelected.join(","),
+              response.data.signature
+            );
+          if (tx) await tx.wait();
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
+    } else {
+      alert("sorry number of fractions exceeds the limit");
     }
   };
   const handleAddWhitelist = async (e: any) => {
@@ -814,6 +818,7 @@ LandingProps | any): JSX.Element => {
                   // initialPrice={initialPrice}
                   selCnt={selCnt}
                   setPrice={setPrice}
+                  // selCntPrevious={selCntPrevious}
                   price={price}
                 ></OrderForm>
                 <Button

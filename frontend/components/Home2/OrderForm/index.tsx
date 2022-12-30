@@ -13,6 +13,7 @@ export const OrderForm = ({
   setFormData,
   // initialPrice,
   selCnt,
+  // selCntPrevious,
   setPrice,
   price,
   unitValueTotal,
@@ -24,6 +25,7 @@ export const OrderForm = ({
   selCnt: number;
   price: number;
   setPrice: any;
+  // selCntPrevious: number;
 }) => {
   const amountRef = useRef<HTMLInputElement>(null);
   const { web3Data } = useContext(Web3Context);
