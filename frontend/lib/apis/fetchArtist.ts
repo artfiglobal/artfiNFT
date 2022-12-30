@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchArtistFunction = async ({ params }: any) => {
-  console.log(params);
+  // console.log(params);
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/artist/getartist/${params}`,
     {

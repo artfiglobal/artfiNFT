@@ -1,17 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect, useCallback, useRef } from "react";
 import { Container, Typography, Button } from "../../reusables2/Atoms";
 import ButtonView from "@mui/material/Button";
-import { Accordion, Modal } from "@mantine/core";
+import { ArtInfo, DetailCard, LandingCarousel, OrderForm, Timer } from "..";
+import { Tabs, Accordion, Modal } from "@mantine/core";
+import { FiHeart } from "react-icons/fi";
 import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
 import Link from "next/link";
+import { FormDataInterface } from "../../../types";
+import Timer2 from "../Timer2";
+type LandingProps = {
+  likes: number;
+};
+
+import { web3Modal } from "../../../lib/Web3Modal";
+import { web3Context } from "../../../context";
+// import web3Context from "../../../context/Web3Context";
+import { Web3DataInterface } from "../../../context/types";
+import APIContext from "../../../context/APIContext";
+import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Avatar } from "@mui/material";
+import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
 import { AuthProvider } from "@arcana/auth";
 
+import metamask from "../../../public/metamask.png";
+import arcana from "../../../public/arcana.png";
+import RightArrow from "../../../public/Icons/Combined-Shape.svg";
+import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
 import {
   createSelectable,
   SelectAll,
@@ -20,25 +38,8 @@ import {
 import { FaBlackTie } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-import { FormDataInterface } from "../../../types";
-import Timer2 from "../Timer2";
-
-import { web3Modal } from "../../../lib/Web3Modal";
-import APIContext from "../../../context/APIContext";
-import Web3Context from "../../../context/Web3Context";
-
-import { ArtInfo, DetailCard, OrderForm } from "..";
-import metamask from "../../../public/metamask.png";
-import arcana from "../../../public/arcana.png";
-import RightArrow from "../../../public/Icons/Combined-Shape.svg";
-import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
-
-import { abi as ArtfiWhitelistABI } from '../../../abi/ArtfiWhitelist.json';
-import { ARTFIWHITELIST, RPCURL, USDCADDR } from '../../../config';
-
-type LandingProps = {
-  likes: number;
-};
+import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
+import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -60,7 +61,27 @@ const useKey = (setPressKey: any) => {
       document.removeEventListener("keydown", handle);
       document.addEventListener("keyup", handle2);
     };
-  }, [setPressKey]);
+  }, []);
+};
+
+type offerWhitelistTypes = {
+  FractionNumber?: number;
+  Title?: string;
+  artistName?: string;
+  authencity?: string;
+  columnNumber?: number;
+  description?: string;
+  factSheet?: string;
+  height?: number;
+  imageOfArtWork?: string;
+  medium?: string;
+  price?: number;
+  provenence?: string;
+  rowNumber?: number;
+  signature?: string;
+  width?: number;
+  year?: number;
+  _id?: string;
 };
 
 export const Landing = ({
@@ -71,12 +92,22 @@ export const Landing = ({
   artWorkImage,
   artistId,
   artistImage,
+  // rowCnt,
+  // columnCnt,
   tableRowsCols,
   fractionSize,
   setCellProps,
   cellProps,
   offeringId,
-}: LandingProps | any): JSX.Element => {
+  selCntPrevious,
+  price,
+  setPrice,
+}: // selCnt,
+// setSelCnt,
+LandingProps | any): JSX.Element => {
+  //ref//
+  const initialPrice = offerWhitelist.price;
+  // console.log(initialPrice, "offerWhitelist from landing");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
@@ -92,12 +123,16 @@ export const Landing = ({
   const [isShown, setIsShown] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   // const [cellProps, setCellProps] = useState([]);
+  const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
-  const [selCnt, setSelCnt] = useState(0);
+  // console.log(cellProps);
+  // const [selCnt, setSelCnt] = useState<any>(0);
   const router = useRouter();
-
+  // console.log(selCnt);
+  // const ftactionsNo = offerWhitelist.FractionNumber;
+  // console.log(offerWhitelist);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -107,7 +142,7 @@ export const Landing = ({
     termsSignature: Date.now().toString(),
     selCnt,
   });
-  
+
   const triggerClearButton = () => {
     const items = cellProps.map((item: any) => {
       return item === "selected"
@@ -116,20 +151,21 @@ export const Landing = ({
         ? "disable"
         : item === "" && "";
     });
-    
+
     setSelCnt(0);
     setCellProps(items);
+    // makeItWork.current.context.selectable.clearSelection();
   };
   const [tabActiveButton, setTabActiveButton] = useState(true);
-  const { web3Data, setWeb3Data, signer, connectWallet, walletAddress } =
+  const { web3Data, setWeb3Data, connectWallet, walletAddress, signer } =
     useContext(Web3Context);
-  
+
   const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
   const artfiWhitelistContract = new ethers.Contract(
     ARTFIWHITELIST,
     ArtfiWhitelistABI,
     web3Provider
-  )
+  );
 
   useKey(setPressKey);
   const handleSelectionClear = (items: any) => {
@@ -139,7 +175,11 @@ export const Landing = ({
     // });
     // setSelectedItems([]);
   };
-
+  // console.log(pressKey);
+  const disconnectWallet = () => {
+    setWeb3Data(null);
+    web3Modal.clearCachedProvider();
+  };
   useEffect(() => {
     setFormData((prev) => ({ ...prev, address: walletAddress }));
   }, [walletAddress]);
@@ -147,49 +187,61 @@ export const Landing = ({
   useEffect(() => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
-
   const completePurchase = async () => {
-    let sendSelected: any = [];
+    const whitelistId = offerWhitelist._id;
+
+    console.log(previosFractions, "previosFractions");
+
+    let sendSelected: any = previosFractions.map((item: any, index: any) => {
+      console.log(item, "item");
+      return parseInt(item);
+    });
+
     cellProps.map((item: any, index: any) => {
       if (item === "selected") {
         sendSelected.push(index);
       }
     });
-    
+    console.log(sendSelected);
+    // console.log(selCntPrevious + selCnt, "summation");
     var form = new FormData();
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
-    
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
-        form,
-        { headers: { "Content-Type": "application/json" } }
-      );
-      
-      console.log(response.data.signature)
-      if (response.status == 200 && response.data.signature) {
-        const chkPrice = ethers.utils.parseEther(
-          (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
+    if (selCntPrevious + selCnt <= 50) {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
+          form,
+          { headers: { "Content-Type": "application/json" } }
         );
-      
-        const tx = await artfiWhitelistContract.connect(signer).doWhitelist(
-          USDCADDR,
-          chkPrice,
-          ethers.utils.formatBytes32String(offeringId),
-          sendSelected.join(','),
-          response.data.signature
-        )
-        if (tx) await tx.wait();
+
+        console.log(response.data.signature);
+        if (response.status == 200 && response.data.signature) {
+          const chkPrice = ethers.utils.parseEther(
+            (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
+          );
+
+          const tx = await artfiWhitelistContract
+            .connect(signer)
+            .doWhitelist(
+              USDCADDR,
+              chkPrice,
+              ethers.utils.formatBytes32String(offeringId),
+              sendSelected.join(","),
+              response.data.signature
+            );
+          if (tx) await tx.wait();
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
+    } else {
+      alert("sorry number of fractions exceeds the limit");
     }
   };
-
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
@@ -277,6 +329,7 @@ export const Landing = ({
       </div>
     );
   };
+
   return (
     <Container>
       <div className={style.landing}>
@@ -301,7 +354,7 @@ export const Landing = ({
         <div className={style.landingTop}>
           <div className={style.likes}>
             <button className={style.timer}>
-              <img src="Publiced/time.svg" alt="time img" />
+              <img src="Publiced/time.svg" />
               <Timer2 endDate={offerUnveiling?.endDate} />
               {/* <label>12h:43m:10s</label> */}
             </button>
@@ -370,6 +423,7 @@ export const Landing = ({
                 singleImage={singleImage}
                 setCoordinates={setCoordinates}
                 selCnt={selCnt}
+                selCntPrevious={selCntPrevious}
                 setSelCnt={setSelCnt}
               />
             </TransformComponent>
@@ -435,7 +489,6 @@ export const Landing = ({
               if (item === "selected") {
                 return (
                   <Button
-                    key={index}
                     onClick={() => removeItem(item, index)}
                     variant="fractionBTN"
                   >
@@ -489,7 +542,6 @@ export const Landing = ({
                 </Link>
                 <img
                   src="/Publiced/Vector.svg"
-                  alt="vector img"
                   style={{ width: "16px", height: "16px" }}
                 />
               </h6>
@@ -506,7 +558,11 @@ export const Landing = ({
                       url="osw"
                       title="Original Size"
                       content={
-                        offerWhitelist?.width + " x " + offerWhitelist?.height
+                        offerWhitelist?.width +
+                        " cm" +
+                        " x " +
+                        offerWhitelist?.height +
+                        " cm"
                       }
                     />
                     <DetailCard
@@ -759,10 +815,15 @@ export const Landing = ({
                   formData={formData}
                   setFormData={setFormData}
                   unitValueTotal={10000}
-                  initialPrice={offerWhitelist.price}
+                  // initialPrice={initialPrice}
+                  selCnt={selCnt}
+                  setPrice={setPrice}
+                  // selCntPrevious={selCntPrevious}
+                  price={price}
                 ></OrderForm>
                 <Button
                   type="submit"
+                  disabled={cellProps.length === 0}
                   variant="primary"
                   style={{ padding: "15px 30px", marginTop: "10px" }}
                   onClick={completePurchase}
@@ -809,7 +870,7 @@ export const Landing = ({
                       backgroundColor: "white",
                       color: "#4527B3",
                       width: "100%",
-                      cursor: 'pointer',
+                      cursor: "pointer",
                       margin: "40px 0 16px 0 ",
                       border: "1px solid white",
                     }}

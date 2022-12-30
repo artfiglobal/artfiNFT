@@ -69,6 +69,13 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
 
       <div className={open ? styles.navigation : styles.open}>
         <div className={styles.navItem}>
+          <Link href="/artists" passHref>
+            <Typography variant="body" color="black" className={styles.text}>
+              Artists
+            </Typography>
+          </Link>
+        </div>
+        <div className={styles.navItem}>
           <Link href="/header" passHref>
             <Typography variant="body" color="black" className={styles.text}>
               Offerings

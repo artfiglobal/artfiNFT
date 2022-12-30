@@ -21,6 +21,7 @@ export default function SelectFractionNFTs({
   artWorkImage,
   pressKey,
   setCellProps,
+  selCntPrevious,
   cellProps,
   setInitialCellProps,
   setSingleImage,
@@ -64,14 +65,55 @@ export default function SelectFractionNFTs({
     // console.log("here");
   }, []);
 
+  // const mouseOver = (e, selInd) => {
+  //   if (pressKey) {
+  //     if (
+  //       cellProps[selInd] != "disable" &&
+  //       e.buttons === 1 &&
+  //       selCnt < maxSel
+  //     ) {
+  //       const selLen = cellProps[selInd]?.length > 0;
+  //       console.log(selLen);
+  //       cellProps[selInd] = selLen ? "" : "selected";
+  //       setCellProps(cellProps);
+  //       setSelCnt(selLen ? selCnt - 1 : selCnt + 1);
+  //     }
+  //   }
+  // };
+  // // console.log(selCnt, "inside");
+  // const cellClickUp = () => {
+  //   if (pressKey) {
+  //     setCellProps(cellProps);
+  //   }
+  // };
+
+  // const cellClick = (selInd) => {
+  //   if (pressKey) {
+  //     if (cellProps[selInd] != "disable") {
+  //       if (cellProps[selInd] == "") {
+  //         if (selCnt < maxSel) {
+  //           cellProps[selInd] = "selected";
+  //           setCellProps(cellProps);
+  //         } else {
+  //           alert("over max selection");
+  //         }
+  //       } else {
+  //         setSelCnt(selCnt - 1);
+  //         cellProps[selInd] = "";
+  //         setCellProps(cellProps);
+  //       }
+  //     }
+  //   }
+  // };
+
   const mouseOver = (e, selInd) => {
     if (pressKey) {
       if (
         cellProps[selInd] != "disable" &&
         e.buttons === 1 &&
-        selCnt < maxSel
+        selCntPrevious + selCnt < maxSel
       ) {
-        const selLen = cellProps[selInd]?.length > 0;
+        const selLen = cellProps[selInd].length > 0;
         cellProps[selInd] = selLen ? "" : "selected";
         setCellProps(cellProps);
         setSelCnt(selLen ? selCnt - 1 : selCnt + 1);
@@ -84,16 +126,17 @@ export default function SelectFractionNFTs({
       setCellProps(cellProps);
     }
   };
-
+  // console.log(selCntPrevious, "selCntPrevios");
   const cellClick = (selInd) => {
     if (pressKey) {
       if (cellProps[selInd] != "disable") {
         if (cellProps[selInd] == "") {
-          if (selCnt < maxSel) {
+          if (selCntPrevious + selCnt < maxSel) {
+            setSelCnt(selCnt + 1);
             cellProps[selInd] = "selected";
             setCellProps(cellProps);
           } else {
-            alert("over max selection");
+            alert("over max sel");
           }
         } else {
           setSelCnt(selCnt - 1);
@@ -103,6 +146,7 @@ export default function SelectFractionNFTs({
       }
     }
   };
+
   // const getRandomNumber = (min = 50, max = 200) => {
   //   return Math.random() * (max - min) + min;
   // };
@@ -181,6 +225,10 @@ export default function SelectFractionNFTs({
                     {[...Array(columnCnt)].map((x1, i1) => (
                       <td
                         key={i1}
+                        // onMouseDown={() => cellClick(i * columnCnt + i1)}
+                        // onMouseUp={() => cellClickUp()}
+                        // onMouseOver={(e) => mouseOver(e, i * columnCnt + i1)}
+
                         onMouseDown={() => cellClick(i * columnCnt + i1)}
                         onMouseUp={() => cellClickUp()}
                         onMouseOver={(e) => mouseOver(e, i * columnCnt + i1)}

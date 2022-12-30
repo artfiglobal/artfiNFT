@@ -12,24 +12,32 @@ import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
   const {
+    web3Data,
+    setWeb3Data,
     connectWallet,
     walletAddress,
     disconnectWallet,
   } = useContext(Web3Context);
+  const [price, setPrice] = useState(0);
+
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
   const [offeringId, setOfferingId] = useState("");
   const [formattedAddress, setFormattedAddress] = useState("");
   const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
   const [artWorkImage, setArtWorkImage] = useState("");
+  const [selCntPrevious, setSelCntPrevios] = useState<any>(0);
+  // const [selCnt, setSelCnt] = useState<any>(0);
   const [artistImage, setArtistImage] = useState("");
-  const [previosFractions, setPreviosFractions] = useState([]);
+  const [previosFractions, setPreviosFractions] = useState<any[]>([]);
   const [tableRowsCols, setTableRowsCols] = useState({
     columnCnt: 0,
     rowCnt: 0,
   });
-  const [wallet, setWallet] = useState(false);
-  const [likes, setLikes] = useState(0);
+  console.log(selCntPrevious);
+  // const [first, setfirst] = useState("");
+  // const [wallet, setWallet] = useState(false);
+  // const [likes, setLikes] = useState(0);
 
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
@@ -39,7 +47,7 @@ export default function WhitelistLanding() {
     const first: any = localStorage?.getItem("walletAddress");
     const parsedData = JSON.parse(first);
     // let variable;
-    // console.log(parsedData, "asdasdasdasd");
+    // console.log(typeof parsedData, "this is wallet ID");
 
     const getWalletAddress: any = async () => {
       const provider = await web3Modal.connect();
@@ -110,6 +118,7 @@ export default function WhitelistLanding() {
                 if (item.IsOnGoingOffering) {
                   setOfferWhitelist(item.whitelistDetails);
                   setOfferUnveiling(item.unveilingDetails);
+                  setPrice(item.whitelistDetails.price);
                 }
               });
             };
@@ -123,8 +132,50 @@ export default function WhitelistLanding() {
                   // const address = "0x4438e0fc3715D7A7519e49247E8b416564f883ED";
                   const fractions = response.fraction;
                   console.log(fractions, "fractions");
-                  console.log(cellProps, "cellProps");
-
+                  // console.log(cellProps, "cellProps");
+                  // console.log(parsedData, "parsedData");
+                  let flattened: any[] = [];
+                  let flattened2: any[] = [];
+                  for (let j = 0; j < fractions?.length; j++) {
+                    // flattened.push(fractions[j]?.fractionInfo);
+                    if (fractions[j]?.walletAddress === parsedData) {
+                      setSelCntPrevios(fractions[j].fractionInfo.length);
+                      console.log(fractions[j]?.walletAddress, "my wallet");
+                      // console.log(fractions[j].fractionInfo, "my wallet");
+                      for (
+                        let k = 0;
+                        k < fractions[j].fractionInfo.length;
+                        k++
+                      ) {
+                        flattened.push(fractions[j].fractionInfo[k]);
+                      }
+                    } else if (fractions[j]?.walletAddress != parsedData) {
+                      console.log(fractions[j]?.walletAddress, "not my wallet");
+                      // console.log(fractions[j].fractionInfo, "not my wallet");
+                      // console.log(fractions[j].fractionInfo, "sdasdasd");
+                      // setSelCntPrevios(fractions[j].fractionInfo.length);
+                      for (
+                        let k = 0;
+                        k < fractions[j].fractionInfo.length;
+                        k++
+                      ) {
+                        flattened2.push(fractions[j].fractionInfo[k]);
+                      }
+                    }
+                    // flattened = [...array];
+                    // if (array?.includes(`${i}`)) {
+                    //   // if (fractions[j]?.walletAddress === parsedData) {
+                    //   //   cellProps[i] = "selected";
+                    //   // } else if (fractions[j]?.walletAddress != parsedData) {
+                    //   // console.log("make it work ");
+                    //   cellProps[i] = "disable";
+                    //   // }
+                    // } else {
+                    //   cellProps[i] = "";
+                    // }
+                    // console.log(flattened.flat());
+                  }
+                  let combinedArrays = [...flattened, ...flattened2];
                   for (
                     let i = 0;
                     i <
@@ -132,55 +183,13 @@ export default function WhitelistLanding() {
                       data[0].whitelistDetails.columnNumber;
                     i++
                   ) {
-                    for (let j = 0; j < fractions?.length; j++) {
-                      const array = fractions[j]?.fractionInfo;
-                      // if (fractions[j]?.walletAddress !== parsedData) {
-                      // console.log(fractions[j]?.walletAddress, "same");
-                      // -------------
-                      if (array?.includes(`${i}`)) {
-                        if (fractions[j]?.walletAddress === parsedData) {
-                          cellProps[i] = "selected";
-                        } else if (fractions[j]?.walletAddress !== parsedData) {
-                          // console.log("make it work ");
-                          cellProps[i] = "disable";
-                        } else {
-                          cellProps[i] = "";
-                        }
-                      }
-                      // }
-                      // else if (fractions[j]?.walletAddress === parsedData) {
-                      // console.log(fractions[j]?.walletAddress, "same");
-                      // -------------
-                      // if (array?.includes(`${i}`)) {
-                      //   console.log("make it work ");
-                      //   cellProps[i] = "selected";
-                      // } else {
-                      //   cellProps[i] = "";
-                      // }
-                      // }
+                    if (combinedArrays.includes(`${i}`)) {
+                      cellProps[i] = "disable";
+                      // console.log(i);
+                    } else {
+                      cellProps[i] = "";
                     }
                   }
-                  // for (
-                  //   let i = 0;
-                  //   i <
-                  //   data[0].whitelistDetails.rowNumber *
-                  //     data[0].whitelistDetails.columnNumber;
-                  //   i++
-                  // ) {
-                  //   for (let j = 0; j < fractions?.length; j++) {
-                  //     if (fractions[j]?.walletAddress === parsedData) {
-                  //       // console.log(fractions[j]?.walletAddress, "same");
-                  //       const array = fractions[j]?.fractionInfo;
-                  //       // -------------
-                  //       if (array?.includes(`${i}`)) {
-                  //         console.log("make it work ");
-                  //         cellProps[i] = "selected";
-                  //       } else {
-                  //         cellProps[i] = "";
-                  //       }
-                  //     }
-                  //   }
-                  // }
 
                   // for (
                   //   let i = 0;
@@ -200,7 +209,7 @@ export default function WhitelistLanding() {
                   // ) {
                   //   cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
                   // }
-                  setPreviosFractions(fractions);
+                  setPreviosFractions(flattened);
                 });
             };
             fetchFractions(data);
@@ -267,6 +276,10 @@ export default function WhitelistLanding() {
 
     fetchOffers();
   }, []);
+  // console.log(selCnt);
+  // console.log(previosFractions, "previosFractions");
+  const [wallet, setWallet] = useState(false);
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
     if (walletAddress) {
@@ -338,11 +351,16 @@ export default function WhitelistLanding() {
           offerWhitelist={offerWhitelist}
           offerUnveiling={offerUnveiling}
           likes={likes}
+          price={price}
+          setPrice={setPrice}
           previosFractions={previosFractions}
           artistImage={artistImage}
+          selCntPrevious={selCntPrevious}
           offeringId={offeringId}
           artWorkImage={artWorkImage}
           cellProps={cellProps}
+          // selCnt={selCnt}
+          // setSelCnt={setSelCnt}
           setCellProps={setCellProps}
           fractionSize={fractionSize}
           tableRowsCols={tableRowsCols}
