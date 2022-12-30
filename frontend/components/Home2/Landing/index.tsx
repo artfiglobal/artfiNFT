@@ -38,6 +38,9 @@ import {
 import { FaBlackTie } from "react-icons/fa";
 import { useRouter } from "next/router";
 
+import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
+import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
+
 const useKey = (setPressKey: any) => {
   useEffect(() => {
     function handle(event: any) {
@@ -139,11 +142,8 @@ LandingProps | any): JSX.Element => {
     termsSignature: Date.now().toString(),
     selCnt,
   });
-  // console.log(cellProps, "cellProps");
-  const triggerClearButton = () => {
-    // setCellProps([]);
-    // const items = ;
 
+  const triggerClearButton = () => {
     const items = cellProps.map((item: any) => {
       return item === "selected"
         ? ""
@@ -151,7 +151,7 @@ LandingProps | any): JSX.Element => {
         ? "disable"
         : item === "" && "";
     });
-    // console.group(cellProps);
+
     setSelCnt(0);
     setCellProps(items);
     // makeItWork.current.context.selectable.clearSelection();
@@ -159,24 +159,13 @@ LandingProps | any): JSX.Element => {
   const [tabActiveButton, setTabActiveButton] = useState(true);
   const { web3Data, setWeb3Data, connectWallet, walletAddress } =
     useContext(Web3Context);
-  // console.log(walletAddress);
-  const { API, setWalletAddress } = useContext(APIContext);
-  // const [web3Data, setWeb3Data] = useState<Web3DataInterface>();
-  // const connectWallet = async () => {
-  //   const instance = await web3Modal.connect();
-  //   const provider = new ethers.providers.Web3Provider(instance);
-  //   // const res = await provider.send("eth_requestAccounts", []);
-  //   // console.log({ res });
-  //   const signer = provider.getSigner();
-  //   // console.log("Account:", await signer.getAddress());
 
-  //   // console.log({ provider });
-  //   console.log("Connect wallet ran");
-  //   const newWeb3Data = { provider: provider, signer: signer };
-  //   setWeb3Data(newWeb3Data);
-  //   return newWeb3Data;
-  // };
-  // console.log({ connectWallet });
+  const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
+  const artfiWhitelistContract = new ethers.Contract(
+    ARTFIWHITELIST,
+    ArtfiWhitelistABI,
+    web3Provider
+  );
 
   useKey(setPressKey);
   const handleSelectionClear = (items: any) => {
@@ -220,13 +209,31 @@ LandingProps | any): JSX.Element => {
     }
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
+
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
         form,
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log(response);
+
+      console.log(response.data.signature);
+      if (response.status == 200 && response.data.signature) {
+        const chkPrice = ethers.utils.parseEther(
+          (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
+        );
+
+        const tx = await artfiWhitelistContract
+          .connect(signer)
+          .doWhitelist(
+            USDCADDR,
+            chkPrice,
+            ethers.utils.formatBytes32String(offeringId),
+            sendSelected.join(","),
+            response.data.signature
+          );
+        if (tx) await tx.wait();
+      }
     } catch (err) {
       console.log(err);
     }
@@ -858,6 +865,7 @@ LandingProps | any): JSX.Element => {
                       backgroundColor: "white",
                       color: "#4527B3",
                       width: "100%",
+                      cursor: "pointer",
                       margin: "40px 0 16px 0 ",
                       border: "1px solid white",
                     }}

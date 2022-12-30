@@ -47,6 +47,7 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
   const [web3Data, setWeb3Data] = useState<any>(null);
   const [provider, setProvider] = useState<any>(null);
   const [library, setLibrary] = useState<any>(null);
+  const [signer, setSigner] = useState<any>(null);
   const [walletAddress, setWalletAddress] = useState("");
   const [network, setNetwork] = useState<any>(null);
 
@@ -56,8 +57,10 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
       const library = new ethers.providers.Web3Provider(provider);
       const walletAddress = await library.listAccounts();
       const network = await library.getNetwork();
+      const selSigner = await library.getSigner();
       setProvider(provider);
       setLibrary(library);
+      setSigner(selSigner);
       if (walletAddress) setWalletAddress(walletAddress[0]);
       setNetwork(network);
       const newWeb3Data = { provider, library };
@@ -95,6 +98,7 @@ export const Web3ContextProvider: React.FC<IWeb3ContextProvider> = ({
         library,
         walletAddress,
         network,
+        signer,
         connectWallet,
         disconnectWallet,
       }}

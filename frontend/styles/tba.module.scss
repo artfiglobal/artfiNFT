@@ -5,7 +5,7 @@
     justify-content: center;
     gap: 340px;
     // margin: 40px;
-    margin-top: 120px;
+    margin-top: 240px;
     @media screen and (max-width: 1400px) {
         gap: 180px;
 
@@ -38,7 +38,7 @@ margin-bottom: 24px;
 .img
 {
     width: 458px;
-    height: 458px;
+    height: 100%;
     @media screen and (max-width: 1040px) {
        width: 300px;
        height: 300px;
@@ -118,4 +118,18 @@ text-transform: uppercase;
 
 color: #000000;
     }
+}
+.cs
+{
+    font-family: 'Plus Jakarta Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+letter-spacing: 0.6em;
+
+color: #000000;
+text-align: left;
+margin-bottom: 24px;
 }

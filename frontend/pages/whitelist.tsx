@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Landing } from "../components/Home2";
-import { Container, Button } from "../components/reusables2/Atoms";
-import { Footer } from "../components/reusables/Components/Footer2";
-import { Navigation, Head } from "../components/reusables/Components";
+import { Button } from "../components/reusables2/Atoms";
+import { Head } from "../components/reusables/Components";
 import styles from "../styles/Home.module.scss";
+import Image from "next/image";
 // import { Container, Typography,  } from "../../reusables2/Atoms";
 import { ethers } from "ethers";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
-import axios from "axios";
 import { GeneralContext } from "../context/GeneralState";
 
 export default function WhitelistLanding() {
@@ -37,6 +36,9 @@ export default function WhitelistLanding() {
   });
   console.log(selCntPrevious);
   // const [first, setfirst] = useState("");
+  // const [wallet, setWallet] = useState(false);
+  // const [likes, setLikes] = useState(0);
+
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
   // const [findWallet, setFindWallet] = useState("");
@@ -356,8 +358,6 @@ export default function WhitelistLanding() {
           selCntPrevious={selCntPrevious}
           offeringId={offeringId}
           artWorkImage={artWorkImage}
-          // rowCnt={rowCnt}
-          // columnCnt={columnCnt}
           cellProps={cellProps}
           // selCnt={selCnt}
           // setSelCnt={setSelCnt}
