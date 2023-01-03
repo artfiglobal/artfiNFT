@@ -9,6 +9,7 @@ import { ethers } from "ethers";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import { GeneralContext } from "../context/GeneralState";
+import SnackBar from "../components/SnackBar/SnackBar";
 
 export default function WhitelistLanding() {
   const {
@@ -29,12 +30,13 @@ export default function WhitelistLanding() {
   const [selCntPrevious, setSelCntPrevios] = useState<any>(0);
   // const [selCnt, setSelCnt] = useState<any>(0);
   const [artistImage, setArtistImage] = useState("");
+  const [addDetailsPage, setAddDetailsPage] = useState(false);
+  const [whatYouWillGet, setWhatYouWillGet] = useState(false);
   const [previosFractions, setPreviosFractions] = useState<any[]>([]);
   const [tableRowsCols, setTableRowsCols] = useState({
     columnCnt: 0,
     rowCnt: 0,
   });
-  console.log(selCntPrevious);
   // const [first, setfirst] = useState("");
   // const [wallet, setWallet] = useState(false);
   // const [likes, setLikes] = useState(0);
@@ -42,6 +44,7 @@ export default function WhitelistLanding() {
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
   // const [findWallet, setFindWallet] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const first: any = localStorage?.getItem("walletAddress");
@@ -97,7 +100,14 @@ export default function WhitelistLanding() {
         .then((response) => response.json())
         .then(
           (response) => {
+            // console.log(response.data.trueOfferings[0], "data");
             console.log(response.data.trueOfferings[0], "response");
+            setAddDetailsPage(
+              response?.data?.trueOfferings[0]?.addDetails && true
+            );
+            setWhatYouWillGet(
+              response?.data?.trueOfferings[0]?.nftDetails && true
+            );
             const data = response.data.trueOfferings;
             const offerId = data[0]._id;
             setOfferingId(data[0]._id);
@@ -140,7 +150,7 @@ export default function WhitelistLanding() {
                     // flattened.push(fractions[j]?.fractionInfo);
                     if (fractions[j]?.walletAddress === parsedData) {
                       setSelCntPrevios(fractions[j].fractionInfo.length);
-                      console.log(fractions[j]?.walletAddress, "my wallet");
+                      // console.log(fractions[j]?.walletAddress, "my wallet");
                       // console.log(fractions[j].fractionInfo, "my wallet");
                       for (
                         let k = 0;
@@ -150,7 +160,7 @@ export default function WhitelistLanding() {
                         flattened.push(fractions[j].fractionInfo[k]);
                       }
                     } else if (fractions[j]?.walletAddress != parsedData) {
-                      console.log(fractions[j]?.walletAddress, "not my wallet");
+                      // console.log(fractions[j]?.walletAddress, "not my wallet");
                       // console.log(fractions[j].fractionInfo, "not my wallet");
                       // console.log(fractions[j].fractionInfo, "sdasdasd");
                       // setSelCntPrevios(fractions[j].fractionInfo.length);
@@ -360,12 +370,16 @@ export default function WhitelistLanding() {
           artWorkImage={artWorkImage}
           cellProps={cellProps}
           // selCnt={selCnt}
+          addDetailsPage={addDetailsPage}
+          whatYouWillGet={whatYouWillGet}
           // setSelCnt={setSelCnt}
           setCellProps={setCellProps}
           fractionSize={fractionSize}
           tableRowsCols={tableRowsCols}
+          setOpen={setOpen}
         />
       </main>
+      <SnackBar setOpen={setOpen} open={open} />
       {/* <Footer /> */}
     </div>
   );

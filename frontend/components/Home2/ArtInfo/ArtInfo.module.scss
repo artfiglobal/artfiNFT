@@ -2,34 +2,36 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 24px;
+  // column-gap: 40px;
   text-transform: uppercase;
 
-  @media screen and (max-width: 1400px) {
-    gap: 16px;
-  }
+  // @media screen and (max-width: 1400px) {
+  //   gap: 16px;
+  // }
 
-  @media screen and (max-width: 1200px) {
-    gap: 12px;
-  }
+  // @media screen and (max-width: 1200px) {
+  //   gap: 12px;
+  // }
 
   @media screen and (max-width: 992px) {
-    gap: 16px;
+    // gap: 16px;
     justify-content: center;
     display: none;
   }
 
   @media screen and (max-width: 768px) {
-    gap: 12px;
+    // gap: 12px;
   }
 
   @media screen and (max-width: 500px) {
     justify-content: center;
-    gap: 6px;
+    // gap: 6px;
   }
 
   h6 {
-    font-family: 'Plus Jakarta Sans';
+    font-family: "Plus Jakarta Sans";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -40,19 +42,18 @@
 
     letter-spacing: 0.15em;
 
-    color: #85858C;
-    
+    color: #85858c;
   }
-  .none{
+  .none {
     @media screen and (max-width: 980px) {
       display: none;
     }
   }
   .divider {
-    height: 56px;
-    width: 2px;
-    background: #DBDBDB;
-    margin: 0 0;
+    // height: 56px;
+    width: 16px;
+    background: transparent;
+    margin: 0;
 
     @media screen and (max-width: 1400px) {
       height: 48px;
@@ -85,7 +86,6 @@
     @media screen and (max-width: 480px) {
       height: 24px;
       width: 24px;
-
     }
   }
 
@@ -93,7 +93,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-
 
     svg {
       width: 40px;
@@ -125,16 +124,16 @@
     }
 
     .price {
-      font-family: 'Plus Jakarta Sans';
+      font-family: "Plus Jakarta Sans";
       font-style: normal;
       font-weight: 700;
-      font-size: 14px!important;
+      font-size: 14px !important;
       line-height: 18px;
       /* identical to box height */
 
       letter-spacing: 0.15em;
 
-      color: #6435C7;
+      color: #6435c7;
       margin: 0 0;
 
       @media screen and (max-width: 1400px) {
@@ -177,8 +176,6 @@
   }
 }
 
-
-
 .infoMbl {
   width: 100%;
   display: flex;
@@ -211,7 +208,7 @@
   }
 
   h6 {
-    font-family: 'Plus Jakarta Sans';
+    font-family: "Plus Jakarta Sans";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -222,19 +219,18 @@
 
     letter-spacing: 0.15em;
 
-    color: #85858C;
-    
+    color: #85858c;
   }
-  .none{
+  .none {
     @media screen and (max-width: 980px) {
       display: none;
     }
   }
   .divider {
-    height: 56px;
-    width: 2px;
-    background: #DBDBDB;
-    margin: 0 0;
+    // height: 56px;
+    width: 24px;
+    background: transparent;
+    margin: 0;
 
     @media screen and (max-width: 1400px) {
       height: 48px;
@@ -267,7 +263,6 @@
     @media screen and (max-width: 480px) {
       height: 24px;
       width: 24px;
-
     }
   }
 
@@ -275,7 +270,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-
 
     svg {
       width: 40px;
@@ -307,16 +301,16 @@
     }
 
     .price {
-      font-family: 'Plus Jakarta Sans';
+      font-family: "Plus Jakarta Sans";
       font-style: normal;
       font-weight: 700;
-      font-size: 14px!important;
+      font-size: 14px !important;
       line-height: 18px;
       /* identical to box height */
 
       letter-spacing: 0.15em;
 
-      color: #6435C7;
+      color: #6435c7;
       margin: 0 0;
 
       @media screen and (max-width: 1400px) {

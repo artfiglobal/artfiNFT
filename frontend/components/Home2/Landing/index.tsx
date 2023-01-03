@@ -40,6 +40,7 @@ import { useRouter } from "next/router";
 
 import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
 import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
+import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -98,10 +99,13 @@ export const Landing = ({
   fractionSize,
   setCellProps,
   cellProps,
+  addDetailsPage,
+  whatYouWillGet,
   offeringId,
   selCntPrevious,
   price,
   setPrice,
+  setOpen,
 }: // selCnt,
 // setSelCnt,
 LandingProps | any): JSX.Element => {
@@ -125,6 +129,7 @@ LandingProps | any): JSX.Element => {
   // const [cellProps, setCellProps] = useState([]);
   const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
+  const [innerWidth, setInnerWidth] = useState(0);
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
   // console.log(cellProps);
@@ -133,6 +138,13 @@ LandingProps | any): JSX.Element => {
   // console.log(selCnt);
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
+  useEffect(() => {
+    const width = globalThis?.window?.innerWidth;
+    // const width = globalThis?.window?.innerHeight;
+
+    setInnerWidth(width);
+  }, [innerWidth]);
+  // console.log(innerWidth);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -193,7 +205,7 @@ LandingProps | any): JSX.Element => {
     console.log(previosFractions, "previosFractions");
 
     let sendSelected: any = previosFractions.map((item: any, index: any) => {
-      console.log(item, "item");
+      // console.log(item, "item");
       return parseInt(item);
     });
 
@@ -300,13 +312,29 @@ LandingProps | any): JSX.Element => {
         <div className={style.popUpInnerContainer}>
           <div className={style.menuImage}>
             <img src="" alt="" />
-            <Typography variant="popup" color="mauve">
+            {cellProps[singleImage - 1] === "" ? (
+              <Typography variant="popup" color={"mauve"}>
+                Available
+              </Typography>
+            ) : cellProps[singleImage - 1] === "selected" ? (
+              <Typography variant="popup" color="blue">
+                Selected
+              </Typography>
+            ) : (
+              cellProps[singleImage - 1] === "disable" && (
+                <Typography variant="popup" color="red">
+                  Sold!
+                </Typography>
+              )
+            )}
+
+            {/* <Typography variant="popup" color={"mauve"}>
               {cellProps[singleImage - 1] === ""
                 ? "Available"
                 : cellProps[singleImage - 1] === "selected"
                 ? "Selected"
                 : "Not Available"}
-            </Typography>
+            </Typography> */}
           </div>
           <div className={style.menuDetails}>
             <div>
@@ -401,7 +429,11 @@ LandingProps | any): JSX.Element => {
           {isShown && (
             <ToolTipCard singleImage={singleImage} coordinates={coordinates} />
           )}
-          <TransformWrapper panning={{ disabled: pressKey }}>
+          <TransformWrapper
+            // initialPositionX={270}
+            centerOnInit={true}
+            panning={{ disabled: pressKey }}
+          >
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
@@ -412,6 +444,7 @@ LandingProps | any): JSX.Element => {
                 fractionSize={fractionSize}
                 setCellProps={setCellProps}
                 makeItWork={makeItWork}
+                setOpen={setOpen}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
                 pressKey={pressKey}
@@ -768,69 +801,80 @@ LandingProps | any): JSX.Element => {
           </div> */}
           <div className={style.bottomRight}>
             {walletAddress ? (
-              <form onSubmit={handleAddWhitelist} className={style.tabContent}>
-                <div className={style.contentHeader}>
-                  <img src="/images/like.png" alt="" />
-                  <Typography variant="heading" color={"black"}>
-                    Order Summary
-                  </Typography>
-                </div>
-                <br />
-                <div className={style.contentData}>
-                  <Accordion
-                    variant="contained"
-                    radius="md"
-                    chevronSize={26}
-                    defaultValue="customization"
-                    className={style.accordion}
-                  >
-                    <Accordion.Item
-                      value="customization"
-                      className={style.accordionItem}
-                    >
-                      <Accordion.Control className={style.accordionControl}>
-                        Important points
-                      </Accordion.Control>
-                      <Accordion.Panel className={style.accordionPanel}>
-                        <ul>
-                          <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
-                          <li>
-                            Please check your email Inbox / Junk section for the
-                            confirmation email after the whitelisting.
-                          </li>
-                          <li>
-                            We will notify you to claim your NFTs one week
-                            before the Public Mint.
-                          </li>
-                          <li>
-                            If you do not claim your NFTs, we will offer them to
-                            the public through our public mint offering.
-                          </li>
-                        </ul>
-                      </Accordion.Panel>
-                    </Accordion.Item>
-                  </Accordion>
-                </div>
-                <OrderForm
-                  formData={formData}
-                  setFormData={setFormData}
-                  unitValueTotal={10000}
-                  // initialPrice={initialPrice}
-                  selCnt={selCnt}
-                  setPrice={setPrice}
-                  // selCntPrevious={selCntPrevious}
-                  price={price}
-                ></OrderForm>
-                <Button
-                  type="submit"
-                  disabled={cellProps.length === 0}
-                  variant="primary"
-                  style={{ padding: "15px 30px", marginTop: "10px" }}
-                  onClick={completePurchase}
-                >
-                  Whitelist
-                </Button>
-              </form>
+              // <form onSubmit={handleAddWhitelist} className={style.tabContent}>
+              //   <div className={style.contentHeader}>
+              //     <img src="/images/like.png" alt="" />
+              //     <Typography variant="heading" color={"black"}>
+              //       Order Summary
+              //     </Typography>
+              //   </div>
+              //   <br />
+              //   <div className={style.contentData}>
+              //     <Accordion
+              //       variant="contained"
+              //       radius="md"
+              //       chevronSize={26}
+              //       defaultValue="customization"
+              //       className={style.accordion}
+              //     >
+              //       <Accordion.Item
+              //         value="customization"
+              //         className={style.accordionItem}
+              //       >
+              //         <Accordion.Control className={style.accordionControl}>
+              //           Important points
+              //         </Accordion.Control>
+              //         <Accordion.Panel className={style.accordionPanel}>
+              //           <ul>
+              //             <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
+              //             <li>
+              //               Please check your email Inbox / Junk section for the
+              //               confirmation email after the whitelisting.
+              //             </li>
+              //             <li>
+              //               We will notify you to claim your NFTs one week
+              //               before the Public Mint.
+              //             </li>
+              //             <li>
+              //               If you do not claim your NFTs, we will offer them to
+              //               the public through our public mint offering.
+              //             </li>
+              //           </ul>
+              //         </Accordion.Panel>
+              //       </Accordion.Item>
+              //     </Accordion>
+              //   </div>
+              //   <OrderForm
+              //     formData={formData}
+              //     setFormData={setFormData}
+              //     unitValueTotal={10000}
+              //     // initialPrice={initialPrice}
+              //     selCnt={selCnt}
+              //     setPrice={setPrice}
+              //     // selCntPrevious={selCntPrevious}
+              //     price={price}
+              //   ></OrderForm>
+              //   <Button
+              //     type="submit"
+              //     disabled={cellProps.length === 0}
+              //     variant="primary"
+              //     style={{ padding: "15px 30px", marginTop: "10px" }}
+              //     onClick={completePurchase}
+              //   >
+              //     Whitelist
+              //   </Button>
+              // </form>
+              <PriceCard
+                formData={formData}
+                setFormData={setFormData}
+                completePurchase={completePurchase}
+                //     unitValueTotal={10000}
+                //     // initialPrice={initialPrice}
+                selCnt={selCnt}
+                setPrice={setPrice}
+                // selCntPrevious={selCntPrevious}
+                price={price}
+              />
             ) : (
               <div className={style.landingCard}>
                 <div className={style.contentHeader}>
@@ -953,50 +997,52 @@ LandingProps | any): JSX.Element => {
             </Button> */}
               </div>
             )}
-            <div className={style.get}>
-              <div>
-                <h3 style={{ margin: "0" }}>
-                  Know more about
-                  <br />
-                  the Artwork
-                </h3>
+            {addDetailsPage && (
+              <div className={style.get}>
+                <div>
+                  <h3 style={{ margin: "0" }}>
+                    Know more about
+                    <br />
+                    the Artwork
+                  </h3>
+                </div>
+                <div>
+                  <Link href="/artwork-details">
+                    <Image
+                      style={{ cursor: "pointer" }}
+                      src={RightArrow}
+                      alt=""
+                    />
+                  </Link>
+                </div>
               </div>
-              <div>
-                <Link href="/artwork-details">
-                  <Image
-                    style={{ cursor: "pointer" }}
-                    src={RightArrow}
-                    alt=""
-                  />
-                </Link>
-                {/* <RightArrow /> */}
-                {/* <ButtonView>View</ButtonView> */}
+            )}
+            {whatYouWillGet && (
+              <div className={style.get}>
+                <div>
+                  <h4>WHAT YOU’LL GET</h4>
+                  <h3>Artfi NFT</h3>
+                </div>
+                <div>
+                  <ButtonView
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => router.push("/nft-detail")}
+                    style={{
+                      color: "#4527B3",
+                      border: "1px solid #4527B3",
+                      fontWeight: 700,
+                      fontSize: "16px",
+                      padding: "12px 16px",
+                      borderRadius: "10px",
+                      lineHeight: "20.16px",
+                    }}
+                  >
+                    View
+                  </ButtonView>
+                </div>
               </div>
-            </div>
-            <div className={style.get}>
-              <div>
-                <h4>WHAT YOU’LL GET</h4>
-                <h3>Artfi NFT</h3>
-              </div>
-              <div>
-                <ButtonView
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => router.push("/nft-detail")}
-                  style={{
-                    color: "#4527B3",
-                    border: "1px solid #4527B3",
-                    fontWeight: 700,
-                    fontSize: "16px",
-                    padding: "12px 16px",
-                    borderRadius: "10px",
-                    lineHeight: "20.16px",
-                  }}
-                >
-                  View
-                </ButtonView>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

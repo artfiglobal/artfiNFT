@@ -1,0 +1,47 @@
+.getWhitelisted {
+  //   padding: 50px 40px;
+  position: relative;
+}
+.modalCloseIcon {
+  position: relative;
+  position: absolute;
+  top: 20px;
+  width: fit-content;
+  height: fit-content;
+  right: 20px;
+  padding: 0;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.modalInput {
+  input {
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 10px;
+    height: 50px;
+  }
+}
+// .getWhitelisted {
+//   position: relative !important;
+//   z-index: 20;
+
+// }
+.checkBox {
+  margin-top: 25px;
+  div {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+  }
+  label {
+    line-height: 18px;
+    font-size: 14px;
+    height: fit-content;
+    font-weight: 400;
+  }
+}

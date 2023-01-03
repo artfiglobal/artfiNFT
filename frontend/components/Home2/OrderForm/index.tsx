@@ -16,12 +16,12 @@ export const OrderForm = ({
   // selCntPrevious,
   setPrice,
   price,
-  unitValueTotal,
-}: {
+}: // unitValueTotal,
+{
   formData: FormDataInterface;
   setFormData: (data: FormDataInterface) => void;
   // initialPrice: number;
-  unitValueTotal: number;
+  // unitValueTotal: number;
   selCnt: number;
   price: number;
   setPrice: any;
@@ -29,7 +29,7 @@ export const OrderForm = ({
 }) => {
   const amountRef = useRef<HTMLInputElement>(null);
   const { web3Data } = useContext(Web3Context);
-  unitValueTotal = 10000 - formData.amount;
+  // unitValueTotal = 10000 - formData.amount;
   // initialPrice = 1500;
   // const [price, setPrice] = React.useState(initialPrice);
   // if (price < 0) {

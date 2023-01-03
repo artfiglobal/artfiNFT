@@ -35,6 +35,8 @@ const colorStyleMapping = {
   grey: style.grey,
   lightGray: style.lightGray,
   mauve: style.mauve,
+  red: style.red,
+  blue: style.blue,
 };
 
 type TypographyProps = {
@@ -49,7 +51,15 @@ type TypographyProps = {
     | "bold"
     | "popup"
     | "popup2";
-  color: "purple" | "white" | "black" | "grey" | "lightGray" | "mauve";
+  color:
+    | "purple"
+    | "white"
+    | "black"
+    | "grey"
+    | "lightGray"
+    | "mauve"
+    | "red"
+    | "blue";
   children: ReactNode;
   className?: string;
   extraClass?: string;
