@@ -130,7 +130,7 @@ const GetWhitelisted = ({
           <div style={{ width: "fit-content", margin: "0 auto" }}>
             <Button
               type="submit"
-              disabled={!formData.contractSigned}
+              // disabled={!formData.contractSigned}
               variant="primary"
               //   onClick={handleOpen}
               style={{
