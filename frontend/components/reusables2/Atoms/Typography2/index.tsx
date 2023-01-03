@@ -34,6 +34,7 @@ const colorStyleMapping = {
   lightGray: style.lightGray,
   mauve: style.mauve,
   halfWhite: style.halfWhite,
+  confirmEmail: style.confirmEmail,
 };
 
 type TypographyProps = {
@@ -52,6 +53,7 @@ type TypographyProps = {
     | "grey"
     | "lightGray"
     | "mauve"
+    | "confirmEmail"
     | "halfWhite";
   children: ReactNode;
   className?: string;

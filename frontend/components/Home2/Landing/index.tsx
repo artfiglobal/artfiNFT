@@ -9,6 +9,7 @@ import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
 import Link from "next/link";
+
 import { FormDataInterface } from "../../../types";
 import Timer2 from "../Timer2";
 type LandingProps = {
@@ -41,6 +42,7 @@ import { useRouter } from "next/router";
 import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
 import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
 import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
+import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -119,6 +121,7 @@ LandingProps | any): JSX.Element => {
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
+  const [confirmPurchase, setConfirmPurchase] = useState(false);
   // const [activeIcon, setActiveIcon] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [unitValueTotal, setUnitValueTotal] = useState(10000);
@@ -309,6 +312,12 @@ LandingProps | any): JSX.Element => {
         }}
         className={style.popUpMenu}
       >
+        <div
+          style={{
+            position: "absolute",
+            zIndex: "9999",
+          }}
+        ></div>
         <div className={style.popUpInnerContainer}>
           <div className={style.menuImage}>
             <img src="" alt="" />
@@ -360,6 +369,8 @@ LandingProps | any): JSX.Element => {
 
   return (
     <Container>
+      {/* spinner here commented */}
+      {confirmPurchase && <LoaderScreen />}
       <div className={style.landing}>
         <Modal
           centered

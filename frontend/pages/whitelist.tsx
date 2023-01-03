@@ -10,6 +10,7 @@ import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";
 import { GeneralContext } from "../context/GeneralState";
 import SnackBar from "../components/SnackBar/SnackBar";
+import LoaderScreen from "../components/reusables2/CircularProgress/CircularProgress";
 
 export default function WhitelistLanding() {
   const {
@@ -356,6 +357,8 @@ export default function WhitelistLanding() {
           </Button>
         )}
       </div>
+      {/* <LoaderScreen /> */}
+
       <main className={styles.main}>
         <Landing
           offerWhitelist={offerWhitelist}

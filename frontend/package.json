@@ -60,6 +60,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-selectable-fast": "^3.4.0",
     "react-slick": "^0.29.0",
+    "react-spinners": "^0.13.7",
     "react-video": "^1.5.3",
     "react-video-tag": "^0.0.10",
     "react-vis": "^1.11.7",
