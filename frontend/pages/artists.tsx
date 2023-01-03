@@ -26,7 +26,7 @@ const Artists = (props: any) => {
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/artist/getallartist`,
         {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFydGZpQGdtYWlsLmNvbSIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWQiOiI2MzkxY2NiZTNmN2Q5Yjg4MWI3NTk2YjMiLCJpYXQiOjE2NzI0ODAzMjksImV4cCI6MTY3MjQ4NzUyOX0.SElevzl_ByzkYz5vENJ4qJ3JzEEP0wZ19uCewyjWFS0`,
             "Content-Type": "application/json",
             "Content-Length": "<calculated when request is sent>",
           },

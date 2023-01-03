@@ -1,135 +1,128 @@
-.tba{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    gap: 340px;
-    // margin: 40px;
-    margin-top: 240px;
-    @media screen and (max-width: 1400px) {
-        gap: 180px;
-
+.tba {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 340px;
+  // margin: 40px;
+  margin-top: 240px;
+  @media screen and (max-width: 1400px) {
+    gap: 180px;
+  }
+  @media screen and (max-width: 1300px) {
+    gap: 100px;
+  }
+  @media screen and (max-width: 1100px) {
+    gap: 20px;
+  }
+  @media screen and (max-width: 1040px) {
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+    .by,
+    .cs {
+      text-align: center;
+      justify-content: center;
     }
-    @media screen and (max-width: 1300px) {
-        gap: 100px;
-
-    }
-    @media screen and (max-width: 1100px) {
-        gap: 20px;
-
-    }
-    @media screen and (max-width: 1040px) {
-        flex-direction: column;
-        gap: 60px;
-        text-align: center;
-
-    }
-.ts{
-    font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 20px;
-text-align: center;
-letter-spacing: 0.6em;
-color: #000000;
-margin-bottom: 24px;
-}
-.img
-{
+  }
+  .ts {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.6em;
+    color: #000000;
+    margin-bottom: 24px;
+  }
+  .img {
     width: 458px;
     height: 100%;
     @media screen and (max-width: 1040px) {
-       width: 300px;
-       height: 300px;
-
+      width: 300px;
+      height: 300px;
     }
-}
-.waitlist_btn
-{
+  }
+  .waitlist_btn {
     width: 223px;
-height: 60px;
-font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 23px;
-margin-top: 50px;
-/* identical to box height */
-color: #FFFFFF;
-background: #4527B3;
-backdrop-filter: blur(12px);
-/* Note: backdrop-filter has minimal browser support */
+    height: 60px;
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    margin-top: 50px;
+    /* identical to box height */
+    color: #ffffff;
+    background: #4527b3;
+    backdrop-filter: blur(12px);
+    /* Note: backdrop-filter has minimal browser support */
 
-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .title {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 120%;
+    /* identical to box height, or 77px */
+    width: 500px;
+    text-align: left;
 
-
-}
-    .title{
-        font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 64px;
-line-height: 120%;
-/* identical to box height, or 77px */
-width: 500px;
-text-align: left;
-
-
-// text-align: center;
-text-transform: capitalize;
-
-color: #000000;
-margin-bottom: 20px;
-@media screen and (max-width: 1040px) {
     // text-align: center;
-    width: 100%;
-    // margin-left: 10px;
-    text-align: center;
-    font-size: 40px;
+    text-transform: capitalize;
 
+    color: #000000;
+    margin-bottom: 20px;
+    @media screen and (max-width: 1040px) {
+      // text-align: center;
+      width: 100%;
+      // margin-left: 10px;
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+  .by {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    gap: 10px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    line-height: 130%;
+    // text-transform: uppercase;
+    /* identical to box height, or 26px */
+
+    letter-spacing: 0.12em;
+
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .name {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    /* identical to box height, or 26px */
+
+    color: #000000;
+  }
 }
-    }
-    .by
-    {
-        font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 130%;
-text-transform: uppercase;
-/* identical to box height, or 26px */
+.cs {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.6em;
 
-letter-spacing: 0.12em;
-
-color: rgba(0, 0, 0, 0.7);
-
-    }
-    .name
-    {
-        font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 130%;
-text-transform: uppercase;
-/* identical to box height, or 26px */
-
-
-color: #000000;
-    }
-}
-.cs
-{
-    font-family: 'Plus Jakarta Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 20px;
-text-align: center;
-letter-spacing: 0.6em;
-
-color: #000000;
-text-align: left;
-margin-bottom: 24px;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 24px;
 }
