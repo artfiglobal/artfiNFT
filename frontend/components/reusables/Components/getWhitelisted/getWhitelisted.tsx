@@ -10,6 +10,8 @@ import { Button } from "../../../reusables2/Atoms";
 import Web3Context from "../../../../context/Web3Context";
 import Typography from "../../../reusables2/Atoms/Typography2";
 import Image from "next/image";
+import Link from "next/link";
+import axios from "axios";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -39,9 +41,31 @@ const GetWhitelisted = ({
   const { web3Data } = useContext(Web3Context);
   console.log(formData, "!formData.contractSigned");
   const [open, setOpen] = React.useState(false);
+  const [emailAddrees, setEmailAddrees] = React.useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(web3Data.library);
+  console.log(emailAddrees, "emailAddrees");
+  const handleEmailAddress = (e: any) => {
+    setEmailAddrees(e.target.value);
+  };
+  const confirmEmailAddress = async () => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
+            "Content-Type": "application/json",
+            "Content-Length": "<calculated when request is sent>",
+          },
+        }
+      );
+      // setIsWhiteListed(true);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
   return (
     <div className={styles.getWhitelisted}>
       <Button
@@ -97,7 +121,7 @@ const GetWhitelisted = ({
             >
               EMAIL ADDRESS
             </Typography>
-            <input type="text" />
+            <input onChange={handleEmailAddress} type="text" />
           </div>
           <div className={styles.checkBox}>
             <Checkbox
@@ -119,7 +143,6 @@ const GetWhitelisted = ({
                     });
                 } else {
                   //   console.log("hello world");
-
                   setFormData({ ...formData, contractSigned: false });
                 }
               }}
@@ -133,6 +156,7 @@ const GetWhitelisted = ({
               // disabled={!formData.contractSigned}
               variant="primary"
               //   onClick={handleOpen}
+
               style={{
                 padding: "15px 30px",
                 height: "68px",
@@ -140,9 +164,12 @@ const GetWhitelisted = ({
                 marginTop: "50px",
                 borderRadius: "16px",
               }}
-              onClick={completePurchase}
+              onClick={() => {
+                completePurchase();
+                // confirmEmailAddress();
+              }}
             >
-              Whitelist
+              <Link href="/email-confirmation">Whitelist</Link>
             </Button>
           </div>
         </Box>

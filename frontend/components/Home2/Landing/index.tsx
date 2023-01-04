@@ -288,15 +288,17 @@ LandingProps | any): JSX.Element => {
         position: "right",
       });
 
-      // const arcanaProvider = await auth.loginWithSocial('google')
-      // const provider = new ethers.providers.Web3Provider(arcanaProvider)
+      const arcanaProvider = await auth.loginWithSocial("google");
+      console.log(arcanaProvider, "arcanaProvider");
+      // const provider = new ethers.providers.Web3Provider(arcanaProvider);
 
-      // const blockNumber = await provider.getBlockNumber()
+      // const blockNumber = await provider.getBlockNumber();
       // console.log(blockNumber);
     } catch (e) {
       console.log(e);
     }
   };
+
   const removeItem = (item: any, index: any) => {
     cellProps.map((im: any, inx: any) => {
       if (index === inx) return (im = "");
@@ -974,12 +976,12 @@ LandingProps | any): JSX.Element => {
                   </Typography>
                 </div>
                 <a
-                  href="https://dashboard.beta.arcana.network/login"
+                  // href="https://dashboard.beta.arcana.network/login"
                   className={style.connectArcana}
-                  // onClick={async () => {
-                  //   await connectWallet();
-                  //   setWallet(true);
-                  // }}
+                  onClick={async () => {
+                    await connectArcana();
+                    setWallet(true);
+                  }}
                 >
                   <div style={{ marginRight: "20px" }}>
                     <Image src={arcana} alt="" />
