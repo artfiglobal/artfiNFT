@@ -5,9 +5,14 @@ import { Button } from "../components/reusables2/Atoms";
 import checkMark from "../public/Icons/checkMark.svg";
 import Image from "next/image";
 import Typography from "../components/reusables2/Atoms/Typography2";
+import Link from "next/link";
+import axios from "axios";
+
 const EmailWhitelist = () => {
   const [wallet, setWallet] = useState(false);
   const [formattedAddress, setFormattedAddress] = useState("");
+  const date = Date.now();
+  const today = new Date(date);
   const {
     web3Data,
     setWeb3Data,
@@ -15,6 +20,7 @@ const EmailWhitelist = () => {
     walletAddress,
     disconnectWallet,
   } = useContext(Web3Context);
+
   useEffect(() => {
     if (walletAddress) {
       const addressFormatter = () => {
@@ -25,6 +31,7 @@ const EmailWhitelist = () => {
       addressFormatter();
     }
   }, [walletAddress]);
+
   return (
     <div className={styles.emailConfirmationPage}>
       <div className={styles.whitelistNavbar}>
@@ -89,14 +96,13 @@ const EmailWhitelist = () => {
           variant="smallHeading"
           color="confirmEmail"
         >
-          28 Oct, 2022 - 15:30
+          {today.toUTCString().slice(0, 22)}
+          {/* 28 Oct, 2022 - 15:30 */}
         </Typography>
-        <Button
-          type="submit"
-          variant="primary"
-          // onClick={completePurchase}
-        >
+        <Button type="submit" variant="primary">
+          {/* <Link href="/"> */}
           Okay
+          {/* </Link> */}
         </Button>
       </div>
     </div>
