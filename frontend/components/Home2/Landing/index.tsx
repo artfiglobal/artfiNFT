@@ -25,7 +25,7 @@ import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
-import { AuthProvider } from "@arcana/auth";
+import { AuthProvider, CHAIN } from "@arcana/auth";
 
 import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
@@ -43,6 +43,8 @@ import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
 import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
 import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
 import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
+
+
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -66,6 +68,8 @@ const useKey = (setPressKey: any) => {
     };
   }, []);
 };
+
+let arcanaProvider: any = null;
 
 type offerWhitelistTypes = {
   FractionNumber?: number;
@@ -136,12 +140,14 @@ LandingProps | any): JSX.Element => {
   const [emailAddress, setEmailAddress] = useState("");
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
+  const [isArcanaLogin, setIsArcanaLogin] = useState(false);
   // console.log(cellProps);
   // const [selCnt, setSelCnt] = useState<any>(0);
   const router = useRouter();
   // console.log(selCnt);
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
+  
   useEffect(() => {
     const width = globalThis?.window?.innerWidth;
     // const width = globalThis?.window?.innerHeight;
@@ -251,7 +257,9 @@ LandingProps | any): JSX.Element => {
           const chkPrice = ethers.utils.parseEther(
             (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
-          const tx = await artfiWhitelistContract
+          console.log("Arcana connected: ", isArcanaLogin)
+          if(walletAddress) {
+            const tx = await artfiWhitelistContract
             .connect(signer)
             .doWhitelist(
               USDCADDR,
@@ -260,8 +268,29 @@ LandingProps | any): JSX.Element => {
               sendSelected.join(","),
               response.data.signature
             );
-          // console.log(tx, "after purchase complete");
-          if (tx) await tx.wait();
+            // console.log(tx, "after purchase complete");
+            if (tx) await tx.wait();
+          }
+           else if(isArcanaLogin) {
+            const connected = await arcanaProvider.isLoggedIn()
+            if(connected) {
+              const arcanaUserInfo = await arcanaProvider.getUser();
+              if(arcanaUserInfo) {
+                const arcanaPublicKey = arcanaUserInfo.publicKey;
+                const hash = await arcanaProvider.provider.request({
+                  method: 'eth_sendTransaction',
+                    params: [{
+                      arcanaPublicKey,
+                      to: ARTFIWHITELIST,
+                      value: 0,
+                  },],
+                })
+                console.log({ hash })
+              }
+              
+            }
+          }
+          
           router.push("email-confirmation");
         }
       } catch (err) {
@@ -291,26 +320,32 @@ LandingProps | any): JSX.Element => {
   //     getData();
   //   }
   // }, [web3Data]);
+
+
   const connectArcana = async () => {
-    const auth = new AuthProvider(`D3681ee2cE02bE847c0227d2a85867a2Dd4C604D`);
-
-    try {
-      await auth.init({
-        //appMode can be 0, 1, or 2 depending upon the wallet UI mode that needs to be configured
-        // no ui, widget, full UI modes.
-        appMode: 1,
-        position: "right",
-      });
-
-      const arcanaProvider = await auth.loginWithSocial("google");
-      console.log(arcanaProvider, "arcanaProvider");
-      // const provider = new ethers.providers.Web3Provider(arcanaProvider);
-
-      // const blockNumber = await provider.getBlockNumber();
-      // console.log(blockNumber);
-    } catch (e) {
-      console.log(e);
+    if(!arcanaProvider) {
+      const auth = new AuthProvider(`${process.env.NEXT_PUBLIC_React_App_ARCANA_APP_ADDRESS}`, {
+        position: 'right', // defaults to right
+        theme: 'dark', // defaults to dark
+        alwaysVisible: false,
+        chainConfig: {
+          chainId: CHAIN.POLYGON_MUMBAI_TESTNET,
+          rpcUrl: 'https://rpc-mumbai.maticvigil.com/',
+        }
+      })
+  
+      try {
+        await auth.init()
+        await auth.connect()
+      } catch (e) {
+        console.log("Arcana Error: ", e);
+      }
+      arcanaProvider = auth;
+      setIsArcanaLogin(true)
+    } else {
+      
     }
+    
   };
 
   const removeItem = (item: any, index: any) => {
@@ -827,7 +862,7 @@ LandingProps | any): JSX.Element => {
             <p>Connect your wallet to whitelist</p>
           </div> */}
           <div className={style.bottomRight}>
-            {walletAddress ? (
+            {walletAddress || isArcanaLogin ? (
               // <form onSubmit={handleAddWhitelist} className={style.tabContent}>
               //   <div className={style.contentHeader}>
               //     <img src="/images/like.png" alt="" />
