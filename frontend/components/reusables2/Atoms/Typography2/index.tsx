@@ -8,6 +8,7 @@ const variantsMapping = {
   newHeading: "h3",
   body: "p",
   smallBody: "p",
+  smallBody2: "p",
   smallHeading: "h4",
 };
 
@@ -18,6 +19,7 @@ const variantStyleMapping = {
   smallHeading: style.smallHeading,
   body: style.body,
   smallBody: style.smallBody,
+  smallBody2: style.smallBody2,
 };
 const fontWeightStyleMapping = {
   superBold: style.superBold,
@@ -43,6 +45,7 @@ type TypographyProps = {
     | "subheading"
     | "body"
     | "smallBody"
+    | "smallBody2"
     | "newHeading"
     | "smallHeading";
   fontWeight: "bold" | "semiBold" | "medium" | "superBold";
