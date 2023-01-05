@@ -133,6 +133,7 @@ LandingProps | any): JSX.Element => {
   const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
   const [innerWidth, setInnerWidth] = useState(0);
+  const [emailAddress, setEmailAddress] = useState("");
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
   // console.log(cellProps);
@@ -203,7 +204,7 @@ LandingProps | any): JSX.Element => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
   const completePurchase = async () => {
-    const whitelistId = offerWhitelist._id;
+    // const whitelistId = offerWhitelist._id;
 
     console.log(previosFractions, "previosFractions");
 
@@ -232,13 +233,11 @@ LandingProps | any): JSX.Element => {
           form,
           { headers: { "Content-Type": "application/json" } }
         );
-
         console.log(response.data.signature);
         if (response.status == 200 && response.data.signature) {
           const chkPrice = ethers.utils.parseEther(
             (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
-
           const tx = await artfiWhitelistContract
             .connect(signer)
             .doWhitelist(
@@ -248,7 +247,9 @@ LandingProps | any): JSX.Element => {
               sendSelected.join(","),
               response.data.signature
             );
+          // console.log(tx, "after purchase complete");
           if (tx) await tx.wait();
+          router.push("email-confirmation");
         }
       } catch (err) {
         console.log(err);
@@ -881,6 +882,8 @@ LandingProps | any): JSX.Element => {
                 formData={formData}
                 setFormData={setFormData}
                 completePurchase={completePurchase}
+                emailAddress={emailAddress}
+                setEmailAddress={setEmailAddress}
                 //     unitValueTotal={10000}
                 //     // initialPrice={initialPrice}
                 selCnt={selCnt}
