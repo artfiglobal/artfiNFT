@@ -37,21 +37,28 @@ const GetWhitelisted = ({
   selCnt,
   setFormData,
   formData,
+  emailAddress,
+  setEmailAddress,
 }: any) => {
   const { web3Data } = useContext(Web3Context);
-  console.log(formData, "!formData.contractSigned");
+  // console.log(formData, "!formData.contractSigned");
   const [open, setOpen] = React.useState(false);
-  const [emailAddrees, setEmailAddrees] = React.useState("");
+  // const [emailAddrees, setEmailAddrees] = React.useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(emailAddrees, "emailAddrees");
+
+  // console.log(emailAddress, "emailAddrees");
+
   const handleEmailAddress = (e: any) => {
-    setEmailAddrees(e.target.value);
+    setEmailAddress(e.target.value);
   };
+
   const confirmEmailAddress = async () => {
     try {
+      // console.log("make it work");
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+        { body: emailAddress },
         {
           headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
@@ -165,11 +172,12 @@ const GetWhitelisted = ({
                 borderRadius: "16px",
               }}
               onClick={() => {
-                completePurchase();
-                // confirmEmailAddress();
+                // completePurchase();
+                confirmEmailAddress();
               }}
             >
-              <Link href="/email-confirmation">Whitelist</Link>
+              Whitelist
+              {/* <Link href="/email-confirmation"></Link> */}
             </Button>
           </div>
         </Box>

@@ -12,6 +12,8 @@ const PriceCard = ({
   setPrice,
   completePurchase,
   price,
+  emailAddress,
+  setEmailAddress,
 }: //   unitValueTotal,
 {
   formData: FormDataInterface;
@@ -22,6 +24,8 @@ const PriceCard = ({
   price: number;
   setPrice: any;
   completePurchase: any;
+  emailAddress: string;
+  setEmailAddress: any;
 }) => {
   return (
     <div className={style.PriceCard}>
@@ -90,6 +94,8 @@ const PriceCard = ({
         setFormData={setFormData}
         formData={formData}
         selCnt={selCnt}
+        emailAddress={emailAddress}
+        setEmailAddress={setEmailAddress}
         completePurchase={completePurchase}
       />
     </div>
