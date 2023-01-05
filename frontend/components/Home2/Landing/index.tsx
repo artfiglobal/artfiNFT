@@ -335,7 +335,7 @@ LandingProps | any): JSX.Element => {
             ) : (
               cellProps[singleImage - 1] === "disable" && (
                 <Typography variant="popup" color="red">
-                  Sold!
+                  Not Available!
                 </Typography>
               )
             )}
@@ -486,7 +486,7 @@ LandingProps | any): JSX.Element => {
                 }}
               ></div>
               <Typography variant="popup" color={"black"}>
-                Sold
+                Not Available
               </Typography>
             </div>
             <div className={style.selectGroupFooterRight}>

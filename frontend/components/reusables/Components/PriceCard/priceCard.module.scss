@@ -3,7 +3,7 @@
   background-color: #4527b3;
   width: 390px;
   border-radius: 20px;
-  height: 323px;
+  height: 358px;
   text-transform: uppercase;
 }
 .divider {
@@ -12,4 +12,20 @@
   margin: 24px 0;
   opacity: 0.1;
   background-color: #ffffff;
+}
+.checkBox {
+  margin-top: 15px;
+  div {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+  }
+  label {
+    color: white;
+    line-height: 18px;
+    font-size: 14px;
+    height: fit-content;
+    font-weight: 400;
+  }
 }

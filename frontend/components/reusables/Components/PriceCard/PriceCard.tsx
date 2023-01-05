@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 // import { Typography } from "../../../reusables2/Atoms";
+import { Checkbox } from "@mantine/core";
 import style from "./priceCard.module.scss";
 import { Container, Typography, Button } from "../../../reusables2/Atoms";
 import GetWhitelisted from "../getWhitelisted/getWhitelisted";
@@ -27,6 +28,8 @@ const PriceCard = ({
   emailAddress: string;
   setEmailAddress: any;
 }) => {
+  const [checkCurrency, setCheckCurrency] = useState(false);
+  // console.log(checkCurrency, "check currency");
   return (
     <div className={style.PriceCard}>
       <Typography variant="popup2" color="white">
@@ -37,13 +40,21 @@ const PriceCard = ({
       <Typography variant="newHeading" color="white">
         {price}
       </Typography>
+      <div className={style.checkBox}>
+        <Checkbox
+          // checked={formData.contractSigned}
+          required
+          onChange={() => setCheckCurrency(!checkCurrency)}
+          label="Confirm Currency"
+          color="#4527b3"
+        />
+      </div>
       <div className={style.divider}></div>
       <Typography variant="popup2" color="white">
         <div
           style={{
             display: "flex",
             marginBottom: "16px",
-
             justifyContent: "space-between",
           }}
         >
@@ -90,6 +101,7 @@ const PriceCard = ({
       >
         Whitelist now
       </Button> */}
+
       <GetWhitelisted
         setFormData={setFormData}
         formData={formData}
@@ -97,6 +109,7 @@ const PriceCard = ({
         emailAddress={emailAddress}
         setEmailAddress={setEmailAddress}
         completePurchase={completePurchase}
+        checkCurrency={checkCurrency}
       />
     </div>
   );
