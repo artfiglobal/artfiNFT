@@ -39,6 +39,7 @@ const GetWhitelisted = ({
   formData,
   emailAddress,
   setEmailAddress,
+  checkCurrency,
 }: any) => {
   const { web3Data } = useContext(Web3Context);
   // console.log(formData, "!formData.contractSigned");
