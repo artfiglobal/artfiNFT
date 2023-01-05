@@ -9,6 +9,7 @@ import style from "./Landing.module.scss";
 import { ethers } from "ethers";
 import axios from "axios";
 import Link from "next/link";
+
 import { FormDataInterface } from "../../../types";
 import Timer2 from "../Timer2";
 type LandingProps = {
@@ -24,7 +25,7 @@ import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
-import { AuthProvider } from "@arcana/auth";
+import { AuthProvider, CHAIN } from "@arcana/auth";
 
 import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
@@ -40,6 +41,10 @@ import { useRouter } from "next/router";
 
 import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
 import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
+import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
+import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
+
+
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
@@ -63,6 +68,8 @@ const useKey = (setPressKey: any) => {
     };
   }, []);
 };
+
+let arcanaProvider: any = null;
 
 type offerWhitelistTypes = {
   FractionNumber?: number;
@@ -98,10 +105,13 @@ export const Landing = ({
   fractionSize,
   setCellProps,
   cellProps,
+  addDetailsPage,
+  whatYouWillGet,
   offeringId,
   selCntPrevious,
   price,
   setPrice,
+  setOpen,
 }: // selCnt,
 // setSelCnt,
 LandingProps | any): JSX.Element => {
@@ -115,6 +125,7 @@ LandingProps | any): JSX.Element => {
   // likes = 10;
   const [opened, setOpened] = useState(false);
   const [isWhiteListed, setIsWhiteListed] = useState(false);
+  const [confirmPurchase, setConfirmPurchase] = useState(false);
   // const [activeIcon, setActiveIcon] = useState(false);
   const [wallet, setWallet] = useState(false);
   const [unitValueTotal, setUnitValueTotal] = useState(10000);
@@ -125,14 +136,25 @@ LandingProps | any): JSX.Element => {
   // const [cellProps, setCellProps] = useState([]);
   const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
+  const [innerWidth, setInnerWidth] = useState(0);
+  const [emailAddress, setEmailAddress] = useState("");
   const [coordinates, setCoordinates] = useState();
   const [initialCellProps, setInitialCellProps] = useState([]);
+  const [isArcanaLogin, setIsArcanaLogin] = useState(false);
   // console.log(cellProps);
   // const [selCnt, setSelCnt] = useState<any>(0);
   const router = useRouter();
   // console.log(selCnt);
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
+  
+  useEffect(() => {
+    const width = globalThis?.window?.innerWidth;
+    // const width = globalThis?.window?.innerHeight;
+
+    setInnerWidth(width);
+  }, [innerWidth]);
+  // console.log(innerWidth);
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -188,12 +210,12 @@ LandingProps | any): JSX.Element => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
   const completePurchase = async () => {
-    const whitelistId = offerWhitelist._id;
+    // const whitelistId = offerWhitelist._id;
 
     console.log(previosFractions, "previosFractions");
 
     let sendSelected: any = previosFractions.map((item: any, index: any) => {
-      console.log(item, "item");
+      // console.log(item, "item");
       return parseInt(item);
     });
 
@@ -208,8 +230,10 @@ LandingProps | any): JSX.Element => {
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
+
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
+
     if (selCntPrevious + selCnt <= 50) {
       try {
         const response = await axios.post(
@@ -217,14 +241,25 @@ LandingProps | any): JSX.Element => {
           form,
           { headers: { "Content-Type": "application/json" } }
         );
-
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+          { body: emailAddress },
+          {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
+              "Content-Type": "application/json",
+              "Content-Length": "<calculated when request is sent>",
+            },
+          }
+        );
         console.log(response.data.signature);
         if (response.status == 200 && response.data.signature) {
           const chkPrice = ethers.utils.parseEther(
             (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
-
-          const tx = await artfiWhitelistContract
+          console.log("Arcana connected: ", isArcanaLogin)
+          if(walletAddress) {
+            const tx = await artfiWhitelistContract
             .connect(signer)
             .doWhitelist(
               USDCADDR,
@@ -233,7 +268,30 @@ LandingProps | any): JSX.Element => {
               sendSelected.join(","),
               response.data.signature
             );
-          if (tx) await tx.wait();
+            // console.log(tx, "after purchase complete");
+            if (tx) await tx.wait();
+          }
+           else if(isArcanaLogin) {
+            const connected = await arcanaProvider.isLoggedIn()
+            if(connected) {
+              const arcanaUserInfo = await arcanaProvider.getUser();
+              if(arcanaUserInfo) {
+                const arcanaPublicKey = arcanaUserInfo.publicKey;
+                const hash = await arcanaProvider.provider.request({
+                  method: 'eth_sendTransaction',
+                    params: [{
+                      arcanaPublicKey,
+                      to: ARTFIWHITELIST,
+                      value: 0,
+                  },],
+                })
+                console.log({ hash })
+              }
+              
+            }
+          }
+          
+          router.push("email-confirmation");
         }
       } catch (err) {
         console.log(err);
@@ -262,26 +320,34 @@ LandingProps | any): JSX.Element => {
   //     getData();
   //   }
   // }, [web3Data]);
+
+
   const connectArcana = async () => {
-    const auth = new AuthProvider(`D3681ee2cE02bE847c0227d2a85867a2Dd4C604D`);
-
-    try {
-      await auth.init({
-        //appMode can be 0, 1, or 2 depending upon the wallet UI mode that needs to be configured
-        // no ui, widget, full UI modes.
-        appMode: 1,
-        position: "right",
-      });
-
-      // const arcanaProvider = await auth.loginWithSocial('google')
-      // const provider = new ethers.providers.Web3Provider(arcanaProvider)
-
-      // const blockNumber = await provider.getBlockNumber()
-      // console.log(blockNumber);
-    } catch (e) {
-      console.log(e);
+    if(!arcanaProvider) {
+      const auth = new AuthProvider(`${process.env.NEXT_PUBLIC_React_App_ARCANA_APP_ADDRESS}`, {
+        position: 'right', // defaults to right
+        theme: 'dark', // defaults to dark
+        alwaysVisible: false,
+        chainConfig: {
+          chainId: CHAIN.POLYGON_MUMBAI_TESTNET,
+          rpcUrl: 'https://rpc-mumbai.maticvigil.com/',
+        }
+      })
+  
+      try {
+        await auth.init()
+        await auth.connect()
+      } catch (e) {
+        console.log("Arcana Error: ", e);
+      }
+      arcanaProvider = auth;
+      setIsArcanaLogin(true)
+    } else {
+      
     }
+    
   };
+
   const removeItem = (item: any, index: any) => {
     cellProps.map((im: any, inx: any) => {
       if (index === inx) return (im = "");
@@ -297,16 +363,38 @@ LandingProps | any): JSX.Element => {
         }}
         className={style.popUpMenu}
       >
+        <div
+          style={{
+            position: "absolute",
+            zIndex: "9999",
+          }}
+        ></div>
         <div className={style.popUpInnerContainer}>
           <div className={style.menuImage}>
             <img src="" alt="" />
-            <Typography variant="popup" color="mauve">
+            {cellProps[singleImage - 1] === "" ? (
+              <Typography variant="popup" color={"mauve"}>
+                Available
+              </Typography>
+            ) : cellProps[singleImage - 1] === "selected" ? (
+              <Typography variant="popup" color="blue">
+                Selected
+              </Typography>
+            ) : (
+              cellProps[singleImage - 1] === "disable" && (
+                <Typography variant="popup" color="red">
+                  Not Available!
+                </Typography>
+              )
+            )}
+
+            {/* <Typography variant="popup" color={"mauve"}>
               {cellProps[singleImage - 1] === ""
                 ? "Available"
                 : cellProps[singleImage - 1] === "selected"
                 ? "Selected"
                 : "Not Available"}
-            </Typography>
+            </Typography> */}
           </div>
           <div className={style.menuDetails}>
             <div>
@@ -332,6 +420,8 @@ LandingProps | any): JSX.Element => {
 
   return (
     <Container>
+      {/* spinner here commented */}
+      {confirmPurchase && <LoaderScreen />}
       <div className={style.landing}>
         <Modal
           centered
@@ -401,7 +491,11 @@ LandingProps | any): JSX.Element => {
           {isShown && (
             <ToolTipCard singleImage={singleImage} coordinates={coordinates} />
           )}
-          <TransformWrapper panning={{ disabled: pressKey }}>
+          <TransformWrapper
+            // initialPositionX={270}
+            centerOnInit={true}
+            panning={{ disabled: pressKey }}
+          >
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
@@ -412,6 +506,7 @@ LandingProps | any): JSX.Element => {
                 fractionSize={fractionSize}
                 setCellProps={setCellProps}
                 makeItWork={makeItWork}
+                setOpen={setOpen}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
                 pressKey={pressKey}
@@ -439,7 +534,7 @@ LandingProps | any): JSX.Element => {
                 }}
               ></div>
               <Typography variant="popup" color={"black"}>
-                Sold
+                Not Available
               </Typography>
             </div>
             <div className={style.selectGroupFooterRight}>
@@ -767,70 +862,83 @@ LandingProps | any): JSX.Element => {
             <p>Connect your wallet to whitelist</p>
           </div> */}
           <div className={style.bottomRight}>
-            {walletAddress ? (
-              <form onSubmit={handleAddWhitelist} className={style.tabContent}>
-                <div className={style.contentHeader}>
-                  <img src="/images/like.png" alt="" />
-                  <Typography variant="heading" color={"black"}>
-                    Order Summary
-                  </Typography>
-                </div>
-                <br />
-                <div className={style.contentData}>
-                  <Accordion
-                    variant="contained"
-                    radius="md"
-                    chevronSize={26}
-                    defaultValue="customization"
-                    className={style.accordion}
-                  >
-                    <Accordion.Item
-                      value="customization"
-                      className={style.accordionItem}
-                    >
-                      <Accordion.Control className={style.accordionControl}>
-                        Important points
-                      </Accordion.Control>
-                      <Accordion.Panel className={style.accordionPanel}>
-                        <ul>
-                          <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
-                          <li>
-                            Please check your email Inbox / Junk section for the
-                            confirmation email after the whitelisting.
-                          </li>
-                          <li>
-                            We will notify you to claim your NFTs one week
-                            before the Public Mint.
-                          </li>
-                          <li>
-                            If you do not claim your NFTs, we will offer them to
-                            the public through our public mint offering.
-                          </li>
-                        </ul>
-                      </Accordion.Panel>
-                    </Accordion.Item>
-                  </Accordion>
-                </div>
-                <OrderForm
-                  formData={formData}
-                  setFormData={setFormData}
-                  unitValueTotal={10000}
-                  // initialPrice={initialPrice}
-                  selCnt={selCnt}
-                  setPrice={setPrice}
-                  // selCntPrevious={selCntPrevious}
-                  price={price}
-                ></OrderForm>
-                <Button
-                  type="submit"
-                  disabled={cellProps.length === 0}
-                  variant="primary"
-                  style={{ padding: "15px 30px", marginTop: "10px" }}
-                  onClick={completePurchase}
-                >
-                  Whitelist
-                </Button>
-              </form>
+            {walletAddress || isArcanaLogin ? (
+              // <form onSubmit={handleAddWhitelist} className={style.tabContent}>
+              //   <div className={style.contentHeader}>
+              //     <img src="/images/like.png" alt="" />
+              //     <Typography variant="heading" color={"black"}>
+              //       Order Summary
+              //     </Typography>
+              //   </div>
+              //   <br />
+              //   <div className={style.contentData}>
+              //     <Accordion
+              //       variant="contained"
+              //       radius="md"
+              //       chevronSize={26}
+              //       defaultValue="customization"
+              //       className={style.accordion}
+              //     >
+              //       <Accordion.Item
+              //         value="customization"
+              //         className={style.accordionItem}
+              //       >
+              //         <Accordion.Control className={style.accordionControl}>
+              //           Important points
+              //         </Accordion.Control>
+              //         <Accordion.Panel className={style.accordionPanel}>
+              //           <ul>
+              //             <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
+              //             <li>
+              //               Please check your email Inbox / Junk section for the
+              //               confirmation email after the whitelisting.
+              //             </li>
+              //             <li>
+              //               We will notify you to claim your NFTs one week
+              //               before the Public Mint.
+              //             </li>
+              //             <li>
+              //               If you do not claim your NFTs, we will offer them to
+              //               the public through our public mint offering.
+              //             </li>
+              //           </ul>
+              //         </Accordion.Panel>
+              //       </Accordion.Item>
+              //     </Accordion>
+              //   </div>
+              //   <OrderForm
+              //     formData={formData}
+              //     setFormData={setFormData}
+              //     unitValueTotal={10000}
+              //     // initialPrice={initialPrice}
+              //     selCnt={selCnt}
+              //     setPrice={setPrice}
+              //     // selCntPrevious={selCntPrevious}
+              //     price={price}
+              //   ></OrderForm>
+              //   <Button
+              //     type="submit"
+              //     disabled={cellProps.length === 0}
+              //     variant="primary"
+              //     style={{ padding: "15px 30px", marginTop: "10px" }}
+              //     onClick={completePurchase}
+              //   >
+              //     Whitelist
+              //   </Button>
+              // </form>
+              <PriceCard
+                formData={formData}
+                setFormData={setFormData}
+                completePurchase={completePurchase}
+                emailAddress={emailAddress}
+                setEmailAddress={setEmailAddress}
+                //     unitValueTotal={10000}
+                //     // initialPrice={initialPrice}
+                selCnt={selCnt}
+                setPrice={setPrice}
+                // selCntPrevious={selCntPrevious}
+                price={price}
+              />
             ) : (
               <div className={style.landingCard}>
                 <div className={style.contentHeader}>
@@ -919,12 +1027,12 @@ LandingProps | any): JSX.Element => {
                   </Typography>
                 </div>
                 <a
-                  href="https://dashboard.beta.arcana.network/login"
+                  // href="https://dashboard.beta.arcana.network/login"
                   className={style.connectArcana}
-                  // onClick={async () => {
-                  //   await connectWallet();
-                  //   setWallet(true);
-                  // }}
+                  onClick={async () => {
+                    await connectArcana();
+                    setWallet(true);
+                  }}
                 >
                   <div style={{ marginRight: "20px" }}>
                     <Image src={arcana} alt="" />
@@ -953,50 +1061,52 @@ LandingProps | any): JSX.Element => {
             </Button> */}
               </div>
             )}
-            <div className={style.get}>
-              <div>
-                <h3 style={{ margin: "0" }}>
-                  Know more about
-                  <br />
-                  the Artwork
-                </h3>
+            {addDetailsPage && (
+              <div className={style.get}>
+                <div>
+                  <h3 style={{ margin: "0" }}>
+                    Know more about
+                    <br />
+                    the Artwork
+                  </h3>
+                </div>
+                <div>
+                  <Link href="/artwork-details">
+                    <Image
+                      style={{ cursor: "pointer" }}
+                      src={RightArrow}
+                      alt=""
+                    />
+                  </Link>
+                </div>
               </div>
-              <div>
-                <Link href="/artwork-details">
-                  <Image
-                    style={{ cursor: "pointer" }}
-                    src={RightArrow}
-                    alt=""
-                  />
-                </Link>
-                {/* <RightArrow /> */}
-                {/* <ButtonView>View</ButtonView> */}
+            )}
+            {whatYouWillGet && (
+              <div className={style.get}>
+                <div>
+                  <h4>WHAT YOU’LL GET</h4>
+                  <h3>Artfi NFT</h3>
+                </div>
+                <div>
+                  <ButtonView
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => router.push("/nft-detail")}
+                    style={{
+                      color: "#4527B3",
+                      border: "1px solid #4527B3",
+                      fontWeight: 700,
+                      fontSize: "16px",
+                      padding: "12px 16px",
+                      borderRadius: "10px",
+                      lineHeight: "20.16px",
+                    }}
+                  >
+                    View
+                  </ButtonView>
+                </div>
               </div>
-            </div>
-            <div className={style.get}>
-              <div>
-                <h4>WHAT YOU’LL GET</h4>
-                <h3>Artfi NFT</h3>
-              </div>
-              <div>
-                <ButtonView
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => router.push("/nft-detail")}
-                  style={{
-                    color: "#4527B3",
-                    border: "1px solid #4527B3",
-                    fontWeight: 700,
-                    fontSize: "16px",
-                    padding: "12px 16px",
-                    borderRadius: "10px",
-                    lineHeight: "20.16px",
-                  }}
-                >
-                  View
-                </ButtonView>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

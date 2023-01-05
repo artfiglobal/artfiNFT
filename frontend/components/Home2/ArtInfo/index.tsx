@@ -82,7 +82,7 @@ export const ArtInfo = ({
           href={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${sheetName}`}
           className={style.factsheet}
         >
-          <h6>{sheetName?.slice(40, -4)}</h6>
+          <h6>Factsheet</h6>
           <Image
             src="/Icons/dw.svg"
             alt="download"

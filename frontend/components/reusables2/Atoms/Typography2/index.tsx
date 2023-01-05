@@ -7,6 +7,8 @@ const variantsMapping = {
   subheading: "h3",
   newHeading: "h3",
   body: "p",
+  smallBody: "p",
+  smallBody2: "p",
   smallHeading: "h4",
 };
 
@@ -16,6 +18,8 @@ const variantStyleMapping = {
   subheading: style.subheading,
   smallHeading: style.smallHeading,
   body: style.body,
+  smallBody: style.smallBody,
+  smallBody2: style.smallBody2,
 };
 const fontWeightStyleMapping = {
   superBold: style.superBold,
@@ -31,12 +35,29 @@ const colorStyleMapping = {
   grey: style.grey,
   lightGray: style.lightGray,
   mauve: style.mauve,
+  halfWhite: style.halfWhite,
+  confirmEmail: style.confirmEmail,
 };
 
 type TypographyProps = {
-  variant: "heading" | "subheading" | "body" | "newHeading" | "smallHeading";
+  variant:
+    | "heading"
+    | "subheading"
+    | "body"
+    | "smallBody"
+    | "smallBody2"
+    | "newHeading"
+    | "smallHeading";
   fontWeight: "bold" | "semiBold" | "medium" | "superBold";
-  color: "purple" | "white" | "black" | "grey" | "lightGray" | "mauve";
+  color:
+    | "purple"
+    | "white"
+    | "black"
+    | "grey"
+    | "lightGray"
+    | "mauve"
+    | "confirmEmail"
+    | "halfWhite";
   children: ReactNode;
   className?: string;
   extraClass?: string;

@@ -10,6 +10,7 @@ import {
   SelectAll,
   DeselectAll,
 } from "react-selectable-fast";
+import SnackBar from "../SnackBar/SnackBar";
 
 export default function SelectFractionNFTs({
   isShown,
@@ -33,6 +34,7 @@ export default function SelectFractionNFTs({
   fractionSize,
   selCnt,
   setSelCnt,
+  setOpen,
 }) {
   // console.log(rowCnt);
   const { rowCnt, columnCnt } = tableRowsCols;
@@ -46,6 +48,7 @@ export default function SelectFractionNFTs({
   // const [NoSelectedItems, setNoSelectedItems] = useState(false);
   // const [selCnt, setSelCnt] = useState(0);
   const [maxSel, setMaxSel] = useState(50);
+  // const [open, setOpen] = React.useState(false);
 
   // const [tableRowsCols, setTableRowsCols] = useState({
   //   columnCnt: 0,
@@ -136,7 +139,8 @@ export default function SelectFractionNFTs({
             cellProps[selInd] = "selected";
             setCellProps(cellProps);
           } else {
-            alert("over max sel");
+            // alert("over max sel");
+            setOpen(true);
           }
         } else {
           setSelCnt(selCnt - 1);

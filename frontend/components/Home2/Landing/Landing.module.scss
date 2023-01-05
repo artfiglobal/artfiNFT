@@ -8,6 +8,7 @@
   flex-direction: column;
   overflow: visible !important;
   height: auto;
+  overflow: hidden !important;
   .landingTop {
     padding: 0 120px;
     width: 100%;
@@ -130,7 +131,7 @@
     background-color: white;
     padding: 11px 30px;
     border-radius: 20px;
-    width: 228px;
+    width: 268px;
     box-sizing: border-box;
     height: 40px;
     margin-top: 38px;
@@ -144,8 +145,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    p {
-    }
+
     div {
       margin: 0;
       position: relative;

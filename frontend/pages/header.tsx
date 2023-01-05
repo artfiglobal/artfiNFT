@@ -21,7 +21,7 @@ import { Divider } from "@mui/material";
 import HeaderSection from "../components/header/HeaderSection";
 // import Footer from "../components/reusables/Atoms/Footer2";
 import { Footer } from "../components/reusables/Components/Footer2";
-
+import SearchBar from "../components/reusables/Components/Search/Search";
 
 export async function getStaticProps() {
   const data = await offeringAllData();
@@ -54,13 +54,12 @@ const Header = (props: any) => {
   const [header, setHeader] = useState(props.data);
   console.log(header, "jkl");
   return (
-    <div style={{overflow:"hidden",background:"#F2F2F2"}}>
+    <div style={{ overflow: "hidden", background: "#F2F2F2" }}>
       <Navigation />
       <HeaderSection header={header} />
       <br />
       {/* <Footer display="" /> */}
-      <Footer/>
-      
+      <Footer />
     </div>
   );
 };

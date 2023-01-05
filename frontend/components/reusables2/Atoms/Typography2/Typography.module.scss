@@ -65,7 +65,7 @@
   }
 }
 .newHeading {
-  font-family: "Plus Jakarta Sans";
+  font-family: "Plu14pxs Jakarta Sans";
   font-style: normal;
   font-size: 22px;
   line-height: 28px;
@@ -84,8 +84,23 @@
 }
 .newHeading {
   font-size: 24px;
-  color: white !important;
-  font-weight: 600 !important;
+  font-family: "Plus Jakarta Sans";
+  // color: white !important;
+  // font-weight: 600 !important;
+  width: fit-content;
+}
+.smallBody,
+.smallBody2 {
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+.smallBody2 {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
 }
 .body {
   font-family: "Plus Jakarta Sans";
@@ -122,4 +137,10 @@
 }
 .lightGray {
   color: rgba(255, 255, 255, 0.7);
+}
+.halfWhite {
+  color: #85858c;
+}
+.confirmEmail {
+  color: #585858;
 }
