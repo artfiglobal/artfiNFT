@@ -224,14 +224,27 @@ LandingProps | any): JSX.Element => {
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
+
     form.append("whitelistId", offeringId);
     form.append("walletAddress", walletAddress);
+
     if (selCntPrevious + selCnt <= 50) {
       try {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
           form,
           { headers: { "Content-Type": "application/json" } }
+        );
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+          { body: emailAddress },
+          {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
+              "Content-Type": "application/json",
+              "Content-Length": "<calculated when request is sent>",
+            },
+          }
         );
         console.log(response.data.signature);
         if (response.status == 200 && response.data.signature) {

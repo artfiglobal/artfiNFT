@@ -26,7 +26,7 @@ const style = {
   //   paddingRight:"",
   //   paddingLeft:"",
   boxShadow: 24,
-  height: "422px",
+  height: "474px",
   borderRadius: "20px",
 
   //   p: 4,
@@ -113,14 +113,39 @@ const GetWhitelisted = ({
             // className={styles.modalContent}
             style={{
               margin: "0 auto",
-              marginBottom: "50px",
               width: "fit-content",
+              marginBottom: "50px",
             }}
           >
-            <Typography fontWeight="bold" variant="newHeading" color="black">
-              Get Whitelisted
-            </Typography>
+            <div
+              style={{
+                marginTop: "12px",
+                textAlign: "center",
+                margin: "0 auto",
+                width: "fit-content",
+              }}
+            >
+              <Typography fontWeight="bold" variant="newHeading" color="black">
+                Get Whitelisted
+              </Typography>
+            </div>
+            <div
+              style={{
+                marginTop: "12px",
+                textAlign: "center",
+              }}
+            >
+              <Typography
+                fontWeight="semiBold"
+                variant="smallBody2"
+                color="halfWhite"
+              >
+                We want to let you know that your funds will be temporarily
+                locked in an escrow account.
+              </Typography>
+            </div>
           </div>
+
           <div className={styles.modalInput}>
             <Typography
               fontWeight="semiBold"
@@ -173,8 +198,8 @@ const GetWhitelisted = ({
                 borderRadius: "16px",
               }}
               onClick={() => {
-                // completePurchase();
-                confirmEmailAddress();
+                completePurchase();
+                // confirmEmailAddress();
               }}
             >
               Whitelist
