@@ -323,7 +323,7 @@ LandingProps | any): JSX.Element => {
     return (
       <div
         style={{
-          top: coords[1] - 250,
+          top: coords[1] - 570,
           left: coords[0] < 84 ? coords[0] - 20 : coords[0] - 110,
         }}
         className={style.popUpMenu}
@@ -453,11 +453,10 @@ LandingProps | any): JSX.Element => {
               Drag to select NFTs
             </Typography>
           </div>
-          {isShown && (
+          {singleImage && (
             <ToolTipCard singleImage={singleImage} coordinates={coordinates} />
           )}
           <TransformWrapper
-            // initialPositionX={270}
             centerOnInit={true}
             panning={{ disabled: pressKey }}
           >
@@ -466,6 +465,7 @@ LandingProps | any): JSX.Element => {
                 isShown={isShown}
                 // columnCnt={columnCnt}
                 // rowCnt={rowCnt}
+                coordinates={coordinates}
                 tableRowsCols={tableRowsCols}
                 cellProps={cellProps}
                 fractionSize={fractionSize}
