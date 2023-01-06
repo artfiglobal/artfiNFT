@@ -280,33 +280,34 @@ export const Footer = ({ display }: FooterProps): JSX.Element => {
             </div>
             <p className={styles.text}>Join our Newsletter</p>
 
-            <form action="" className={styles.patreon}>
-              <div className={styles.left}>
-                <FaAt color="#FFF" />
-                <input
-                  type="email"
-                  placeholder="Enter your email here"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSendEmail(true);
-                  addToWaitlist(email, true, "").then((res) => {
-                    console.log(res);
-                    setEmail("");
-                  });
+          <form action="" className={styles.patreon}>
+            <div className={styles.left}>
+              <FaAt color="#FFF" />
+              <input
+                type="email"
+                placeholder="Enter your email here"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
-              >
-                <BsArrowRightSquare />
-              </button>
-            </form>
-          </div>
+                required
+              />
+            </div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setSendEmail(true)
+
+                // addToWaitlist(email, true, "").then((res) => {
+                //   console.log(res);
+                //   setEmail("");
+                // });
+              }}
+            >
+              <BsArrowRightSquare />
+            </button>
+          </form>
+        </div>
 
           <div className={styles.navigation}>
             <div className={styles.Nav}>
