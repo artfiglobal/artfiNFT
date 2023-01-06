@@ -75,7 +75,7 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
       </div>
       {/* )} */}
       <div className={style.header_details}>
-        <h5>ARTWORK UNVEILING</h5>
+        <h5>ARTWORK Added Details</h5>
         <h1>{artworkName}</h1>
         <div className={style.artist_name}>
           <p style={{ opacity: ".7", marginRight: "6px" }}>BY</p>

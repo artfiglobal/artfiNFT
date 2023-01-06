@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SelectableGroup } from "react-selectable-fast";
 import ImageFraction from "./Image";
+import { Typography } from "../reusables2/Atoms";
 import style from "./fractions.module.scss";
 // import Image from "next/image";
 // import { Typography } from "../reusables2/Atoms/Typography/index";
@@ -11,6 +12,7 @@ import {
   DeselectAll,
 } from "react-selectable-fast";
 import SnackBar from "../SnackBar/SnackBar";
+import { FaCommentsDollar } from "react-icons/fa";
 
 export default function SelectFractionNFTs({
   isShown,
@@ -35,7 +37,73 @@ export default function SelectFractionNFTs({
   selCnt,
   setSelCnt,
   setOpen,
+  coordinates,
 }) {
+  // console.log(singleImage);
+  const ToolTipCard = () => {
+    return (
+      <div
+        style={{
+          marginTop: "-190px",
+          // top: coords[1] - 250,
+          // left: coords[0] < 84 ? coords[0] - 20 : coords[0] - 110,
+        }}
+        className={style.popUpMenu}
+      >
+        <div
+          style={{
+            position: "absolute",
+            zIndex: "9999",
+          }}
+        ></div>
+        <div className={style.popUpInnerContainer}>
+          <div className={style.menuImage}>
+            <img src="" alt="" />
+            {cellProps[singleImage - 1] === "" ? (
+              <Typography variant="popup" color={"mauve"}>
+                Available
+              </Typography>
+            ) : cellProps[singleImage - 1] === "selected" ? (
+              <Typography variant="popup" color="blue">
+                Selected
+              </Typography>
+            ) : (
+              cellProps[singleImage - 1] === "disable" && (
+                <Typography variant="popup" color="red">
+                  Not Available!
+                </Typography>
+              )
+            )}
+
+            {/* <Typography variant="popup" color={"mauve"}>
+              {cellProps[singleImage - 1] === ""
+                ? "Available"
+                : cellProps[singleImage - 1] === "selected"
+                ? "Selected"
+                : "Not Available"}
+            </Typography> */}
+          </div>
+          <div className={style.menuDetails}>
+            <div>
+              <small>FRACTION</small>
+              <br />
+              <Typography variant="popup2" color="black">
+                #{singleImage} /{tableRowsCols.columnCnt * tableRowsCols.rowCnt}
+              </Typography>
+            </div>
+            <div>
+              <small>COORDINATES</small>
+              <br />
+              <Typography variant="popup2" color="black">
+                {/* AF 22 */}
+                {coordinates[0]}/{coordinates[1]}
+              </Typography>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   // console.log(rowCnt);
   const { rowCnt, columnCnt } = tableRowsCols;
   const { width, height } = fractionSize;
@@ -173,7 +241,9 @@ export default function SelectFractionNFTs({
   const handleMouseMove = (event) => {
     // let bounds = event.target.getBoundingClientRect();
     let x = event.clientX;
-    let y = event.clientY;
+    let y = event.pageY;
+    // let y = event.clientY;
+    // console.log(event, "event");
     // let x = event.clientX - bounds.left;
     // let y = event.clientY - bounds.top;
     let cord = [
@@ -247,35 +317,24 @@ export default function SelectFractionNFTs({
                           setSingleImage();
                         }}
                         className={style[cellProps[i * columnCnt + i1]]}
-                      />
+                      >
+                        {/* {
+                          // isShown &&
+                          singleImage === i * columnCnt + (i1 + 1) && (
+                            <ToolTipCard
+                            // singleImage={singleImage}
+                            // coordinates={coordinates}
+                            />
+                          )
+                        } */}
+                      </td>
                     ))}
                   </tr>
                 );
               })}
             </tbody>
           </table>
-          {/* <img
-            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
-            style={{ position: "absolute", width: "500px", height: "500px" }}
-            alt=""
-          />
-          {Array(boxCount)
-            .fill(1)
-            // images
-            .map((item, index) => (
-              <ImageFraction
-                key={index}
-                item={item}
-                index={index}
-                isShown={isShown}
-                setIsShown={setIsShown}
-                singleImage={singleImage}
-                setSingleImage={setSingleImage}
-                height={40}
-                width={40}
-                background="coral"
-              />
-            ))} */}
+
           {/* <DeselectAll ref={makeItWork}></DeselectAll> */}
         </div>
         {/* </SelectableGroup> */}
