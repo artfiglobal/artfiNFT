@@ -3,10 +3,14 @@ import { serverURI } from "../config";
 async function addToWaitlist(
     email: string,
     subscription: boolean,
-    referralCode: string | string[] | undefined | ""
+    referralCode: string | string[] | undefined | "",
+    UserRedirectFrom:string,
+    artistId:string,
+    offeringId:string,
+    
 ) {
   if (email !== "") {
-    let response = await fetch(`${serverURI}/waitlist/send-mail`, {
+    let response = await fetch(`${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/send-mail`, {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -16,6 +20,9 @@ async function addToWaitlist(
         email: email,
         referral: referralCode,
         subscription: subscription,
+        ArtistId:artistId,
+        offeringId:offeringId,
+        UserRedirectFrom:UserRedirectFrom
       }),
     });
     let data = await response.json();
