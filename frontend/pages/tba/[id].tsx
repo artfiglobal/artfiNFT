@@ -39,7 +39,7 @@ const tba = () => {
       <div style={{ position: "absolute", top: 0 }}>
         {" "}
         {isOpen && (
-          <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
+          <Modal artistId={header.artistId} offeringId={query.id} UserRedirectFrom= "Register-Your-Intrest" referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
         )}
       </div>
       <div className={styles.tba}>

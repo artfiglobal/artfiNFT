@@ -10,8 +10,9 @@ import toast from "react-hot-toast";
 import { addToWaitlist } from "../../../../utils/waitlistFunctions";
 import { Dialog, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
-const Modal = ({ setIsOpen, isOpen, referralCode }) => {
+const Modal = ({ setIsOpen,UserRedirectFrom, isOpen, referralCode,offeringId,artistId }) => {
   const [email, setEmail] = useState("");
+  console.log(UserRedirectFrom,"UserRedirectFrom")
   //loading state
   const [loading, setIsLoading] = useState(false);
   const [checked, isChecked] = useState(true);
@@ -29,19 +30,20 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
             className={styles.closeBtn}
           />
         </div>
-        <div className={styles.whitelist_modal_container}>
+        <div className={styles.whitelist_modal_container} style={{width:"100%"}}>
           <Typography color="black" variant="subheading">
-            Join the waitlist for early access
+           {UserRedirectFrom == "Waitlist-Now"?"Join the waitlist for early access":(<div style={{marginBottom:"20px"}}>Register your interest<br/></div>)}
           </Typography>
-          <Typography color="black" variant="body">
+          {UserRedirectFrom == "Waitlist-Now"?<Typography color="black" variant="body">
             After you&#39;re on the waitlist, you&#39;ll get a referral link to
             share. Be first in line for early access by referring others. The
             more you refer, the higher up in line you&#39;ll go.
-          </Typography>
+          </Typography>:""}
           <div className={styles.whitelist_modal_inputs}>
             <input
               type="email"
               placeholder="Email Address"
+              
               className={styles.whitelist_modal_input}
               value={email}
               onChange={(e) => {
@@ -49,7 +51,7 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
               }}
               required
             />
-            <div className={styles.checkBox}>
+            {UserRedirectFrom == "Waitlist-Now"? <div className={styles.checkBox}>
               <input
                 className={styles.checkBox_input}
                 type="checkbox"
@@ -67,7 +69,7 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
                 Yes, please send me the latest news about Artfi NFTs. I
                 understand I can unsubscribe at any time.
               </label>
-            </div>
+            </div>:""}
             <Button
               extraClass={checked ? "" : styles.modal_btn}
               variant="lg"
@@ -85,7 +87,7 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
 
                 }else
                 {
-                  addToWaitlist(email, checked, referralCode).then((res) => {
+                  addToWaitlist(email, checked, referralCode,UserRedirectFrom,offeringId,artistId).then((res) => {
                       // toast.success("Sucessfully Added to Waitlist");
                       console.log(res.message)
                       if(res.message == "You email was already registed")
@@ -118,9 +120,9 @@ const Modal = ({ setIsOpen, isOpen, referralCode }) => {
             >
               {loading ? (
                 <FaSpinner className={styles.spinner} />
-              ) : (
+              ) : UserRedirectFrom == "Waitlist-Now"?(
                 "Join Waitlist"
-              )}
+              ):("Register your interest")}
             </Button>
           </div>
         </div>

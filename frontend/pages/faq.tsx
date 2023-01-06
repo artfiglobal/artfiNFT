@@ -211,21 +211,8 @@ export async function getStaticProps() {
   };
 }
 
-interface Props {
-  // props: {
-  data: {
-    question: string;
-    answer: string;
-    section: string;
-    heading: string;
-    IsActive: true;
-    _id: string;
-    __v: number;
-  }[];
-  // };
-  isWhite: boolean;
-}
-const Faq = (props: Props) => {
+
+const Faq = (props: any) => {
   // console.log(props.data, "props");
   //   const [ques, setQes] = React.useState(questionsList1);
   //   const [ques2, setQes2] = React.useState(questionsList2);
@@ -243,6 +230,7 @@ const Faq = (props: Props) => {
   // }, []);
 
   //   console.log(props, "data");
+  console.log(props.data,"pks")
 
   function CollapseData({ question, index }: any) {
     const [open, setOpen] = React.useState(false);
@@ -296,7 +284,40 @@ const Faq = (props: Props) => {
     <>
       <Navigation />
       <div className={stylesFaq.marginBlock}>
-        <div className={stylesFaq.textStyle}>
+      {props.data.map((head:any,index:any)=>{
+        console.log(head.section.faq,"head")
+        return(<>
+        {index===0?<><div className={stylesFaq.textStyle}>
+          <span style={{ color: "#6231C8" }}>Frequently </span>
+          Asked <br /> Questions
+        </div><br/><br/></>:
+        <div className={stylesFaq.heading2}>
+          <span>{head.section.sectionHeading}</span>
+        </div>}
+        <List
+          sx={{
+            width: "100%",
+            bgcolor: "background.paper",
+            padding: "0",
+            marginTop: "0",
+          }}
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+        >
+          {
+            head?.section?.faq.map((question: any, index: any) => {
+              return (
+                <>
+                 
+                    <CollapseData question={question} index={index} />
+                  
+                </>
+              );
+            })}
+        </List>
+        </>)
+      })}
+        {/* <div className={stylesFaq.textStyle}>
           <span style={{ color: "#6231C8" }}>Frequently </span>
           Asked <br /> Questions
         </div>
@@ -324,34 +345,7 @@ const Faq = (props: Props) => {
                 </>
               );
             })}
-        </List>
-        <div className={stylesFaq.heading2}>
-          <span>Artfi Whitelisting and Minting </span>
-        </div>
-        <List
-          sx={{
-            width: "100%",
-            bgcolor: "background.paper",
-            padding: "0",
-            margin: "0",
-          }}
-          component="nav"
-          aria-labelledby="nested-list-subheader"
-        >
-          {props?.data?.length > 0 &&
-            props?.data?.map((question: any, index: any) => {
-              return (
-                <>
-                  {question.section === "section2" ? (
-                    <CollapseData question={question} index={index} />
-                  ) : (
-                    ""
-                  )}
-                  <Divider />
-                </>
-              );
-            })}
-        </List>
+        </List> */}
       </div>
 
       <Footer display="" />

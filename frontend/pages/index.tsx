@@ -60,6 +60,8 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
     //   addressFormatter();
     // }
   }, [walletAddress]);
+console.log(props.offerData.trueOfferings[0]._id,"offerDataid")
+console.log(props.offerData.trueOfferings[0].artistId,"offerDataartist")
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
@@ -70,7 +72,7 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       {isOpen && (
-        <Modal referralCode={""} setIsOpen={setIsOpen} isOpen={isOpen} />
+        <Modal referralCode={""} UserRedirectFrom="Waitlist-Now" offeringId={props.offerData.trueOfferings[0]._id} artistId={props.offerData.trueOfferings[0].artistId} setIsOpen={setIsOpen} isOpen={isOpen} />
       )}
       <Navigation />
 
@@ -83,7 +85,7 @@ const Home: NextPage<GetStaticProps> = (props: any) => {
             offerData={props.offerData}
           />
         </div>
-        <Whitelist setIsOpen={setIsOpen} isOpen={isOpen} referralCode={""} />
+        <Whitelist setIsOpen={setIsOpen}  isOpen={isOpen} referralCode={""} />
 
         <Featured data={props.data} />
       </main>
