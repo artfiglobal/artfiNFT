@@ -201,15 +201,15 @@ type questions = {
 //     open: false,
 //   },
 // ];
-// export async function getStaticProps() {
-//   const data = await faqData();
-//   return {
-//     props: {
-//       data,
-//     },
-//     revalidate: 10,
-//   };
-// }
+export async function getStaticProps() {
+  const data = await faqData();
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+}
 
 
 const Faq = (props: any) => {
@@ -230,7 +230,7 @@ const Faq = (props: any) => {
   }, []);
 
   //   console.log(props, "data");
-  console.log(props.data,"pks")
+  
 
   function CollapseData({ question, index }: any) {
     const [open, setOpen] = React.useState(false);
