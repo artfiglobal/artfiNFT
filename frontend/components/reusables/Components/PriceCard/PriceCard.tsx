@@ -77,6 +77,26 @@ const PriceCard = ({
           </Select>
         </FormControl> */}
       </div>
+      <div className={style.checkBox}>
+        <Button
+          type="submit"
+          //   disabled={cellProps.length === 0}
+          variant="secondary"
+          onClick={() => {
+            console.log("approved");
+          }}
+          style={{
+            padding: "15px 30px",
+            // marginTop: "40px",
+            height: "50px",
+            width: "120px",
+            borderRadius: "10px",
+          }}
+          //   onClick={completePurchase}
+        >
+          Approved
+        </Button>
+      </div>
       <div className={style.divider}></div>
       <Typography variant="popup2" color="white">
         <div

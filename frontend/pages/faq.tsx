@@ -201,33 +201,33 @@ type questions = {
 //     open: false,
 //   },
 // ];
-export async function getStaticProps() {
-  const data = await faqData();
-  return {
-    props: {
-      data,
-    },
-    revalidate: 10,
-  };
-}
+// export async function getStaticProps() {
+//   const data = await faqData();
+//   return {
+//     props: {
+//       data,
+//     },
+//     revalidate: 10,
+//   };
+// }
 
 
 const Faq = (props: any) => {
   // console.log(props.data, "props");
   //   const [ques, setQes] = React.useState(questionsList1);
   //   const [ques2, setQes2] = React.useState(questionsList2);
-  // const [data, setData] = React.useState<[] | undefined>();
-  // React.useEffect(() => {
-  //   const fetchFaqs = async () => {
-  //     const response = await axios.get(
-  //       `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/faq/getallfaq`
-  //     );
-  //     const data = await response.data.FAQlist;
-  //     //   console.log(data[0], "data[0]");
-  //     setData(data);
-  //   };
-  //   fetchFaqs();
-  // }, []);
+  const [data, setData] = React.useState<[] | undefined>();
+  React.useEffect(() => {
+    const fetchFaqs = async () => {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/faq/getallfaq`
+      );
+      const data = await response.data.FAQlist;
+      //   console.log(data[0], "data[0]");
+      setData(data);
+    };
+    fetchFaqs();
+  }, []);
 
   //   console.log(props, "data");
   console.log(props.data,"pks")

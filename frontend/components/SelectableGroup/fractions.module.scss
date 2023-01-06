@@ -237,3 +237,51 @@ td.selected {
 td.disable {
   background-color: rgba(255, 0, 0, 0.446);
 }
+.popUpMenu {
+  padding: 3px;
+  background-color: #ffffff99;
+  width: fit-content;
+  float: inline-start;
+  border-radius: 10px;
+  z-index: 9999999999 !important;
+  position: absolute !important;
+  // position: relative;
+  // top: 0;
+  .popUpInnerContainer {
+    background-color: white;
+    padding: 16px;
+    border-radius: 10px;
+    height: 119px;
+    width: 230px;
+  }
+  .menuImage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: 35px;
+      height: 35px;
+      margin-right: 12px;
+      background-color: gray;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .menuDetails {
+    display: flex;
+    margin-top: 16px;
+    justify-content: space-between;
+    // gap: 18px;
+    small {
+      font-weight: 400px;
+      font-family: "Plus Jakarta Sans";
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+}
