@@ -263,11 +263,11 @@ LandingProps | any): JSX.Element => {
             if(connected) {
               const arcanaUserInfo = await arcanaProvider.getUser();
               if(arcanaUserInfo) {
-                const arcanaPublicKey = arcanaUserInfo.publicKey;
+                const myArcanaWalletAddress = arcanaUserInfo.address;
                 const hash = await arcanaProvider.provider.request({
                   method: 'eth_sendTransaction',
                     params: [{
-                      arcanaPublicKey,
+                      from: myArcanaWalletAddress,
                       to: ARTFIWHITELIST,
                       value: 0,
                   },],
@@ -329,8 +329,6 @@ LandingProps | any): JSX.Element => {
       }
       arcanaProvider = auth;
       setIsArcanaLogin(true)
-    } else {
-      
     }
     
   };
