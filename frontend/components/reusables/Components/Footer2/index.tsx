@@ -206,10 +206,10 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
                       e.preventDefault();
                       setSendEmail(true)
 
-                      addToWaitlist(email, true, "").then((res) => {
-                        console.log(res);
-                        setEmail("");
-                      });
+                      // addToWaitlist(email, true, "").then((res) => {
+                      //   console.log(res);
+                      //   setEmail("");
+                      // });
                     }}
                   >
                     <Image src="/Icons/ar.svg" alt="arow" width="24px" height="24px" />
@@ -254,10 +254,10 @@ export const Footer = ({ }: FooterProps): JSX.Element => {
                       e.preventDefault();
                       setSendEmail(true)
 
-                      addToWaitlist(email, true, "").then((res) => {
-                        console.log(res);
-                        setEmail("");
-                      });
+                      // addToWaitlist(email, true, "").then((res) => {
+                      //   console.log(res);
+                      //   setEmail("");
+                      // });
                     }}
                   >
                     <Image src="/Icons/ar.svg" alt="arow" width="24px" height="24px" />

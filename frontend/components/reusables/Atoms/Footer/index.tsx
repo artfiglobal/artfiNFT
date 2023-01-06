@@ -281,10 +281,10 @@ export const Footer = ({}: FooterProps): JSX.Element => {
                   e.preventDefault();
                   setSendEmail(true);
 
-                  addToWaitlist(email, true, "").then((res) => {
-                    console.log(res);
-                    setEmail("");
-                  });
+                  // addToWaitlist(email, true, "").then((res) => {
+                  //   console.log(res);
+                  //   setEmail("");
+                  // });
                 }}
               >
                 <BsArrowRightSquare />
