@@ -149,6 +149,7 @@
   .play_btn {
     width: 223px;
     height: 70px;
+
     border: 1px solid #ffffff;
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 16.5953px;
@@ -172,6 +173,11 @@
     @media screen and (max-width: 800px) {
       height: 60px;
       font-size: 18px;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   // @media screen and (max-width: 1380px) {

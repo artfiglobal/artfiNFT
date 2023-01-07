@@ -49,12 +49,22 @@ const Profile = ({ artistDetails }: any) => {
           of India's foremost abstract painters. He received the Padma Shri
           Award in 1971. */}
         </p>
+        {/* <div className={styles.profileInfo}>
+          <ProfileData
+            title="Royalty Wallet Address"
+            value={
+              artistDetails?.royaltyWalletAddress ||
+              "0x4438e0fc3715D7A7519e49247E8b416564f883ED"
+            }
+          />
+        </div> */}
         <div className={styles.profileInfo}>
           {bornDate && <ProfileData title="born" value={bornDate} />}
           {deathDate?.length > 4 && (
             <ProfileData title="Died" value={deathDate} />
           )}
         </div>
+
         <div className={styles.profileInfo}>
           <ProfileData
             title="Known for"
@@ -64,6 +74,12 @@ const Profile = ({ artistDetails }: any) => {
             title="Nationality"
             value={artistDetails?.artistNationaltiy}
           />
+          {artistDetails?.royaltyWalletAddress && (
+            <ProfileData
+              title="Royalty Wallet Address"
+              value={artistDetails?.royaltyWalletAddress}
+            />
+          )}
         </div>
       </div>
     </section>

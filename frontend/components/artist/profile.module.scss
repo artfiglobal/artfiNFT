@@ -62,6 +62,7 @@
 
 .profileInfo {
   display: flex;
+  flex-wrap: wrap;
   gap: 70px;
   margin-top: 40px;
   // width: 50%;
@@ -89,6 +90,7 @@
     font-family: "Plus Jakarta Sans";
     font-style: normal;
     font-weight: 600;
+    // word-wrap: break-word;
     font-size: 18px;
     line-height: 160%;
     text-transform: capitalize;

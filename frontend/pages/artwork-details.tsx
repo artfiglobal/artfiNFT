@@ -25,10 +25,11 @@ const ArtworkDetails = () => {
   const [aboutArtist, setAboutArtist] = useState("");
   const [artistName, setArtistName] = useState("");
   const [innerWidth, setInnerWidth] = useState(0);
+  const [artistId, setArtistId] = useState("");
 
   // console.log(artworkDetails.whitelistDetails.imageOfArtWork);
   const artworkImage = artworkDetails?.whitelistDetails?.imageOfArtWork;
-  console.log(artworkImage);
+  // console.log(artworkImage);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,26 +44,14 @@ const ArtworkDetails = () => {
             },
           }
         );
-        // console.log(response);
         const data = response.data.data.trueOfferings;
+        setArtistId(response.data.data.trueOfferings[0].artistId);
         setArtworkDetails({
           whitelistDetails: data[0].whitelistDetails,
           artwork: data[0].addDetails,
         });
-        setArtworkWidth(
-          Math.floor(
-            data[0]?.whitelistDetails?.width *
-              data[0]?.whitelistDetails?.columnNumber *
-              0.0265
-          )
-        );
-        setArtworkHeight(
-          Math.floor(
-            data[0]?.whitelistDetails?.height *
-              data[0]?.whitelistDetails?.rowNumber *
-              0.0265
-          )
-        );
+        setArtworkWidth(Math.floor(data[0]?.whitelistDetails?.width));
+        setArtworkHeight(Math.floor(data[0]?.whitelistDetails?.height));
         // setArtworkHeight(data[0].whitelistDetails.height);
         setArtworkName(data[0]?.whitelistDetails?.Title);
         setSignature(data[0]?.whitelistDetails?.signature);
@@ -80,6 +69,7 @@ const ArtworkDetails = () => {
 
     fetchData();
   }, []);
+  console.log(artistId, "artistId");
   useEffect(() => {
     const width = globalThis?.window?.innerWidth;
 
@@ -90,7 +80,10 @@ const ArtworkDetails = () => {
       <Navigation />
       <div className={style.details_container}>
         {/* <Navigation /> */}
-        <ArtworkDetailsHeader artworkDetails={artworkDetails} />
+        <ArtworkDetailsHeader
+          artistId={artistId}
+          artworkDetails={artworkDetails}
+        />
         <div className={style.artworkImage_container}>
           <Image
             height={"100%"}
@@ -112,7 +105,7 @@ const ArtworkDetails = () => {
             <DetailCard
               url="image"
               title="ORIGINAL SIZE"
-              content={artworkWidth + "cm" + " x " + artworkHeight + "cm"}
+              content={artworkWidth + " cm" + " x " + artworkHeight + " cm"}
             />
             <DetailCard url="note" title="signature" content={signature} />
             <DetailCard url="calander" title="year" content={year} />
