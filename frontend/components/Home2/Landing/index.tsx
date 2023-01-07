@@ -44,8 +44,6 @@ import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
 import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
 import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
 
-
-
 const useKey = (setPressKey: any) => {
   useEffect(() => {
     function handle(event: any) {
@@ -147,7 +145,7 @@ LandingProps | any): JSX.Element => {
   // console.log(selCnt);
   // const ftactionsNo = offerWhitelist.FractionNumber;
   // console.log(offerWhitelist);
-  
+
   useEffect(() => {
     const width = globalThis?.window?.innerWidth;
     // const width = globalThis?.window?.innerHeight;
@@ -257,40 +255,40 @@ LandingProps | any): JSX.Element => {
           const chkPrice = ethers.utils.parseEther(
             (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
-          console.log("Arcana connected: ", isArcanaLogin)
-          if(walletAddress) {
+          console.log("Arcana connected: ", isArcanaLogin);
+          if (walletAddress) {
             const tx = await artfiWhitelistContract
-            .connect(signer)
-            .doWhitelist(
-              USDCADDR,
-              chkPrice,
-              ethers.utils.formatBytes32String(offeringId),
-              sendSelected.join(","),
-              response.data.signature
-            );
+              .connect(signer)
+              .doWhitelist(
+                USDCADDR,
+                chkPrice,
+                ethers.utils.formatBytes32String(offeringId),
+                sendSelected.join(","),
+                response.data.signature
+              );
             // console.log(tx, "after purchase complete");
             if (tx) await tx.wait();
-          }
-           else if(isArcanaLogin) {
-            const connected = await arcanaProvider.isLoggedIn()
-            if(connected) {
+          } else if (isArcanaLogin) {
+            const connected = await arcanaProvider.isLoggedIn();
+            if (connected) {
               const arcanaUserInfo = await arcanaProvider.getUser();
-              if(arcanaUserInfo) {
+              if (arcanaUserInfo) {
                 const arcanaPublicKey = arcanaUserInfo.publicKey;
                 const hash = await arcanaProvider.provider.request({
-                  method: 'eth_sendTransaction',
-                    params: [{
+                  method: "eth_sendTransaction",
+                  params: [
+                    {
                       arcanaPublicKey,
                       to: ARTFIWHITELIST,
                       value: 0,
-                  },],
-                })
-                console.log({ hash })
+                    },
+                  ],
+                });
+                console.log({ hash });
               }
-              
             }
           }
-          
+
           router.push("email-confirmation");
         }
       } catch (err) {
@@ -321,31 +319,31 @@ LandingProps | any): JSX.Element => {
   //   }
   // }, [web3Data]);
 
-
   const connectArcana = async () => {
-    if(!arcanaProvider) {
-      const auth = new AuthProvider(`${process.env.NEXT_PUBLIC_React_App_ARCANA_APP_ADDRESS}`, {
-        position: 'right', // defaults to right
-        theme: 'dark', // defaults to dark
-        alwaysVisible: false,
-        chainConfig: {
-          chainId: CHAIN.POLYGON_MUMBAI_TESTNET,
-          rpcUrl: 'https://rpc-mumbai.maticvigil.com/',
+    if (!arcanaProvider) {
+      const auth = new AuthProvider(
+        `${process.env.NEXT_PUBLIC_React_App_ARCANA_APP_ADDRESS}`,
+        {
+          position: "right", // defaults to right
+          theme: "dark", // defaults to dark
+          alwaysVisible: false,
+          chainConfig: {
+            chainId: CHAIN.POLYGON_MUMBAI_TESTNET,
+            rpcUrl: "https://rpc-mumbai.maticvigil.com/",
+          },
         }
-      })
-  
+      );
+
       try {
-        await auth.init()
-        await auth.connect()
+        await auth.init();
+        await auth.connect();
       } catch (e) {
         console.log("Arcana Error: ", e);
       }
       arcanaProvider = auth;
-      setIsArcanaLogin(true)
+      setIsArcanaLogin(true);
     } else {
-      
     }
-    
   };
 
   const removeItem = (item: any, index: any) => {
@@ -534,7 +532,7 @@ LandingProps | any): JSX.Element => {
                 }}
               ></div>
               <Typography variant="popup" color={"black"}>
-                Not Available
+                Whitelisted
               </Typography>
             </div>
             <div className={style.selectGroupFooterRight}>

@@ -3,7 +3,8 @@ import { Avatar, Button } from "@mui/material";
 import Image from "next/image";
 import style from "./styles.module.scss";
 import bk3 from "./bk3.jpg";
-const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
+import Link from "next/link";
+const ArtworkDetailsHeader = ({ artistId, artworkDetails }: any) => {
   const [showVideo, setShowVideo] = useState(false);
   const [innerWidth, setInnerWidth] = useState(0);
   // console.log(artworkDetails);
@@ -75,27 +76,33 @@ const ArtworkDetailsHeader = ({ artworkDetails }: any) => {
       </div>
       {/* )} */}
       <div className={style.header_details}>
-        <h5>ARTWORK Added Details</h5>
+        <h5>ARTWORK DETAILS</h5>
         <h1>{artworkName}</h1>
         <div className={style.artist_name}>
-          <p style={{ opacity: ".7", marginRight: "6px" }}>BY</p>
-          <p style={{ opacity: "1" }}>{artistName}</p>
+          <p style={{ opacity: ".7", marginRight: "6px" }}>by</p>
+          <Link href={`artist/${artistId}`}>
+            <p style={{ opacity: "1", cursor: "pointer" }}>{artistName}</p>
+          </Link>
           <div>
             <Image src="/Publiced/Vector.svg" width={24} height={24} />
           </div>
         </div>
-        <a href={playNowButtonVideoLink + "&allowfullscreen"} target="_blank">
-          <Button
-            onClick={() => {
-              setShowVideo(!showVideo);
-            }}
-            className={style.play_btn}
-            style={{ textTransform: "capitalize" }}
+        <Button
+          onClick={() => {
+            setShowVideo(!showVideo);
+          }}
+          className={style.play_btn}
+          style={{ textTransform: "capitalize" }}
+        >
+          <a
+            style={{ height: "fit-content" }}
+            href={playNowButtonVideoLink + "&allowfullscreen"}
+            target="_blank"
           >
             <img src="/Icons/play.svg" style={{ marginRight: "10px" }} />
-            Play now{" "}
-          </Button>
-        </a>
+            Play now
+          </a>
+        </Button>
       </div>
     </div>
   );
