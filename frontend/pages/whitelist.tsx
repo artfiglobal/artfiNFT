@@ -4,7 +4,6 @@ import { Button } from "../components/reusables2/Atoms";
 import { Head } from "../components/reusables/Components";
 import styles from "../styles/Home.module.scss";
 import Image from "next/image";
-// import { Container, Typography,  } from "../../reusables2/Atoms";
 import { ethers } from "ethers";
 import Web3Context from "../context/Web3Context";
 import { web3Modal } from "../lib/Web3Modal/index";

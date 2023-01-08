@@ -1,54 +1,50 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useContext, useEffect, useCallback, useRef } from "react";
-import { Container, Typography, Button } from "../../reusables2/Atoms";
+import { useState, useContext, useEffect, useRef } from "react";
 import ButtonView from "@mui/material/Button";
-import { ArtInfo, DetailCard, LandingCarousel, OrderForm, Timer } from "..";
-import { Tabs, Accordion, Modal } from "@mantine/core";
-import { FiHeart } from "react-icons/fi";
-import style from "./Landing.module.scss";
-import { ethers } from "ethers";
+import { Modal } from "@mantine/core";
+import { ethers, BigNumber } from "ethers";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Avatar } from "@mui/material";
+import { AuthProvider, CHAIN } from "@arcana/auth";
 
-import { FormDataInterface } from "../../../types";
 import Timer2 from "../Timer2";
-type LandingProps = {
-  likes: number;
-};
+import { ArtInfo, DetailCard } from "..";
+import { FormDataInterface } from "../../../types";
+import { Container, Typography, Button } from "../../reusables2/Atoms";
+import style from "./Landing.module.scss";
 
-import { web3Modal } from "../../../lib/Web3Modal";
-import { web3Context } from "../../../context";
-// import web3Context from "../../../context/Web3Context";
-import { Web3DataInterface } from "../../../context/types";
-import APIContext from "../../../context/APIContext";
 import Web3Context from "../../../context/Web3Context";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Avatar, ButtonBase, Divider, dividerClasses } from "@mui/material";
-import { AuthProvider, CHAIN } from "@arcana/auth";
 
 import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
 import RightArrow from "../../../public/Icons/Combined-Shape.svg";
 import SelectFractionNFTs from "../../SelectableGroup/SelectImages";
-import {
-  createSelectable,
-  SelectAll,
-  DeselectAll,
-} from "react-selectable-fast";
-import { FaBlackTie } from "react-icons/fa";
-import { useRouter } from "next/router";
-
-import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
-import { ARTFIWHITELIST, RPCURL, USDCADDR } from "../../../config";
 import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
 import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
+
+import { ARTFIWHITELIST, RPCURL } from "../../../config";
+import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
+import ERC20ABI from "../../../abi/ERC20.json";
+
+type LandingProps = {
+  likes: number;
+};
+
+const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
+const artfiWhitelistContract = new ethers.Contract(
+  ARTFIWHITELIST,
+  ArtfiWhitelistABI,
+  web3Provider
+);
 
 const useKey = (setPressKey: any) => {
   useEffect(() => {
     function handle(event: any) {
       if (event.ctrlKey || event.metaKey) {
-        // macKeys
         setPressKey(false);
       }
     }
@@ -64,7 +60,7 @@ const useKey = (setPressKey: any) => {
       document.removeEventListener("keydown", handle);
       document.addEventListener("keyup", handle2);
     };
-  }, []);
+  }, [setPressKey]);
 };
 
 let arcanaProvider: any = null;
@@ -110,41 +106,35 @@ export const Landing = ({
   price,
   setPrice,
   setOpen,
-}: // selCnt,
-// setSelCnt,
+}:
+
 LandingProps | any): JSX.Element => {
-  //ref//
   const initialPrice = offerWhitelist.price;
-  // console.log(initialPrice, "offerWhitelist from landing");
   let makeItWork: any = useRef(null);
   useEffect(() => {
     makeItWork.currrent;
   }, []);
-  // likes = 10;
+  
   const [opened, setOpened] = useState(false);
-  const [isWhiteListed, setIsWhiteListed] = useState(false);
+  const [, setIsWhiteListed] = useState(false);
   const [confirmPurchase, setConfirmPurchase] = useState(false);
-  // const [activeIcon, setActiveIcon] = useState(false);
-  const [wallet, setWallet] = useState(false);
-  const [unitValueTotal, setUnitValueTotal] = useState(10000);
+  const [, setWallet] = useState(false);
+  const [, setUnitValueTotal] = useState(10000);
   const [pressKey, setPressKey] = useState(true);
   const [coords, setCoords] = useState([0, 0]);
   const [isShown, setIsShown] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
-  // const [cellProps, setCellProps] = useState([]);
+  const [, setSelectedItems] = useState([]);
   const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
   const [innerWidth, setInnerWidth] = useState(0);
   const [emailAddress, setEmailAddress] = useState("");
   const [coordinates, setCoordinates] = useState();
-  const [initialCellProps, setInitialCellProps] = useState([]);
+  const [, setInitialCellProps] = useState([]);
   const [isArcanaLogin, setIsArcanaLogin] = useState(false);
-  // console.log(cellProps);
-  // const [selCnt, setSelCnt] = useState<any>(0);
+  const [checkCurrency, setCheckCurrency] = useState("");
+  const [showApprove, setShowApprove] = useState(false);
+
   const router = useRouter();
-  // console.log(selCnt);
-  // const ftactionsNo = offerWhitelist.FractionNumber;
-  // console.log(offerWhitelist);
 
   useEffect(() => {
     const width = globalThis?.window?.innerWidth;
@@ -152,7 +142,7 @@ LandingProps | any): JSX.Element => {
 
     setInnerWidth(width);
   }, [innerWidth]);
-  // console.log(innerWidth);
+
   const [formData, setFormData] = useState<FormDataInterface>({
     address: "",
     contractSigned: false,
@@ -176,30 +166,11 @@ LandingProps | any): JSX.Element => {
     setCellProps(items);
     // makeItWork.current.context.selectable.clearSelection();
   };
-  const [tabActiveButton, setTabActiveButton] = useState(true);
-  const { web3Data, setWeb3Data, connectWallet, walletAddress, signer } =
+  
+  const { connectWallet, walletAddress, signer } =
     useContext(Web3Context);
 
-  const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
-  const artfiWhitelistContract = new ethers.Contract(
-    ARTFIWHITELIST,
-    ArtfiWhitelistABI,
-    web3Provider
-  );
-
   useKey(setPressKey);
-  const handleSelectionClear = (items: any) => {
-    // items?.map((item: any, index: any) => {
-    //   console.log(item);
-    //   // return (item.state.isSelected = false);
-    // });
-    // setSelectedItems([]);
-  };
-  // console.log(pressKey);
-  const disconnectWallet = () => {
-    setWeb3Data(null);
-    web3Modal.clearCachedProvider();
-  };
   useEffect(() => {
     setFormData((prev) => ({ ...prev, address: walletAddress }));
   }, [walletAddress]);
@@ -207,13 +178,71 @@ LandingProps | any): JSX.Element => {
   useEffect(() => {
     setUnitValueTotal(10000 - formData.amount);
   }, [formData]);
+
+  const handleCurrency = async (selToken: string) => {
+    setCheckCurrency(selToken)
+    if (selToken != ethers.constants.AddressZero) {
+      const tokenContract = new ethers.Contract(
+        selToken,
+        ERC20ABI,
+        web3Provider
+      );
+
+      const allowance = await tokenContract.allowance(
+        walletAddress,
+        ARTFIWHITELIST
+      )
+
+      if (BigNumber.from(allowance).lte(ethers.utils.parseEther("10000"))) {
+        setShowApprove(true);
+      }
+    } else {
+      setShowApprove(false)
+    }
+  }
+
+  const doApprove = async () => {
+    if (walletAddress && checkCurrency.length > 0) {
+      setConfirmPurchase(true);
+      const tokenContract = new ethers.Contract(
+        checkCurrency,
+        ERC20ABI,
+        web3Provider
+      );
+
+      try {
+        const tx = await tokenContract
+          .connect(signer)
+          .approve(
+            ARTFIWHITELIST,
+            ethers.utils.parseUnits("100000")
+          );
+        
+        if (tx) {
+          tx.wait().then(async function(receipt: any) {
+            console.log(receipt)
+            setShowApprove(false)
+            setConfirmPurchase(false)
+          }).catch(function (err1: any) {
+            setConfirmPurchase(false);
+
+            console.log(`approve error: ${err1}`)
+            const reason = err1.reason.replace('execution reverted: ', '');
+            alert(reason)
+          });
+        }
+      } catch (err: any) {
+        setConfirmPurchase(false);
+
+        console.log(`approve error: ${err}`)
+        const reason = err.reason.replace('execution reverted: ', '');
+        alert(reason)
+      }
+    }
+  }
+
   const completePurchase = async () => {
-    // const whitelistId = offerWhitelist._id;
-
-    console.log(previosFractions, "previosFractions");
-
     let sendSelected: any = previosFractions.map((item: any, index: any) => {
-      // console.log(item, "item");
       return parseInt(item);
     });
 
@@ -222,9 +251,8 @@ LandingProps | any): JSX.Element => {
         sendSelected.push(index);
       }
     });
-    console.log(sendSelected);
-    // console.log(selCntPrevious + selCnt, "summation");
-    var form = new FormData();
+    
+    let form = new FormData();
     for (let i = 0; i < sendSelected.length; i++) {
       form.append("fractionInfo[]", sendSelected[i]);
     }
@@ -234,40 +262,54 @@ LandingProps | any): JSX.Element => {
 
     if (selCntPrevious + selCnt <= 50) {
       try {
+        setConfirmPurchase(true);
+
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/updatefraction`,
           form,
           { headers: { "Content-Type": "application/json" } }
         );
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
-          { body: emailAddress },
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
-              "Content-Type": "application/json",
-              "Content-Length": "<calculated when request is sent>",
-            },
-          }
-        );
-        console.log(response.data.signature);
+
         if (response.status == 200 && response.data.signature) {
           const chkPrice = ethers.utils.parseEther(
             (parseFloat(offerWhitelist?.price) * sendSelected.length).toString()
           );
           console.log("Arcana connected: ", isArcanaLogin);
-          if (walletAddress) {
+          if (walletAddress && checkCurrency.length > 0) {
             const tx = await artfiWhitelistContract
               .connect(signer)
               .doWhitelist(
-                USDCADDR,
+                checkCurrency,
                 chkPrice,
                 ethers.utils.formatBytes32String(offeringId),
                 sendSelected.join(","),
                 response.data.signature
-              );
-            // console.log(tx, "after purchase complete");
-            if (tx) await tx.wait();
+            );
+            
+            if (tx) {
+              tx.wait().then(async function(receipt: any) {
+                setConfirmPurchase(false)
+                setOpened(true)
+
+                await axios.post(
+                  `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+                  { body: emailAddress },
+                  {
+                    headers: {
+                      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjNhNTcwNmNkNmQ3MTU1ZDc1ZTg2NzUyIiwiaWF0IjoxNjcyMzg4Njc2LCJleHAiOjE2NzIzOTU4NzZ9.b5Lmajxbd6k26sJvTI4LBPYyO2En0Xb3Ng8XxIHQ7SM`,
+                      "Content-Type": "application/json",
+                      "Content-Length": "<calculated when request is sent>",
+                    },
+                  }
+                );
+              }).catch(function (err1: any) {
+                setConfirmPurchase(false)
+
+                console.log(`whitelist error: ${err1}`)
+                const reason = err1.reason.replace('execution reverted: ', '');
+                alert(reason)
+              });
+            }
           } else if (isArcanaLogin) {
             const connected = await arcanaProvider.isLoggedIn();
             if (connected) {
@@ -288,16 +330,19 @@ LandingProps | any): JSX.Element => {
               }
             }
           }
-
-          router.push("email-confirmation");
         }
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        setConfirmPurchase(false);
+
+        console.log(`whitelist error: ${err}`)
+        const reason = err.reason.replace('execution reverted: ', '');
+        alert(reason)
       }
     } else {
       alert("sorry number of fractions exceeds the limit");
     }
   };
+
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
@@ -312,12 +357,6 @@ LandingProps | any): JSX.Element => {
       console.log({ error });
     }
   };
-  // useEffect(() => {
-  //   connectWallet();
-  //   if (web3Data?.provider?.on) {
-  //     getData();
-  //   }
-  // }, [web3Data]);
 
   const connectArcana = async () => {
     if (!arcanaProvider) {
@@ -385,14 +424,6 @@ LandingProps | any): JSX.Element => {
                 </Typography>
               )
             )}
-
-            {/* <Typography variant="popup" color={"mauve"}>
-              {cellProps[singleImage - 1] === ""
-                ? "Available"
-                : cellProps[singleImage - 1] === "selected"
-                ? "Selected"
-                : "Not Available"}
-            </Typography> */}
           </div>
           <div className={style.menuDetails}>
             <div>
@@ -406,7 +437,6 @@ LandingProps | any): JSX.Element => {
               <small>COORDINATES</small>
               <br />
               <Typography variant="popup2" color="black">
-                {/* AF 22 */}
                 {coordinates[0]}/{coordinates[1]}
               </Typography>
             </div>
@@ -418,7 +448,6 @@ LandingProps | any): JSX.Element => {
 
   return (
     <Container>
-      {/* spinner here commented */}
       {confirmPurchase && <LoaderScreen />}
       <div className={style.landing}>
         <Modal
@@ -436,13 +465,11 @@ LandingProps | any): JSX.Element => {
           <br />
           <span>Successfully Whitelisted</span>
         </Modal>
-        {/* <div className={style.landingCarousel}>
-          <LandingCarousel />
-        </div> */}
+        
         <div className={style.landingTop}>
           <div className={style.likes}>
             <button className={style.timer}>
-              <img src="Publiced/time.svg" />
+              <img src="Publiced/time.svg" alt="time svg" />
               <Timer2 endDate={offerUnveiling?.endDate} />
               {/* <label>12h:43m:10s</label> */}
             </button>
@@ -511,7 +538,6 @@ LandingProps | any): JSX.Element => {
                 setCoords={setCoords}
                 artWorkImage={artWorkImage}
                 setInitialCellProps={setInitialCellProps}
-                handleSelectionClear={handleSelectionClear}
                 setSingleImage={setSingleImage}
                 singleImage={singleImage}
                 setCoordinates={setCoordinates}
@@ -584,6 +610,7 @@ LandingProps | any): JSX.Element => {
                   <Button
                     onClick={() => removeItem(item, index)}
                     variant="fractionBTN"
+                    key={index}
                   >
                     #{index}
                   </Button>
@@ -603,26 +630,6 @@ LandingProps | any): JSX.Element => {
         </div>
         <div className={style.landingBottom}>
           <div className={style.landingDetails}>
-            {/* <div style={{ display: "flex", alignItems: "center", width: "90%" }}>
-            <button className={style.timer1}>
-              <img src="Publiced/time.svg" width="16px" height="16px" />
-              <label>12h:43m:10s</label>
-            </button>
-            <div className={style.shareandlike1}>
-              <Image
-                src="/Icons/hearts.svg"
-                alt="like"
-                width="68px"
-                height="68px"
-              />
-              <Image
-                src="/Icons/share.svg"
-                alt="like"
-                width="68px"
-                height="68px"
-              />
-            </div>
-            </div> */}
             <div className={style.prf}>
               <Avatar
                 src="/images/artist.png"
@@ -634,6 +641,7 @@ LandingProps | any): JSX.Element => {
                   vs gaitonde
                 </Link>
                 <img
+                  alt="vector svg"
                   src="/Publiced/Vector.svg"
                   style={{ width: "16px", height: "16px" }}
                 />
@@ -688,254 +696,22 @@ LandingProps | any): JSX.Element => {
                 </div>
               </div>
             </div>
-            {/* <Tabs defaultValue="details" className={style.landingTabs}>
-            <Tabs.List className={style.tabList}>
-              <Tabs.Tab
-                value="details"
-                className={style.tabValue}
-                style={
-                  tabActiveButton
-                    ? { background: "#F5F1FE" }
-                    : { background: "white" }
-                }
-                onClick={() => setTabActiveButton(true)}
-              >
-                Details
-              </Tabs.Tab>
-              <Tabs.Tab
-                value="status"
-                style={
-                  !tabActiveButton
-                    ? { background: "#F5F1FE" }
-                    : { background: "white" }
-                }
-                onClick={() => setTabActiveButton(false)}
-                className={style.tabValue}
-              >
-                {isWhiteListed ? "Ownership Status" : "Get Whitelisted"}
-              </Tabs.Tab>
-              <Timer seconds={40000} />
-            </Tabs.List>
-
-            <Tabs.Panel value="details" className={style.tabPanel}></Tabs.Panel>
-
-            <Tabs.Panel value="status" className={style.tabPanel}>
-              {walletAddress ? (
-                !isWhiteListed ? (
-                  <form
-                    onSubmit={handleAddWhitelist}
-                    className={style.tabContent}
-                  >
-                    <div className={style.contentHeader}>
-                      <img src="/images/like.png" alt="" />
-                      <Typography variant="heading" color={"black"}>
-                        Order Summary
-                      </Typography>
-                    </div>
-                    <div className={style.contentData}>
-                      <Accordion
-                        variant="contained"
-                        radius="md"
-                        chevronSize={26}
-                        defaultValue="customization"
-                        className={style.accordion}
-                      >
-                        <Accordion.Item
-                          value="customization"
-                          className={style.accordionItem}
-                        >
-                          <Accordion.Control className={style.accordionControl}>
-                            Important points
-                          </Accordion.Control>
-                          <Accordion.Panel className={style.accordionPanel}>
-                            <ul>
-                              <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
-                              <li>
-                                Please check your email Inbox / Junk section for
-                                the confirmation email after the whitelisting.
-                              </li>
-                              <li>
-                                We will notify you to claim your NFTs one week
-                                before the Public Mint.
-                              </li>
-                              <li>
-                                If you do not claim your NFTs, we will offer
-                                them to the public through our public mint
-                                offering.
-                              </li>
-                            </ul>
-                          </Accordion.Panel>
-                        </Accordion.Item>
-                      </Accordion>
-                    </div>
-                    <OrderForm
-                      formData={formData}
-                      setFormData={setFormData}
-                      unitValueTotal={10000}
-                      initialPrice={1}
-                    ></OrderForm>
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      style={{ padding: "15px 30px" }}
-                    >
-                      Whitelist
-                    </Button>
-                  </form>
-                ) : (
-                  <h1>Congratulations, You have Successfully Whitelisted</h1>
-                )
-              ) : (
-                <div className={style.tabContent}>
-                  <div className={style.contentHeader}>
-                    <Typography variant="heading" color={"black"}>
-                      Whitelist your ArtFi NFT
-                    </Typography>
-                  </div>
-                  <div className={style.contentInfo}>
-                    <Typography variant="subheading" color={"grey"}>
-                      Connect your wallet and purchase your Artfi NFTs.
-                    </Typography>
-                  </div>
-                  <div className={style.contentBtns}>
-                    <Button
-                      variant="primary"
-                      onClick={async () => {
-                        await connectWallet();
-                        setWallet(true);
-                       
-                      }}
-                    >
-                      Connect your wallet to whitelist
-                    </Button>
-                    <Button
-                      variant="primary"
-                      style={{
-                        background: "white",
-                        color: "black",
-                        border: "1px solid #1E1E1E",
-                        boxShadow: "0",
-                      }}
-                      onClick={async () => {
-                        await connectWallet();
-                        setWallet(true);
-                        // connectWallet().then(() => {
-                        //   getData();
-                        //   setWallet(true);
-                        //   console.log("hello");
-                        // });
-                      }}
-                    >
-                      Create a new wallet
-                    </Button>
-                    <Typography variant="subheading" color={"grey"}>
-                      OR
-                    </Typography>
-                    <Button variant="secondary">Create a new account</Button>
-                  </div>
-                  <label>or</label>
-                  <Image src="/Icons/arcana.svg" width="223px" height="68px" />
-                  <Button
-                    variant="primary"
-                    style={{
-                      background: "white",
-                      color: "black",
-                      border: "1px solid #1E1E1E",
-                      boxShadow: "0",
-                    }}
-                    onClick={async () => {
-                      await connectArcana();
-                    }}
-                  >
-                    Connect Arcana
-                  </Button>
-                </div>
-              )}
-            </Tabs.Panel>
-          </Tabs> */}
           </div>
 
-          {/* <div className={style.landingCard}>
-            <h3>Get Whitelisted</h3>
-            <p>Connect your wallet to whitelist</p>
-          </div> */}
           <div className={style.bottomRight}>
             {walletAddress || isArcanaLogin ? (
-              // <form onSubmit={handleAddWhitelist} className={style.tabContent}>
-              //   <div className={style.contentHeader}>
-              //     <img src="/images/like.png" alt="" />
-              //     <Typography variant="heading" color={"black"}>
-              //       Order Summary
-              //     </Typography>
-              //   </div>
-              //   <br />
-              //   <div className={style.contentData}>
-              //     <Accordion
-              //       variant="contained"
-              //       radius="md"
-              //       chevronSize={26}
-              //       defaultValue="customization"
-              //       className={style.accordion}
-              //     >
-              //       <Accordion.Item
-              //         value="customization"
-              //         className={style.accordionItem}
-              //       >
-              //         <Accordion.Control className={style.accordionControl}>
-              //           Important points
-              //         </Accordion.Control>
-              //         <Accordion.Panel className={style.accordionPanel}>
-              //           <ul>
-              //             <li>Whitelist up to 50 Artfi NFTs per wallet.</li>
-              //             <li>
-              //               Please check your email Inbox / Junk section for the
-              //               confirmation email after the whitelisting.
-              //             </li>
-              //             <li>
-              //               We will notify you to claim your NFTs one week
-              //               before the Public Mint.
-              //             </li>
-              //             <li>
-              //               If you do not claim your NFTs, we will offer them to
-              //               the public through our public mint offering.
-              //             </li>
-              //           </ul>
-              //         </Accordion.Panel>
-              //       </Accordion.Item>
-              //     </Accordion>
-              //   </div>
-              //   <OrderForm
-              //     formData={formData}
-              //     setFormData={setFormData}
-              //     unitValueTotal={10000}
-              //     // initialPrice={initialPrice}
-              //     selCnt={selCnt}
-              //     setPrice={setPrice}
-              //     // selCntPrevious={selCntPrevious}
-              //     price={price}
-              //   ></OrderForm>
-              //   <Button
-              //     type="submit"
-              //     disabled={cellProps.length === 0}
-              //     variant="primary"
-              //     style={{ padding: "15px 30px", marginTop: "10px" }}
-              //     onClick={completePurchase}
-              //   >
-              //     Whitelist
-              //   </Button>
-              // </form>
               <PriceCard
                 formData={formData}
                 setFormData={setFormData}
                 completePurchase={completePurchase}
                 emailAddress={emailAddress}
                 setEmailAddress={setEmailAddress}
-                //     unitValueTotal={10000}
-                //     // initialPrice={initialPrice}
                 selCnt={selCnt}
                 setPrice={setPrice}
-                // selCntPrevious={selCntPrevious}
                 price={price}
+                showApprove={showApprove}
+                setCurrency={handleCurrency}
+                doApprove={doApprove}
               />
             ) : (
               <div className={style.landingCard}>
@@ -951,25 +727,6 @@ LandingProps | any): JSX.Element => {
                   Connect your wallet to whitelist
                 </Typography>
                 <div className={style.contentBtns}>
-                  {/* <Button
-                 variant="connect"
-                 style={{
-                   backgroundColor: "white",
-                   color: "#4527B3",
-                   width: "100%",
-                   margin: "40px 0 16px 0 ",
-                   border: "1px solid white",
-                 }}
-                  onClick={async () => {
-                    await connectWallet();
-                    setWallet(true);
-                  }}
-                >
-                  <div style={{ position: "absolute", left: "5px" }}>
-                    <Image src={metamask} alt="" />
-                  </div>
-                  Connect your wallet
-                </Button> */}
                   <Button
                     variant="connect"
                     style={{
@@ -980,20 +737,9 @@ LandingProps | any): JSX.Element => {
                       margin: "40px 0 16px 0 ",
                       border: "1px solid white",
                     }}
-                    // variant="primary"
-                    // style={{
-                    //   width: "190px",
-                    //   fontSize: "16px",
-                    //   padding: "10px 16.5px",
-                    // }}
                     onClick={async () => {
                       await connectWallet();
                       setWallet(true);
-                      // connectWallet().then(() => {
-                      //   getData();
-                      //   setWallet(true);
-                      //   console.log("hello");
-                      // });
                     }}
                   >
                     <div style={{ position: "absolute", left: "5px" }}>
@@ -1011,11 +757,6 @@ LandingProps | any): JSX.Element => {
                     onClick={async () => {
                       await connectWallet();
                       setWallet(true);
-                      // connectWallet().then(() => {
-                      //   getData();
-                      //   setWallet(true);
-                      //   console.log("hello");
-                      // });
                     }}
                   >
                     Create a new wallet
@@ -1040,23 +781,7 @@ LandingProps | any): JSX.Element => {
                     <br />
                     social accounts
                   </Typography>
-                  {/* <Typography variant="smallest" color={"black"}></Typography> */}
                 </a>
-                {/* <Image src="/Icons/arcana.svg" width="223px" height="68px" /> */}
-                {/* <Button
-              variant="primary"
-              style={{
-                background: "white",
-                color: "black",
-                border: "1px solid #1E1E1E",
-                boxShadow: "0",
-              }}
-              onClick={async () => {
-                await connectArcana();
-              }}
-            >
-              Connect Arcana
-            </Button> */}
               </div>
             )}
             {addDetailsPage && (

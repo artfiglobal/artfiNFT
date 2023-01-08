@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-// import { Typography } from "../../../reusables2/Atoms";
-import { Checkbox } from "@mantine/core";
+import Select from "react-select";
+import { ethers } from "ethers";
+
 import style from "./priceCard.module.scss";
-import { Container, Typography, Button } from "../../../reusables2/Atoms";
+import { Typography, Button } from "../../../reusables2/Atoms";
 import GetWhitelisted from "../getWhitelisted/getWhitelisted";
 import { FormDataInterface } from "../../../../types";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-// import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Select from "react-select";
+import { USDCADDR, USDTADDR } from "../../../../config";
+
 const PriceCard = ({
   formData,
   setFormData,
@@ -20,30 +17,31 @@ const PriceCard = ({
   price,
   emailAddress,
   setEmailAddress,
-}: //   unitValueTotal,
+  setCurrency,
+  showApprove,
+  doApprove
+}: 
 {
   formData: FormDataInterface;
   setFormData: (data: FormDataInterface) => void;
-  // initialPrice: number;
-  //   unitValueTotal: number;
   selCnt: number;
   price: number;
   setPrice: any;
   completePurchase: any;
   emailAddress: string;
   setEmailAddress: any;
+  setCurrency: any;
+  doApprove: any;
+  showApprove: boolean;
 }) => {
-  const [checkCurrency, setCheckCurrency] = useState("");
-  // console.log(checkCurrency, "check currency");
-  // const [age, setAge] = React.useState("");
-
-  const handleChange = (event: any) => {
-    setCheckCurrency(event.value as string);
+  const handleChange = async (event: any) => {
+    setCurrency(event.value as string);
   };
+
   const options = [
-    { value: "usdc", label: "USDC" },
-    { value: "usdt", label: "USDT" },
-    { value: "matic", label: "MATIC" },
+    { value: USDCADDR, label: "USDC" },
+    { value: USDTADDR, label: "USDT" },
+    { value: ethers.constants.AddressZero, label: "MATIC" },
   ];
 
   return (
@@ -62,40 +60,23 @@ const PriceCard = ({
           onChange={handleChange}
           options={options}
         />
-        {/* <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Select Currency</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={checkCurrency}
-            label="Select Currency"
-            onChange={handleChange}
-          >
-            <MenuItem value="usdc">USDC</MenuItem>
-            <MenuItem value="usdt">USDT</MenuItem>
-            <MenuItem value="matic">MATIC</MenuItem>
-          </Select>
-        </FormControl> */}
       </div>
       <div className={style.checkBox}>
-        <Button
-          type="submit"
-          //   disabled={cellProps.length === 0}
-          variant="secondary"
-          onClick={() => {
-            console.log("approved");
-          }}
-          style={{
-            padding: "15px 30px",
-            // marginTop: "40px",
-            height: "50px",
-            width: "120px",
-            borderRadius: "10px",
-          }}
-          //   onClick={completePurchase}
-        >
-          Approved
-        </Button>
+        {showApprove &&
+          <Button
+            type="submit"
+            variant="secondary"
+            onClick={() => doApprove()}
+            style={{
+              padding: "15px 30px",
+              height: "50px",
+              width: "120px",
+              borderRadius: "10px",
+            }}
+          >
+            Approve
+          </Button>
+        }
       </div>
       <div className={style.divider}></div>
       <Typography variant="popup2" color="white">
@@ -134,21 +115,6 @@ const PriceCard = ({
           {price != undefined ? price * selCnt : 0}$
         </Typography>
       </div>
-      {/* <Button
-        type="submit"
-        //   disabled={cellProps.length === 0}
-        variant="secondary"
-        style={{
-          padding: "15px 30px",
-          marginTop: "40px",
-          height: "50px",
-          width: "100%",
-          borderRadius: "10px",
-        }}
-          onClick={completePurchase}
-      >
-        Whitelist now
-      </Button> */}
 
       <GetWhitelisted
         setFormData={setFormData}
@@ -157,7 +123,6 @@ const PriceCard = ({
         emailAddress={emailAddress}
         setEmailAddress={setEmailAddress}
         completePurchase={completePurchase}
-        checkCurrency={checkCurrency}
       />
     </div>
   );

@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { SelectableGroup } from "react-selectable-fast";
-import ImageFraction from "./Image";
+/* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from "react";
 import { Typography } from "../reusables2/Atoms";
 import style from "./fractions.module.scss";
-// import Image from "next/image";
-// import { Typography } from "../reusables2/Atoms/Typography/index";
-// import style from "./Landing.module.scss";
-import {
-  createSelectable,
-  SelectAll,
-  DeselectAll,
-} from "react-selectable-fast";
-import SnackBar from "../SnackBar/SnackBar";
-import { FaCommentsDollar } from "react-icons/fa";
 
 export default function SelectFractionNFTs({
   isShown,
   setIsShown,
   setCoords,
   setSelectedItems,
-  handleSelectionClear,
   makeItWork,
   artWorkImage,
   pressKey,

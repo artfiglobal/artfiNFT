@@ -1,17 +1,16 @@
 import React, { useContext } from "react";
-import styles from "./getWhitelisted.module.scss";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { Input, Select, ActionIcon, Divider, Checkbox } from "@mantine/core";
+import { Checkbox } from "@mantine/core";
+import Image from "next/image";
+import axios from "axios";
+
 import closeIcon from "../../../../public/Icons/closeIcon.svg";
-import TextField from "@mui/material/TextField";
-// import Web3Context from "../../../context/Web3Context";
 import { Button } from "../../../reusables2/Atoms";
 import Web3Context from "../../../../context/Web3Context";
 import Typography from "../../../reusables2/Atoms/Typography2";
-import Image from "next/image";
-import Link from "next/link";
-import axios from "axios";
+import styles from "./getWhitelisted.module.scss";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -19,17 +18,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 480,
   bgcolor: "background.paper",
-  //   border: "2px solid #000",
   padding: "50px 40px",
-  //   paddingTop:"",
-  //   paddingBottom:"",
-  //   paddingRight:"",
-  //   paddingLeft:"",
   boxShadow: 24,
   height: "474px",
   borderRadius: "20px",
-
-  //   p: 4,
 };
 
 const GetWhitelisted = ({
@@ -39,12 +31,9 @@ const GetWhitelisted = ({
   formData,
   emailAddress,
   setEmailAddress,
-  checkCurrency,
 }: any) => {
   const { web3Data } = useContext(Web3Context);
-  // console.log(formData, "!formData.contractSigned");
   const [open, setOpen] = React.useState(false);
-  // const [emailAddrees, setEmailAddrees] = React.useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -89,7 +78,6 @@ const GetWhitelisted = ({
           width: "100%",
           borderRadius: "10px",
         }}
-        //   onClick={completePurchase}
       >
         Whitelist now
       </Button>
@@ -186,10 +174,7 @@ const GetWhitelisted = ({
           <div style={{ width: "fit-content", margin: "0 auto" }}>
             <Button
               type="submit"
-              // disabled={!formData.contractSigned}
               variant="primary"
-              //   onClick={handleOpen}
-
               style={{
                 padding: "15px 30px",
                 height: "68px",
@@ -199,11 +184,11 @@ const GetWhitelisted = ({
               }}
               onClick={() => {
                 completePurchase();
+                handleClose();
                 // confirmEmailAddress();
               }}
             >
               Whitelist
-              {/* <Link href="/email-confirmation"></Link> */}
             </Button>
           </div>
         </Box>
