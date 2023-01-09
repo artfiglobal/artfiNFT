@@ -1,0 +1,300 @@
+.artworkImage_container {
+  width: 100%;
+  // height: 720px;
+  margin-top: 110px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 102px 0;
+  object-fit: contain;
+  img {
+    width: 843px !important;
+    height: 515px !important;
+    @media screen and (max-width: 1240px) {
+      width: 726px !important;
+      height: 444px !important;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 600px !important;
+      height: 366px !important;
+    }
+    @media screen and (max-width: 768px) {
+      width: 450px !important;
+      height: 275px !important;
+    }
+    @media screen and (max-width: 576px) {
+      width: 337px !important;
+      height: 206px !important;
+    }
+    @media screen and (max-width: 480px) {
+      width: 281px !important;
+      height: 172px !important;
+    }
+  }
+  @media screen and (max-width: 1240px) {
+    // width: 100%;
+    // height: 670px;
+  }
+}
+.artworkImage {
+  height: 720px;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  // object-fit: contain;
+  @media screen and (max-width: 1440px) {
+    // width: 100%;
+    height: 100%;
+  }
+}
+.about_artwork {
+  line-height: 50px;
+  font-size: 32px;
+  padding: 75px 0 !important;
+  width: 67.5%;
+  margin: 0 auto;
+  font-family: "Plus Jakarta Sans";
+  h2 {
+    margin: 0;
+    font-size: 32px;
+    display: inline;
+    font-weight: 700;
+  }
+  p {
+    display: inline;
+    margin: 0;
+    font-weight: 400;
+    max-width: 971px;
+    word-wrap: break-word;
+  }
+}
+.artwork_Details {
+  padding-top: 75px;
+  padding-bottom: 50px;
+
+  h3 {
+    margin: 0 auto;
+  }
+  .artwork_details_inner {
+    display: grid;
+    max-width: 1188px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    grid-template-columns: 24% 24% 24%;
+    column-gap: 50px;
+    margin: 0 auto;
+    row-gap: 71px;
+    margin-top: 80px;
+    div {
+      margin: 0;
+      display: flex;
+      // max-width: 275px;
+      flex-direction: column;
+      align-items: flex-start;
+      p {
+        width: fit-content;
+        font-family: "Plus Jakarta Sans";
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+    a {
+      font-size: 20px;
+      font-family: "Plus Jakarta Sans";
+      font-weight: 600;
+      color: #4527b3;
+    }
+    @media screen and (max-width: 1240px) {
+      margin-top: 69px;
+      row-gap: 61px;
+
+      a {
+        font-size: 17px;
+      }
+      p {
+        font-size: 17px !important;
+        line-height: 24px !important;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      row-gap: 50px;
+      margin-top: 57px;
+      grid-template-columns: 30% 30%;
+      justify-content: center;
+      a {
+        font-size: 14px;
+      }
+      p {
+        font-size: 14px !important;
+        line-height: 20px !important;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      row-gap: 38px;
+      margin-top: 43px;
+      grid-template-columns: 35% 35%;
+      justify-content: center;
+      a {
+        font-size: 11px;
+      }
+      p {
+        font-size: 11px !important;
+        line-height: 15px !important;
+      }
+    }
+    @media screen and (max-width: 576px) {
+      row-gap: 28px;
+      margin-top: 32px;
+      grid-template-columns: 50%;
+      justify-content: center;
+    }
+
+    img {
+      object-fit: contain !important;
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+}
+.about_artist {
+  width: 1036px;
+  margin: 0 auto;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  h3 {
+    margin: 0 auto;
+  }
+
+  p {
+    font-size: 24px;
+    font-family: "Plus Jakarta Sans";
+    margin: 0;
+    line-height: 36px;
+    font-weight: 400;
+    color: #585858;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .artwork_Details {
+    padding-top: 65px;
+    padding-bottom: 43px;
+  }
+  .artworkImage_container {
+    margin-top: 95px;
+    // height: 670px;
+    padding: 88px 0;
+  }
+  .about_artwork {
+    line-height: 43px;
+    padding: 65px 0 !important;
+    font-size: 28px;
+    h2 {
+      font-size: 28px;
+    }
+  }
+  .about_artist {
+    width: 70%;
+    padding: 86px 0;
+    p {
+      font-size: 21px;
+      line-height: 31px;
+      max-width: 971px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .artwork_Details {
+    padding-bottom: 36px;
+    padding-top: 53px;
+  }
+  .artworkImage_container {
+    margin-top: 78px;
+    padding: 73px 0;
+    // height: 512px;
+  }
+  .about_artwork {
+    line-height: 36px;
+    padding: 53px 0 !important;
+    font-size: 23px;
+    h2 {
+      font-size: 23px;
+    }
+  }
+  .about_artist {
+    gap: 30px;
+    padding: 71px 0;
+
+    p {
+      font-size: 17px;
+      line-height: 21px;
+      word-wrap: break-word;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .artwork_Details {
+    padding-bottom: 27px;
+    padding-top: 40px;
+  }
+  .artworkImage_container {
+    // height: 384px;
+    padding: 54px 0;
+    margin-top: 59px;
+  }
+  .about_artwork {
+    gap: 20px;
+    line-height: 27px;
+    padding: 40px 0 !important;
+    font-size: 17px;
+    h2 {
+      font-size: 17px;
+    }
+  }
+  .about_artist {
+    padding: 53px 0;
+    p {
+      line-height: 19.2px;
+      font-size: 13px;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .artwork_Details {
+    padding-bottom: 20px;
+    padding-top: 30px;
+  }
+  .artworkImage_container {
+    // height: 288px;
+    padding: 41px 0;
+    margin-top: 44px;
+  }
+  .about_artwork {
+    line-height: 20px;
+    padding: 30px 0 !important;
+    font-size: 13px;
+    h2 {
+      font-size: 13px;
+    }
+  }
+  .about_artist {
+    padding: 40px 0;
+    p {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .artwork_Details {
+    padding-bottom: 17px;
+    padding-top: 25px;
+  }
+  .artworkImage_container {
+    padding: 34px 0;
+    // height: 240px;
+    margin-top: 44px;
+  }
+}

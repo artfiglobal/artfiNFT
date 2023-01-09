@@ -1,0 +1,641 @@
+// .container {
+//   background-color: #4527b3;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 10vh 60px;
+//   .title {
+//     font-family: "Plus Jakarta Sans";
+//     font-style: normal;
+//     font-weight: 800;
+//     font-size: 72px;
+//     line-height: 130%;
+//     text-align: center;
+//     color: #ffffff;
+//     @media (max-width: 768px) {
+//       font-size: 40px;
+//     }
+//   }
+//   .cardHolder {
+//     display: flex;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     width: 100%;
+//     margin-bottom: 72px;
+//     .flipCard {
+//       background-color: transparent;
+//       width: 300px;
+//       height: 300px;
+//       perspective: 1000px;
+//       cursor: pointer;
+//       margin: 24px;
+//       .flipCard_inner {
+//         position: relative;
+//         width: 100%;
+//         height: 100%;
+//         text-align: center;
+//         transition: transform 0.3s ease-out;
+//         transform-style: preserve-3d;
+//         -webkit-transform-style: preserve-3d;
+//         -moz-transform-style: preserve-3d;
+//         -o-transform-style: preserve-3d;
+//         -ms-transform-style: preserve-3d;
+//         // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+//         border-radius: 24px;
+//         .flipCard_front {
+//           position: absolute;
+//           width: 100%;
+//           height: 100%;
+//           -webkit-backface-visibility: hidden;
+//           backface-visibility: hidden;
+//           color: white;
+//           border-radius: 24px;
+//           padding: 12px;
+//           z-index: 2;
+//           &::after {
+//             content: "";
+//             position: absolute;
+//             bottom: 0;
+//             left: 0;
+//             width: 100%;
+//             height: 180px;
+//             border-radius: 24px;
+//             background: linear-gradient(
+//               0deg,
+//               #000000 -10.39%,
+//               rgba(122, 122, 122, 0) 100.69%
+//             );
+//             border-radius: 0px 0px 24px 24px;
+//             z-index: -1;
+//           }
+//           img {
+//             position: absolute;
+//             border-radius: 32px;
+//             top: 0;
+//             left: 0;
+//             z-index: -1;
+//             width: 100%;
+//             height: 100%;
+//             object-fit: cover;
+//           }
+//           .cardFrontContent {
+//             position: absolute;
+//             bottom: 20px;
+//             p {
+//               font-family: "Plus Jakarta Sans";
+//               font-style: normal;
+//               font-weight: 700;
+//               font-size: 28px;
+//               line-height: 130%;
+//               text-align: left;
+//               margin: 0.2em 0;
+//               /* or 52px */
+//               color: #ffffff;
+//             }
+//             .designation {
+//               font-weight: 500;
+//               opacity: 0.7;
+//               font-size: 22px;
+//             }
+//           }
+//         }
+//         .flipCard_back {
+//           position: absolute;
+//           width: 100%;
+//           height: 100%;
+//           -webkit-backface-visibility: hidden;
+//           -moz-backface-visibility: hidden;
+
+//           backface-visibility: hidden;
+//           background-color: #7d64da;
+//           color: white;
+//           -webkit-transform: rotateY(180deg);
+//           transform: rotateY(180deg);
+//           border-radius: 24px;
+//           display: flex;
+//           flex-direction: column;
+//           justify-content: center;
+//           padding: 14px;
+
+//           .social {
+//             display: flex;
+//             padding-top: 16px;
+//             padding-left: 6px;
+//             font-size: 1.5rem;
+//             gap: 10px;
+//             color: #7d64da;
+
+//             div {
+//               display: flex;
+//               align-items: center;
+//               justify-content: center;
+//               background: white;
+//               width: 1.7rem;
+//               border-radius: 1.7rem;
+//               height: 1.7rem;
+//               padding: 7px;
+//             }
+//           }
+
+//           p {
+//             font-family: "Plus Jakarta Sans";
+//             font-style: normal;
+//             font-weight: bold;
+//             font-size: 28px;
+//             margin: 0 0;
+//             line-height: 130%;
+//             /* or 52px */
+//             color: #ffffff;
+//             text-align: left;
+//           }
+//           span {
+//             font-family: "Plus Jakarta Sans";
+//             font-style: normal;
+//             font-weight: 400;
+//             font-size: 14px;
+//             line-height: 130%;
+//             /* or 52px */
+//             color: #ffffff;
+//             text-align: left;
+//           }
+//         }
+//       }
+//       &:hover .flipCard_inner {
+//         -webkit-transform: rotateY(180deg);
+
+//         transform: rotateY(180deg);
+//       }
+//     }
+//     @media screen and (max-width: 800px) {
+//       justify-content: center;
+//     }
+//   }
+//   .diamond {
+//     position: absolute;
+//     @media screen and (max-width: 768px) {
+//       display: none;
+//     }
+//   }
+// }
+.name {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: left;
+  margin-bottom: 6px;
+  margin-top: 10px;
+
+  color: #ffffff;
+}
+.cardtitle {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: left !important;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+.container {
+  // background-color: #4527b3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 0;
+  .innercontainer {
+    // background-color: #4527b3;
+    padding: 0 0;
+    width: 100%;
+    // height: 300px;
+    background: linear-gradient(
+      to bottom,
+      #6242a7 0%,
+      #6242a7 30%,
+      white 30%,
+      white 100%
+    );
+  }
+  .title2 {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 130%;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    @media (max-width: 768px) {
+      font-size: 40px;
+      margin-top: 30px;
+    }
+  }
+  .title {
+    font-family: "Plus Jakarta Sans";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 130%;
+    text-align: center;
+    color: black;
+    margin-bottom: 70px;
+    @media (max-width: 768px) {
+      font-size: 40px;
+    }
+  }
+  .cardHolder {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 78px;
+    // margin-bottom: 72px;
+    .flipCard {
+      background-color: transparent;
+      width: 266px;
+      height: 321px;
+      perspective: 1000px;
+      cursor: pointer;
+      margin: 24px;
+      .flipCard_inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.3s ease-out;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 24px;
+        .flipCard_front {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          color: white;
+          border-radius: 24px;
+          padding: 12px;
+          z-index: 2;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            border-radius: 24px;
+            background: linear-gradient(
+              0deg,
+              #000000 -10.39%,
+              rgba(122, 122, 122, 0) 100.69%
+            );
+            border-radius: 0px 0px 24px 24px;
+            z-index: -1;
+          }
+
+          img {
+            position: absolute;
+            border-radius: 32px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .cardFrontContent {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 90%;
+            p {
+              font-family: "Plus Jakarta Sans";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 130%;
+              text-align: center;
+              margin: 0.2em 0;
+              /* or 52px */
+              color: #ffffff;
+            }
+            .designation {
+              font-weight: 500;
+              opacity: 0.7;
+              text-align: center;
+
+              font-size: 16px;
+            }
+          }
+        }
+        .flipCard_back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+
+          backface-visibility: hidden;
+          background-color: #7d64da;
+          color: white;
+          -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border-radius: 24px;
+          display: flex;
+          flex-direction: column;
+          // justify-content: center;
+          padding: 14px;
+          label {
+            height: 235px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            text-align: left;
+
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+
+            color: #ffffff;
+          }
+
+          .social {
+            display: flex;
+            padding-top: 16px;
+            padding-left: 6px;
+            font-size: 1.5rem;
+            gap: 10px;
+            color: #7d64da;
+
+            div {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: white;
+              width: 1.7rem;
+              border-radius: 1.7rem;
+              height: 1.7rem;
+              padding: 7px;
+            }
+          }
+
+          p {
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0 0;
+            line-height: 130%;
+            /* or 52px */
+            color: #ffffff;
+            text-align: left;
+          }
+          span {
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            /* or 52px */
+            color: #ffffff;
+            text-align: left;
+          }
+        }
+      }
+      &:hover .flipCard_inner {
+        -webkit-transform: rotateY(180deg);
+
+        transform: rotateY(180deg);
+      }
+    }
+    @media screen and (max-width: 800px) {
+      justify-content: center;
+    }
+  }
+  .cardHolder2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 78px;
+    // margin-bottom: 72px;
+    .flipCard {
+      background-color: transparent;
+      width: 266px;
+      height: 321px;
+      perspective: 1000px;
+      cursor: pointer;
+      margin: 24px;
+      .flipCard_inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.3s ease-out;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 24px;
+        .flipCard_front {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          color: white;
+          border-radius: 24px;
+          padding: 12px;
+          z-index: 2;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            border-radius: 24px;
+            background: linear-gradient(
+              0deg,
+              #000000 -10.39%,
+              rgba(122, 122, 122, 0) 100.69%
+            );
+            border-radius: 0px 0px 24px 24px;
+            z-index: -1;
+          }
+          img {
+            position: absolute;
+            border-radius: 32px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .cardFrontContent {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 90%;
+            p {
+              font-family: "Plus Jakarta Sans";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 130%;
+              text-align: center;
+              margin: 0.2em 0;
+              /* or 52px */
+              color: #ffffff;
+            }
+            .designation {
+              font-weight: 500;
+              opacity: 0.7;
+              text-align: center;
+
+              font-size: 16px;
+            }
+          }
+        }
+        .flipCard_back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+
+          backface-visibility: hidden;
+          background-color: #7d64da;
+          color: white;
+          -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border-radius: 24px;
+          display: flex;
+          flex-direction: column;
+          // justify-content: center;
+          padding: 14px;
+          label {
+            height: 190px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            text-align: left;
+
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+
+            color: #ffffff;
+          }
+
+          .social {
+            display: flex;
+            padding-top: 16px;
+            padding-left: 6px;
+            font-size: 1.5rem;
+            gap: 10px;
+            color: #7d64da;
+
+            div {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: white;
+              width: 1.7rem;
+              border-radius: 1.7rem;
+              height: 1.7rem;
+              padding: 7px;
+            }
+          }
+
+          p {
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0 0;
+            line-height: 130%;
+            /* or 52px */
+            color: #ffffff;
+            text-align: left;
+          }
+          span {
+            font-family: "Plus Jakarta Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            /* or 52px */
+            color: #ffffff;
+            text-align: left;
+          }
+        }
+      }
+      &:hover .flipCard_inner {
+        -webkit-transform: rotateY(180deg);
+
+        transform: rotateY(180deg);
+      }
+    }
+    @media screen and (max-width: 800px) {
+      justify-content: center;
+    }
+  }
+
+  .diamond {
+    position: absolute;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+  ::-webkit-scrollbar {
+    height: 1px;
+    width: 1px;
+  }
+}
+.flipCard_front_after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  color: white;
+  background: #d9d9d9;
+
+  border-radius: 24px;
+  padding: 12px;
+  z-index: 2;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    border-radius: 24px;
+    background: #d9d9d9;
+    border-radius: 0px 0px 24px 24px;
+    z-index: -1;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

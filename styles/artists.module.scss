@@ -1,0 +1,124 @@
+.artistsPage {
+  padding-top: 155px;
+  //   margin-top: 80px;
+  padding-bottom: 123px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.cardsContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  column-gap: 40px;
+  height: 100%;
+  row-gap: 40px;
+  margin-top: 80px;
+
+  @media screen and (max-width: 1240px) {
+    column-gap: 34px;
+    row-gap: 34px;
+  }
+  @media screen and (max-width: 1024px) {
+    column-gap: 28px;
+    row-gap: 28px;
+  }
+  @media screen and (max-width: 768px) {
+    column-gap: 21px;
+    row-gap: 21px;
+  }
+  @media screen and (max-width: 576px) {
+    column-gap: 16px;
+    row-gap: 16px;
+    grid-template-columns: auto auto;
+  }
+}
+.artistCard {
+  width: 266px;
+  height: 321px;
+  position: relative;
+  cursor: pointer;
+  img {
+    width: 266px !important;
+    height: 321px !important;
+    border-radius: 20px;
+  }
+  h4 {
+    position: absolute;
+    bottom: 46px;
+    z-index: 3;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @media screen and (max-width: 1440px) {
+    width: 266px;
+    height: 321px;
+    img {
+      width: 266px !important;
+      height: 321px !important;
+      border-radius: 20px;
+    }
+  }
+  @media screen and (max-width: 1240px) {
+    width: 230px;
+    height: 276px;
+    img {
+      width: 230px !important;
+      height: 276px !important;
+      border-radius: 20px;
+    }
+    h4 {
+      bottom: 40px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    width: 189px;
+    height: 228px;
+    img {
+      width: 189px !important;
+      height: 228px !important;
+      border-radius: 20px;
+    }
+    h4 {
+      bottom: 33px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: 142px;
+    height: 171px;
+    img {
+      width: 142px !important;
+      height: 171px !important;
+      border-radius: 20px;
+    }
+    h4 {
+      bottom: 25px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    width: 189px;
+    height: 228px;
+    img {
+      width: 189px !important;
+      height: 228px !important;
+      border-radius: 20px;
+    }
+    h4 {
+      bottom: 18px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 142px;
+    height: 171px;
+    img {
+      width: 142px !important;
+      height: 171px !important;
+      border-radius: 20px;
+    }
+    h4 {
+      bottom: 15px;
+    }
+  }
+}
