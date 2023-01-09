@@ -264,13 +264,11 @@ LandingProps | any): JSX.Element => {
               const arcanaUserInfo = await arcanaProvider.getUser();
               if(arcanaUserInfo) {
                 const myArcanaWalletAddress = arcanaUserInfo.address;
-                const hash = await arcanaProvider.provider.request({
-                  method: 'eth_sendTransaction',
-                    params: [{
-                      from: myArcanaWalletAddress,
-                      to: ARTFIWHITELIST,
-                      value: 0,
-                  },],
+                const ethProvider = new ethers.providers.Web3Provider(arcanaProvider.provider);
+                const hash = await ethProvider.sendTransaction({
+                  from: myArcanaWalletAddress,
+                  to: ARTFIWHITELIST,
+                  value: 0,
                 })
                 console.log({ hash })
               }
