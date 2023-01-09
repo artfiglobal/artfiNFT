@@ -24,33 +24,9 @@ export const ArtInfo = ({
   artistImage,
 }: ArtInfoProps | any): JSX.Element => {
   const { artistId } = useContext(GeneralContext);
-
-  // useEffect(() => {
-  //   const fetchArtist = async () => {
-  //     try {
-  //       const response = axios.get(
-  //         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artistId}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthcmVlbUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlkIjoiNjM3ZjE2YjdhZmM4ZDk3ZGMzZWYyZjU4IiwiaWF0IjoxNjcwODE2MDczLCJleHAiOjE2NzM0MDgwNzN9.850__kq6IrHdiqa3J43BL1bN_w3ZLwQOSdmnH4Cokys`,
-  //             "Content-Type": "application/json",
-  //             "Content-Length": "<calculated when request is sent>",
-  //           },
-  //         }
-  //       );
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  // }, []);
-
-  // console.log(sheetName);
-  // console.log(artistImage);
-  // const setSheetName = sheetName;
-  // const pureSheetName = setSheetName.slice(42, 0);
+  
   return (
     <>
-      {/* <img src={`http://localhost:4200/api/${artWorkImage}`} alt="" /> */}
       <div className={style.info}>
         <Avatar
           src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artistImage}`}

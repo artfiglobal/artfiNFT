@@ -27,7 +27,7 @@ import PriceCard from "../../reusables/Components/PriceCard/PriceCard";
 import LoaderScreen from "../../reusables2/CircularProgress/CircularProgress";
 
 import { ARTFIWHITELIST, RPCURL } from "../../../config";
-import { abi as ArtfiWhitelistABI } from "../../../abi/ArtfiWhitelist.json";
+import artfiWhitelistABI from "../../../abi/ArtfiWhitelist.json";
 import ERC20ABI from "../../../abi/ERC20.json";
 
 type LandingProps = {
@@ -37,7 +37,7 @@ type LandingProps = {
 const web3Provider = new ethers.providers.JsonRpcProvider(RPCURL);
 const artfiWhitelistContract = new ethers.Contract(
   ARTFIWHITELIST,
-  ArtfiWhitelistABI,
+  artfiWhitelistABI,
   web3Provider
 );
 
@@ -109,12 +109,6 @@ export const Landing = ({
 }:
 
 LandingProps | any): JSX.Element => {
-  const initialPrice = offerWhitelist.price;
-  let makeItWork: any = useRef(null);
-  useEffect(() => {
-    makeItWork.currrent;
-  }, []);
-  
   const [opened, setOpened] = useState(false);
   const [, setIsWhiteListed] = useState(false);
   const [confirmPurchase, setConfirmPurchase] = useState(false);
@@ -164,7 +158,6 @@ LandingProps | any): JSX.Element => {
 
     setSelCnt(0);
     setCellProps(items);
-    // makeItWork.current.context.selectable.clearSelection();
   };
   
   const { connectWallet, walletAddress, signer } =
@@ -291,9 +284,24 @@ LandingProps | any): JSX.Element => {
                 setConfirmPurchase(false)
                 setOpened(true)
 
-                await axios.post(
+                axios.post(
                   `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
-                  { body: emailAddress }
+                  {
+                    body: {
+                      emailAddress
+                    }
+                  }
+                );
+
+                axios.post(
+                  `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/payfraction`,
+                  {
+                    body: {
+                      walletAddress,
+                      whitelistId: offeringId,
+                      isPay: true
+                    }
+                  }
                 );
               }).catch(function (err1: any) {
                 setConfirmPurchase(false)
@@ -518,14 +526,11 @@ LandingProps | any): JSX.Element => {
             <TransformComponent>
               <SelectFractionNFTs
                 isShown={isShown}
-                // columnCnt={columnCnt}
-                // rowCnt={rowCnt}
                 coordinates={coordinates}
                 tableRowsCols={tableRowsCols}
                 cellProps={cellProps}
                 fractionSize={fractionSize}
                 setCellProps={setCellProps}
-                makeItWork={makeItWork}
                 setOpen={setOpen}
                 setSelectedItems={setSelectedItems}
                 setIsShown={setIsShown}
@@ -573,13 +578,6 @@ LandingProps | any): JSX.Element => {
           </div>
         </div>
 
-        {/* <div className={style.newEra}>
-          {Array(1000)
-            .fill(" ")
-            .map((item, index) => {
-              return <p></p>;
-            })}
-        </div> */}
         <div className={style.selectNFTs}>
           <div className={style.selectHeader}>
             <div>
@@ -612,15 +610,6 @@ LandingProps | any): JSX.Element => {
                 );
               }
             })}
-            {/* {Array(10)
-              .fill(" ")
-              .map((item, index) => {
-                return (
-                  // <div className={style.singleFraction}>
-                  // </div>
-                  <Button variant="fractionBTN">#05</Button>
-                );
-              })} */}
           </div>
         </div>
         <div className={style.landingBottom}>

@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/tba.module.scss";
-import { useRouter } from "next/router";
+import Image from "next/image";
 import axios from "axios";
-import { Navigation } from "../../components/reusables/Components";
+import { useRouter } from "next/router";
 import { Button } from "@mui/material";
-import Modal from "../../components/reusables/Components/Modal";
 import Link from "next/link";
 
-// console.log(window.location.href)
+import styles from "../../styles/tba.module.scss";
+import { Navigation } from "../../components/reusables/Components";
+import Modal from "../../components/reusables/Components/Modal";
 
 const tba = () => {
-  // const router:any = useRouter();
   const { query, isReady } = useRouter();
-  // console.log(router.query)
   const [id, setId] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -56,15 +54,11 @@ const tba = () => {
             </Link>
             {/* <span className={styles.name}>
             </span>{" "} */}
-            {id ? (
-              header.IsActive ? (
-                <img src="/Icons/right.svg" width="20px" height="20px" />
-              ) : (
-                ""
-              )
-            ) : (
-              ""
-            )}
+            {
+              id && header.IsActive ?
+              <Image alt="right" src="/Icons/right.svg" width="20px" height="20px" />
+              : <></>
+            }
           </div>
           <div>
             <Button
@@ -78,14 +72,14 @@ const tba = () => {
           </div>
         </div>
         <div>
-          {id ? (
-            <img
+          {
+            id ? 
+            <Image
               src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${header.headerDetails.chooseImageOfArtWork}`}
               className={styles.img}
-            />
-          ) : (
-            <img src="" />
-          )}
+              alt="headerdetails"
+            /> : <></>
+          }
         </div>
       </div>
     </>

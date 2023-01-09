@@ -27,54 +27,18 @@ const ArtworkDetailsHeader = ({ artistId, artworkDetails }: any) => {
   // console.log(width, "newnewnew");
   return (
     <div className={style.header_container}>
-      <div className={style.backdrop}></div>
-      {/* {showVideo ? (
-        <div>
-          <div className={style.video}>
-            {playNowButtonVideoLink ? (
-              <iframe
-                src={playNowButtonVideoLink}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "0",
-                }}
-                className={style.videos}
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            ) : (
-              <iframe
-                src="https://player.vimeo.com/video/784067091?h=9bd9ab629c&badge=0&autopause=0&player_id=0&app_id=58479/embed?&autoplay=1&background=1&muted=1"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "0",
-                }}
-                className={style.videos}
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            )}
-          </div>
-
-          <script src="https://player.vimeo.com/api/player.js"></script>
+      <div className={style.backdrop} />
+      {
+        backgroundCoverPhoto && 
+        <div className={style.imageContainer}>
+          <Image
+            width={innerWidth}
+            height={innerWidth * 0.5}
+            src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${backgroundCoverPhoto}`}
+            alt="image"
+          />
         </div>
-      ) : ( */}
-      <div className={style.imageContainer}>
-        <Image
-          width={innerWidth}
-          height={innerWidth * 0.5}
-          // layout="fill"
-          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${backgroundCoverPhoto}`}
-          alt="image"
-        />
-      </div>
-      {/* )} */}
+      }
       <div className={style.header_details}>
         <h5>ARTWORK DETAILS</h5>
         <h1>{artworkName}</h1>
@@ -84,7 +48,7 @@ const ArtworkDetailsHeader = ({ artistId, artworkDetails }: any) => {
             <p style={{ opacity: "1", cursor: "pointer" }}>{artistName}</p>
           </Link>
           <div>
-            <Image src="/Publiced/Vector.svg" width={24} height={24} />
+            <Image src="/Publiced/Vector.svg" alt="vector" width={24} height={24} />
           </div>
         </div>
         <Button
@@ -98,8 +62,9 @@ const ArtworkDetailsHeader = ({ artistId, artworkDetails }: any) => {
             style={{ height: "fit-content" }}
             href={playNowButtonVideoLink + "&allowfullscreen"}
             target="_blank"
+            rel="noreferrer"
           >
-            <img src="/Icons/play.svg" style={{ marginRight: "10px" }} />
+            <Image src="/Icons/play.svg" alt="play svg" layout="fill" style={{ marginRight: "10px" }} />
             Play now
           </a>
         </Button>

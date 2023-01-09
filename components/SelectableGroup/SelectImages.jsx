@@ -8,7 +8,6 @@ export default function SelectFractionNFTs({
   setIsShown,
   setCoords,
   setSelectedItems,
-  makeItWork,
   artWorkImage,
   pressKey,
   setCellProps,
@@ -18,8 +17,6 @@ export default function SelectFractionNFTs({
   setSingleImage,
   singleImage,
   setCoordinates,
-  // rowCnt,
-  // columnCnt,
   tableRowsCols,
   fractionSize,
   selCnt,
@@ -27,7 +24,6 @@ export default function SelectFractionNFTs({
   setOpen,
   coordinates,
 }) {
-  // console.log(singleImage);
   const ToolTipCard = () => {
     return (
       <div
@@ -254,18 +250,6 @@ export default function SelectFractionNFTs({
       }}
     >
       <div onMouseMove={(event) => handleMouseMove(event)}>
-        {/* <SelectableGroup
-          className={style.main}
-          clickClassName="tick"
-          enableDeselect
-          tolerance={0}
-          globalMouse={false}
-          allowClickWithoutSelected={false}
-          duringSelection={handleSelecting}
-          onSelectionClear={(items) => handleSelectionClear(items)}
-          onSelectionFinish={(items) => handleSelectionFinish(items)}
-          //   onSelectedItemUnmount={handleSelectedItemUnmount}
-        > */}
         <div className={style.grid}>
           <img
             src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
@@ -322,10 +306,7 @@ export default function SelectFractionNFTs({
               })}
             </tbody>
           </table>
-
-          {/* <DeselectAll ref={makeItWork}></DeselectAll> */}
         </div>
-        {/* </SelectableGroup> */}
       </div>
     </div>
   );

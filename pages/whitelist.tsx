@@ -1,26 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { Landing } from "../components/Home2";
-import { Button } from "../components/reusables2/Atoms";
-import { Head } from "../components/reusables/Components";
-import styles from "../styles/Home.module.scss";
 import Image from "next/image";
-import { ethers } from "ethers";
+
+import { Landing } from "../components/Home2";
+import styles from "../styles/Home.module.scss";
 import Web3Context from "../context/Web3Context";
-import { web3Modal } from "../lib/Web3Modal/index";
-import { GeneralContext } from "../context/GeneralState";
 import SnackBar from "../components/SnackBar/SnackBar";
-import LoaderScreen from "../components/reusables2/CircularProgress/CircularProgress";
+import { Button } from "../components/reusables2/Atoms";
+import { GeneralContext } from "../context/GeneralState";
+import { Head } from "../components/reusables/Components";
 
 export default function WhitelistLanding() {
-  const {
-    web3Data,
-    setWeb3Data,
-    connectWallet,
-    walletAddress,
-    disconnectWallet,
-  } = useContext(Web3Context);
-  const [price, setPrice] = useState(0);
-
   const [offerWhitelist, setOfferWhitelist] = useState({});
   const [offerUnveiling, setOfferUnveiling] = useState({});
   const [offeringId, setOfferingId] = useState("");
@@ -28,7 +17,6 @@ export default function WhitelistLanding() {
   const [fractionSize, setFractionSize] = useState({ width: 0, height: 0 });
   const [artWorkImage, setArtWorkImage] = useState("");
   const [selCntPrevious, setSelCntPrevios] = useState<any>(0);
-  // const [selCnt, setSelCnt] = useState<any>(0);
   const [artistImage, setArtistImage] = useState("");
   const [addDetailsPage, setAddDetailsPage] = useState(false);
   const [whatYouWillGet, setWhatYouWillGet] = useState(false);
@@ -37,56 +25,24 @@ export default function WhitelistLanding() {
     columnCnt: 0,
     rowCnt: 0,
   });
-  // const [first, setfirst] = useState("");
-  // const [wallet, setWallet] = useState(false);
-  // const [likes, setLikes] = useState(0);
-
   const [cellProps, setCellProps] = useState<any>([]);
   const { setArtistId } = useContext(GeneralContext);
-  // const [findWallet, setFindWallet] = useState("");
   const [open, setOpen] = useState(false);
+  const [, setWallet] = useState(false);
+  const [likes, ] = useState(0);
+
+  const {
+    connectWallet,
+    walletAddress,
+    disconnectWallet,
+  } = useContext(Web3Context);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const first: any = localStorage?.getItem("walletAddress");
     const parsedData = JSON.parse(first);
-    // let variable;
-    // console.log(typeof parsedData, "this is wallet ID");
 
-    const getWalletAddress: any = async () => {
-      const provider = await web3Modal.connect();
-      const library = new ethers.providers.Web3Provider(provider);
-      const walletAddress = await library.listAccounts();
-      // console.log(walletAddress);
-
-      return walletAddress[0];
-      // setFindWallet(walletAddress[0]);
-    };
-    // var makeitWork = "";
-    // const walletAddress = getWalletAddress().then((response: any) => {
-    //   function runrunrn(response: string) {
-    //     makeitWork = response;
-
-    //     return makeitWork;
-    //   }
-    //   return runrunrn(response);
-    //   // return makeitWork;
-    // });
-    // console.log(makeitWork);
-
-    // getWalletAddress();
-
-    // console.log(findWallet, "findWallet");
-    // console.log(walletAddress, "walletAddress");
-    // .then((response) => {
-    //   variable = response;
-    //   console.log(variable, "response");
-    //   return variable;
-    // });
-    // console.log(walletAddress);
     const fetchOffers = () => {
-      // if (items) {
-      //  setItems(items);
-      // }
       fetch(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallongoingtrueoffering`,
         {
@@ -98,10 +54,7 @@ export default function WhitelistLanding() {
         }
       )
         .then((response) => response.json())
-        .then(
-          (response) => {
-            // console.log(response.data.trueOfferings[0], "data");
-            console.log(response.data.trueOfferings[0], "response");
+        .then((response) => {
             setAddDetailsPage(
               response?.data?.trueOfferings[0]?.addDetails && true
             );
@@ -139,19 +92,13 @@ export default function WhitelistLanding() {
               )
                 .then((response) => response.json())
                 .then((response) => {
-                  // const address = "0x4438e0fc3715D7A7519e49247E8b416564f883ED";
                   const fractions = response.fraction;
-                  console.log(fractions, "fractions");
-                  // console.log(cellProps, "cellProps");
-                  // console.log(parsedData, "parsedData");
+                  
                   let flattened: any[] = [];
                   let flattened2: any[] = [];
                   for (let j = 0; j < fractions?.length; j++) {
-                    // flattened.push(fractions[j]?.fractionInfo);
                     if (fractions[j]?.walletAddress === parsedData) {
                       setSelCntPrevios(fractions[j].fractionInfo.length);
-                      // console.log(fractions[j]?.walletAddress, "my wallet");
-                      // console.log(fractions[j].fractionInfo, "my wallet");
                       for (
                         let k = 0;
                         k < fractions[j].fractionInfo.length;
@@ -160,10 +107,6 @@ export default function WhitelistLanding() {
                         flattened.push(fractions[j].fractionInfo[k]);
                       }
                     } else if (fractions[j]?.walletAddress != parsedData) {
-                      // console.log(fractions[j]?.walletAddress, "not my wallet");
-                      // console.log(fractions[j].fractionInfo, "not my wallet");
-                      // console.log(fractions[j].fractionInfo, "sdasdasd");
-                      // setSelCntPrevios(fractions[j].fractionInfo.length);
                       for (
                         let k = 0;
                         k < fractions[j].fractionInfo.length;
@@ -172,18 +115,6 @@ export default function WhitelistLanding() {
                         flattened2.push(fractions[j].fractionInfo[k]);
                       }
                     }
-                    // flattened = [...array];
-                    // if (array?.includes(`${i}`)) {
-                    //   // if (fractions[j]?.walletAddress === parsedData) {
-                    //   //   cellProps[i] = "selected";
-                    //   // } else if (fractions[j]?.walletAddress != parsedData) {
-                    //   // console.log("make it work ");
-                    //   cellProps[i] = "disable";
-                    //   // }
-                    // } else {
-                    //   cellProps[i] = "";
-                    // }
-                    // console.log(flattened.flat());
                   }
                   let combinedArrays = [...flattened, ...flattened2];
                   for (
@@ -200,96 +131,17 @@ export default function WhitelistLanding() {
                       cellProps[i] = "";
                     }
                   }
-
-                  // for (
-                  //   let i = 0;
-                  //   i <
-                  //   data[0].whitelistDetails.rowNumber *
-                  //     data[0].whitelistDetails.columnNumber;
-                  //   i++
-                  // ) {
-                  //   cellProps[i] = "";
-                  // }
-                  // for (
-                  //   let i = 0;
-                  //   i <
-                  //   data[0].whitelistDetails.rowNumber *
-                  //     data[0].whitelistDetails.columnNumber;
-                  //   i++
-                  // ) {
-                  //   cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
-                  // }
+                  
                   setPreviosFractions(flattened);
                 });
             };
             fetchFractions(data);
           }
-          // const fetchFractions = async (previousResponse: any) => {
-          //   // console.log(data, "data");
-
-          // console.log(offerWhitelist);
-          // console.log(data)
         );
-      // var data = response.data.data.trueOfferings;
-      // const offerId = data[0]._id;
-      // setOfferingId(data[0]._id);
-      // const artistImage = response.data.data.artistImage;
-      // setArtistImage(artistImage);
-      // setArtistId(data[0].artistId);
-      // setTableRowsCols({
-      //   columnCnt: data[0].whitelistDetails.columnNumber,
-      //   rowCnt: data[0].whitelistDetails.rowNumber,
-      // });
-      // setFractionSize({
-      //   width: data[0].whitelistDetails.width,
-      //   height: data[0].whitelistDetails.height,
-      // });
-      // setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
-      // const defineWhitelist = () => {
-      //   data.map((item: any, index: number) => {
-      //     if (item.IsOnGoingOffering) {
-      //       setOfferWhitelist(item.whitelistDetails);
-      //       setOfferUnveiling(item.unveilingDetails);
-      //     }
-      //   });
-      // };
-      // defineWhitelist();
-      // const fetchFractions = async (previousResponse: any) => {
-      //   // console.log(data, "data");
-      //   const response = await axios.get(
-      //     `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/getfraction/${offerId}`
-      //   );
-      //   for (
-      //     let i = 0;
-      //     i <
-      //     previousResponse[0].whitelistDetails.rowNumber *
-      //       previousResponse[0].whitelistDetails.columnNumber;
-      //     i++
-      //   ) {
-      //     cellProps[i] = "";
-      //   }
-      //   for (
-      //     let i = 0;
-      //     i <
-      //     previousResponse[0].whitelistDetails.rowNumber *
-      //       previousResponse[0].whitelistDetails.columnNumber;
-      //     i++
-      //   ) {
-      //     cellProps[i++ + i++ * i++ + i++ + i++] = "disable";
-      //   }
-      //   const data = response.data.fraction;
-      //   setPreviosFractions(data);
-      // };
-      // fetchFractions(data);
-      // console.log(offerWhitelist);
     };
 
     fetchOffers();
-  }, []);
-  // console.log(selCnt);
-  // console.log(previosFractions, "previosFractions");
-  const [wallet, setWallet] = useState(false);
-  const [likes, setLikes] = useState(0);
+  }, [cellProps, setArtistId]);
 
   useEffect(() => {
     if (walletAddress) {
@@ -302,18 +154,19 @@ export default function WhitelistLanding() {
     }
   }, [walletAddress]);
 
-  // console.log(formattedAddress);
-  // console.log(walletAddress);
   return (
     <div className={styles.home}>
       <Head title="Artfi" />
-      <img
-        src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/${artWorkImage}`}
-        alt=""
-      />
-      {/* <Navigation /> */}
+      {
+        artWorkImage &&
+        <Image
+          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/${artWorkImage}`}
+          alt=""
+          layout="fill"
+        />
+      }
       <div className={styles.whitelistNavbar}>
-        <img
+        <Image
           style={{ cursor: "pointer" }}
           src="/images/reusables/Artfi.png"
           alt="Artfi"
@@ -328,12 +181,6 @@ export default function WhitelistLanding() {
             onClick={async () => {
               await disconnectWallet();
               setWallet(false);
-              // addressFormatter(walletAddress);
-              // connectWallet().then(() => {
-              //   getData();
-              //   setWallet(true);
-              //   console.log("hello");
-              // });
             }}
           >
             {walletAddress && formattedAddress}
@@ -345,18 +192,12 @@ export default function WhitelistLanding() {
             onClick={async () => {
               await connectWallet();
               setWallet(true);
-              // connectWallet().then(() => {
-              //   getData();
-              //   setWallet(true);
-              //   console.log("hello");
-              // });
             }}
           >
             Connect your wallet
           </Button>
         )}
       </div>
-      {/* <LoaderScreen /> */}
 
       <main className={styles.main}>
         <Landing
@@ -371,10 +212,8 @@ export default function WhitelistLanding() {
           offeringId={offeringId}
           artWorkImage={artWorkImage}
           cellProps={cellProps}
-          // selCnt={selCnt}
           addDetailsPage={addDetailsPage}
           whatYouWillGet={whatYouWillGet}
-          // setSelCnt={setSelCnt}
           setCellProps={setCellProps}
           fractionSize={fractionSize}
           tableRowsCols={tableRowsCols}
@@ -382,7 +221,6 @@ export default function WhitelistLanding() {
         />
       </main>
       <SnackBar setOpen={setOpen} open={open} />
-      {/* <Footer /> */}
     </div>
   );
 }

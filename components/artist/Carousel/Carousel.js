@@ -65,7 +65,6 @@ const CarouselComponent = ({ artistDetails }) => {
       {
         breakpoint: 576,
         settings: {
-          // slidesToShow: 1,
           nextArrow: false,
           prevArrow: false,
         },
@@ -77,7 +76,7 @@ const CarouselComponent = ({ artistDetails }) => {
       <h1 className={styles.carouselTitle}>Highlights</h1>
       <Slider className={styles.slider_component} {...settings}>
         {artistDetails?.highlight?.map((item, index) => (
-          <img
+          <Image
             key={index}
             className={styles.highlight}
             src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${item.highlightsImage}`}
@@ -85,28 +84,6 @@ const CarouselComponent = ({ artistDetails }) => {
           />
         ))}
       </Slider>
-      {/* <div className={styles.carousel}> */}
-      {/* <div style={{ width: "20%" }}>
-          <Image src="/Icons/leftArrow.svg" width="60px" height="60px" />
-        </div> */}
-      {/* <div style={{ width: "60%", overflow: "hidden", display: "flex" }}> */}
-      {/* <img src="/Artist/slider1.svg" width="100%"/> */}
-      {/* {
-                  image.map((path,index)=>{
-                      return(
-                        <>
-                          <img src={path} width="100%" height="100%" />
-                        </>
-                      )
-
-                  })
-                 } */}
-      {/* <img src="/Artist/slider1.svg" width="100%" height="100%" /> */}
-      {/* </div> */}
-      {/* <div style={{ width: "20%" }}>
-          <Image src="/Icons/rightArrow.svg" width="60px" height="60px" />
-        </div> */}
-      {/* </div> */}
     </div>
   );
 };
