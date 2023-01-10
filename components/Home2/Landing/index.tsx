@@ -247,7 +247,7 @@ export const Landing = ({
                 ethers.utils.formatBytes32String(offeringId),
                 sendSelected.join(","),
                 response.data.signature
-            );
+              );
             
             if (tx) {
               tx.wait().then(async function(receipt: any) {
@@ -319,7 +319,6 @@ export const Landing = ({
   const handleAddWhitelist = async (e: any) => {
     try {
       e.preventDefault();
-      // console.log(process.env,"hii")
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/offering/getallheader`,
         formData
@@ -330,6 +329,11 @@ export const Landing = ({
       console.log({ error });
     }
   };
+
+  const closeSuccess = () => {
+    setOpened(false)
+    window.location.reload();
+  }
 
   const connectArcana = async () => {
     if (!arcanaProvider) {
@@ -431,7 +435,7 @@ export const Landing = ({
           overlayColor="rgba(155, 155, 155, 0.5)"
           overlayBlur={3}
           opened={opened}
-          onClose={() => setOpened(false)}
+          onClose={() => closeSuccess()}
           withCloseButton={false}
           transition="scale"
           transitionDuration={600}
