@@ -11,53 +11,6 @@
   display: flex;
   // padding: 20px;
 }
-
-// .popUpMenu {
-//   padding: 7px;
-//   background-color: #ffffff99;
-//   width: fit-content;
-//   border-radius: 10px;
-//   position: fixed;
-//   top: 0;
-//   // position: relative;
-//   // top: 0;
-//   .popUpInnerContainer {
-//     background-color: white;
-//     padding: 16px;
-//     border-radius: 10px;
-//     height: 119px;
-//     width: 223px;
-//   }
-//   .menuImage {
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: center;
-//     img {
-//       width: 35px;
-//       height: 35px;
-//       margin-right: 12px;
-//       background-color: red;
-//     }
-//     p {
-//       margin: 0;
-//     }
-//   }
-//   .menuDetails {
-//     display: flex;
-//     margin-top: 16px;
-//     gap: 30px;
-//     small {
-//       font-weight: 400px;
-//       font-family: "Plus Jakarta Sans";
-//       font-size: 12px;
-//       line-height: 15px;
-//     }
-
-//     h3 {
-//       margin: 0;
-//     }
-//   }
-// }
 .box {
   // margin: 1px;
   border-radius: 0;
@@ -147,14 +100,6 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -190,13 +135,6 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
@@ -211,10 +149,10 @@
 }
 
 .imgtbl {
+  top: 0;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  // width: 800px;
-  // height: 800px;
-  // height: 100vh;
   border-collapse: collapse;
 }
 
@@ -236,52 +174,4 @@ td.selected {
 
 td.disable {
   background-color: rgba(255, 0, 0, 0.446);
-}
-.popUpMenu {
-  padding: 3px;
-  background-color: #ffffff99;
-  width: fit-content;
-  float: inline-start;
-  border-radius: 10px;
-  z-index: 9999999999 !important;
-  position: absolute !important;
-  // position: relative;
-  // top: 0;
-  .popUpInnerContainer {
-    background-color: white;
-    padding: 16px;
-    border-radius: 10px;
-    height: 119px;
-    width: 230px;
-  }
-  .menuImage {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    img {
-      width: 35px;
-      height: 35px;
-      margin-right: 12px;
-      background-color: gray;
-    }
-    p {
-      margin: 0;
-    }
-  }
-  .menuDetails {
-    display: flex;
-    margin-top: 16px;
-    justify-content: space-between;
-    // gap: 18px;
-    small {
-      font-weight: 400px;
-      font-family: "Plus Jakarta Sans";
-      font-size: 12px;
-      line-height: 15px;
-    }
-
-    h3 {
-      margin: 0;
-    }
-  }
 }

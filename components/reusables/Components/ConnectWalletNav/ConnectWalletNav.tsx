@@ -7,11 +7,9 @@ const ConnectWalletNav = ({ walletBtnStyle }: any) => {
   const [formattedAddress, setFormattedAddress] = useState("");
   const [wallet, setWallet] = useState(false);
   const {
-    web3Data,
-    setWeb3Data,
     connectWallet,
     walletAddress,
-    disconnectWallet,
+    disconnectWallet
   } = useContext(Web3Context);
 
   useEffect(() => {

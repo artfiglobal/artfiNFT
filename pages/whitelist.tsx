@@ -29,7 +29,8 @@ export default function WhitelistLanding() {
   const { setArtistId } = useContext(GeneralContext);
   const [open, setOpen] = useState(false);
   const [, setWallet] = useState(false);
-  const [likes, ] = useState(0);
+  const [likes,] = useState(0);
+  const [maxFraction, setMaxFraction] = useState(0)
 
   const {
     connectWallet,
@@ -75,6 +76,7 @@ export default function WhitelistLanding() {
               width: data[0].whitelistDetails.width,
               height: data[0].whitelistDetails.height,
             });
+            setMaxFraction(data[0].whitelistDetails.FractionNumber)
             setArtWorkImage(data[0].whitelistDetails.imageOfArtWork);
             const defineWhitelist = () => {
               data.map((item: any, index: number) => {
@@ -157,14 +159,6 @@ export default function WhitelistLanding() {
   return (
     <div className={styles.home}>
       <Head title="Artfi" />
-      {
-        artWorkImage &&
-        <Image
-          src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/${artWorkImage}`}
-          alt=""
-          layout="fill"
-        />
-      }
       <div className={styles.whitelistNavbar}>
         <Image
           style={{ cursor: "pointer" }}
@@ -188,7 +182,7 @@ export default function WhitelistLanding() {
         ) : (
           <Button
             variant="primary"
-            style={{ width: "190px", fontSize: "16px", padding: "10px 16.5px" }}
+            style={{ width: "190px", cursor: "pointer", fontSize: "16px", padding: "10px 16.5px" }}
             onClick={async () => {
               await connectWallet();
               setWallet(true);
@@ -218,6 +212,7 @@ export default function WhitelistLanding() {
           fractionSize={fractionSize}
           tableRowsCols={tableRowsCols}
           setOpen={setOpen}
+          maxFraction={maxFraction}
         />
       </main>
       <SnackBar setOpen={setOpen} open={open} />

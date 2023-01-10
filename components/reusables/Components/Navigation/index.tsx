@@ -1,29 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect, useState } from "react";
-import styles from "./Navigation.module.scss";
-import { Typography } from "../../Atoms";
-import { FaBars, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
-import ConnectWalletNav from "../ConnectWalletNav/ConnectWalletNav";
+import { FaBars } from "react-icons/fa";
+import { Button } from "@mui/material";
+
+import { Typography } from "../../Atoms";
 import { useRouter } from "next/router";
-// import Web3Context from "../context/Web3Context";
 import Web3Context from "../../../../context/Web3Context";
 
-import { style, width } from "@mui/system";
-import { Button } from "@mui/material";
+import styles from "./Navigation.module.scss";
 
 type NavigationProps = {};
 
 export const Navigation = ({}: NavigationProps): JSX.Element => {
+  const [, setWallet] = useState(false);
   const [open, setIsOpen] = useState(true);
-  const [wallet, setWallet] = useState(false);
-
-  const [isDown, setIsDown] = useState(false);
-  const [offerWhitelist, setOfferWhitelist] = useState({});
-  const [offerUnveiling, setOfferUnveiling] = useState({});
-  const [isDown2, setIsDown2] = useState(false);
-  const [btnRotate, setBtnRotate] = useState(false);
-  const [showConnectWallet, setShowConnectWallet] = useState(false);
+  const [, setShowConnectWallet] = useState(false);
   const [formattedAddress, setFormattedAddress] = useState("");
 
   const router = useRouter();
@@ -31,7 +23,6 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
 
   const {
     web3Data,
-    setWeb3Data,
     connectWallet,
     walletAddress,
     disconnectWallet,
@@ -145,12 +136,6 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
             onClick={async () => {
               await disconnectWallet();
               setWallet(false);
-              // addressFormatter(walletAddress);
-              // connectWallet().then(() => {
-              //   getData();
-              //   setWallet(true);
-              //   console.log("hello");
-              // });
             }}
           >
             {walletAddress && formattedAddress}
@@ -172,169 +157,12 @@ export const Navigation = ({}: NavigationProps): JSX.Element => {
             onClick={async () => {
               await connectWallet();
               setWallet(true);
-              // connectWallet().then(() => {
-              //   getData();
-              //   setWallet(true);
-              //   console.log("hello");
-              // });
             }}
           >
             Connect your wallet
           </Button>
         )}
-        {/* {showConnectWallet && <ConnectWalletNav walletBtnStyle="webBtnStyle" />} */}
-        {/* <div className={styles.navItem}>
-          <Typography variant="body" color="black" className={styles.text}>
-            Price Database
-          </Typography>
-          <Button variant="sm">Coming Soon</Button>
-        </div>
-        <div className={styles.navItem}>
-          <Typography variant="body" color="black" className={styles.text}>
-            Marketplace
-          </Typography>
-          <Button variant="sm">Coming Soon</Button>
-        </div> */}
-        {/* <div
-          className={
-            isDown2 ? `${styles.navDropdown} ${styles.navItem}` : styles.navItem
-          }
-        >
-          <Typography
-            variant="body"
-            color="black"
-            className={styles.text}
-            onClick={() => setIsDown2(!isDown2)}
-          >
-            Departments <FaChevronDown className={styles.dropdownBtn} />
-          </Typography>
-          {isDown2 && (
-            <div className={styles.dropdownContainer}>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Modern & Contemporary South Asian Art
-                  </Typography>
-                </Link>
-              </div>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Modern & Contemporary Indian Art
-                  </Typography>
-                </Link>
-              </div>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Modern & Contemporary Middle Eastern Art
-                  </Typography>
-                </Link>
-              </div>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Modern & Contemporary African Art
-                  </Typography>
-                </Link>
-              </div>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Modern & Contemporary International Art
-                  </Typography>
-                </Link>
-              </div>
-            </div>
-          )}
-        </div> */}
-        {/* <div
-          className={
-            isDown ? `${styles.navDropdown} ${styles.navItem}` : styles.navItem
-          }
-        >
-          <Typography
-            variant="body"
-            color="black"
-            className={styles.text}
-            onClick={() => setIsDown(!isDown)}
-          >
-            Offerings <FaChevronDown className={styles.dropdownBtn} />
-          </Typography>
-          {isDown && (
-            <div className={styles.dropdownContainer}>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Upcoming
-                  </Typography>
-                </Link>
-              </div>
-              <div className={styles.dropdownItem}>
-                <Link href="/" passHref>
-                  <Typography
-                    variant="body"
-                    color="black"
-                    className={styles.dropdownText}
-                  >
-                    Ongoing
-                  </Typography>
-                </Link>
-              </div>
-            </div>
-          )}
-        </div> */}
-        {/* <div className={styles.navItem}>
-          <Link href="/about" passHref>
-            <Typography variant="body" color="black" className={styles.text}>
-              About Us
-            </Typography>
-          </Link>
-        </div>
-        <div className={styles.navItem}>
-          <Link href="/team" passHref>
-            <Typography variant="body" color="black" className={styles.text}>
-              Team
-            </Typography>
-          </Link>
-        </div> */}
       </div>
-      {/* {showConnectWallet ? (
-        <div className={styles.connectWallet_mobile_nav}>
-          <ConnectWalletNav walletBtnStyle="mobBtnStyle" />
-          <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
-            <FaBars />
-          </div>
-        </div>
-      ) : (
-        <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
-          <FaBars />
-        </div>
-      )} */}
       <div className={styles.navColapse} onClick={() => setIsOpen(!open)}>
         <FaBars />
       </div>

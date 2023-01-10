@@ -2,6 +2,7 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import ButtonView from "@mui/material/Button";
 import { Modal } from "@mantine/core";
+import Image from "next/image";
 import { ethers, BigNumber } from "ethers";
 import axios from "axios";
 import Link from "next/link";
@@ -16,9 +17,6 @@ import { Container, Typography, Button } from "../../reusables2/Atoms";
 import style from "./Landing.module.scss";
 
 import Web3Context from "../../../context/Web3Context";
-import Image from "next/image";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-
 import metamask from "../../../public/metamask.png";
 import arcana from "../../../public/arcana.png";
 import RightArrow from "../../../public/Icons/Combined-Shape.svg";
@@ -65,38 +63,13 @@ const useKey = (setPressKey: any) => {
 
 let arcanaProvider: any = null;
 
-type offerWhitelistTypes = {
-  FractionNumber?: number;
-  Title?: string;
-  artistName?: string;
-  authencity?: string;
-  columnNumber?: number;
-  description?: string;
-  factSheet?: string;
-  height?: number;
-  imageOfArtWork?: string;
-  medium?: string;
-  price?: number;
-  provenence?: string;
-  rowNumber?: number;
-  signature?: string;
-  width?: number;
-  year?: number;
-  _id?: string;
-};
-
 export const Landing = ({
   offerWhitelist,
   previosFractions,
-  likes,
   offerUnveiling,
   artWorkImage,
-  artistId,
   artistImage,
-  // rowCnt,
-  // columnCnt,
   tableRowsCols,
-  fractionSize,
   setCellProps,
   cellProps,
   addDetailsPage,
@@ -106,9 +79,9 @@ export const Landing = ({
   price,
   setPrice,
   setOpen,
-}:
-
-LandingProps | any): JSX.Element => {
+  maxFraction
+}: LandingProps | any): JSX.Element => {
+  const [, setIsShown] = useState(false);
   const [opened, setOpened] = useState(false);
   const [, setIsWhiteListed] = useState(false);
   const [confirmPurchase, setConfirmPurchase] = useState(false);
@@ -116,14 +89,11 @@ LandingProps | any): JSX.Element => {
   const [, setUnitValueTotal] = useState(10000);
   const [pressKey, setPressKey] = useState(true);
   const [coords, setCoords] = useState([0, 0]);
-  const [isShown, setIsShown] = useState(false);
-  const [, setSelectedItems] = useState([]);
   const [selCnt, setSelCnt] = useState(0);
   const [singleImage, setSingleImage] = useState();
   const [innerWidth, setInnerWidth] = useState(0);
   const [emailAddress, setEmailAddress] = useState("");
   const [coordinates, setCoordinates] = useState();
-  const [, setInitialCellProps] = useState([]);
   const [isArcanaLogin, setIsArcanaLogin] = useState(false);
   const [checkCurrency, setCheckCurrency] = useState("");
   const [showApprove, setShowApprove] = useState(false);
@@ -283,26 +253,28 @@ LandingProps | any): JSX.Element => {
               tx.wait().then(async function(receipt: any) {
                 setConfirmPurchase(false)
                 setOpened(true)
+            
+                axios({
+                  method: 'post',
+                  url: `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  data: JSON.stringify({ emailAddress })
+                });
 
-                axios.post(
-                  `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/whitelist/send-email`,
-                  {
-                    body: {
-                      emailAddress
-                    }
-                  }
-                );
-
-                axios.post(
-                  `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/payfraction`,
-                  {
-                    body: {
-                      walletAddress,
-                      whitelistId: offeringId,
-                      isPay: true
-                    }
-                  }
-                );
+                axios({
+                  method: 'post',
+                  url: `${process.env.NEXT_PUBLIC_React_App_Base_Url}/api/fraction/payfraction`,
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  data: JSON.stringify({ 
+                    walletAddress,
+                    whitelistId: offeringId,
+                    isPay: true
+                  })
+                });
               }).catch(function (err1: any) {
                 setConfirmPurchase(false)
 
@@ -398,8 +370,9 @@ LandingProps | any): JSX.Element => {
     return (
       <div
         style={{
-          top: coords[1] - 570,
-          left: coords[0] < 84 ? coords[0] - 20 : coords[0] - 110,
+          top: coords[1],
+          left: coords[0],
+          // top: 0
         }}
         className={style.popUpMenu}
       >
@@ -413,18 +386,18 @@ LandingProps | any): JSX.Element => {
           <div className={style.menuImage}>
             <img src="" alt="" />
             {cellProps[singleImage - 1] === "" ? (
-              <Typography variant="popup" color={"mauve"}>
+              <span color={"mauve"}>
                 Available
-              </Typography>
+              </span>
             ) : cellProps[singleImage - 1] === "selected" ? (
-              <Typography variant="popup" color="blue">
+              <span color="blue">
                 Selected
-              </Typography>
+              </span>
             ) : (
               cellProps[singleImage - 1] === "disable" && (
-                <Typography variant="popup" color="red">
+                <span color="red">
                   Not Available!
-                </Typography>
+                </span>
               )
             )}
           </div>
@@ -432,16 +405,16 @@ LandingProps | any): JSX.Element => {
             <div>
               <small>FRACTION</small>
               <br />
-              <Typography variant="popup2" color="black">
+              <span color="black">
                 #{singleImage} /{tableRowsCols.columnCnt * tableRowsCols.rowCnt}
-              </Typography>
+              </span>
             </div>
             <div>
               <small>COORDINATES</small>
               <br />
-              <Typography variant="popup2" color="black">
+              <span color="black">
                 {coordinates[0]}/{coordinates[1]}
-              </Typography>
+              </span>
             </div>
           </div>
         </div>
@@ -509,44 +482,33 @@ LandingProps | any): JSX.Element => {
               width: "fit-content",
               margin: "0 auto",
               marginBottom: "30px",
-              marginTop: "44px",
+              marginTop: "15px",
             }}
           >
-            <Typography variant="popup2" color={"black"}>
+            <span color={"black"}>
               Drag to select NFTs
-            </Typography>
+            </span>
           </div>
           {singleImage && (
             <ToolTipCard singleImage={singleImage} coordinates={coordinates} />
           )}
-          <TransformWrapper
-            centerOnInit={true}
-            panning={{ disabled: pressKey }}
-          >
-            <TransformComponent>
-              <SelectFractionNFTs
-                isShown={isShown}
-                coordinates={coordinates}
-                tableRowsCols={tableRowsCols}
-                cellProps={cellProps}
-                fractionSize={fractionSize}
-                setCellProps={setCellProps}
-                setOpen={setOpen}
-                setSelectedItems={setSelectedItems}
-                setIsShown={setIsShown}
-                pressKey={pressKey}
-                setCoords={setCoords}
-                artWorkImage={artWorkImage}
-                setInitialCellProps={setInitialCellProps}
-                setSingleImage={setSingleImage}
-                singleImage={singleImage}
-                setCoordinates={setCoordinates}
-                selCnt={selCnt}
-                selCntPrevious={selCntPrevious}
-                setSelCnt={setSelCnt}
-              />
-            </TransformComponent>
-          </TransformWrapper>
+          <SelectFractionNFTs
+            setIsShown={setIsShown}
+            tableRowsCols={tableRowsCols}
+            cellProps={cellProps}
+            // fractionSize={fractionSize}
+            setCellProps={setCellProps}
+            setOpen={setOpen}
+            pressKey={pressKey}
+            setCoords={setCoords}
+            artWorkImage={artWorkImage}
+            setSingleImage={setSingleImage}
+            setCoordinates={setCoordinates}
+            selCnt={selCnt}
+            selCntPrevious={selCntPrevious}
+            setSelCnt={setSelCnt}
+            maxFraction={maxFraction}
+          />
           <div className={style.selectGroupFooter}>
             <div className={style.selectGroupFooterRight}>
               <div
@@ -557,9 +519,9 @@ LandingProps | any): JSX.Element => {
                   marginRight: "10px",
                 }}
               ></div>
-              <Typography variant="popup" color={"black"}>
+              <span color={"black"}>
                 Whitelisted
-              </Typography>
+              </span>
             </div>
             <div className={style.selectGroupFooterRight}>
               <div
@@ -571,9 +533,9 @@ LandingProps | any): JSX.Element => {
                   marginRight: "10px",
                 }}
               ></div>
-              <Typography variant="popup" color={"black"}>
+              <span color={"black"}>
                 Available
-              </Typography>
+              </span>
             </div>
           </div>
         </div>
@@ -585,7 +547,7 @@ LandingProps | any): JSX.Element => {
                 Select NFTs
               </Typography>
               <Typography variant="small" color={"black"}>
-                Upto 50
+                Upto {maxFraction}
               </Typography>
             </div>
             <Button
@@ -605,7 +567,7 @@ LandingProps | any): JSX.Element => {
                     variant="fractionBTN"
                     key={index}
                   >
-                    #{index}
+                    #{index + 1}
                   </Button>
                 );
               }
@@ -704,9 +666,6 @@ LandingProps | any): JSX.Element => {
                     Get Whitelisted
                   </Typography>
                 </div>
-                {/* <div className={style.contentInfo}>
-              Connect your wallet to whitelist
-            </div> */}
                 <Typography variant="light" color={"lightGray"}>
                   Connect your wallet to whitelist
                 </Typography>

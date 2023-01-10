@@ -59,8 +59,6 @@
     border-radius: 10px;
     z-index: 9999999999 !important;
     position: absolute !important;
-    // position: relative;
-    // top: 0;
     .popUpInnerContainer {
       background-color: white;
       padding: 16px;
@@ -134,7 +132,7 @@
     width: 268px;
     box-sizing: border-box;
     height: 40px;
-    margin-top: 38px;
+    margin-top: 10px;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -773,53 +771,6 @@
   display: flex;
   // padding: 20px;
 }
-
-// .popUpMenu {
-//   padding: 7px;
-//   background-color: #ffffff99;
-//   width: fit-content;
-//   border-radius: 10px;
-//   position: fixed;
-//   top: 0;
-//   // position: relative;
-//   // top: 0;
-//   .popUpInnerContainer {
-//     background-color: white;
-//     padding: 16px;
-//     border-radius: 10px;
-//     height: 119px;
-//     width: 223px;
-//   }
-//   .menuImage {
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: center;
-//     img {
-//       width: 35px;
-//       height: 35px;
-//       margin-right: 12px;
-//       background-color: red;
-//     }
-//     p {
-//       margin: 0;
-//     }
-//   }
-//   .menuDetails {
-//     display: flex;
-//     margin-top: 16px;
-//     gap: 30px;
-//     small {
-//       font-weight: 400px;
-//       font-family: "Plus Jakarta Sans";
-//       font-size: 12px;
-//       line-height: 15px;
-//     }
-
-//     h3 {
-//       margin: 0;
-//     }
-//   }
-// }
 .box {
   // margin: 1px;
   border-radius: 0;
@@ -909,14 +860,6 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -952,13 +895,6 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
@@ -972,24 +908,6 @@
   }
 }
 
-.imgtbl {
-  position: absolute;
-  // width: 800px;
-  // height: 800px;
-  // height: 100vh;
-  border-collapse: collapse;
-}
-
-.imgtbl td {
-  border: 0.1px solid #dee2e6;
-}
-
-// td {
-//   // &:hover {
-//   transform: scale(2);
-//   background-color: red;
-//   // }
-// }
 td.selected {
   background-color: rgba(68, 255, 0, 0.594);
 

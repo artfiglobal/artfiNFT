@@ -1,26 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Typography } from "../../reusables/Atoms";
+
 import PowerdBy from "../PowerdBy";
 import styles from "./Landing.module.scss";
-type LandingProps = {
-  setIsOpen: (_: boolean) => void;
-  isOpen: boolean;
-  referralCode: string | string[] | undefined;
-  offerData: any;
-};
 
 const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
-  const [offer, setOffer] = useState(
+  const [offer, ] = useState(
     offerData.trueOfferings ? offerData.trueOfferings[0] : {}
   );
   const router = useRouter();
-  console.log(offer, "offer");
-  console.log(offerData, "jkl");
+  
   return (
     <div className={styles.landing}>
       <div
@@ -116,14 +108,6 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
         ></iframe>
       )}
 
-      <script src="https://player.vimeo.com/api/player.js"></script>
-      {/* <iframe
-        src={offer.annoucmentDetails.mobileAndAnnouncementURL}
-        className={styles.videombl}
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-      <script src="https://player.vimeo.com/api/player.js"></script> */}
       <div className={styles.pby}>
         <PowerdBy />
       </div>
@@ -149,19 +133,15 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
                         ? offer.headerDetails.artistName
                         : ""
                       : ""}
-                    {offer ? (
-                      offerData.IsArtistVerified ? (
+                    {
+                      offer && offerData.IsArtistVerified ? 
                         <img
                           src="/Publiced/Vector.svg"
                           width="24px"
                           height="24px"
-                        />
-                      ) : (
-                        ""
-                      )
-                    ) : (
-                      ""
-                    )}{" "}
+                          alt="vector"
+                        /> : null
+                    }{" "}
                   </label>
                 </p>{" "}
               </>
@@ -178,35 +158,29 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
                           : ""
                         : ""}
                     </Link>
-                    {offer ? (
-                      offerData.IsArtistVerified ? (
+                      {
+                        offer && offerData.IsArtistVerified ? 
                         <img
                           src="/Publiced/Vector.svg"
                           width="24px"
                           height="24px"
-                        />
-                      ) : (
-                        ""
-                      )
-                    ) : (
-                      ""
-                    )}{" "}
+                          alt="vector"
+                          /> : null
+                      }{" "}
                   </label>
                 </p>{" "}
               </>
             )
           ) : (
             <>
-              <img className={styles.artlogo} src="/Logo/art.svg" />{" "}
-              <img className={styles.close} src="/Logo/x.svg" />
+              <img alt="art" className={styles.artlogo} src="/Logo/art.svg" />{" "}
+              <img alt="logo" className={styles.close} src="/Logo/x.svg" />
               <p className={styles.artistName}>
                 {offer.headerDetails ? offer.headerDetails.artistName : ""}
               </p>
             </>
           )}{" "}
         </div>
-        {/* <img className={styles.container_img_mbl} src="/Logo/Mobile.png" /> */}
-        {/* {offer.headerDetails.artistName} */}
         <div className={styles.btn_container}>
           {offer.unveilingDetails ? (
             offer.unveilingDetails.CTAButtonType == "waitlist" ? (
@@ -242,12 +216,13 @@ const Landing = ({ setIsOpen, isOpen, offerData }: any) => {
                 : ""
             }
             target="_blank"
+            rel="noreferrer"
           >
             <Button
               className={styles.play_btn}
               style={{ textTransform: "capitalize" }}
             >
-              <img src="/Icons/play.svg" style={{ marginRight: "10px" }} />
+              <img alt="play" src="/Icons/play.svg" style={{ marginRight: "10px" }} />
               Play now{" "}
             </Button>
           </a>
