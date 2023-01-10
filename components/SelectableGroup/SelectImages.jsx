@@ -73,7 +73,7 @@ export default function SelectFractionNFTs({
   };
   
   return (
-    <div style={{ display: 'block', position: 'relative' }} onMouseMove={(event) => handleMouseMove(event)}>
+    <div style={{ display: 'block', position: 'relative', width: '100%', height: '90%' }} onMouseMove={(event) => handleMouseMove(event)}>
       <img
         src={`${process.env.NEXT_PUBLIC_React_App_Base_Url}/${artWorkImage}`}
         alt="not working"
