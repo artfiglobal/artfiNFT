@@ -68,7 +68,7 @@ export default function SelectFractionNFTs({
   const handleMouseMove = (event) => {
     setCoords([
       event.nativeEvent.layerX - 90,
-      event.nativeEvent.layerY - 55,
+      event.nativeEvent.layerY - 60,
     ]);
   };
   
